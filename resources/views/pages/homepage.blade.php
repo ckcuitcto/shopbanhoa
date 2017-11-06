@@ -154,7 +154,7 @@
                                     <h4>
                                         <a class="defaultBtn" href="{{route('productDetail',$product->id)}}" title="Click to view"><span
                                                     class="icon-zoom-in"></span></a>
-                                        <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
+                                        <a class="shopBtn" href="{{route('purchase',['id'=> $product->id])}}" title="add to cart"><span class="icon-plus"></span></a>
                                         <span class="pull-right">{{$product->unit_price}}</span>
                                     </h4>
                                 </div>

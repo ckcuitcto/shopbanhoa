@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cart;
 use App\Product;
 use App\ProductType;
 use App\Slide;
@@ -31,7 +32,22 @@ class PageController extends Controller
     }
 
     public function getCart(){
-        return view('pages.cart');
+        $content = Cart::content();
+        return view('pages.cart',compact('content'));
+    }
+
+    public function purchase(Request $request){
+        $productBuy = Product::where('id',$request->id)->first();
+        Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => 1, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
+
+        return redirect()->back();
+
+    }
+
+    public function deleteProduct($id)
+    {
+        Cart::remove($id);
+        return redirect()->back();
     }
 
 

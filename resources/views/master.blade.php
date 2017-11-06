@@ -30,6 +30,7 @@
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="template/assets/ico/favicon.ico">
+
 </head>
 <body>
 <!--

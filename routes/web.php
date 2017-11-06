@@ -31,7 +31,18 @@ Route::get('chi-tiet/{idProduct}',[
     'uses' => 'PageController@getProductDetail'
 ]);
 
+Route::get('mua-hang/{id}',[
+    'as' => 'purchase',
+    'uses' => 'PageController@purchase'
+]);
+
 Route::get('gio-hang',[
     'as' => 'cart',
     'uses' => 'PageController@getCart'
 ]);
+
+Route::get('xoa-san-pham/{id}',[
+    'as'=>'deleteProduct',
+    'uses' => 'PageController@deleteProduct'
+]);
+
