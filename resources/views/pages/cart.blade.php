@@ -18,7 +18,7 @@
             </ul>
             <div class="well well-small">
                 <h1>Check Out
-                    <small class="pull-right"> 2 Items are in the cart</small>
+                    <small class="pull-right"> {{Cart::count()}} Items are in the cart</small>
                 </h1>
                 <hr class="soften"/>
 
@@ -44,11 +44,16 @@
                         <td><span class="shopBtn"><span class="icon-ok"></span></span></td>
                         <td>{{$item->price}} VNĐ</td>
                         <td>
-                            <input class="span1 quantity" idProduct="{{$item->rowId}}" value="{{$item->qty}}" min="1" max="100"  name="{{$item->rowId}}" style="max-width:34px" type="number">
+                            <input class="span1 quantity1" idProduct="{{$item->rowId}}" value="{{$item->qty}}" min="1"
+                                   max="100" name="{{$item->rowId}}" style="max-width:34px" type="number">
                             <div class="input-append">
-                                <button class="btn btn-default btn-number" data-type="minus" data-field="{{$item->rowId}}" type="button"><i class="icon-minus"></i></button>
-                                <button class="btn btn-default btn-number" data-type="plus" data-field="{{$item->rowId}}"  type="button"><i class="icon-plus"></i></button>
-                                <button class="btn btn-default btn-danger" type="button"><a href="{{route('deleteProduct',$item->rowId )}}"><span class="icon-remove"></span></a>
+                                <button class="btn btn-default btn-number" data-type="minus"
+                                        data-field="{{$item->rowId}}" type="button"><i class="icon-minus"></i></button>
+                                <button class="btn btn-default btn-number" data-type="plus"
+                                        data-field="{{$item->rowId}}" type="button"><i class="icon-plus"></i></button>
+                                <button class="btn btn-default btn-danger removeProduct" type="button" idProduct="{{$item->rowId}}">
+                                    {{--<a href="{{route('deleteProduct',['id'=>$item->rowId ])}}">--}}
+                                        <span class="icon-remove"></span></a>
                                 </button>
                             </div>
                         </td>
@@ -65,20 +70,20 @@
                 <br/>
 
 
-                <table class="table table-bordered">
-                    <tbody>
-                    <tr>
-                        <td>
-                            <form class="form-inline">
-                                <label style="min-width:159px"> VOUCHERS Code: </label>
-                                <input type="text" class="input-medium" placeholder="CODE">
-                                <button type="submit" class="shopBtn"> ADD</button>
-                            </form>
-                        </td>
-                    </tr>
+                {{--<table class="table table-bordered">--}}
+                    {{--<tbody>--}}
+                    {{--<tr>--}}
+                        {{--<td>--}}
+                            {{--<form class="form-inline">--}}
+                                {{--<label style="min-width:159px"> VOUCHERS Code: </label>--}}
+                                {{--<input type="text" class="input-medium" placeholder="CODE">--}}
+                                {{--<button type="submit" class="shopBtn"> ADD</button>--}}
+                            {{--</form>--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
 
-                    </tbody>
-                </table>
+                    {{--</tbody>--}}
+                {{--</table>--}}
                 <table class="table table-bordered">
                     <tbody>
                     <tr>

@@ -29,8 +29,9 @@
     <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
 
     <!-- Favicons -->
+    <script src="template/assets/js/jquery-3.2.1.min.js"></script>
     <link rel="shortcut icon" href="template/assets/ico/favicon.ico">
-
+    <script src="template/assets/js/cart.js"></script>
 </head>
 <body>
 <!--
@@ -100,5 +101,6 @@ Lower Header Section
 <script src="template/assets/js/jquery.easing-1.3.min.js"></script>
 <script src="template/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
 <script src="template/assets/js/shop.js"></script>
+<script src="template/assets/js/duc.js"></script>
 </body>
 </html>

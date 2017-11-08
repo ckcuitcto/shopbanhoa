@@ -15,7 +15,7 @@
             @endforeach
             <li style="border:0"> &nbsp;</li>
             <li><a class="totalInCart" href="{{route('cart')}}"><strong>Total Amount <span
-                                class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a>
+                                class="badge badge-warning pull-right" style="line-height:18px;">{{Cart::total()}} </span></strong></a>
             </li>
         </ul>
     </div>
