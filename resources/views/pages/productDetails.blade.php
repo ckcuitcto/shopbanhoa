@@ -40,41 +40,43 @@
                 <div class="span7">
                     <h3> {{$product->name}}</h3>
                     <hr class="soft"/>
-
-                    <form class="form-horizontal qtyFrm">
+                    {{--{{route('purchase',['id'=> $product->id])}}--}}
+                    <form class="form-horizontal qtyFrm" action="{{route('post_purchase')}}" method="post">
+                        <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
+                        <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="control-group">
                             <label class="control-label"><span>{{$product->unit_price}}</span></label>
                             <div class="controls">
-                                <input type="number" class="span6" placeholder="Qty.">
+                                <input  {{ $product->quantity > 0 ? "" : "disabled='disabled'" }} type="number" min="1" max="{{$product->quantity}}" name="qty" class="span6" value="1">
                             </div>
                         </div>
 
-                        <div class="control-group">
-                            <label class="control-label"><span>Color</span></label>
-                            <div class="controls">
-                                <select class="span11">
-                                    <option>Red</option>
-                                    <option>Purple</option>
-                                    <option>Pink</option>
-                                    <option>Red</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label"><span>Materials</span></label>
-                            <div class="controls">
-                                <select class="span11">
-                                    <option>Material 1</option>
-                                    <option>Material 2</option>
-                                    <option>Material 3</option>
-                                    <option>Material 4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <h4>100 items in stock</h4>
+                        {{--<div class="control-group">--}}
+                            {{--<label class="control-label"><span>Color</span></label>--}}
+                            {{--<div class="controls">--}}
+                                {{--<select class="span11">--}}
+                                    {{--<option>Red</option>--}}
+                                    {{--<option>Purple</option>--}}
+                                    {{--<option>Pink</option>--}}
+                                    {{--<option>Red</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="control-group">--}}
+                            {{--<label class="control-label"><span>Materials</span></label>--}}
+                            {{--<div class="controls">--}}
+                                {{--<select class="span11">--}}
+                                    {{--<option>Material 1</option>--}}
+                                    {{--<option>Material 2</option>--}}
+                                    {{--<option>Material 3</option>--}}
+                                    {{--<option>Material 4</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        <h4>{{$product->quantity}} items in stock</h4>
                         <p>{{$product->description}}
                         <p>
-                            <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Add to cart
+                            <button type="submit" {{ $product->quantity > 0 ? "" : "disabled='disabled'" }}   class="shopBtn"><span class=" icon-shopping-cart"></span> Add to cart
                             </button>
                     </form>
                 </div>
@@ -124,41 +126,6 @@
                         </tr>
                         </tbody>
                     </table>
-                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
-                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure
-                        terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan
-                        american apparel, butcher voluptate nisi qui.</p>
-                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
-                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure
-                        terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan
-                        american apparel, butcher voluptate nisi qui.</p>
-                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
-                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure
-                        terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan
-                        american apparel, butcher voluptate nisi qui.</p>
-                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
-                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure
-                        terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan
-                        american apparel, butcher voluptate nisi qui.</p>
-                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
-                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure
-                        terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan
-                        american apparel, butcher voluptate nisi qui.</p>
-                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
-                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure
-                        terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan
-                        american apparel, butcher voluptate nisi qui.</p>
-                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
-                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure
-                        terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan
-                        american apparel, butcher voluptate nisi qui.</p>
                     <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
                         retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
                         Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure

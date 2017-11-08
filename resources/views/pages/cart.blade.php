@@ -18,7 +18,7 @@
             </ul>
             <div class="well well-small">
                 <h1>Check Out
-                    <small class="pull-right"> 2 Items are in the cart</small>
+                    <small class="pull-right"> {{Cart::count()}} Items are in the cart</small>
                 </h1>
                 <hr class="soften"/>
 
@@ -27,85 +27,63 @@
                     <tr>
                         <th>Product</th>
                         <th>Description</th>
-                        <th> Ref.</th>
                         <th>Avail.</th>
                         <th>Unit price</th>
-                        <th>Qty</th>
+                        <th>Quantity</th>
                         <th>Total</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <form action="" method="post">
+                        <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
+
+                    @foreach($content as $item)
                     <tr>
-                        <td><img width="100" src="template/assets/img/e.jpg" alt=""></td>
-                        <td>Items name here<br>Carate : 22<br>Model : n/a</td>
-                        <td> -</td>
+                        <td><img width="100" src="template/image/product/{{$item->options->img}}" alt=""></td>
+                        <td>{{$item->name}}<br>Carate:24 <br>Model:HBK24</td>
                         <td><span class="shopBtn"><span class="icon-ok"></span></span></td>
-                        <td>$50.00</td>
+                        <td>{{$item->price}} VNĐ</td>
                         <td>
-                            <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons"
-                                   size="16"
-                                   type="text" value="2">
+                            <input class="span1 quantity1" idProduct="{{$item->rowId}}" value="{{$item->qty}}" min="1"
+                                   max="100" name="{{$item->rowId}}" style="max-width:34px" type="number">
                             <div class="input-append">
-                                <button class="btn btn-mini" type="button">-</button>
-                                <button class="btn btn-mini" type="button"> +</button>
-                                <button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span>
+                                <button class="btn btn-default btn-number" data-type="minus"
+                                        data-field="{{$item->rowId}}" type="button"><i class="icon-minus"></i></button>
+                                <button class="btn btn-default btn-number" data-type="plus"
+                                        data-field="{{$item->rowId}}" type="button"><i class="icon-plus"></i></button>
+                                <button class="btn btn-default btn-danger removeProduct" type="button" idProduct="{{$item->rowId}}">
+                                    {{--<a href="{{route('deleteProduct',['id'=>$item->rowId ])}}">--}}
+                                        <span class="icon-remove"></span></a>
                                 </button>
                             </div>
                         </td>
-                        <td>$100.00</td>
+                        <td>{{$item->qty}}</td>
                     </tr>
+                    @endforeach
+                    </form>
                     <tr>
-                        <td><img width="100" src="template/assets/img/f.jpg" alt=""></td>
-                        <td>Item names and brief details<br>Carate:24 <br>Model:HBK24</td>
-                        <td> -</td>
-                        <td><span class="shopBtn"><span class="icon-ok"></span></span></td>
-                        <td>$348.42</td>
-                        <td>
-                            <input class="span1" style="max-width:34px" placeholder="1" size="16" type="text">
-                            <div class="input-append">
-                                <button class="btn btn-mini" type="button">-</button>
-                                <button class="btn btn-mini" type="button">+</button>
-                                <button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span>
-                                </button>
-                            </div>
-                        </td>
-                        <td>$348.42</td>
-                    </tr>
-                    <tr>
-                        <td colspan="6" class="alignR">Total products:</td>
-                        <td> $448.42</td>
-                    </tr>
-                    <tr>
-                        <td colspan="6" class="alignR">Total products:</td>
-                        <td> $448.42</td>
-                    </tr>
-                    <tr>
-                        <td colspan="6" class="alignR">Total products:</td>
-                        <td> $448.42</td>
-                    </tr>
-                    <tr>
-                        <td colspan="6" class="alignR">Total products:</td>
-                        <td class="label label-primary"> $448.42</td>
+                        <td colspan="5" class="alignR">Total products:</td>
+                        <td> {{Cart::total()}}</td>
                     </tr>
                     </tbody>
                 </table>
                 <br/>
 
 
-                <table class="table table-bordered">
-                    <tbody>
-                    <tr>
-                        <td>
-                            <form class="form-inline">
-                                <label style="min-width:159px"> VOUCHERS Code: </label>
-                                <input type="text" class="input-medium" placeholder="CODE">
-                                <button type="submit" class="shopBtn"> ADD</button>
-                            </form>
-                        </td>
-                    </tr>
+                {{--<table class="table table-bordered">--}}
+                    {{--<tbody>--}}
+                    {{--<tr>--}}
+                        {{--<td>--}}
+                            {{--<form class="form-inline">--}}
+                                {{--<label style="min-width:159px"> VOUCHERS Code: </label>--}}
+                                {{--<input type="text" class="input-medium" placeholder="CODE">--}}
+                                {{--<button type="submit" class="shopBtn"> ADD</button>--}}
+                            {{--</form>--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
 
-                    </tbody>
-                </table>
+                    {{--</tbody>--}}
+                {{--</table>--}}
                 <table class="table table-bordered">
                     <tbody>
                     <tr>

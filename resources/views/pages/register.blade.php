@@ -6,7 +6,8 @@
  * Time: 12:39 AM
  */
 ?>
-
+@extends('master')
+@section('content');
 <div class="span9">
     <ul class="breadcrumb">
         <li><a href="index.html">Home</a> <span class="divider">/</span></li>
@@ -215,3 +216,4 @@
 
 
 </div>
+@endsection
