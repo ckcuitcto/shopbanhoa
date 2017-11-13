@@ -65,3 +65,7 @@ Route::get('dang-nhap',[
     'as'=>'login',
     'uses'=>'PageController@login'
 ]);
+
+Route::get('test',function (){
+    return view('admin.master');
+});

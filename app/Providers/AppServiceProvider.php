@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\ProductType;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('leftmenu',function($view){
             $category = ProductType::all();
             $view->with('category',$category);
+
+            Schema::defaultStringLength(191);
         });
     }
 
