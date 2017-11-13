@@ -66,6 +66,10 @@ Route::get('dang-nhap',[
     'uses'=>'PageController@login'
 ]);
 
-Route::get('test',function (){
-    return view('admin.master');
+Route::group(['prefix' => 'admin'],function(){
+    Route::group(['prefix' => 'productType'],function(){
+        Route::get('list',['as' => 'admin.productType.list','uses'=>'ProductTypeController@getList']);
+        Route::get('add',['as' => 'admin.productType.getAdd','uses'=>'ProductTypeController@getAdd']);
+        Route::post('add',['as' => 'admin.productType.postAdd','uses'=>'ProductTypeController@postAdd']);
+    });
 });
