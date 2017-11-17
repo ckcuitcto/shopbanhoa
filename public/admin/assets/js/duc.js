@@ -76,32 +76,3 @@ $( document ).ready(function() {
     });
 });     
 
-// $(document).ready(function(){
-//     $(".quantity").change(function(){
-//         var sl=$(this).val();
-//         var idSP=$(this).attr("idSanPham");
-//         //alert(slm);
-//         $.post("index.php?p=giohang",{id:idSP,slm:sl},function(){
-//             location.reload();
-//         });
-//         // $.ajax({
-//         //     url:"xuligiohang.php",
-//         //     type:"post",
-//         //     data:"slm="+slm+"&idSP="+idSP,
-//         //     async:true,
-//         //     success:function(){
-//         //         location.reload();
-//         //     }
-//         // });
-//     });
-// });
-        // $(document).ready(function(){
-        //     $(".quantity").change(function(){
-        //         var slm=$(this).val();
-        //         var id=$(this).attr("idSanPham");
-        //         alert(slm); alert(id);
-        //         $.post("pages/xuligiohang.php",{idSP:id,sl:slm},function(){
-        //             location.reload();
-        //         }); 
-        //     });
-        // });

@@ -6,16 +6,17 @@
  * Time: 11:59 PM
  */
 ?>
-<div id="sidebar" class="span3">
+<div id="sidebar" class="span3" style="margin-left: 0">
     <div class="well well-small">
         <ul class="nav nav-list">
             @foreach($category as $cate)
-                <li><a href="{{route('productType',$cate->id)}}"><span class="icon-chevron-right"></span>{{$cate->name}}
-                    </a></li>
+                <li>
+                    <a href="{{route('productType',$cate->id)}}"><span class="icon-chevron-right"></span>{{$cate->name}}</a>
+                </li>
             @endforeach
             <li style="border:0"> &nbsp;</li>
-            <li><a class="totalInCart" href="{{route('cart')}}"><strong>Total Amount <span
-                                class="badge badge-warning pull-right" style="line-height:18px;">{{Cart::total()}} </span></strong></a>
+            <li>
+                <a class="totalInCart" href="{{route('cart')}}"><strong>Total Amount <span class="badge badge-warning pull-right" style="line-height:18px;">{{Cart::total()}} </span></strong></a>
             </li>
         </ul>
     </div>

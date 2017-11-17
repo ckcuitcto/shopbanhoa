@@ -12,7 +12,7 @@
         <ul class="nav" id="main-menu">
             <li class="text-center">
                 <img src="assets/img/find_user.png" class="user-image img-responsive"/>
-                <div style="color: red"> <?php echo "Xin chào ".$_SESSION['ten'];?></div>
+                <div style="color: red"></div>
             </li>
 
             <li>

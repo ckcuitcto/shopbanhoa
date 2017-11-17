@@ -9,20 +9,20 @@
 <footer class="footer">
     <div class="row-fluid">
         <div class="span2">
-            <h5>Your Account</h5>
-            <a href="#">YOUR ACCOUNT</a><br>
-            <a href="#">PERSONAL INFORMATION</a><br>
-            <a href="#">ADDRESSES</a><br>
-            <a href="#">DISCOUNT</a><br>
-            <a href="#">ORDER HISTORY</a><br>
+            <h5>Tài khoản của bạn</h5>
+            <a href="#">Trần Ngọc Gia Hân</a><br>
+            <a href="#">Thái Huỳnh Đức</a><br>
+            <a href="#">D14-TH02</a><br>
+            <a href="#">D14-TH01</a><br>
+            <!-- <a href="#">ORDER HISTORY</a><br> -->
         </div>
         <div class="span2">
-            <h5>Iinformation</h5>
-            <a href="contact.html">CONTACT</a><br>
-            <a href="#">SITEMAP</a><br>
-            <a href="#">LEGAL NOTICE</a><br>
-            <a href="#">TERMS AND CONDITIONS</a><br>
-            <a href="#">ABOUT US</a><br>
+            <h5>Thông Tin</h5>
+            <a href="contact.html">D14-TH02</a><br>
+            <a href="#">D14-TH01</a><br>
+            <a href="#">STU - IT</a><br>
+            <a href="#">Thai Duc</a><br>
+            <a href="#">Hanie Tran</a><br>
         </div>
         <div class="span2">
             <h5>Our Offer</h5>
@@ -33,11 +33,8 @@
             <a href="#">SUPPLIERS</a> <br/>
         </div>
         <div class="span6">
-            <h5>The standard chunk of Lorem</h5>
-            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-            those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
-            Malorum" by Cicero are also reproduced in their exact original form,
-            accompanied by English versions from the 1914 translation by H. Rackham.
+            <h5>Một vài thông tin về trang web</h5>
+            Website Bán Hoa được viết bằng ngôn ngữ Laravel. Nhóm tụi em gồm Trần Ngọc Gia Hân D14-TH02, Thái Huỳnh Đức D14-TH01. Vận dụng các kiến thức học được trên lớp về php cộng thêm các tìm hiểu về framework Laravel, tụi em đã xây dựng ra web này. Hỗ trợ cho đồ án web và đồ án chuyên ngành.
         </div>
     </div>
 </footer>
