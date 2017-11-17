@@ -16,12 +16,12 @@
             </a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="{{route('index')}}">Home </a></li>
-                    <li class=""><a href="list-view.html">List View</a></li>
-                    <li class=""><a href="grid-view.html">Grid View</a></li>
-                    <li class=""><a href="three-col.html">Three Column</a></li>
-                    <li class=""><a href="four-col.html">Four Column</a></li>
-                    <li class=""><a href="general.html">General Content</a></li>
+                    <li class="active"><a href="{{route('index')}}">Trang chủ</a></li>
+                    <li class=""><a href="list-view.html">Sản phẩm</a></li>
+                    <li class=""><a href="grid-view.html">Liên hệ</a></li>
+                    <li class=""><a href="three-col.html">Giới thiệu</a></li>
+                    <li class=""><a href="four-col.html">Tin tức</a></li>
+                    <li class=""><a href="general.html">Thêm</a></li>
                 </ul>
                 <form action="#" class="navbar-search pull-left">
                     <input type="text" placeholder="Search" class="search-query span2">
