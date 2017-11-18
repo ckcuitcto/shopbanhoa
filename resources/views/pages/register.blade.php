@@ -17,7 +17,7 @@
     <hr class="soft"/>
     <div class="well">
         <form class="form-horizontal">
-            <h3>Your Personal Details</h3>
+            <h3>Thông tin cá nhân</h3>
             <div class="control-group">
                 <label class="control-label">Title <sup>*</sup></label>
                 <div class="controls">

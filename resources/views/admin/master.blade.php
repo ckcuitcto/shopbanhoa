@@ -1,12 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 08-Nov-17
- * Time: 6:47 PM
- */
-?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
