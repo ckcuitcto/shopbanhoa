@@ -17,6 +17,7 @@
                     <li class=""><a href="three-col.html">Giới thiệu</a></li>
                     <li class=""><a href="four-col.html">Tin tức</a></li>
                     <li class=""><a href="general.html">Thêm</a></li>
+
                 </ul>
                 <form action="#" class="navbar-search pull-left">
                     <input type="text" placeholder="Tìm kiếm..." class="search-query span2">

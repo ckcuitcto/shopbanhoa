@@ -1,59 +1,54 @@
 @extends('admin.master')
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <h2>Danh sách loại sản phẩm</h2>
-        <h5>Danh sách loại sản phẩm, xoá, sửa loại sản phẩm... </h5>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Danh sách loại sản phẩm</h2>
+            <h5>Danh sách loại sản phẩm, xoá, sửa loại sản phẩm... </h5>
 
+        </div>
     </div>
-</div>
-<!-- /. ROW  -->
-<hr/>
+    <!-- /. ROW  -->
+    <hr/>
 
-<div class="row">
-    <div class="col-md-12">
-        <!-- Advanced Tables -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Advanced Tables
-            </div>
-            <div class="panel-body">
-                <div class="table-responsive">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Advanced Tables -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Advanced Tables
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
 
-                    <!-- DO DL vao day  -->
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                        <thead>
-                        <tr>
-                            <td>Mã Loại</td>
-                            <td>Tên Loại Sản Phẩm</td>
-                            <td>Tên Loại Không Dấu</td>
-                            <td>Thứ Tự</td>
-                            <td>Ẩn Hiện</td>
-                            <td>TênTL</td>
-                            <td>Sửa-Xóa</td>
-
-                        </tr>
-                        </thead>
-                        <tbody>
+                        <!-- DO DL vao day  -->
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
                             <tr>
-                                <td>{idloaiSP}</td>
-                                <td>{tenloaiSP}</td>
-                                <td>{aliasLSP}</td>
-                                <td>{thutu}</td>
-                                <td>{anhien}</td>
-                                <td>{tenTL}</td>
-                                <td><a href="index.php?p=sualsp&idloaiSP={idloaiSP}">Sửa</a>-
-                                    <a
-                                            href="pages/loaisanpham/xoalsp.php?idloaiSP={idloaiSP}">Xóa</a></td>
+                                <td>Mã Loại</td>
+                                <td>Tên Loại Sản Phẩm</td>
+                                <td>Miêu tả</td>
+                                <td>Ảnh</td>
+                                <td>Xóa</td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <!-- /. het thuc do DL  -->
+                            </thead>
+                            <tbody>
+                            @foreach($productTypeList as $productType)
+                                <tr>
+                                    <td><a href="{{route('admin.productType.getEdit',$productType->id)}}" >{{$productType->id}}</a></td>
+                                    <td>{{$productType->name}}</td>
+                                    <td>{{$productType->description}}</td>
+                                    <td> <img src="template/image/product/{{$productType->image}}" alt=""></td>
+                                    <td><a onclick="return confirmDelete('Bạn có chắc muốn xóa không?');" href="{{route('admin.productType.getDelete',$productType->id)}}">Xóa</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <!-- /. het thuc do DL  -->
+                    </div>
                 </div>
             </div>
+            <!--End Advanced Tables -->
         </div>
-        <!--End Advanced Tables -->
     </div>
-</div>
-<!-- /. ROW  -->
-    @endsection
+    <!-- /. ROW  -->
+@endsection

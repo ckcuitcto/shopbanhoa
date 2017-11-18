@@ -25,53 +25,7 @@
     <script type="text/javascript" src="{{ url('admin/assets/ckeditor/ckeditor.js')}}"></script>
     <script src="{{ url('admin/assets/js/jquery.js')}}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ url('admin/assets/js/duc.js')}}"></script>
-    {{--<script>--}}
-        {{--$(document).ready(function () {--}}
-            {{--$("#idTL").change(function () {--}}
-                {{--var id = $(this).val();--}}
-
-                {{--$.get("blocks/loaisp.php", {idTL: id}, function (data) {--}}
-                    {{--$("#loaisanpham").html(data);--}}
-                {{--});--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
-    {{--<script>--}}
-        {{--$(document).ready(function () {--}}
-            {{--$(".sanphamdathang").click(function () {--}}
-                {{--//var slm=$(this).val();--}}
-                {{--var id = $(this).attr("idDatHang");--}}
-                {{--alert(id);--}}
-                {{--$.GET("pages/chitietdonhang.php", {idDH: id}, function (data) {--}}
-                    {{--$("#ketquaz").html(data);--}}
-                {{--});--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
-
-    {{--<script>--}}
-        {{--$(document).ready(function () {--}}
-            {{--$(".leveluser").change(function () {--}}
-                {{--var capdo = $(this).val();--}}
-                {{--var idU = $(this).attr("idUsers");--}}
-                {{--$.get("pages/user/suaUser.php", {cap: capdo, idUser: idU}, function () {--}}
-                    {{--location.reload();--}}
-                {{--});--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
-
-    {{--<script>--}}
-        {{--$(document).ready(function () {--}}
-            {{--$(".xacnhanthulienhe").change(function () {--}}
-                {{--var xn = $(this).val();--}}
-                {{--var idlh = $(this).attr("idLienHe");--}}
-                {{--$.get("pages/lienhe/suaLH.php", {xacnhan: xn, idLH: idlh}, function () {--}}
-                    {{--location.reload();--}}
-                {{--});--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -88,9 +42,14 @@
                             {!! Session::get('flash_message') !!}
                         </div>
                         @endif
+                        @if(Session::has('flash_message_fail'))
+                            <div class="alert alert-danger">
+                                {!! Session::get('flash_message_fail') !!}
+                            </div>
+                        @endif
                 </div>
             </div>
-            @yield('content');
+            @yield('content')
         </div>
         <!-- /. PAGE INNER  -->
     </div>

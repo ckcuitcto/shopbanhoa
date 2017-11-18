@@ -27,21 +27,10 @@
                 <a href=""><i class="fa fa-sitemap fa-3x"></i>Sản phẩm<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="index.php?p=listSP">Danh sách sản phẩm</a>
+                        <a href="{{route('admin.product.list')}}">Danh sách sản phẩm</a>
                     </li>
                     <li>
-                        <a href="index.php?p=themsp">Thêm sản phẩm</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-sitemap fa-3x"></i>Thể loại<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="index.php?p=listtl">Danh sách thể loại</a>
-                    </li>
-                    <li>
-                        <a href="index.php?p=themtl">Thêm thể loại</a>
+                        <a href="{{route('admin.product.getAdd')}}">Thêm sản phẩm</a>
                     </li>
                 </ul>
             </li>
@@ -49,10 +38,10 @@
                 <a href=""><i class="fa fa-sitemap fa-3x"></i>Loại sản phẩm<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="index.php?p=listlsp">Danh sách loại sản phẩm</a>
+                        <a href="{{route('admin.productType.list')}}">Danh sách loại sản phẩm</a>
                     </li>
                     <li>
-                        <a href="index.php?p=themlsp">Thêm loại sản phẩm</a>
+                        <a href="{{route('admin.productType.getAdd')}}">Thêm loại sản phẩm</a>
                     </li>
                 </ul>
             </li>
