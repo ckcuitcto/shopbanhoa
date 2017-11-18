@@ -6,7 +6,7 @@
  * Time: 11:59 PM
  */
 ?>
-<div id="sidebar" class="span3">
+<div id="sidebar" class="span3" style="margin-left: 0">
     <div class="well well-small">
         <ul class="nav nav-list">
             @foreach($category as $cate)

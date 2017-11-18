@@ -6,4 +6,11 @@ $(document).ready(function () {
     $('#dataTables-example').dataTable();
 });
 
-$('div.alert').delay(3000).slideUp();
+$('div.alert-success').delay(2000).slideUp();
+
+function confirmDelete(msg) {
+    if(window.confirm(msg) == true){
+        return true;
+    }
+    return false;
+}

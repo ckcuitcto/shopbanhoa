@@ -16,7 +16,7 @@
             </a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="{{route('index')}}">Home </a></li>
+                    <li class="active"><a href="{{route('index')}}">Trang chủ </a></li>
                     <li class=""><a href="list-view.html">List View</a></li>
                     <li class=""><a href="grid-view.html">Grid View</a></li>
                     <li class=""><a href="three-col.html">Three Column</a></li>

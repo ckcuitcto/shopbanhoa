@@ -78,60 +78,60 @@
                 </div>
             </div>
             {{--<div class="row-fluid">--}}
-                {{--<ul class="thumbnails">--}}
-                    {{--<li class="span4">--}}
-                        {{--<div class="thumbnail">--}}
+            {{--<ul class="thumbnails">--}}
+            {{--<li class="span4">--}}
+            {{--<div class="thumbnail">--}}
 
-                            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
-                                        {{--class="icon-search"></span> QUICK VIEW</a>--}}
-                            {{--<a href="product_details.html"><img src="template/assets/img/b.jpg" alt=""></a>--}}
-                            {{--<div class="caption cntr">--}}
-                                {{--<p>Manicure & Pedicure</p>--}}
-                                {{--<p><strong> $22.00</strong></p>--}}
-                                {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
-                                {{--<div class="actionList">--}}
-                                    {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
-                                    {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
-                                {{--</div>--}}
-                                {{--<br class="clr">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</li>--}}
-                    {{--<li class="span4">--}}
-                        {{--<div class="thumbnail">--}}
-                            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
-                                        {{--class="icon-search"></span> QUICK VIEW</a>--}}
-                            {{--<a href="product_details.html"><img src="template/assets/img/c.jpg" alt=""></a>--}}
-                            {{--<div class="caption cntr">--}}
-                                {{--<p>Manicure & Pedicure</p>--}}
-                                {{--<p><strong> $22.00</strong></p>--}}
-                                {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
-                                {{--<div class="actionList">--}}
-                                    {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
-                                    {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
-                                {{--</div>--}}
-                                {{--<br class="clr">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</li>--}}
-                    {{--<li class="span4">--}}
-                        {{--<div class="thumbnail">--}}
-                            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
-                                        {{--class="icon-search"></span> QUICK VIEW</a>--}}
-                            {{--<a href="product_details.html"><img src="template/assets/img/a.jpg" alt=""></a>--}}
-                            {{--<div class="caption cntr">--}}
-                                {{--<p>Manicure & Pedicure</p>--}}
-                                {{--<p><strong> $22.00</strong></p>--}}
-                                {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
-                                {{--<div class="actionList">--}}
-                                    {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
-                                    {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
-                                {{--</div>--}}
-                                {{--<br class="clr">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
+            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
+            {{--class="icon-search"></span> QUICK VIEW</a>--}}
+            {{--<a href="product_details.html"><img src="template/assets/img/b.jpg" alt=""></a>--}}
+            {{--<div class="caption cntr">--}}
+            {{--<p>Manicure & Pedicure</p>--}}
+            {{--<p><strong> $22.00</strong></p>--}}
+            {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
+            {{--<div class="actionList">--}}
+            {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
+            {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
+            {{--</div>--}}
+            {{--<br class="clr">--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</li>--}}
+            {{--<li class="span4">--}}
+            {{--<div class="thumbnail">--}}
+            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
+            {{--class="icon-search"></span> QUICK VIEW</a>--}}
+            {{--<a href="product_details.html"><img src="template/assets/img/c.jpg" alt=""></a>--}}
+            {{--<div class="caption cntr">--}}
+            {{--<p>Manicure & Pedicure</p>--}}
+            {{--<p><strong> $22.00</strong></p>--}}
+            {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
+            {{--<div class="actionList">--}}
+            {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
+            {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
+            {{--</div>--}}
+            {{--<br class="clr">--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</li>--}}
+            {{--<li class="span4">--}}
+            {{--<div class="thumbnail">--}}
+            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
+            {{--class="icon-search"></span> QUICK VIEW</a>--}}
+            {{--<a href="product_details.html"><img src="template/assets/img/a.jpg" alt=""></a>--}}
+            {{--<div class="caption cntr">--}}
+            {{--<p>Manicure & Pedicure</p>--}}
+            {{--<p><strong> $22.00</strong></p>--}}
+            {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
+            {{--<div class="actionList">--}}
+            {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
+            {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
+            {{--</div>--}}
+            {{--<br class="clr">--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</li>--}}
+            {{--</ul>--}}
             {{--</div>--}}
         </div>
         <!--
@@ -147,14 +147,18 @@
                         <li class="span4">
                             <div class="thumbnail">
                                 {{--<a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span--}}
-                                            {{--class="icon-search"></span> QUICK VIEW</a>--}}
-                                <a href="{{route('productDetail',$product->id)}}"><img src="template/image/product/{{$product->image}}" alt=""></a>
+                                {{--class="icon-search"></span> QUICK VIEW</a>--}}
+                                <a href="{{route('productDetail',$product->id)}}"><img
+                                            src="template/image/product/{{$product->image}}" alt=""></a>
                                 <div class="caption">
                                     <h5> {{$product->name}}</h5>
                                     <h4>
-                                        <a class="defaultBtn" href="{{route('productDetail',$product->id)}}" title="Click to view"><span
+                                        <a class="defaultBtn" href="{{route('productDetail',$product->id)}}"
+                                           title="Click to view"><span
                                                     class="icon-zoom-in"></span></a>
-                                        <a class="shopBtn" idProduct="{{$product->id}}" href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}" title="add to cart"><span class="icon-plus"></span></a>
+                                        <a class="shopBtn" idProduct="{{$product->id}}"
+                                           href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
+                                           title="add to cart"><span class="icon-plus"></span></a>
                                         <span class="pull-right">{{$product->unit_price}}</span>
                                     </h4>
                                 </div>

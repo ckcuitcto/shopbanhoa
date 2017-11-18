@@ -1,10 +1,7 @@
-<?php
-$danhsachsanpham = $trangadmin->danhsachsanpham();
 
 
-?>
-
-
+@extends('admin.master')
+@section('content')
 <div class="row">
     <div class="col-md-12">
         <h2>Danh sách sản phẩm</h2>
@@ -43,39 +40,29 @@ $danhsachsanpham = $trangadmin->danhsachsanpham();
                         <tbody>
                         <?php
                         //while($row=mysql_fetch_array($danhsachsanpham))
-                        foreach ($danhsachsanpham as $row) {
-                            $hinhchitiet = $trangadmin->hinhchitiet($row['idSP']);
+
                             ?>
                             <tr class="odd gradeX">
-                                <td><?= $row['idSP'] ?></td>
-                                <td><?= $row['tenSP'] ?></td>
-                                <td><img style="height: 100px; width: 100px;" src="../images/<?= $row['hinh'] ?>">
-                                    <!-- <div class="item active" >
-					                  	<?php
-                                    //while($hinh=mysql_fetch_array($hinhchitiet))
-                                    foreach ($hinhchitiet as $hinh) { ?>
-					                   	<a href="../images/<?= $hinh['tenhinh'] ?>"> <img style="width:20%;" src="../images/<?= $hinh['tenhinh'] ?>" alt=""/></a>
-					                    <?php } ?>
-					                  </div> -->
+                                <td></td>
+                                <td></td>
+                                <td><img style="height: 100px; width: 100px;" src="">
                                 </td>
-                                <td><?= $row['gia'] ?></td>
+                                <td></td>
 
-                                <td><?= $row['noidung'] ?></td>
-                                <td><?= $row['tomtat'] ?></td>
-                                <td><?= $row['solanxem'] ?></td>
-                                <td><?= $row['anhien'] ?></td>
-                                <td><?= $trangadmin->theloaitheoid($row['idTL']) ?></td>
-                                <td><?= $trangadmin->loaisanphamtheoid($row['idloaiSP']) ?></td>
-                                <td><?= $row['khuyenmai'] ?></td>
-                                <td><?= $row['soluong'] ?></td>
-                                <td><?= $row['daban'] ?></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td><a onclick="return confirm('Bạn có chắc muốn xoá không')"
-                                       href="pages/xoasp.php?idSP=<?= $row['idSP'] ?>">Xoá</a> <a
-                                            href="index.php?p=suasp&idSP=<?= $row['idSP'] ?>">Sửa</a></td>
+                                       href="pages/xoasp.p">Xoá</a> <a
+                                            href="index.php?p=suasp&idSP?>">Sửa</a></td>
                             </tr>
-                            <?php
-                        }
-                        ?>
+
 
                         </tbody>
                     </table>
@@ -86,3 +73,5 @@ $danhsachsanpham = $trangadmin->danhsachsanpham();
         <!--End Advanced Tables -->
     </div>
 </div>
+
+    @endsection

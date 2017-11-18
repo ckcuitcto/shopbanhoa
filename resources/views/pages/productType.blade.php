@@ -13,7 +13,7 @@
         <div class="row-fluid">
             <ul class="thumbnails">
                 @foreach($productsByIdType as $product)
-                <li class="span4">
+                <li class="span3" style="margin-left: 20px">
                     <div class="thumbnail">
                         <a href="product_details.html" class="overlay"></a>
                         <a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
