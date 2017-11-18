@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 13-Nov-17
- * Time: 10:22 PM
- */
-?>
-
 <nav class="navbar-default navbar-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">

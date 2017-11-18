@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 05-Nov-17
- * Time: 12:04 AM
- */
 ?>
 @extends('master')
 @section('content')
@@ -17,7 +11,7 @@
                     <div class="thumbnail">
                         <a href="product_details.html" class="overlay"></a>
                         <a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                        <a href="{{route('productDetail',$product->id)}}"><img src="template/image/product/{{$product->image}}"  alt=""></a>
+                        <a href="{{route('productDetail',$product->id)}}"><img src="template/image/product/{{$product->image}}" style="height: 220px"></a>
                         <div class="caption cntr">
                             <p>{{$product->name}}</p>
                             <p><strong> {{$product->unit_price}}</strong></p>
@@ -35,7 +29,7 @@
             </ul>
 
         </div>
-        <div class="row-fluid">{{$productsByIdType->links()}}</div>
+        <div class="pagination row-fluid" align="center">{{$productsByIdType->links()}}</div>
 
     </div>
 @endsection

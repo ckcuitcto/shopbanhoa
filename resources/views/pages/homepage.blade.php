@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 04-Nov-17
- * Time: 11:39 PM
- */
-?>
 @extends('master')
 @section('content')
     <div class="span9">
@@ -77,62 +69,7 @@
                     <a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
                 </div>
             </div>
-            {{--<div class="row-fluid">--}}
-                {{--<ul class="thumbnails">--}}
-                    {{--<li class="span4">--}}
-                        {{--<div class="thumbnail">--}}
-
-                            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
-                                        {{--class="icon-search"></span> QUICK VIEW</a>--}}
-                            {{--<a href="product_details.html"><img src="template/assets/img/b.jpg" alt=""></a>--}}
-                            {{--<div class="caption cntr">--}}
-                                {{--<p>Manicure & Pedicure</p>--}}
-                                {{--<p><strong> $22.00</strong></p>--}}
-                                {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
-                                {{--<div class="actionList">--}}
-                                    {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
-                                    {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
-                                {{--</div>--}}
-                                {{--<br class="clr">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</li>--}}
-                    {{--<li class="span4">--}}
-                        {{--<div class="thumbnail">--}}
-                            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
-                                        {{--class="icon-search"></span> QUICK VIEW</a>--}}
-                            {{--<a href="product_details.html"><img src="template/assets/img/c.jpg" alt=""></a>--}}
-                            {{--<div class="caption cntr">--}}
-                                {{--<p>Manicure & Pedicure</p>--}}
-                                {{--<p><strong> $22.00</strong></p>--}}
-                                {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
-                                {{--<div class="actionList">--}}
-                                    {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
-                                    {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
-                                {{--</div>--}}
-                                {{--<br class="clr">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</li>--}}
-                    {{--<li class="span4">--}}
-                        {{--<div class="thumbnail">--}}
-                            {{--<a class="zoomTool" href="product_details.html" title="add to cart"><span--}}
-                                        {{--class="icon-search"></span> QUICK VIEW</a>--}}
-                            {{--<a href="product_details.html"><img src="template/assets/img/a.jpg" alt=""></a>--}}
-                            {{--<div class="caption cntr">--}}
-                                {{--<p>Manicure & Pedicure</p>--}}
-                                {{--<p><strong> $22.00</strong></p>--}}
-                                {{--<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>--}}
-                                {{--<div class="actionList">--}}
-                                    {{--<a class="pull-left" href="#">Add to Wish List </a>--}}
-                                    {{--<a class="pull-left" href="#"> Add to Compare </a>--}}
-                                {{--</div>--}}
-                                {{--<br class="clr">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
+            
         </div>
         <!--
         Featured Products
