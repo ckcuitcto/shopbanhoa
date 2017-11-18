@@ -10,26 +10,22 @@
     <div class="well well-small">
         <ul class="nav nav-list">
             @foreach($category as $cate)
-                <li><a href="{{route('productType',$cate->id)}}"><span class="icon-chevron-right"></span>{{$cate->name}}
-                    </a></li>
+                <li>
+                    <a href="{{route('productType',$cate->id)}}"><span class="icon-chevron-right"></span>{{$cate->name}}</a>
+                </li>
             @endforeach
             <li style="border:0"> &nbsp;</li>
-            <li><a class="totalInCart" href="{{route('cart')}}"><strong>Total Amount <span
-                                class="badge badge-warning pull-right" style="line-height:18px;">{{Cart::total()}} </span></strong></a>
+            <li>
+                <a class="totalInCart" href="{{route('cart')}}"><strong>Total Amount <span class="badge badge-warning pull-right" style="line-height:18px;">{{Cart::total()}} </span></strong></a>
             </li>
         </ul>
     </div>
 
-    {{--<div class="well well-small alert alert-warning cntr">--}}
-        {{--<h2>50% Discount</h2>--}}
-        {{--<p>--}}
-            {{--only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>--}}
-        {{--</p>--}}
-    {{--</div>--}}
+
     <div class="well well-small"><a href="#"><img src="template/assets/img/paypal.jpg" alt="payment method paypal"></a>
     </div>
 
-    <a class="shopBtn btn-block" href="#">Upcoming products <br>
+    <a class="shopBtn btn-block" href="#">Sản phẩm mới cập nhật<br>
         <small>Click to view</small>
     </a>
     <br>

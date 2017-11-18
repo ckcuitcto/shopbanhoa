@@ -9,23 +9,23 @@
 <div id="gototop"></div>
 <header id="header">
     <div class="row">
-        <div class="span4">
+        <div class="span3">
             <h1>
                 <a class="logo" href="index.html"><span>Twitter Bootstrap ecommerce template</span>
                     <img src="template/assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
                 </a>
             </h1>
         </div>
-        <div class="span4">
+        <div class="span6">
             <div class="offerNoteWrapper">
-                <h1 class="dotmark">
+                <h1 class="dotmark" align="center">
                     <i class="icon-cut"></i>
-                    Twitter Bootstrap shopping cart HTML template is available @ $14
+                     Tôi yêu hoa đâu cần hoa đẹp, mà chỉ cần hoa tỏa ngát hương thơm. Tôi yêu người đâu cần người đẹp, mà chỉ cần người thật sự yêu tôi.
                 </h1>
             </div>
         </div>
-        <div class="span4 alignR">
-            <p><br> <strong> Support (24/7) : 0800 1234 678 </strong><br><br></p>
+        <div class="span3 alignR">
+            <p><br> <strong> Hỗ trợ (24/7) : 01692039011 </strong><br><br></p>
             <span class="btn btn-mini">[ 2 ] <span class="icon-shopping-cart"></span></span>
             <span class="btn btn-warning btn-mini">$</span>
             <span class="btn btn-mini">&pound;</span>

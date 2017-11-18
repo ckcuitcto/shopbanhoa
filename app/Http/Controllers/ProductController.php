@@ -55,7 +55,7 @@ class ProductController extends Controller
             $file = $request->file('fImages');
 
             $fileName = str_random(8)."_".$file->getClientOriginalName();
-            
+
         }
         $file = $request->fImages;
         $product->image = $file;

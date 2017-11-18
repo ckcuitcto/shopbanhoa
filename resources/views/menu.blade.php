@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 04-Nov-17
- * Time: 11:57 PM
- */
+
 ?>
 <div class="navbar">
     <div class="navbar-inner">
@@ -16,20 +11,21 @@
             </a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="{{route('index')}}">Trang chủ </a></li>
-                    <li class=""><a href="list-view.html">List View</a></li>
-                    <li class=""><a href="grid-view.html">Grid View</a></li>
-                    <li class=""><a href="three-col.html">Three Column</a></li>
-                    <li class=""><a href="four-col.html">Four Column</a></li>
-                    <li class=""><a href="general.html">General Content</a></li>
+                    <li class="active"><a href="{{route('index')}}">Trang chủ</a></li>
+                    <li class=""><a href="list-view.html">Sản phẩm</a></li>
+                    <li class=""><a href="grid-view.html">Liên hệ</a></li>
+                    <li class=""><a href="three-col.html">Giới thiệu</a></li>
+                    <li class=""><a href="four-col.html">Tin tức</a></li>
+                    <li class=""><a href="general.html">Thêm</a></li>
+
                 </ul>
                 <form action="#" class="navbar-search pull-left">
-                    <input type="text" placeholder="Search" class="search-query span2">
+                    <input type="text" placeholder="Tìm kiếm..." class="search-query span2">
                 </form>
                 <ul class="nav pull-right">
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span>
-                            Login <b class="caret"></b></a>
+                            Đăng nhập <b class="caret"></b></a>
                         <div class="dropdown-menu">
                             <form class="form-horizontal loginFrm">
                                 <div class="control-group">
