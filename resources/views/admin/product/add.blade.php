@@ -8,7 +8,7 @@
     </div>
     <hr/>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.product.getAdd')}}" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <div class="row">
             <div class="col-md-7 col-sm-12 col-xs-12">
@@ -20,8 +20,6 @@
                         <div class="form-group">
                             <label for="txtProductType">Loại hoa</label>
                             <select class="form-control" name="txtProductType" id="txtProductType">
-                                <option value="0">-- Chọn loại hoa</option>
-
                                 @foreach($productType as $type)
                                     <option value="{{$type->id}}"> {{$type->name}}</option>
                                 @endforeach
@@ -54,7 +52,6 @@
                         <div class="form-group">
                             <label for="txtUnit">Đơn vị tính</label>
                             <select class="form-control" name="txtUnit" id="txtUnit">
-                                <option value="0">-- Chọn đơn vị tính</option>
                                 @foreach($units as $unit)
                                     <option value="{{$unit->id}}">{{$unit->name}}</option>
                                 @endforeach

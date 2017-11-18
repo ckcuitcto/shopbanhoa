@@ -28,7 +28,7 @@ class ProductController extends Controller
     {
         $this->validate($request,[
             'txtProductType' => 'required',
-            'txtProductName' => 'required|min=3|unique:products,name',
+            'txtProductName' => 'required|unique:products,name',
             'txtPrice' => 'required',
             'txtUnit' =>'required',
             'fImages' => 'required'
@@ -54,14 +54,14 @@ class ProductController extends Controller
         {
             $file = $request->file('fImages');
 
-            $fileName = str_random(5)."_".$file->getClientOriginalName();
-
+            $fileName = str_random(8)."_".$file->getClientOriginalName();
+            
         }
         $file = $request->fImages;
         $product->image = $file;
 //        Storage::putFile($file, new File('/template/image/product'));
 
-        return redirect()->route('admin.product.list')->with(['flash_message' => 'Thêm thành công']);
+//        return redirect()->route('admin.product.list')->with(['flash_message' => 'Thêm thành công']);
     }
 
     public function getDelete($id)
@@ -92,9 +92,11 @@ class ProductController extends Controller
         if ($request->hasFile('fImages')) {
             $this->store($request);
             $productType->image = $request->fImages;
+            $name = $request->fImages;
+            echo $name;
         }
-        $productType->save();
-        return redirect()->route('admin.productType.list')->with(['flash_message' => 'Sửa thành công']);
+//        $productType->save();
+//        return redirect()->route('admin.productType.list')->with(['flash_message' => 'Sửa thành công']);
     }
 
     public function store(Request $request)
