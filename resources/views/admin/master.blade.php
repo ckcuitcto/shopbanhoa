@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Vàng Bạc Thái Đức ADMIN</title>
     <!-- Bootstrap style -->
-    <link id="callCss" rel="stylesheet" href="assets/css/bootstrap.min.css" media="screen"/>
+    <link id="callCss" rel="stylesheet" href="{{ url('admin/assets/css/bootstrap.min.css')}}" media="screen"/>
     <link href="{{ url('admin/assets/css/base.css')}}" rel="stylesheet" media="screen"/>
     <!-- Bootstrap style responsive -->
     <link href="{{ url('admin/assets/css/font-awesome2.css')}}" rel="stylesheet" type="text/css">
@@ -18,14 +18,36 @@
     <link href="{{ url('admin/assets/js/morris/morris-0.4.3.min.css')}}" rel="stylesheet"/>
     <!-- CUSTOM STYLES-->
     <link href="{{ url('admin/assets/css/custom.css')}}" rel="stylesheet"/>
+
+    <link href="{{ url('admin/assets/css/mycss.css')}}" rel="stylesheet"/>
     <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href="{{ url('admin/assets/css/fontsgoogleapis.css')}}" rel='stylesheet' type='text/css'/>
     <!-- TABLE STYLES-->
     <link href="{{ url('admin/assets/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet"/>
-    <script type="text/javascript" src="{{ url('admin/assets/ckeditor/ckeditor.js')}}"></script>
     <script src="{{ url('admin/assets/js/jquery.js')}}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ url('admin/assets/js/duc.js')}}"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="{{ url('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".ProductImage").click(function () {
+                var productImageId = $(this).attr("productImageId");
+                $.ajax({
+                    url: '/admin/product/deleteImage/' + productImageId,
+                    type: 'GET',
+                    cache: false,
+                    data: {"id": productImageId},
+                    success: function (data) {
+                        if (data = "success") {
+                            window.location.reload();
+                        }
+                    }
+                });
+            });
+
+        });
+
+    </script>
 </head>
 <body>
 <div id="wrapper">
@@ -41,12 +63,12 @@
                         <div class="alert alert-success">
                             {!! Session::get('flash_message') !!}
                         </div>
-                        @endif
-                        @if(Session::has('flash_message_fail'))
-                            <div class="alert alert-danger">
-                                {!! Session::get('flash_message_fail') !!}
-                            </div>
-                        @endif
+                    @endif
+                    @if(Session::has('flash_message_fail'))
+                        <div class="alert alert-danger">
+                            {!! Session::get('flash_message_fail') !!}
+                        </div>
+                    @endif
                 </div>
             </div>
             @yield('content')

@@ -80,7 +80,7 @@ class PageController extends Controller
     public function deleteProduct(Request $request)
     {
         Cart::remove($request->id);
-        echo "success";
+            echo "success";
     }
 
     public function updateCart(Request $request)

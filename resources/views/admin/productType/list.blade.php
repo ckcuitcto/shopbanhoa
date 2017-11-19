@@ -15,7 +15,7 @@
             <!-- Advanced Tables -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Advanced Tables
+                    Danh sách loại sản phẩm.
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -35,9 +35,9 @@
                             @foreach($productTypeList as $productType)
                                 <tr>
                                     <td><a href="{{route('admin.productType.getEdit',$productType->id)}}" >{{$productType->id}}</a></td>
-                                    <td>{{$productType->name}}</td>
+                                    <td><a href="{{route('admin.productType.getEdit',$productType->id)}}" >{{$productType->name}}</a></td>
                                     <td>{{$productType->description}}</td>
-                                    <td> <img src="template/image/product/{{$productType->image}}" alt=""></td>
+                                    <td> <img width="300px" src="/template/image/productType/{{$productType->image}}" alt=""></td>
                                     <td><a onclick="return confirmDelete('Bạn có chắc muốn xóa không?');" href="{{route('admin.productType.getDelete',$productType->id)}}">Xóa</a></td>
                                 </tr>
                             @endforeach

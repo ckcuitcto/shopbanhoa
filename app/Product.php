@@ -14,7 +14,7 @@ class Product extends Model
         return $this->belongsTo('App\ProductType','id_type','id');
     }
 
-    public function unit()
+    public function unit_dvt()
     {
         return $this->belongsTo('App\Unit','unit','id');
     }
