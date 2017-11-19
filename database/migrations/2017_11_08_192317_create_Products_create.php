@@ -20,8 +20,8 @@ class CreateProductsCreate extends Migration
             $table->double('unit_price');
             $table->integer('promation_price');
             $table->string('image',200);
-            $table->integer('unit',200)->unsigned();
-            $table->integer('unit',200)->references('id')->on('units');
+            $table->integer('unit')->unsigned();
+            $table->foreign('unit')->references('id')->on('units');
             $table->tinyInteger('new');
             $table->integer('quantity');
             $table->integer('view');
@@ -30,9 +30,9 @@ class CreateProductsCreate extends Migration
             $table->timestamps();
         });
 
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade');
-        });
+//        Schema::table('products', function (Blueprint $table) {
+//            $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade');
+//        });
     }
 
     /**

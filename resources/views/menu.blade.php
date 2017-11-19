@@ -13,6 +13,7 @@
                     <li class=""><a href="{{route('contact')}}">Liên hệ</a></li>
                     <li class=""><a href="{{route('aboutUs')}}">Giới thiệu</a></li>
                     <li class=""><a href="{{route('news')}}">Tin tức</a></li>
+
                 </ul>
                 <form action="#" class="navbar-search pull-left">
                     <input type="text" placeholder="Tìm kiếm..." class="search-query span2">

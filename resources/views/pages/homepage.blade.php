@@ -52,7 +52,6 @@
                     <a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
                 </div>
             </div>
-            
         </div>
         <!--
         Featured Products
@@ -67,14 +66,18 @@
                         <li class="span4">
                             <div class="thumbnail">
                                 {{--<a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span--}}
-                                            {{--class="icon-search"></span> QUICK VIEW</a>--}}
-                                <a href="{{route('productDetail',$product->id)}}"><img src="template/image/product/{{$product->image}}" alt=""></a>
+                                {{--class="icon-search"></span> QUICK VIEW</a>--}}
+                                <a href="{{route('productDetail',$product->id)}}"><img
+                                            src="template/image/product/{{$product->image}}" alt=""></a>
                                 <div class="caption">
                                     <h5> {{$product->name}}</h5>
                                     <h4>
-                                        <a class="defaultBtn" href="{{route('productDetail',$product->id)}}" title="Click to view"><span
+                                        <a class="defaultBtn" href="{{route('productDetail',$product->id)}}"
+                                           title="Click to view"><span
                                                     class="icon-zoom-in"></span></a>
-                                        <a class="shopBtn" idProduct="{{$product->id}}" href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}" title="add to cart"><span class="icon-plus"></span></a>
+                                        <a class="shopBtn" idProduct="{{$product->id}}"
+                                           href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
+                                           title="add to cart"><span class="icon-plus"></span></a>
                                         <span class="pull-right">{{$product->unit_price}}</span>
                                     </h4>
                                 </div>

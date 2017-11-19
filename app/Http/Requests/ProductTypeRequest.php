@@ -23,9 +23,10 @@ class ProductTypeRequest extends FormRequest
      */
     public function rules()
     {
+//        'fImages' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         return [
             'txtName' => 'required|unique:type_products,name',
-            'fImages' => 'required'
+            'fImages' => 'required',
         ];
     }
 

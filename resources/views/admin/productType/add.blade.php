@@ -14,17 +14,9 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10 col-sm-12 col-xs-12 ">
-        @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{!! $error !!}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('admin.blocks.error')
         <div class="panel-body">
-            <form action="{{route('admin.productType.getAdd')}}" method="POST">
+            <form action="{{route('admin.productType.getAdd')}}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <div class="form-group">
                     <label>Tên loại sản phẩm</label>
@@ -39,7 +31,7 @@
                     <label>Ảnh</label>
                     <input type="file" name="fImages" >
                 </div>
-                <button type="submit" name="btnThem" class="btn btn-default"> Thêm</button>
+                <button type="submit" name="btnAdd" class="btn btn-default"> Thêm</button>
                 <button type="reset" class="btn btn-default">Làm mới</button>
             </form>
         </div>
