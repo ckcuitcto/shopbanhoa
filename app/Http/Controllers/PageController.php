@@ -6,7 +6,9 @@ use Cart;
 use App\Product;
 use App\ProductType;
 use App\Slide;
+use App\NewProduct;
 use Illuminate\Http\Request;
+use App\User;
 
 class PageController extends Controller
 {
@@ -14,9 +16,11 @@ class PageController extends Controller
     {
         $slide = Slide::all();
         $products = Product::where('new', 1)->get();
-
+        // $newproduct = NewProduct::all();
+        $newProduct = Product::select('id','name','image')->orderBy('id','desc')->limit(16)->get()->toArray();
+            
         $featuredProducts = Product::where('view', '>', 0)->orderBy('view', 'desc')->limit(3)->get();
-        return view('pages.homepage', compact('slide', 'products', 'featuredProducts'));
+        return view('pages.homepage', compact('slide', 'products', 'featuredProducts','newProduct'));
     }
 
     public function getProductType($idType)
@@ -88,6 +92,10 @@ class PageController extends Controller
         }
     }
 
+    public function getProducts(){
+        return view('pages.products');
+    }
+
     public function register(){
         return view('pages.register');
     }
@@ -96,5 +104,41 @@ class PageController extends Controller
         return view('pages.login');
     }
 
+    public function getContact() {
+        return view('pages.contact');
+    }
 
+    public function getNews(){
+        return view('pages.news');
+    }
+
+    public function getAboutUs() {
+        return view('pages.aboutUs');
+    }
+
+    public function postregister(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'required|email|unique:users,email',
+                'password'=>'required|min:6|max:20',
+                'fullname'=>'required',
+                're_password'=>'required|same:password'
+            ],
+            [
+                'email.required'=>'Vui lòng nhập email',
+                'email.email'=>'Sai định dạng email. Vui lòng nhập lại !',
+                'email.unique'=>'Email đã được sử dụng',
+                'password.required'=>'Vui lòng nhập password',
+                're_password.same'=>'Password không khớp',
+                'password.min'=>'Mật khẩu có ít nhất 6 kí tự'
+            ]);
+        $user = new User();
+        $user->full_name = $req->Fname;
+        $user->email = $req->email;
+        $user->password = Hash::make($req->password);
+        $user->phone = $req->phone;
+        $user->address = $req->address;
+        $user->save();
+        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
+    }
 }

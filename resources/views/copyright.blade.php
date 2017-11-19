@@ -1,13 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 04-Nov-17
- * Time: 11:54 PM
- */
-?>
-
-
 <div class="copyright">
     <div class="container">
         <p class="pull-right">

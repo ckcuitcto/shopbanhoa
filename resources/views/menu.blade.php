@@ -1,6 +1,3 @@
-<?php
-
-?>
 <div class="navbar">
     <div class="navbar-inner">
         <div class="container">
@@ -12,11 +9,10 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="{{route('index')}}">Trang chủ</a></li>
-                    <li class=""><a href="list-view.html">Sản phẩm</a></li>
-                    <li class=""><a href="grid-view.html">Liên hệ</a></li>
-                    <li class=""><a href="three-col.html">Giới thiệu</a></li>
-                    <li class=""><a href="four-col.html">Tin tức</a></li>
-                    <li class=""><a href="general.html">Thêm</a></li>
+                    <li class=""><a href="{{route('products')}}">Sản phẩm</a></li>
+                    <li class=""><a href="{{route('contact')}}">Liên hệ</a></li>
+                    <li class=""><a href="{{route('aboutUs')}}">Giới thiệu</a></li>
+                    <li class=""><a href="{{route('news')}}">Tin tức</a></li>
 
                 </ul>
                 <form action="#" class="navbar-search pull-left">
