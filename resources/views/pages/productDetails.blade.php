@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 05-Nov-17
- * Time: 12:41 AM
- */
-?>
-
 @extends('master')
 
 @section('content')
@@ -27,10 +18,10 @@
                                                   style="width:100%"></a>
                             </div>
                             <div class="item">
-                                <a href="#"> <img src="template/assets/img/b.jpg" alt="" style="width:100%"></a>
+                                <a href="#"> <img src="template/image/product/cc6.jpg"></a>
                             </div>
                             <div class="item">
-                                <a href="#"> <img src="template/assets/img/e.jpg" alt="" style="width:100%"></a>
+                                <a href="#"> <img src="template/image/product/cc7.jpg"></a>
                             </div>
                         </div>
                         <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
@@ -40,7 +31,7 @@
                 <div class="span7">
                     <h3> {{$product->name}}</h3>
                     <hr class="soft"/>
-                    {{--{{route('purchase',['id'=> $product->id])}}--}}
+           
                     <form class="form-horizontal qtyFrm" action="{{route('post_purchase')}}" method="post">
                         <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
                         <input type="hidden" name="id" value="{{$product->id}}">
@@ -51,28 +42,7 @@
                             </div>
                         </div>
 
-                        {{--<div class="control-group">--}}
-                            {{--<label class="control-label"><span>Color</span></label>--}}
-                            {{--<div class="controls">--}}
-                                {{--<select class="span11">--}}
-                                    {{--<option>Red</option>--}}
-                                    {{--<option>Purple</option>--}}
-                                    {{--<option>Pink</option>--}}
-                                    {{--<option>Red</option>--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="control-group">--}}
-                            {{--<label class="control-label"><span>Materials</span></label>--}}
-                            {{--<div class="controls">--}}
-                                {{--<select class="span11">--}}
-                                    {{--<option>Material 1</option>--}}
-                                    {{--<option>Material 2</option>--}}
-                                    {{--<option>Material 3</option>--}}
-                                    {{--<option>Material 4</option>--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                        
                         <h4>{{$product->quantity}} items in stock</h4>
                         <p>{{$product->description}}
                         <p>

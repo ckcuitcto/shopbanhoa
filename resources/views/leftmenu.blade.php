@@ -1,14 +1,6 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 04-Nov-17
- * Time: 11:59 PM
- */
-?>
-<div id="sidebar" class="span3" style="margin-left: 0">
+<div id="sidebar">
     <div class="well well-small">
-        <ul class="nav nav-list">
+        <ul class="nav nav-list" style="padding: 10px">
             @foreach($category as $cate)
                 <li>
                     <a href="{{route('productType',$cate->id)}}"><span class="icon-chevron-right"></span>{{$cate->name}}</a>
@@ -44,8 +36,5 @@
             </div>
         </li>
         <li style="border:0"> &nbsp;</li>
-
-
     </ul>
-
 </div>

@@ -1,18 +1,13 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 05-Nov-17
- * Time: 12:47 AM
- */
-?>
-<hr class="soften">
-<div>
-    <h1>About us</h1>
+@extends('master')
+@section('content')
+
+<div class="span9" style="background-color: #f5f5f5;margin: 0px;border-radius: 2px;">
+    <div>
+    <h1 align="center">Thông tin về chúng tôi</h1>
 </div>
 <hr class="soften">
 <div class="row">
-    <div class="span8">
+    <div class="span8" style="padding-left: 40px">
         <h6>
             I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.
         </h6>
@@ -24,7 +19,7 @@
             Sometimes I'm right and I can be wrong. My own beliefs are in my song. The butcher, the banker, the drummer and then, makes no difference what group I'm in. I am everyday people! Yeah. Yeah.<br>
         </p>
     </div>
-    <div class="span4">
+    <div class="span4" style="padding-left: 40px">
         Monday - Friday<br/>
         09:00am - 09:00pm<br/>
         Saturday<br/>
@@ -33,3 +28,5 @@
         12:30pm - 06:00pm<br/>
     </div>
 </div>
+</div>
+@endsection
