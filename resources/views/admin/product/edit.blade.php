@@ -86,8 +86,11 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label>Hình đại diện</label>
+                                    <label>Hình đại diện hiện tại</label>
                                     <img width="400px" src="/template/image/product/{{$product->image}}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Sửa hình đại diện</label>
                                     <input type="file" name="fImages">
                                 </div>
                             </div>
@@ -96,21 +99,24 @@
                                     <label>Hình chi tiết</label>
                                     <div class="row">
                                     @foreach($productImage as $image)
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="width: 200px; height: 200px;">
                                             <p>
-                                            <img width="150px" src="/template/image/productImages/{{$image->image}}">
+                                            <img  src="/template/image/productImages/{{$image->image}}">
                                             </p>
-                                            <button style="margin-top: -6px; width: 100%; " type="button" productImageId="{{$image->id}}"
+                                            <button style="margin-top: -6px;margin-left: 60px; " type="button" productImageId="{{$image->id}}"
                                                     class="btn btn-default ProductImage">X
                                             </button>
                                         </div>
                                     @endforeach
                                     </div>
 
-
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label>Thêm hình chi tiết</label>
+                                    <input type="file" name="mutilFile[]" multiple>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                     <button type="submit" name="themSP" class="btn btn-default"> Sửa</button>
