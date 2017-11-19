@@ -45,8 +45,9 @@ Lower Header Section
     Body Section
     -->
     <div class="row">
-        <div class="span3">@include('leftmenu')</div>
-
+        @if(!Request::is('gio-hang'))
+            <div class="span3">@include('leftmenu')</div>
+        @endif
         <div class="span9">@yield('content')</div>
 
     </div>

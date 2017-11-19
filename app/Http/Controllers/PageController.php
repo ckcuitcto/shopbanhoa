@@ -138,7 +138,7 @@ class PageController extends Controller
         return view('pages.aboutUs');
     }
 
-    public function postregister(Request $req){
+    public function postRegister(Request $req){
         $this->validate($req,
             [
                 'email'=>'required|email|unique:users,email',
