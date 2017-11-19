@@ -174,8 +174,8 @@ class ProductController extends Controller
         return redirect()->route('admin.product.list')->with(['flash_message' => 'Sửa thành công']);
     }
 
-    public function getDeleteProductImage(Request $request){
-        $productImage = ProductImages::find($request->id);
+    public function getDeleteProductImage($id){
+        $productImage = ProductImages::find($id);
         unlink("template/image/productImages/" . $productImage->image);
         $productImage->delete();
         echo "success";
