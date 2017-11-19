@@ -31,22 +31,24 @@
             <div class="row-fluid">
                 <div id="newProductCar" class="carousel slide">
                     <div class="carousel-inner">
-                     <!--    @for($i = 0;$i < 4 ; $i++) -->
+                         @for($i = 0;$i < 4 ; $i++)
                         <div class="item {{ $i==0 ? 'active' : '' }}">
                             <ul class="thumbnails">
-                            <!--     @for($j=$i*4 ; $j <= $i*4 +4 ; $j++ ) -->
+                                @for($j=$i*4 ; $j < $i*4 +4 ; $j++ )
                                 <li class="span3">
                                     <div class="thumbnail">
                                         <a class="zoomTool" href="product_details.html" title="add to cart"><span
                                                     class="icon-search"></span> QUICK VIEW</a>
                                         <a href="#" class="tag"></a>
-                                        <a href="product_details.html"><img src="template/image/product/"
+                                        <a href="product_details.html"><img src="template/image/product/{{$newProduct[$j]['image']}}"
                                                                             alt="bootstrap-ring"></a>
                                     </div>
                                 </li>
-                                <!-- @endfor -->
+                                @endfor
                         </div>
-                        <!-- @endfor -->
+                        @endfor
+                
+                 
                     </div>
                     <a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
                     <a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>

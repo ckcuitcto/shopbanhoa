@@ -9,6 +9,7 @@ use App\Slide;
 use App\NewProduct;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -93,7 +94,8 @@ class PageController extends Controller
     }
 
     public function getProducts(){
-        return view('pages.products');
+        $products = Product::all();
+        return view('pages.products', compact('products'));
     }
 
     public function register(){
@@ -102,6 +104,26 @@ class PageController extends Controller
 
     public function login(){
         return view('pages.login');
+    }
+
+    public function postLogin(Request $request){
+        $this->validate($request,[
+            'email'=>'required',
+            'password'=>'request|min:3|max:32'
+        ],
+        [
+            'email.required'=>'Bạn chưa nhập email',
+            'password.required'=>'Bạn chưa nhập password',
+            'password.min'=>'Password không được nhỏ hơn 3 ký tự',
+            'password.max'=>'Password không được lớn hơn 32 ký tự'
+        ]);
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+            {
+                return redirect('index');
+            }
+            else{
+                return redirect('login')->with('thongbao','Đăng nhập không thành công');
+            }
     }
 
     public function getContact() {
