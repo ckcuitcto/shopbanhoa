@@ -81,6 +81,11 @@ Route::get('dang-nhap',[
     'uses'=>'PageController@login'
 ]);
 
+Route::post('dang-nhap',[
+    'as'=>'login',
+    'uses'=>'PageController@postLogin'
+]);
+
 Route::group(['prefix' => 'admin'],function(){
     Route::group(['prefix' => 'productType'],function(){
         Route::get('list',['as' => 'admin.productType.list','uses'=>'ProductTypeController@getList']);

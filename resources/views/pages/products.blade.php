@@ -1,8 +1,10 @@
 @extends('master')
 @section('content')
 
-<h3>Three Column Product view </h3>
+<h3>Tất cả sản phẩm</h3>
 		<ul class="thumbnails">
+			@foreach()
+			@endforeach
 			<li class="span3">
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
