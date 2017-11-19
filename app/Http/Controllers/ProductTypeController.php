@@ -26,13 +26,23 @@ class ProductTypeController extends Controller
         $type = new ProductType();
         $type->name = $request->txtName;
         $type->description = $request->txtDescription;
-        $file = $request->fImages;
 
-//        Storage::putFile($file, new File('/template/image/product'));
-        $imageName = time().'.'.$file->getClientOriginalExtension();
-        $file->move(public_path('images'), $imageName);
+        if ($request->hasFile('fImages')) {
+            $file = $request->file('fImages');
 
-        $type->image = $imageName;
+            $fileExtensions = $file->getClientOriginalExtension();
+            if (!$this->checkExtension($fileExtensions)) {
+                return redirect()->reload('admin.productType.getAdd')->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
+            }
+
+            $fileName = str_random(8) . "_" . $file->getClientOriginalName();
+            while (file_exists("template/image/productType/" . $fileName)) {
+                $fileName = str_random(8) . "_" . $file->getClientOriginalName();
+            }
+            $file->move('template/image/productType/', $fileName);
+            $type->image = $fileName;
+        }
+
         $type->save();
         return redirect()->route('admin.productType.list')->with(['flash_message' => 'Thêm thành công']);
     }
@@ -58,26 +68,36 @@ class ProductTypeController extends Controller
             ['txtName.required' => "Vui lòng nhập tên thể loại"]
         );
 
-        $productType = ProductType::find($id);
-        $productType->name = $request->txtName;
-        $productType->description = $request->txtDescription;
+        $type = ProductType::find($id);
+        $type->name = $request->txtName;
+        $type->description = $request->txtDescription;
 
         if ($request->hasFile('fImages')) {
-            $this->store($request);
-            $productType->image = $request->fImages;
+            $file = $request->file('fImages');
+
+            $fileExtensions = $file->getClientOriginalExtension();
+            if (!$this->checkExtension($fileExtensions)) {
+                return redirect()->reload('admin.productType.getAdd')->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
+            }
+
+            $fileName = str_random(8) . "_" . $file->getClientOriginalName();
+            while (file_exists("template/image/productType/" . $fileName)) {
+                $fileName = str_random(8) . "_" . $file->getClientOriginalName();
+            }
+            $file->move('template/image/productType/', $fileName);
+            $type->image = $fileName;
         }
-        $productType->save();
+
+        $type->save();
         return redirect()->route('admin.productType.list')->with(['flash_message' => 'Sửa thành công']);
     }
 
-    public function store(Request $request)
+    private function checkExtension($fileExtensions)
     {
-        $file     = $request->fImages;
-        $fileName = rand(1, 999) . $file->getClientOriginalName();
-        $filePath = "/uploads/" . date("Y") . '/' . date("m") . "/" . $fileName;
-
-        $file->storeAs('public/template/image/product/'. date("Y") . '/' . date("m") . '/', $fileName, 'uploads');
-
-        return File::create(['file_name' => $fileName, 'path' => $filePath, 'file_extension' => $file->getClientOriginalExtension()]);
+        $arr = array('jpg', 'png', 'jpeg');
+        if (in_array($fileExtensions, $arr)) {
+            return true;
+        }
+        return false;
     }
 }
