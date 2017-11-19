@@ -1,18 +1,12 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 05-Nov-17
- * Time: 12:45 AM
- */
-?>
+@extends('master')
+@section('content')
 
-<hr class="soften">
+<div style="margin: 0">
 <div class="well well-small">
-    <h1>Visit us</h1>
+    <h1>Địa chỉ liên hệ</h1>
     <hr class="soften"/>
     <div class="row-fluid">
-        <div class="span8 relative">
+        <div class="span12 relative">
             <iframe style="width:100%; height:350px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
                     src="http://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Newbury+Street,+Boston,+MA,+United+States&amp;aq=1&amp;oq=NewBoston,+MA,+United+States&amp;sll=42.347238,-71.084011&amp;sspn=0.014099,0.033023&amp;ie=UTF8&amp;hq=Newbury+Street,+Boston,+MA,+United+States&amp;t=m&amp;ll=42.348994,-71.088248&amp;spn=0.001388,0.006276&amp;z=18&amp;iwloc=A&amp;output=embed"></iframe>
 
@@ -32,23 +26,23 @@
             </div>
         </div>
 
-        <div class="span4">
-            <h4>Email Us</h4>
+        <div class="span12">
+            <h4>Email cho chúng tôi</h4>
             <form class="form-horizontal">
                 <fieldset>
                     <div class="control-group">
 
-                        <input type="text" placeholder="name" class="input-xlarge"/>
+                        <input type="text" placeholder="Tên" class="input-xlarge"/>
 
                     </div>
                     <div class="control-group">
 
-                        <input type="text" placeholder="email" class="input-xlarge"/>
+                        <input type="text" placeholder="Email" class="input-xlarge"/>
 
                     </div>
                     <div class="control-group">
 
-                        <input type="text" placeholder="subject" class="input-xlarge"/>
+                        <input type="text" placeholder="Tiêu đề" class="input-xlarge"/>
 
                     </div>
                     <div class="control-group">
@@ -56,12 +50,12 @@
 
                     </div>
 
-                    <button class="shopBtn" type="submit">Send email</button>
+                    <button class="shopBtn" type="submit">Gửi email</button>
 
                 </fieldset>
             </form>
         </div>
     </div>
-
-
 </div>
+</div>
+@endsection

@@ -1,13 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 04-Nov-17
- * Time: 11:18 PM
- */
-?>
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -54,9 +45,9 @@ Lower Header Section
     Body Section
     -->
     <div class="row">
-        @include('leftmenu')
+        <div class="span3">@include('leftmenu')</div>
 
-        @yield('content')
+        <div class="span9">@yield('content')</div>
 
     </div>
     <!--

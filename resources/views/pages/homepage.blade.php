@@ -4,8 +4,10 @@
         <div class="well np">
             <div id="myCarousel" class="carousel slide homCar">
                 <div class="carousel-inner">
+                    <?php $item = 1; ?>
                     @foreach($slide as $value)
-                        <div class="item">
+                    
+                        <div class="item {{ ($item==1) ? 'active' : '' }}">
                             <img style="width:100%" src="template/image/slide/{{$value->image}}"
                                  alt="bootstrap ecommerce templates">
                             <div class="carousel-caption">
@@ -13,6 +15,7 @@
                                 <p><span>Very clean simple to use</span></p>
                             </div>
                         </div>
+                        <?php $item++; ?>
                     @endforeach
                 </div>
                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
@@ -23,47 +26,27 @@
         New Products
         -->
         <div class="well well-small">
-            <h3>New Products </h3>
+            <h3>Các loại hoa mới nhập về</h3>
             <hr class="soften"/>
             <div class="row-fluid">
                 <div id="newProductCar" class="carousel slide">
                     <div class="carousel-inner">
-                        <div class="item active">
+                     <!--    @for($i = 0;$i < 4 ; $i++) -->
+                        <div class="item {{ $i==0 ? 'active' : '' }}">
                             <ul class="thumbnails">
+                            <!--     @for($j=$i*4 ; $j <= $i*4 +4 ; $j++ ) -->
                                 <li class="span3">
                                     <div class="thumbnail">
                                         <a class="zoomTool" href="product_details.html" title="add to cart"><span
                                                     class="icon-search"></span> QUICK VIEW</a>
                                         <a href="#" class="tag"></a>
-                                        <a href="product_details.html"><img src="template/assets/img/bootstrap-ring.png"
+                                        <a href="product_details.html"><img src="template/image/product/"
                                                                             alt="bootstrap-ring"></a>
                                     </div>
                                 </li>
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="product_details.html" title="add to cart"><span
-                                                    class="icon-search"></span> QUICK VIEW</a>
-                                        <a href="#" class="tag"></a>
-                                        <a href="product_details.html"><img src="template/assets/img/i.jpg" alt=""></a>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="product_details.html" title="add to cart"><span
-                                                    class="icon-search"></span> QUICK VIEW</a>
-                                        <a href="#" class="tag"></a>
-                                        <a href="product_details.html"><img src="template/assets/img/g.jpg" alt=""></a>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="product_details.html" title="add to cart"><span
-                                                    class="icon-search"></span> QUICK VIEW</a>
-                                        <a href="product_details.html"><img src="template/assets/img/s.png" alt=""></a>
-                                    </div>
-                                </li>
-                            </ul>
+                                <!-- @endfor -->
                         </div>
+                        <!-- @endfor -->
                     </div>
                     <a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
                     <a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
