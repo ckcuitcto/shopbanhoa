@@ -18,15 +18,15 @@ class CreateProductsCreate extends Migration
             $table->string('name',100);
             $table->text('description');
             $table->double('unit_price');
-            $table->integer('promation_price');
+            $table->integer('promotion_price');
             $table->string('image',200);
             $table->integer('unit')->unsigned();
-            $table->foreign('unit')->references('id')->on('units');
+            $table->foreign('unit')->references('id')->on('units')->onDelete('cascade')->onUpdate('cascade');
             $table->tinyInteger('new');
             $table->integer('quantity');
             $table->integer('view');
             $table->integer('id_type')->unsigned();
-            $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade');
+            $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
 

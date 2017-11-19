@@ -88,5 +88,7 @@ Route::group(['prefix' => 'admin'],function(){
 
         Route::get('edit/{id}',['as' => 'admin.product.getEdit','uses'=>'ProductController@getEdit']);
         Route::post('edit/{id}',['as' => 'admin.product.postEdit','uses'=>'ProductController@postEdit']);
+
+        Route::get('deleteImage/{id}',['as'=>'admin.product.getDeleteProductImage', 'uses' => 'ProductController@getDeleteProductImage']);
     });
 });

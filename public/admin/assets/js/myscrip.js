@@ -4,6 +4,9 @@
 
 $(document).ready(function () {
     $('#dataTables-example').dataTable();
+
+
+
 });
 
 $('div.alert-success').delay(2000).slideUp();
@@ -14,3 +17,4 @@ function confirmDelete(msg) {
     }
     return false;
 }
+

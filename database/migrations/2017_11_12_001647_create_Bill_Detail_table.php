@@ -25,11 +25,11 @@ class CreateBillDetailTable extends Migration
         });
 
         Schema::table('bill_detail', function (Blueprint $table) {
-            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::table('bill_detail', function (Blueprint $table) {
-            $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade');
+            $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade')->onUpdate('cascade');
         });
 
     }

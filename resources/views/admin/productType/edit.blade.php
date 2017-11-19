@@ -18,7 +18,7 @@
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <div class="form-group">
                     <label>Tên loại sản phẩm</label>
-                    <input type="text" class="form-control" value="{!! old('txtName',isset($productType)? $productType->name : "") !!}" name="txtName"
+                    <input style="height: auto" type="text" class="form-control" value="{!! old('txtName',isset($productType)? $productType->name : "") !!}" name="txtName"
                            placeholder="Tên loại sản phẩm"/>
                 </div>
                 <div class="form-group">
@@ -31,7 +31,7 @@
 
                     <input type="file" name="fImages" >
                     <br>
-                    <img src="" width="150px">
+                    <img src="/template/image/productType/{{$productType->image}}" width="500px">
                     <br><br><br>
                 </div>
                 <button type="submit" name="btnEdit" class="btn btn-default"> Sửa</button>
