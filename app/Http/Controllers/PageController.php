@@ -94,8 +94,9 @@ class PageController extends Controller
     }
 
     public function getProducts(){
-        $products = Product::all();
-        return view('pages.products', compact('products'));
+        $productType = ProductType::paginate(6);
+        // $productsByIdType = Product::where('id_type', $idType)->paginate(6);
+        return view('pages.products', compact('productType'));
     }
 
     public function register(){
