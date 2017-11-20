@@ -19,9 +19,7 @@
         <div class="span3 alignR">
             <p><br> <strong> Hỗ trợ (24/7) : 01692039011 </strong><br><br></p>
             <span class="btn btn-mini">[ 2 ] <span class="icon-shopping-cart"></span></span>
-            <span class="btn btn-warning btn-mini">$</span>
-            <span class="btn btn-mini">&pound;</span>
-            <span class="btn btn-mini">&euro;</span>
+            <span class="btn btn-warning btn-mini">vnd</span>
         </div>
     </div>
 </header>

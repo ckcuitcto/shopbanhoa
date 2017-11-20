@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Vàng Bạc Thái Đức ADMIN</title>
+    <title>HoaSaiGon.tk trang Admin</title>
     <!-- Bootstrap style -->
     <link id="callCss" rel="stylesheet" href="{{ url('admin/assets/css/bootstrap.min.css')}}" media="screen"/>
     <link href="{{ url('admin/assets/css/base.css')}}" rel="stylesheet" media="screen"/>

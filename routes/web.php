@@ -56,6 +56,11 @@ Route::get('lien-he',[
     'uses'=>'PageController@getContact'
 ]);
 
+Route::post('lien-he',[
+    'as'=>'contact',
+    'uses'=>'PageController@postContact'
+]);
+
 Route::get('gioi_thieu',[
     'as'=>'aboutUs',
     'uses'=>'PageController@getAboutUs'
@@ -86,6 +91,17 @@ Route::post('dang-nhap',[
     'uses'=>'PageController@postLogin'
 ]);
 
+// mail
+// Route::get('lien-he',[
+//     'as'=>'getGuimail',
+//     'uses'=>'WelcomeController@get_guiMail'
+// ]);
+
+// Route::post('lien-he',[
+//     'as'=>'postGuimail',
+//     'uses'=>'WelcomeController@post_guiMail'
+// ]);
+
 Route::group(['prefix' => 'admin'],function(){
     Route::group(['prefix' => 'productType'],function(){
         Route::get('list',['as' => 'admin.productType.list','uses'=>'ProductTypeController@getList']);
@@ -110,5 +126,18 @@ Route::group(['prefix' => 'admin'],function(){
         Route::post('edit/{id}',['as' => 'admin.product.postEdit','uses'=>'ProductController@postEdit']);
 
         Route::get('deleteImage/{id}',['as'=>'admin.product.getDeleteProductImage', 'uses' => 'ProductController@getDeleteProductImage']);
+    });
+
+    Route::group(['prefix' => 'news'],function(){
+        Route::get('list',['as' => 'admin.news.list','uses'=>'NewsController@getList']);
+        Route::get('add',['as' => 'admin.news.getAdd','uses'=>'NewsController@getAdd']);
+        Route::post('add',['as' => 'admin.news.postAdd','uses'=>'NewsController@postAdd']);
+
+        Route::get('delete/{id}',['as' => 'admin.news.getDelete','uses'=>'NewsController@getDelete']);
+
+        Route::get('edit/{id}',['as' => 'admin.news.getEdit','uses'=>'NewsController@getEdit']);
+        Route::post('edit/{id}',['as' => 'admin.news.postEdit','uses'=>'NewsController@postEdit']);
+
+        Route::get('deleteImage/{id}',['as'=>'admin.news.getDeleteNewsImage', 'uses' => 'NewsController@getDeleteNewsImage']);
     });
 });

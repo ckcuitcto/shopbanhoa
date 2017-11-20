@@ -21,6 +21,7 @@
 
     <!-- Favicons -->
     <script src="template/assets/js/jquery-3.2.1.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="template/assets/js/jquery.validate.js"></script>
     <link rel="shortcut icon" href="template/assets/ico/favicon.ico">
     <script src="template/assets/js/cart.js"></script>
 </head>
