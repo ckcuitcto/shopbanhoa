@@ -119,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" name="themSP" class="btn btn-default"> Sửa</button>
+                    <button type="submit" name="suaSP" class="btn btn-default"> Sửa</button>
                     <button type="cancel" class="btn btn-default">Hủy</button>
                 </div>
 

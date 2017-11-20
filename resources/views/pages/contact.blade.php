@@ -27,30 +27,22 @@
 
         <div class="span12">
             <h4>Email cho chúng tôi</h4>
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="{!! url('lien-he') !!}" method="post">
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <fieldset>
                     <div class="control-group">
-
-                        <input type="text" placeholder="Tên" class="input-xlarge"/>
-
+                        <input type="text" name="name" placeholder="Tên" class="input-xlarge"/>
                     </div>
                     <div class="control-group">
-
-                        <input type="text" placeholder="Email" class="input-xlarge"/>
-
+                        <input type="text" name="email" placeholder="Email" class="input-xlarge"/>
                     </div>
                     <div class="control-group">
-
-                        <input type="text" placeholder="Tiêu đề" class="input-xlarge"/>
-
+                        <input type="text" name="title" placeholder="Tiêu đề" class="input-xlarge"/>
                     </div>
                     <div class="control-group">
-                        <textarea rows="3" id="textarea" class="input-xlarge"></textarea>
-
+                        <textarea rows="3" name="mess" id="textarea" class="input-xlarge"></textarea>
                     </div>
-
-                    <button class="shopBtn" type="submit">Gửi email</button>
-
+                    <button class="shopBtn" type="submit" name="submit">Gửi email</button>
                 </fieldset>
             </form>
         </div>
