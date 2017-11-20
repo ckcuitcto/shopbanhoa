@@ -14,7 +14,7 @@
                     <div id="myCarousel" class="carousel slide cntr">
                         <div class="carousel-inner">
                             <div class="item active">
-                                <a href="#"> <img src="template/image/product/{{$product->image}}" alt=""
+                                <a href="#"><img src="template/image/product/{{$product->image}}" alt=""
                                                   style="width:100%"></a>
                             </div>
                             <div class="item">
