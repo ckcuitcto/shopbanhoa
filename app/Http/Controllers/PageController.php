@@ -32,9 +32,12 @@ class PageController extends Controller
 
     public function getProductDetail(Request $request)
     {
-        $product = Product::where('id', $request->idProduct)->first();
-//        $breadcrumbs = DB::table
+        $product = Product::find($request->idProduct);
+        $product->view +=1;
+        $product->save();
         $relatedProducts = Product::where('id_type', $product->id_type)->limit(3)->get();
+
+
         return view('pages.productDetails', compact('product', 'relatedProducts', 'quantity'));
     }
 
@@ -49,7 +52,6 @@ class PageController extends Controller
         $productBuy = Product::where('id', $request->id)->first();
         $qty = $request->qty;
         Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
-//        return redirect()->back();
         return "success";
     }
 
@@ -138,7 +140,7 @@ class PageController extends Controller
         return view('pages.aboutUs');
     }
 
-    public function postregister(Request $req){
+    public function postRegister(Request $req){
         $this->validate($req,
             [
                 'email'=>'required|email|unique:users,email',
