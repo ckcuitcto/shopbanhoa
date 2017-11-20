@@ -15,11 +15,6 @@
                             <p>{{$product->name}}</p>
                             <p><strong> {{$product->unit_price}}</strong></p>
                             <h4><a class="shopBtn" idProduct="{{$product->id}}" href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}" title="add to cart"> Add to cart </a></h4>
-                            <div class="actionList">
-                                <a class="pull-left" href="#">Add to Wish List </a>
-                                <a class="pull-left" href="#"> Add to Compare </a>
-                            </div>
-                            <br class="clr">
                         </div>
                     </div>
                 </li>

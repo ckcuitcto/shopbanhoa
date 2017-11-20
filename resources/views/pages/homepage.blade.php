@@ -40,7 +40,7 @@
                                         <a class="zoomTool" href="product_details.html" title="add to cart"><span
                                                     class="icon-search"></span> QUICK VIEW</a>
                                         <a href="#" class="tag"></a>
-                                        <a href="product_details.html"><img src="template/image/product/{{$newProduct[$j]['image']}}"
+                                        <a href="product_details.html"><img style="height: 190px;" src="template/image/product/{{$newProduct[$j]['image']}}"
                                                                             alt="bootstrap-ring"></a>
                                     </div>
                                 </li>
@@ -60,15 +60,13 @@
         -->
         <div class="well well-small">
             <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span
-                            class="icon-plus"></span></a> Featured Products </h3>
+                            class="icon-plus"></span></a>Các loại hoa nổi bật</h3>
             <hr class="soften"/>
             <div class="row-fluid">
                 <ul class="thumbnails">
                     @foreach($featuredProducts as $product)
                         <li class="span4">
                             <div class="thumbnail">
-                                {{--<a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span--}}
-                                {{--class="icon-search"></span> QUICK VIEW</a>--}}
                                 <a href="{{route('productDetail',$product->id)}}"><img
                                             src="template/image/product/{{$product->image}}" alt=""></a>
                                 <div class="caption">
@@ -91,13 +89,66 @@
         </div>
 
         <div class="well well-small">
-            <a class="btn btn-mini pull-right" href="#">View more <span class="icon-plus"></span></a>
-            Popular Products
+            <h3><a class="btn btn-mini pull-right" href="#">View more <span class="icon-plus"></span></a>
+            Các loại hoa phổ biến</h3>
+            <hr class="soften"/>
+            <div class="row-fluid">
+               <!--  <ul class="thumbnails">
+                    @foreach($featuredProducts as $product)
+                        <li class="span4">
+                            <div class="thumbnail">
+                                {{--<a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span--}}
+                                {{--class="icon-search"></span> QUICK VIEW</a>--}}
+                                <a href="{{route('productDetail',$product->id)}}"><img
+                                            src="template/image/product/{{$product->image}}" alt=""></a>
+                                <div class="caption">
+                                    <h5> {{$product->name}}</h5>
+                                    <h4>
+                                        <a class="defaultBtn" href="{{route('productDetail',$product->id)}}"
+                                           title="Click to view"><span
+                                                    class="icon-zoom-in"></span></a>
+                                        <a class="shopBtn" idProduct="{{$product->id}}"
+                                           href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
+                                           title="add to cart"><span class="icon-plus"></span></a>
+                                        <span class="pull-right">{{$product->unit_price}}</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul> -->
+            </div>
         </div>
-        <hr>
         <div class="well well-small">
-            <a class="btn btn-mini pull-right" href="#">View more <span class="icon-plus"></span></a>
-            Best selling Products
+            <h3><a class="btn btn-mini pull-right" href="#">View more <span class="icon-plus"></span></a>
+            Các loại hoa bán chạy nhất</h3>
+            <hr class="soften"/>
+            <div class="row-fluid">
+                <!-- <ul class="thumbnails">
+                    @foreach($featuredProducts as $product)
+                        <li class="span4">
+                            <div class="thumbnail">
+                                {{--<a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span--}}
+                                {{--class="icon-search"></span> QUICK VIEW</a>--}}
+                                <a href="{{route('productDetail',$product->id)}}"><img
+                                            src="template/image/product/{{$product->image}}" alt=""></a>
+                                <div class="caption">
+                                    <h5> {{$product->name}}</h5>
+                                    <h4>
+                                        <a class="defaultBtn" href="{{route('productDetail',$product->id)}}"
+                                           title="Click to view"><span
+                                                    class="icon-zoom-in"></span></a>
+                                        <a class="shopBtn" idProduct="{{$product->id}}"
+                                           href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
+                                           title="add to cart"><span class="icon-plus"></span></a>
+                                        <span class="pull-right">{{$product->unit_price}}</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul> -->
+            </div>
         </div>
     </div>
 @endsection

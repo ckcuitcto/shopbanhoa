@@ -27,7 +27,7 @@
             <div class="thumbnail">
                 <a class="zoomTool" href="product_details.html" title="add to cart"><span
                             class="icon-search"></span> QUICK VIEW</a>
-                <img src="template/assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+                <img src="template/image/product/x4.jpg" alt="bootstrap ecommerce templates">
                 <div class="caption">
                     <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span
                                 class="pull-right">$22.00</span>

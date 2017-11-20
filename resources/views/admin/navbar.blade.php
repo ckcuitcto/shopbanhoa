@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 13-Nov-17
- * Time: 10:32 PM
- */
-?>
 <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
