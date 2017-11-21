@@ -26,34 +26,25 @@
     <script src="template/assets/js/cart.js"></script>
 </head>
 <body>
-<!--
-	Upper Header Section
--->
+<!--  Upper Header Section  -->
 @include('menuTop')
 
-<!--
-Lower Header Section
--->
+<!--  Lower Header Section  -->
 <div class="container">
 
 @include('header')
 
-<!--
-    Navigation Bar Section
-    -->
+<!--  Navigation Bar Section  -->
 @include('menu')
-<!--
-    Body Section
-    -->
+<!--  Body Section   -->
     <div class="row">
-        <div class="span3">@include('leftmenu')</div>
-
+        @if(!Request::is('gio-hang') & !Request::is('san-pham'))
+            <div class="span3">@include('leftmenu')</div>
+        @endif
         <div class="span9">@yield('content')</div>
 
     </div>
-    <!--
-    Clients
-    -->
+<!--  Clients   -->
     <section class="our_client">
         <hr class="soften"/>
         <h4 class="title cntr"><span class="text">Manufactures</span></h4>
@@ -80,11 +71,10 @@ Lower Header Section
         </div>
     </section>
 
-    <!--
-    Footer
-    -->
+<!--    Footer    -->
     @include('footer')
-</div><!-- /container -->
+</div>
+<!-- /container -->
 @include('copyright')
 <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
 <!-- Placed at the end of the document so the pages load faster -->

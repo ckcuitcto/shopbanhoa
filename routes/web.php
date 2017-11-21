@@ -27,8 +27,8 @@ Route::get('mua-hang/{id}/{qty}',[
 ]);
 
 Route::post('mua-hang-post',[
-    'as' => 'post_purchase',
-    'uses' => 'PageController@post_purchase'
+   'as' => 'post_purchase',
+   'uses' => 'PageController@post_purchase'
 ]);
 
 Route::get('gio-hang',[

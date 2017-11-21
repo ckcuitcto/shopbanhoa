@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Cart,DB,Mail;
@@ -33,9 +32,12 @@ class PageController extends Controller
 
     public function getProductDetail(Request $request)
     {
-        $product = Product::where('id', $request->idProduct)->first();
-//        $breadcrumbs = DB::table
+        $product = Product::find($request->idProduct);
+        $product->view +=1;
+        $product->save();
         $relatedProducts = Product::where('id_type', $product->id_type)->limit(3)->get();
+
+
         return view('pages.productDetails', compact('product', 'relatedProducts', 'quantity'));
     }
 
@@ -50,7 +52,6 @@ class PageController extends Controller
         $productBuy = Product::where('id', $request->id)->first();
         $qty = $request->qty;
         Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
-//        return redirect()->back();
         return "success";
     }
 
@@ -95,39 +96,13 @@ class PageController extends Controller
     }
 
     public function getProducts(){
-        $productType = ProductType::paginate(6);
+        $productType = ProductType::paginate(8);
         // $productsByIdType = Product::where('id_type', $idType)->paginate(6);
         return view('pages.products', compact('productType'));
     }
 
     public function register(){
         return view('pages.register');
-    }
-
-    public function postregister(Request $req){
-        $req->validate(
-            [
-                'email'=>'required|email|unique:users,email',
-                'password'=>'required|min:6|max:20',
-                'fullname'=>'required',
-                're_password'=>'required|same:password'
-            ],
-            [
-                'email.required'=>'Vui lòng nhập email',
-                'email.email'=>'Sai định dạng email. Vui lòng nhập lại !',
-                'email.unique'=>'Email đã được sử dụng',
-                'password.required'=>'Vui lòng nhập password',
-                're_password.same'=>'Password không khớp',
-                'password.min'=>'Mật khẩu có ít nhất 6 kí tự'
-            ]);
-        $user = new User();
-        $user->full_name = $req->Fname;
-        $user->email = $req->email;
-        $user->password = Hash::make($req->password);
-        $user->phone = $req->phone;
-        $user->address = $req->address;
-        $user->save();
-        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
 
     public function login(){
@@ -158,14 +133,6 @@ class PageController extends Controller
         return view('pages.contact');
     }
 
-    // public function postContact(Request $request) {
-    //     $data = ['email'=>Request::input('email'),'mess'=>Request::input('mess')]
-    //     Mail::send('pages.blanks',$data,function($mess){
-    //         $mess->from('hoasaigonn@gmail.com','Gia Han');
-    //         $mess->to('hoasaigonn@gmail.com','Gia Han')->subject('Đây là mail hoasaigon.tk');
-    //     });
-    // }
-
     public function getNews(){
         $news = News::all();
         return view('pages.news',compact('news'));
@@ -175,16 +142,30 @@ class PageController extends Controller
         return view('pages.aboutUs');
     }
 
-    
+    public function postRegister(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'required|email|unique:users,email',
+                'password'=>'required|min:6|max:20',
+                'fullname'=>'required',
+                're_password'=>'required|same:password'
+            ],
+            [
+                'email.required'=>'Vui lòng nhập email',
+                'email.email'=>'Sai định dạng email. Vui lòng nhập lại !',
+                'email.unique'=>'Email đã được sử dụng',
+                'password.required'=>'Vui lòng nhập password',
+                're_password.same'=>'Password không khớp',
+                'password.min'=>'Mật khẩu có ít nhất 6 kí tự'
+            ]);
+        $user = new User();
+        $user->full_name = $req->Fname;
+        $user->email = $req->email;
+        $user->password = Hash::make($req->password);
+        $user->phone = $req->phone;
+        $user->address = $req->address;
+        $user->save();
+        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
+    }
 
-
-
-    //mail
-//     public function get_guiMail(){
-// return
-//     }
-
-//     public function post_guiMail(){
-
-//     }
 }

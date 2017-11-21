@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <div class="span9">
+    <div class="span9" style="margin: 0">
         <div class="well np">
             <div id="myCarousel" class="carousel slide homCar">
                 <div class="carousel-inner">
@@ -22,9 +22,7 @@
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
             </div>
         </div>
-        <!--
-        New Products
-        -->
+        <!-- New Products-->
         <div class="well well-small">
             <h3>Các loại hoa mới nhập về</h3>
             <hr class="soften"/>
@@ -45,19 +43,16 @@
                                     </div>
                                 </li>
                                 @endfor
+                            </ul>
                         </div>
                         @endfor
-                
-                 
                     </div>
                     <a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
                     <a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
                 </div>
             </div>
         </div>
-        <!--
-        Featured Products
-        -->
+        <!--  Featured Products   -->
         <div class="well well-small">
             <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span
                             class="icon-plus"></span></a>Các loại hoa nổi bật</h3>

@@ -19,14 +19,14 @@ class CreateBillsTable extends Migration
             $table->double('total');
             $table->string('payment',200);
             $table->text('note');
-            $table->integer('id_customter')->unsigned();
-//            $table->foreign('id_customter')->references('id')->on('customer')->onDelete('cascade');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
-
-        Schema::table('bills', function (Blueprint $table) {
-            $table->foreign('id_customter')->references('id')->on('customer')->onDelete('cascade');
-        });
+//
+//        Schema::table('bills', function (Blueprint $table) {
+//            $table->foreign('id_customter')->references('id')->on('customer')->onDelete('cascade');
+//        });
     }
 
     /**
