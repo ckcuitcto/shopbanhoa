@@ -6,14 +6,10 @@
                 <div class="carousel-inner">
                     <?php $item = 1; ?>
                     @foreach($slide as $value)
-                    
+
                         <div class="item {{ ($item==1) ? 'active' : '' }}">
-                            <img style="width:100%" src="template/image/slide/{{$value->image}}"
+                            <img style="width:100%" src="/template/image/slide/{{$value->image}}"
                                  alt="bootstrap ecommerce templates">
-                            <div class="carousel-caption">
-                                <h4>Bootstrap shopping cart</h4>
-                                <p><span>Very clean simple to use</span></p>
-                            </div>
                         </div>
                         <?php $item++; ?>
                     @endforeach
@@ -37,10 +33,10 @@
                                 @for($j=$i*4 ; $j < $i*4 +4 ; $j++ )
                                 <li class="span3">
                                     <div class="thumbnail">
-                                        <a class="zoomTool" href="product_details.html" title="add to cart"><span
-                                                    class="icon-search"></span> QUICK VIEW</a>
+                                        <a class="zoomTool" href="{{route('productDetail',$newProduct[$j]['id'])}}" title="add to cart"><span
+                                                    class="icon-search"></span> {{$newProduct[$j]['name']}}</a>
                                         <a href="#" class="tag"></a>
-                                        <a href="product_details.html"><img style="height: 190px;" src="template/image/product/{{$newProduct[$j]['image']}}"
+                                        <a href="{{route('productDetail',$newProduct[$j]['id'])}}"><img style="height: 190px;" src="template/image/product/{{$newProduct[$j]['image']}}"
                                                                             alt="bootstrap-ring"></a>
                                     </div>
                                 </li>

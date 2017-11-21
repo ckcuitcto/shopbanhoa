@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 20/11/2017 02:11:59
+ Date: 20/11/2017 22:27:42
 */
 
 SET NAMES utf8mb4;
@@ -176,8 +176,8 @@ CREATE TABLE `products`  (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (95, 'Hoa cưới 1', 'Bánh crepe sầu riêng nhà làm', 150000, 120000, 'hc0.jpg', 1, 1, 4, 45, 4, '2016-10-25 20:00:16', '2016-10-24 15:11:00');
-INSERT INTO `products` VALUES (2, 'Hoa cưới 2', '', 180000, 160000, 'hc8.jpg', 2, 1, 0, 5, 4, '2016-10-25 20:00:16', '2016-10-24 15:11:00');
+INSERT INTO `products` VALUES (95, 'Hoa cưới 1', 'Bánh crepe sầu riêng nhà làm', 150000, 120000, 'hc0.jpg', 1, 1, 4, 47, 4, '2016-10-25 20:00:16', '2017-11-20 21:29:54');
+INSERT INTO `products` VALUES (2, 'Hoa cưới 2', '', 180000, 160000, 'hc8.jpg', 2, 1, 0, 6, 4, '2016-10-25 20:00:16', '2017-11-20 21:29:35');
 INSERT INTO `products` VALUES (96, 'Hoa cưới 3', '', 150000, 120000, 'hc1.jpg', 1, 0, 0, 67349, 4, '2016-10-25 20:00:16', '2017-11-20 02:07:08');
 INSERT INTO `products` VALUES (4, 'Hoa cưới 4', '123', 160000, 0, 'hc2.jpg', 2, 0, 0, 4, 4, '2016-10-25 20:00:16', '2016-10-24 15:11:00');
 INSERT INTO `products` VALUES (5, 'Hoa cưới 5', '234', 160000, 0, 'hc3.jpg', 3, 0, 43, 64, 4, '2016-10-25 20:00:16', '2016-10-24 15:11:00');
@@ -185,14 +185,14 @@ INSERT INTO `products` VALUES (6, 'Hoa cưới 6', '', 200000, 180000, 'hc4.jpg'
 INSERT INTO `products` VALUES (7, 'Hoa cưới 7', '', 160000, 0, 'hc5.jpg', 1, 1, 345, 45, 4, '2016-10-25 20:00:16', '2016-10-24 15:11:00');
 INSERT INTO `products` VALUES (8, 'Hoa cưới 8', '', 160000, 150000, 'hc6.jpg', 2, 0, 5, 0, 4, '2016-10-25 20:00:16', '2016-10-24 15:11:00');
 INSERT INTO `products` VALUES (9, 'Hoa cưới 9', '', 160000, 150000, 'hc7.jpg', 2, 0, 0, 343, 4, '2016-10-25 20:00:16', '2016-10-24 15:11:00');
-INSERT INTO `products` VALUES (11, 'Hoa sinh nhật 1', '', 250000, 0, 'sn3.jpg', 2, 0, 6, 0, 2, '2016-10-11 19:00:00', '2016-10-26 19:24:00');
+INSERT INTO `products` VALUES (11, 'Hoa sinh nhật 1', '', 250000, 0, 'sn3.jpg', 2, 0, 6, 2, 2, '2016-10-11 19:00:00', '2017-11-20 21:30:03');
 INSERT INTO `products` VALUES (12, 'Hoa sinh nhật 5', '', 200000, 180000, 'sn4.jpg', 2, 0, 6, 234, 2, '2016-10-11 19:00:00', '2016-10-26 19:24:00');
 INSERT INTO `products` VALUES (13, 'Hoa sinh nhật 6', '', 300000, 280000, 'sn5.jpg', 2, 1, 4, 5, 2, '2016-10-11 19:00:00', '2017-10-14 19:24:00');
 INSERT INTO `products` VALUES (14, 'Hoa sinh nhật 7', '', 300000, 280000, 'sn6.jpg', 2, 0, 0, 23, 2, '2016-10-11 19:00:00', '2016-10-26 19:24:00');
-INSERT INTO `products` VALUES (15, 'Hoa văn phòng 1', '', 350000, 320000, 'vp0.jpg', 2, 1, 3546, 16, 3, '2016-10-11 19:00:00', '2017-11-20 02:06:01');
+INSERT INTO `products` VALUES (15, 'Hoa văn phòng 1', '', 350000, 320000, 'vp0.jpg', 2, 1, 3546, 18, 3, '2016-10-11 19:00:00', '2017-11-20 21:29:58');
 INSERT INTO `products` VALUES (16, 'Hoa văn phòng 2', '', 150000, 120000, 'vp1.jpg', 2, 0, 54, 0, 3, '2016-10-11 19:00:00', '2016-10-26 19:24:00');
 INSERT INTO `products` VALUES (17, 'Hoa văn phòng 3', '', 250000, 240000, 'vp2.jpg', 2, 0, 3, 4, 3, '2016-10-11 19:00:00', '2016-10-26 19:24:00');
-INSERT INTO `products` VALUES (18, 'Hoa cao cấp 1', '', 180000, 0, 'cc8.jpg', 2, 0, 5654, 0, 1, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
+INSERT INTO `products` VALUES (18, 'Hoa cao cấp 1', '', 180000, 0, 'cc8.jpg', 2, 0, 5654, 3, 1, '2016-10-12 19:20:00', '2017-11-20 21:40:02');
 INSERT INTO `products` VALUES (19, 'Hoa cao cấp 2', '', 150000, 0, 'cc9.jpg', 2, 1, 54, 4, 1, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (20, 'Hoa cao cấp 3', '', 150000, 0, 'cc10.jpg', 2, 0, 54, 14, 1, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (21, 'Hoa cao cấp 4', '', 160000, 150000, 'cc11.jpg', 2, 0, 4, 66, 1, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
@@ -207,8 +207,8 @@ INSERT INTO `products` VALUES (29, 'Hoa cao cấp 12', '', 100000, 0, 'cc7.jpg',
 INSERT INTO `products` VALUES (30, 'Hoa văn phòng 4', '', 380000, 350000, 'vp3.jpg', 2, 1, 654, 63, 3, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (31, 'Hoa văn phòng 5', '', 380000, 350000, 'vp4.jpg', 2, 0, 5, 5, 3, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (32, 'Hoa văn phòng 6', '', 380000, 350000, 'vp5.jpg', 2, 0, 54, 54, 3, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
-INSERT INTO `products` VALUES (33, 'Hoa gấu bông 1', '', 280000, 250000, 'gb0.jpg', 2, 1, 5, 245, 6, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
-INSERT INTO `products` VALUES (34, 'Hoa gấu bông 2', '', 280000, 0, 'gb1.jpg', 2, 1, 65, 0, 6, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
+INSERT INTO `products` VALUES (33, 'Hoa gấu bông 1', '', 280000, 250000, 'gb0.jpg', 2, 1, 5, 246, 6, '2016-10-12 19:20:00', '2017-11-20 21:29:45');
+INSERT INTO `products` VALUES (34, 'Hoa gấu bông 2', '', 280000, 0, 'gb1.jpg', 2, 1, 65, 1, 6, '2016-10-12 19:20:00', '2017-11-20 21:29:21');
 INSERT INTO `products` VALUES (35, 'Hoa văn phòng 7', '', 320000, 300000, 'vp8.jpg', 4, 1, 5, 2, 3, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (36, 'Hoa văn phòng 8', '', 320000, 300000, 'vp9.jpg', 4, 0, 6, 35, 3, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (37, 'Hoa văn phòng 9', '', 320000, 300000, 'vp10.jpg', 4, 1, 6, 0, 3, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
@@ -219,7 +219,7 @@ INSERT INTO `products` VALUES (41, 'Hoa văn phòng 13', '', 350000, 330000, 'vp
 INSERT INTO `products` VALUES (42, 'Hoa cưới 10', 'Những bông hoa tuyệt đẹp cho ngày đặc biệt nhất của cuộc đời con gái', 150000, 130000, 'hc9.jpg', 2, 0, 65, 3, 4, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (43, 'Hoa cưới 11', 'Rực rỡ nhất, xinh đẹp nhất trong ngày cưới', 120000, 0, 'hc10.jpg', 2, 1, 36, 653, 4, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (44, 'Hoa cưới 12', 'Gà hun khói,nấm, sốt cà chua, pho mai mozzarella.', 120000, 0, 'hc11.jpg', 2, 0, 53, 0, 4, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
-INSERT INTO `products` VALUES (45, 'Hoa tình yêu 1', 'Xúc xích klobasa, Nấm, Ngô, sốtcà chua, pho mai Mozzarella.', 120000, 0, '0.jpg', 2, 0, 6, 9, 5, '2016-10-12 19:20:00', '2017-11-20 02:06:36');
+INSERT INTO `products` VALUES (45, 'Hoa tình yêu 1', 'Xúc xích klobasa, Nấm, Ngô, sốtcà chua, pho mai Mozzarella.', 120000, 0, '0.jpg', 2, 0, 6, 10, 5, '2016-10-12 19:20:00', '2017-11-20 21:29:51');
 INSERT INTO `products` VALUES (46, 'Hoa hồng 2', 'Tôm , mực, xào cay,ớt xanh, hành tây, cà chua, phomai mozzarella.', 120000, 0, '1.jpg', 2, 0, 654, 3567, 5, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (47, 'Hoa hồng 1', 'Ham, bacon, chorizo, pho mai mozzarella.', 140000, 0, '2.jpg', 2, 0, 546, 0, 5, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (48, 'Hoa tình yêu 4', 'Cá Ngừ, sốt Mayonnaise,sốt càchua, hành tây, pho mai Mozzarella', 140000, 0, '3.jpg', 2, 0, 6, 34, 5, '2016-10-12 19:20:00', '2016-10-18 20:20:00');

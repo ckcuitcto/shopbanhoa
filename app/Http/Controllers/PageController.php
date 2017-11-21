@@ -18,9 +18,7 @@ class PageController extends Controller
     {
         $slide = Slide::all();
         $products = Product::where('new', 1)->get();
-        // $newproduct = NewProduct::all();
         $newProduct = Product::select('id','name','image')->orderBy('id','desc')->limit(16)->get()->toArray();
-            
         $featuredProducts = Product::where('view', '>', 0)->orderBy('view', 'desc')->limit(3)->get();
         return view('pages.homepage', compact('slide', 'products', 'featuredProducts','newProduct'));
     }
@@ -53,7 +51,6 @@ class PageController extends Controller
         $productBuy = Product::where('id', $request->id)->first();
         $qty = $request->qty;
         Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
-        return "success";
     }
 
     public function post_purchase(Request $request)
@@ -83,7 +80,6 @@ class PageController extends Controller
     public function deleteProduct(Request $request)
     {
         Cart::remove($request->id);
-            echo "success";
     }
 
     public function updateCart(Request $request)
@@ -92,14 +88,13 @@ class PageController extends Controller
             $id = $request->get('id');
             $qty = $request->get('qty');
             Cart::update($id, $qty);
-            echo "success";
         }
     }
 
     public function getProducts(){
-        $productType = ProductType::paginate(6);
+        $products = Product::paginate(12);
         // $productsByIdType = Product::where('id_type', $idType)->paginate(6);
-        return view('pages.products', compact('productType'));
+        return view('pages.products', compact('products'));
     }
 
     public function register(){

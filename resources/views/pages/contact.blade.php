@@ -11,10 +11,10 @@
 
             <div class="absoluteBlk">
                 <div class="well wellsmall">
-                    <h4>Contact Details</h4>
+                    <h4>Liên hệ với chúng tôi</h4>
                     <h5>
-                        2601 Mission St.<br/>
-                        San Francisco, CA 94110<br/><br/>
+                        194 Cao Lỗ<br/>
+                        Phường 4, Quận 8<br/><br/>
 
                         info@mysite.com<br/>
                         ﻿Tel 123-456-6780<br/>

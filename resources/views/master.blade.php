@@ -46,7 +46,7 @@ Lower Header Section
     Body Section
     -->
     <div class="row">
-        @if(!Request::is('gio-hang'))
+        @if(!Request::is('gio-hang') OR !Request::is('san-pham'))
             <div class="span3">@include('leftmenu')</div>
         @endif
         <div class="span9">@yield('content')</div>
