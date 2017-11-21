@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProductImages;
 use Cart,DB,Mail;
 use App\Product;
 use App\ProductType;
@@ -34,10 +35,11 @@ class PageController extends Controller
         $product = Product::find($request->idProduct);
         $product->view +=1;
         $product->save();
+
         $relatedProducts = Product::where('id_type', $product->id_type)->limit(3)->get();
+        $productImages  = ProductImages::where('id_product',$request->idProduct)->get();
 
-
-        return view('pages.productDetails', compact('product', 'relatedProducts', 'quantity'));
+        return view('pages.productDetails', compact('product', 'relatedProducts','productImages'));
     }
 
     public function getCart()
@@ -51,35 +53,19 @@ class PageController extends Controller
         $productBuy = Product::where('id', $request->id)->first();
         $qty = $request->qty;
         Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
+        return "success";
     }
 
     public function post_purchase(Request $request)
     {
         $productBuy = Product::where('id', $request->id)->first();
 
-//        foreach ($cart as $item)
-//        {
-//
-//        }
-//
-//        if($request->has('id')) {
-//            if (Cart::where($request->id)) {
-//                Cart::update($request->id, $qty);
-//            } else {
-//                Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
-//            }
-//        }
-//        var_dump($qty);
-//        var_dump($request->id);
-        //dd($productBuy);
-
-//        var_dump(Cart::content());
-//        return redirect()->back();
     }
 
     public function deleteProduct(Request $request)
     {
         Cart::remove($request->id);
+        return "success";
     }
 
     public function updateCart(Request $request)
@@ -88,6 +74,7 @@ class PageController extends Controller
             $id = $request->get('id');
             $qty = $request->get('qty');
             Cart::update($id, $qty);
+            return "success";
         }
     }
 

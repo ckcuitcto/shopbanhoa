@@ -17,12 +17,11 @@
                                 <a href="#"><img src="template/image/product/{{$product->image}}" alt=""
                                                   style="width:100%"></a>
                             </div>
-                            <div class="item">
-                                <a href="#"> <img src="template/image/product/cc6.jpg"></a>
-                            </div>
-                            <div class="item">
-                                <a href="#"> <img src="template/image/product/cc7.jpg"></a>
-                            </div>
+                            @foreach($productImages as $image)
+                                <div class="item">
+                                    <img src="template/image/productImages/{{$image->image}}">
+                                </div>
+                            @endforeach
                         </div>
                         <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
                         <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
@@ -36,7 +35,7 @@
                         <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
                         <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="control-group">
-                            <label class="control-label"><span>{{$product->unit_price}}</span></label>
+                            <label class="control-label"><span>{{number_format($product->unit_price,0,",",".")}} đ</span></label>
                             <div class="controls">
                                 <input  {{ $product->quantity > 0 ? "" : "disabled='disabled'" }} type="number" min="1" max="{{$product->quantity}}" name="qty" class="span6" value="1">
                             </div>

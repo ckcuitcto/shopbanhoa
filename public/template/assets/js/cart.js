@@ -12,7 +12,9 @@ $(document).ready(function () {
             cache:false,
             data:{"_token":token,"id":idProduct,"qty":quantity},
             success:function (data) {
+                if(data == "success") {
                     window.location.reload();
+                }
             }
         });
     });
@@ -25,7 +27,9 @@ $(document).ready(function () {
             cache:false,
             data:{"id":idProduct,"qty":1},
             success:function (data) {
+                if(data == "success") {
                     window.location.reload();
+                }
             }
         });
     });
@@ -38,7 +42,9 @@ $(document).ready(function () {
             cache:false,
             data:{"id":idProduct},
             success:function (data) {
-                window.location.reload();
+                if(data== "success") {
+                    window.location.reload();
+                }
             }
         });
     });

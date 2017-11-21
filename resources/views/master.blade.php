@@ -46,10 +46,10 @@ Lower Header Section
     Body Section
     -->
     <div class="row">
-        @if(!Request::is('gio-hang') OR !Request::is('san-pham'))
+        @if(!(Request::is('gio-hang') OR Request::is('san-pham')))
             <div class="span3">@include('leftmenu')</div>
         @endif
-        <div class="span9">@yield('content')</div>
+        <div class="{{ (!(Request::is('gio-hang') OR Request::is('san-pham'))) ? "span9" : "span12" }}">@yield('content')</div>
 
     </div>
     <!--
