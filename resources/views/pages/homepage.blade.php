@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <div class="span9">
+    <div class="span9" style="margin: 0">
         <div class="well np">
             <div id="myCarousel" class="carousel slide homCar">
                 <div class="carousel-inner">
