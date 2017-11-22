@@ -8,7 +8,7 @@ class Bill extends Model
 {
     protected $table = "bills";
 
-    protected $fillable = ['date_order','total','payment','note','id_user'];
+    protected $fillable = ['date_order','total','payment','note','id_user','recipient','address','phone_number','confirm'];
 
     public function bill_detail (){
         return $this->hasMany('App\BillDetail','id_bill','id');
