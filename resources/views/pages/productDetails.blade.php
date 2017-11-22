@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="span9">
+    <div class="span9" style="margin: 0">
         <ul class="breadcrumb">
             <li><a href="index.html">Home</a> <span class="divider">/</span></li>
             <li><a href="products.html">Items</a> <span class="divider">/</span></li>

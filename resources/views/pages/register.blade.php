@@ -98,18 +98,6 @@
                     <input type="password" name="re_Password" id="re_Password" placeholder="RePassword" required>
                 </div>
             </div>
-         <!--    <div class="control-group">
-                <label class="control-label" for="Phone">Phone <sup>*</sup></label>
-                <div class="controls">
-                    <input type="text" name="Phone" placeholder="Phone" required>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="Address">Address <sup>*</sup></label>
-                <div class="controls">
-                    <input type="text" name="Address" placeholder="Address" required>
-                </div>
-            </div> -->
             <div class="control-group">
                 <div class="controls">
                     <input type="submit" name="submitAccount" value="Đăng lý" class="exclusive shopBtn">

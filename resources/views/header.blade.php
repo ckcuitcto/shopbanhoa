@@ -17,8 +17,8 @@
             </div>
         </div>
         <div class="span3 alignR">
-            <p><br> <strong> Hỗ trợ (24/7) : 01692039011 </strong><br><br></p>
-            <span class="btn btn-mini">[ 2 ] <span class="icon-shopping-cart"></span></span>
+            <p><br> <strong> Hỗ trợ (24/7) : 123-456-789 </strong><br><br></p>
+            <span class="btn btn-mini">[ {{Cart::count()}} ] <span class="icon-shopping-cart"></span></span>
             <span class="btn btn-warning btn-mini">vnd</span>
         </div>
     </div>

@@ -16,7 +16,7 @@
 
                 </ul>
                 <form action="#" class="navbar-search pull-left">
-                    <input type="text" placeholder="Tìm kiếm..." class="search-query span2">
+                    <input type="text" id="productSearch" name="productSearch" autocomplete="off"  placeholder="Tìm kiếm..." class="search-query span2">
                 </form>
                 <ul class="nav pull-right">
                     <li class="dropdown">

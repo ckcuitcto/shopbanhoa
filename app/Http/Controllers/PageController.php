@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
+use App\BillDetail;
 use App\ProductImages;
+use Carbon\Carbon;
 use Cart,DB,Mail;
 use App\Product;
 use App\ProductType;
@@ -78,8 +81,54 @@ class PageController extends Controller
         }
     }
 
+    public function getOrderConfirmation()
+    {
+        $listCart = Cart::content();
+        return view('pages.orderConfirmation',compact('listCart'));
+    }
+
+    public function postOrderConfirmation(Request $request)
+    {
+        $this->validate($request, [
+            'txtRecipient' => 'required',
+            'txtAddress' => 'required',
+            'txtPhoneNumber' => 'required|numeric'
+//            'txtPhoneNumber' => 'required|numeric|between:1,15'
+        ], [
+            'txtRecipient.required' => 'Bạn chưa nhập tên người nhận',
+            'txtAddress.required' => 'Bạn nhập nơi nhận',
+            'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
+            'txtPhoneNumber.numeric' => 'Số điện thoại chỉ là số',
+//            'txtPhoneNumber.between' => 'Số điện thoại có tổi thiểu :min số và tối đa :max số '
+        ]);
+
+        $bill = new Bill();
+        $bill->date_order = Carbon::now();
+        $bill->note = $request->txtNote;
+        $bill->id_user = 1;
+        $bill->recipient = $request->txtRecipient;
+        $bill->address = $request->txtAddress;
+        $bill->phone_number = $request->txtPhoneNumber;
+        $bill->confirm = 0;
+        $bill->total = (double)Cart::total();
+        $bill->save();
+
+        $cartItemList = Cart::content();
+        foreach ($cartItemList as $item)
+        {
+            $billDetail = new BillDetail();
+            $billDetail->unit_price = $item->price;
+            $billDetail->quantity = $item->qty;
+            $billDetail->id_bill = $bill->id;
+            $billDetail->id_product = $item->id;
+            $billDetail->save();
+        }
+        Cart::destroy();
+        return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);
+    }
+
     public function getProducts(){
-        $products = Product::paginate(12);
+        $products = Product::paginate(16);
         // $productsByIdType = Product::where('id_type', $idType)->paginate(6);
         return view('pages.products', compact('products'));
     }
@@ -88,31 +137,6 @@ class PageController extends Controller
         return view('pages.register');
     }
 
-//    public function postregister(Request $req){
-//        $req->validate(
-//            [
-//                'email'=>'required|email|unique:users,email',
-//                'password'=>'required|min:6|max:20',
-//                'fullname'=>'required',
-//                're_password'=>'required|same:password'
-//            ],
-//            [
-//                'email.required'=>'Vui lòng nhập email',
-//                'email.email'=>'Sai định dạng email. Vui lòng nhập lại !',
-//                'email.unique'=>'Email đã được sử dụng',
-//                'password.required'=>'Vui lòng nhập password',
-//                're_password.same'=>'Password không khớp',
-//                'password.min'=>'Mật khẩu có ít nhất 6 kí tự'
-//            ]);
-//        $user = new User();
-//        $user->full_name = $req->Fname;
-//        $user->email = $req->email;
-//        $user->password = Hash::make($req->password);
-//        $user->phone = $req->phone;
-//        $user->address = $req->address;
-//        $user->save();
-//        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
-//    }
 
     public function login(){
         return view('pages.login');
@@ -159,16 +183,6 @@ class PageController extends Controller
         return view('pages.aboutUs');
     }
 
-
-
-    //mail
-//     public function get_guiMail(){
-// return
-//     }
-
-//     public function post_guiMail(){
-
-//     }
 
     public function postRegister(Request $req){
         $this->validate($req,
