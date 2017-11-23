@@ -1,12 +1,8 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-
-Route::get('index',[
+Route::get('/',[
    'as'=>'index',
     'uses'=>'PageController@getIndex'
 ]);
@@ -72,7 +68,7 @@ Route::get('dang-ki',[
 ]);
 
 Route::post('dang-ki',[
-    'as'=>'register',
+    'as'=>'postregister',
     'uses'=>'PageController@postregister'
 ]);
 
@@ -101,6 +97,7 @@ Route::post('dang-nhap',[
 //     'as'=>'postGuimail',
 //     'uses'=>'WelcomeController@post_guiMail'
 // ]);
+
 
 Route::group(['prefix' => 'admin'],function(){
     Route::group(['prefix' => 'productType'],function(){
@@ -141,3 +138,13 @@ Route::group(['prefix' => 'admin'],function(){
         Route::get('deleteImage/{id}',['as'=>'admin.news.getDeleteNewsImage', 'uses' => 'NewsController@getDeleteNewsImage']);
     });
 });
+
+Route::get('xac-nhan-don-hang',[
+    'as' => 'getOrderConfirmation',
+    'uses' => 'PageController@getOrderConfirmation'
+]);
+
+Route::post('xac-nhan-don-hang',[
+    'as' => 'postOrderConfirmation',
+    'uses' => 'PageController@postOrderConfirmation'
+]);

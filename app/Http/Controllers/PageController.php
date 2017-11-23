@@ -1,6 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Bill;
+use App\BillDetail;
+use App\ProductImages;
+use Carbon\Carbon;
 use Cart,DB,Mail;
 use App\Product;
 use App\ProductType;
@@ -17,9 +21,7 @@ class PageController extends Controller
     {
         $slide = Slide::all();
         $products = Product::where('new', 1)->get();
-        // $newproduct = NewProduct::all();
         $newProduct = Product::select('id','name','image')->orderBy('id','desc')->limit(16)->get()->toArray();
-            
         $featuredProducts = Product::where('view', '>', 0)->orderBy('view', 'desc')->limit(3)->get();
         return view('pages.homepage', compact('slide', 'products', 'featuredProducts','newProduct'));
     }
@@ -35,10 +37,11 @@ class PageController extends Controller
         $product = Product::find($request->idProduct);
         $product->view +=1;
         $product->save();
+
         $relatedProducts = Product::where('id_type', $product->id_type)->limit(3)->get();
+        $productImages  = ProductImages::where('id_product',$request->idProduct)->get();
 
-
-        return view('pages.productDetails', compact('product', 'relatedProducts', 'quantity'));
+        return view('pages.productDetails', compact('product', 'relatedProducts','productImages'));
     }
 
     public function getCart()
@@ -59,30 +62,12 @@ class PageController extends Controller
     {
         $productBuy = Product::where('id', $request->id)->first();
 
-//        foreach ($cart as $item)
-//        {
-//
-//        }
-//
-//        if($request->has('id')) {
-//            if (Cart::where($request->id)) {
-//                Cart::update($request->id, $qty);
-//            } else {
-//                Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
-//            }
-//        }
-//        var_dump($qty);
-//        var_dump($request->id);
-        //dd($productBuy);
-
-//        var_dump(Cart::content());
-//        return redirect()->back();
     }
 
     public function deleteProduct(Request $request)
     {
         Cart::remove($request->id);
-            echo "success";
+        return "success";
     }
 
     public function updateCart(Request $request)
@@ -91,20 +76,74 @@ class PageController extends Controller
             $id = $request->get('id');
             $qty = $request->get('qty');
             Cart::update($id, $qty);
-            echo "success";
+            return "success";
         }
     }
 
+    public function getOrderConfirmation()
+    {
+        $listCart = Cart::content();
+        return view('pages.orderConfirmation',compact('listCart'));
+    }
+
+    public function postOrderConfirmation(Request $request)
+    {
+        $this->validate($request, [
+            'txtRecipient' => 'required',
+            'txtAddress' => 'required',
+            'txtPhoneNumber' => 'required|numeric'
+//            'txtPhoneNumber' => 'required|numeric|between:1,15'
+        ], [
+            'txtRecipient.required' => 'Bạn chưa nhập tên người nhận',
+            'txtAddress.required' => 'Bạn nhập nơi nhận',
+            'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
+            'txtPhoneNumber.numeric' => 'Số điện thoại chỉ là số',
+//            'txtPhoneNumber.between' => 'Số điện thoại có tổi thiểu :min số và tối đa :max số '
+        ]);
+
+        $bill = new Bill();
+        $bill->date_order = Carbon::now();
+        $bill->note = $request->txtNote;
+        $bill->id_user = 1;
+        $bill->recipient = $request->txtRecipient;
+        $bill->address = $request->txtAddress;
+        $bill->phone_number = $request->txtPhoneNumber;
+        $bill->confirm = 0;
+        $bill->total = (double)Cart::total();
+        $bill->save();
+
+        $cartItemList = Cart::content();
+        foreach ($cartItemList as $item)
+        {
+            $billDetail = new BillDetail();
+            $billDetail->unit_price = $item->price;
+            $billDetail->quantity = $item->qty;
+            $billDetail->id_bill = $bill->id;
+            $billDetail->id_product = $item->id;
+            $billDetail->save();
+        }
+        Cart::destroy();
+        return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);
+    }
+
     public function getProducts(){
+<<<<<<< HEAD
         $productType = ProductType::paginate(8);
+=======
+        $products = Product::paginate(16);
+>>>>>>> ab53859d4a2257f38f00a21224602e518f5a3e1e
         // $productsByIdType = Product::where('id_type', $idType)->paginate(6);
-        return view('pages.products', compact('productType'));
+        return view('pages.products', compact('products'));
     }
 
     public function register(){
         return view('pages.register');
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab53859d4a2257f38f00a21224602e518f5a3e1e
     public function login(){
         return view('pages.login');
     }
@@ -142,6 +181,10 @@ class PageController extends Controller
         return view('pages.aboutUs');
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab53859d4a2257f38f00a21224602e518f5a3e1e
     public function postRegister(Request $req){
         $this->validate($req,
             [
