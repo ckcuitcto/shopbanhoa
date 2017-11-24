@@ -130,6 +130,10 @@ Route::group(['prefix' => 'admin'],function(){
 
         Route::get('contactUs/{confirm}',['as' => 'admin.contact.getContactUs','uses' => 'ContactController@getContactUs']);
         Route::post('contactUs/{confirm}',['as' => 'admin.contact.postContactUs','uses' => 'ContactController@postContactUs']);
+
+        Route::get('detailContact/{id}',['as' => 'admin.contact.getDetailContact','uses' => 'ContactController@getDetailContact']);
+        Route::post('detailContact/{id}',['as' => 'admin.contact.postDetailContact','uses' => 'ContactController@postDetailContact']);
+
     });
 });
 
