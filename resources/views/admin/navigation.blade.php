@@ -8,8 +8,16 @@
             <li>
                 <a class="active-menu"  href="index.php"><i class="fa fa-dashboard fa-3x"></i>Trang quản lí</a>
             </li>
-            <li  >
-                <a  href="index.php?p=lienhe"><i class="fa fa-table fa-3x"></i>Liên hệ <span class="glyphicon glyphicon-envelope"></span></a>
+            <li>
+                <a  href="index.php?p=lienhe"><i class="fa fa-table fa-3x"></i>Liên hệ khách hàng <span class="glyphicon glyphicon-envelope"></span> </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{route('admin.contact.getContact')}}">Quản lí liên hệ</a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.productType.getAdd')}}">Thêm loại sản phẩm</a>
+                    </li>
+                </ul>
             </li>
             <li  >
                 <a  href="index.php?p=dathang"><i class="fa fa-table fa-3x"></i> Đơn hàng</a>

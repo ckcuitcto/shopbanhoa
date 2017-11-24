@@ -13,6 +13,15 @@
                         <div class="caption cntr">
                             <p>{{$product->name}}</p>
                         </div>
+                        <h4>
+                            <a class="defaultBtn" href="{{route('productDetail',$product->id)}}"
+                               title="Click to view"><span
+                                        class="icon-zoom-in"></span></a>
+                            <a class="shopBtn" idProduct="{{$product->id}}"
+                               href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
+                               title="add to cart"><span class="icon-plus"></span></a>
+                            <span class="pull-right">{{number_format($product->unit_price,0,",",".")}}đ</span>
+                        </h4>
                     </div>
                 </li>
             @endforeach
