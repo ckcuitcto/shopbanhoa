@@ -137,6 +137,11 @@ Route::group(['prefix' => 'admin'],function(){
 
         Route::get('deleteImage/{id}',['as'=>'admin.news.getDeleteNewsImage', 'uses' => 'NewsController@getDeleteNewsImage']);
     });
+
+    Route::group(['prefix' => 'contact'],function (){
+        Route::get('contact',['as' => 'admin.contact.getContact','uses' => 'ContactController@getContact']);
+        Route::post('contact',['as' => 'admin.contact.postContact','uses' => 'ContactController@postContact']);
+    });
 });
 
 Route::get('xac-nhan-don-hang',[
