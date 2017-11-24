@@ -3,7 +3,7 @@
     <div class="row">
         <div class="span3">
             <h1>
-                <a class="logo" href="index.html"><span>Twitter Bootstrap ecommerce template</span>
+                <a class="logo" href="{{route('index')}}"><span>Twitter Bootstrap ecommerce template</span>
                     <img src="template/assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
                 </a>
             </h1>

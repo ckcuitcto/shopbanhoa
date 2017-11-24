@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contacts;
+use App\ContactUs;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -13,68 +14,75 @@ class ContactController extends Controller
         return view('admin.contact.contact', compact('contact'));
     }
 
-    public function postContact(Request $request, $id)
+    public function postContact(Request $request)
     {
         $this->validate($request, [
-            'txtProductType' => 'required',
-            'txtProductName' => 'required',
-            'txtPrice' => 'required',
-            'txtUnit' => 'required',
+            'txtAddress' => 'required',
+            'txtEmail' => 'required|email',
+            'txtPhoneNumber' => 'required|numeric',
+            'txtWebsite' => 'required|url',
+            'txtMap' => 'required'
         ], [
-            'txtProductType.required' => 'Bạn chưa chọn loại sản phẩm',
-            'txtProductName.required' => 'Bạn nhập tên sản phẩm',
-            'txtPrice.required' => 'Bạn chưa nhập giá',
-            'txtUnit.required' => 'Bạn chưa chọn đơn vị tính',
+            'txtAddress.required' => 'Bạn chưa nhập địa chỉ',
+            'txtEmail.required' => 'Bạn chưa nhập email',
+            'txtEmail.email' => 'Bạn phải nhập đúng định dạng email',
+            'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
+            'txtPhoneNumber.numeric' => 'Số điện thoại chỉ được phép nhập số',
+            'txtWebsite.required' => 'Bạn chưa nhập website',
+            'txtWebsite.url' => 'Bạn phải nhập vào url của website',
+            'txtMap.required' => 'Bạn chưa nhập bản đồ',
         ]);
 
-        $product = Product::find($id);
-        $product->name = $request->txtProductName;
-        $product->id_type = $request->txtProductType;
-        $product->unit_price = $request->txtPrice;
-        $product->promotion_price = $request->txtSale;
-        $product->quantity = $request->txtQuantity;
-        $product->unit = $request->txtUnit;
-        $product->new = $request->rdoNew;
-        $product->description = $request->txtDescription;
+        $contact = Contacts::first();
+        $contact->address = $request->txtAddress;
+        $contact->email = $request->txtEmail;
+        $contact->phone_number = $request->txtPhoneNumber;
+        $contact->website = $request->txtWebsite;
+        $contact->map = $request->txtMap;
 
-        if ($request->hasFile('fImages')) {
-            $file = $request->file('fImages');
+        $contact->save();
 
-            $fileExtensions = $file->getClientOriginalExtension();
-            if (!$this->checkExtension($fileExtensions)) {
-                return redirect()->reload('admin.product.getEdit')->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
-            }
+        return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
+    }
 
-            $fileName = str_random(8) . "_" . $file->getClientOriginalName();
-            while (file_exists("template/image/product/" . $fileName)) {
-                $fileName = str_random(8) . "_" . $file->getClientOriginalName();
-            }
-            $file->move('template/image/product/', $fileName);
-            unlink("template/image/product/" . $product->image);
-            $product->image = $fileName;
+    public function getContactUs($confirm)
+    {
+        if ($confirm == 2) {
+            $contacts = ContactUs::orderBy('id')->get();
+        } else {
+            $contacts = ContactUs::where('confirm', $confirm)->orderBy('id')->get();
         }
-        $product->save();
+        return view('admin.contact.contactUs', compact('contacts'));
+    }
 
-        $productId = $product->id;
-        if ($request->hasFile('mutilFile')) {
-            $arrFile = $request->file('mutilFile');
-            foreach ($arrFile as $file) {
-                if (!$this->checkExtension($file->getClientOriginalExtension())) {
-                    return redirect()->route('admin.product.getAdd')->with('flash_message_fail', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
-                }
-            }
-            foreach ($arrFile as $file) {
-                $fileName = str_random(8) . "_" . $file->getClientOriginalName();
-                while (file_exists("template/image/productImages/" . $fileName)) {
-                    $fileName = str_random(8) . "_" . $file->getClientOriginalName();
-                }
-                $file->move('template/image/productImages/', $fileName);
-                $productImage = new ProductImages();
-                $productImage->image = $fileName;
-                $productImage->id_product = $productId;
-                $productImage->save();
-            }
-        }
-        return redirect()->route('admin.product.list')->with(['flash_message' => 'Sửa thành công']);
+    public function postContactUs(Request $request)
+    {
+        $this->validate($request, [
+            'txtAddress' => 'required',
+            'txtEmail' => 'required|email',
+            'txtPhoneNumber' => 'required|numeric',
+            'txtWebsite' => 'required|url',
+            'txtMap' => 'required'
+        ], [
+            'txtAddress.required' => 'Bạn chưa nhập địa chỉ',
+            'txtEmail.required' => 'Bạn chưa nhập email',
+            'txtEmail.email' => 'Bạn phải nhập đúng định dạng email',
+            'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
+            'txtPhoneNumber.numeric' => 'Số điện thoại chỉ được phép nhập số',
+            'txtWebsite.required' => 'Bạn chưa nhập website',
+            'txtWebsite.url' => 'Bạn phải nhập vào url của website',
+            'txtMap.required' => 'Bạn chưa nhập bản đồ',
+        ]);
+
+        $contact = Contacts::first();
+        $contact->address = $request->txtAddress;
+        $contact->email = $request->txtEmail;
+        $contact->phone_number = $request->txtPhoneNumber;
+        $contact->website = $request->txtWebsite;
+        $contact->map = $request->txtMap;
+
+        $contact->save();
+
+        return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
     }
 }

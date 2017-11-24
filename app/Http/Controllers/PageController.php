@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bill;
 use App\BillDetail;
+use App\Contacts;
 use App\ProductImages;
 use Carbon\Carbon;
 use Cart,DB,Mail;
@@ -163,7 +164,8 @@ class PageController extends Controller
     }
 
     public function getContact() {
-        return view('pages.contact');
+        $contact = Contacts::first();
+        return view('pages.contact',compact('contact'));
     }
 
     // public function postContact(Request $request) {
