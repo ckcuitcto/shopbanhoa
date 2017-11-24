@@ -93,7 +93,7 @@
 <!-- CUSTOM SCRIPTS -->
 <script src="{{ url('admin/assets/js/custom.js')}}"></script>
 
-<script src="{{ url('admin/assets/js/jquery-1.10.2.js')}}"></script>
+{{--<script src="{{ url('admin/assets/js/jquery-1.10.2.js')}}"></script>--}}
 
 <!-- DATA TABLE SCRIPTS -->
 <script src="{{ url('admin/assets/js/dataTables/jquery.dataTables.js')}}"></script>
@@ -101,8 +101,8 @@
 <script src="{{ url('admin/assets/js/dataTables/dataTables.bootstrap.js')}}"></script>
 
 <!-- MORRIS CHART SCRIPTS -->
-<script src="{{ url('admin/assets/js/morris/raphael-2.1.0.min.js')}}"></script>
-<script src="{{ url('admin/assets/js/morris/morris.js')}}"></script>
+{{--<script src="{{ url('admin/assets/js/morris/raphael-2.1.0.min.js')}}"></script>--}}
+{{--<script src="{{ url('admin/assets/js/morris/morris.js')}}"></script>--}}
 <script src="{{ url('admin/assets/js/myscrip.js')}}"></script>
 
 
