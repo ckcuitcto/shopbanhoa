@@ -20,6 +20,7 @@
     <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
 
     <!-- Favicons -->
+    <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
     <script src="template/assets/js/jquery-3.2.1.min.js"></script>
     <script src="template/assets/js/jquery-ui.js"></script>
     <script language="JavaScript" type="text/javascript" src="template/assets/js/jquery.validate.js"></script>
@@ -28,26 +29,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 </head>
 <body>
-<!--
-	Upper Header Section
--->
+<!--  Upper Header Section  -->
 @include('menuTop')
 
-<!--
-Lower Header Section
--->
+<!--  Lower Header Section  -->
 <div class="container">
 
 @include('header')
 
-<!--
-    Navigation Bar Section
-    -->
+<!--  Navigation Bar Section  -->
 @include('menu')
-<!--
-    Body Section
-    -->
+<!--  Body Section   -->
     <div class="row">
+
         @if(!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang')))
             <div class="span3">
                 @include('leftmenu')
@@ -58,9 +52,7 @@ Lower Header Section
         </div>
 
     </div>
-    <!--
-    Clients
-    -->
+<!--  Clients   -->
     <section class="our_client">
         <hr class="soften"/>
         <h4 class="title cntr"><span class="text">Manufactures</span></h4>
@@ -87,11 +79,10 @@ Lower Header Section
         </div>
     </section>
 
-    <!--
-    Footer
-    -->
+<!--    Footer    -->
     @include('footer')
-</div><!-- /container -->
+</div>
+<!-- /container -->
 @include('copyright')
 <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
 <!-- Placed at the end of the document so the pages load faster -->

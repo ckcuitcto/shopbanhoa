@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: CKC
- * Date: 05-Nov-17
- * Time: 12:42 AM
- */
-?>
-
 @extends('master')
 @section('content')
 <div class="span9">

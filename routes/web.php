@@ -7,6 +7,11 @@ Route::get('/',[
     'uses'=>'PageController@getIndex'
 ]);
 
+// Route::get('autoComplete',[
+//     'as'=>'autoComplete',
+//     'uses'=>'PageController@autoComplete'
+// ]);
+
 Route::get('loai-san-pham/{idType}',[
     'as'=>'productType',
     'uses'=>'PageController@getProductType'
