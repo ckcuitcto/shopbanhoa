@@ -59,3 +59,13 @@
         </div>
     </div>
 </div>
+<!-- <script type="text/javascript">
+    $('#productSearch').autoComplete({
+        source: '{{route('autoComplete')}}',
+        minlenght:1,
+        autoFocus:true,
+        select:function(e,ui){
+            alert(ui);
+        }
+    })
+</script> -->

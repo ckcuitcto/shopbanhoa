@@ -11,6 +11,7 @@ use App\ProductType;
 use App\Slide;
 use App\News;
 use App\NewProduct;
+use App\ContactUs;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -127,11 +128,9 @@ class PageController extends Controller
     }
 
     public function getProducts(){
-<<<<<<< HEAD
-        $productType = ProductType::paginate(8);
-=======
+
         $products = Product::paginate(16);
->>>>>>> ab53859d4a2257f38f00a21224602e518f5a3e1e
+
         // $productsByIdType = Product::where('id_type', $idType)->paginate(6);
         return view('pages.products', compact('products'));
     }
@@ -140,10 +139,6 @@ class PageController extends Controller
         return view('pages.register');
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ab53859d4a2257f38f00a21224602e518f5a3e1e
     public function login(){
         return view('pages.login');
     }
@@ -172,6 +167,34 @@ class PageController extends Controller
         return view('pages.contact');
     }
 
+    public function postContact(Request $request) {
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required|email',
+            'title'=>'required',
+            'description'=>'required',
+            'phone'=>'required|numeric'
+        ],
+        [
+            'name.required'=>'Bạn chưa nhập name',
+            'email.required'=>'Bạn chưa nhập email',
+            'email.email' => "Email không hợp lệ",
+            'title.required'=>'Bạn chưa nhập title',
+            'description.required'=>'Bạn chưa nhập nội dung',
+            'phone.required'=>'Bạn chưa nhập số điện thoại',
+            'phone.numeric'=>'Số điện thoại không hợp lệ',
+        ]);
+
+        $contactUs = new ContactUs();
+        $contactUs->name = $request->name;
+        $contactUs->email = $request->email;
+        $contactUs->title = $request->title;
+        $contactUs->description = $request->description;
+        $contactUs->phone_number = $request->phone;
+        $contactUs->save();
+        return redirect()->back()->with('flash_message','Gửi liên hệ thành công! Chúng tôi sẽ sớm liên hệ với bạn! ');
+    }
+
     public function getNews(){
         $news = News::all();
         return view('pages.news',compact('news'));
@@ -181,10 +204,6 @@ class PageController extends Controller
         return view('pages.aboutUs');
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ab53859d4a2257f38f00a21224602e518f5a3e1e
     public function postRegister(Request $req){
         $this->validate($req,
             [
@@ -211,4 +230,17 @@ class PageController extends Controller
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
 
+
+
+    //search auto complete
+    // public function autoComplete(Request $request)
+    // {
+    //     $term = $request->term;//jquery
+    //     $data = Product::where('name','LIKE','%'.$term.'%')->take(10)->get();
+    //     $results = array();
+    //     foreach($data as $key => $value){
+    //         $results[]=['id'=>$value->id,'value'=>$value->name];
+    //     }
+    //     return response()->json($results);
+    // }
 }

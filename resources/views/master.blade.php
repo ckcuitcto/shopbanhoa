@@ -20,6 +20,7 @@
     <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
 
     <!-- Favicons -->
+    <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
     <script src="template/assets/js/jquery-3.2.1.min.js"></script>
     <script src="template/assets/js/jquery-ui.js"></script>
     <script language="JavaScript" type="text/javascript" src="template/assets/js/jquery.validate.js"></script>
@@ -40,15 +41,11 @@
 @include('menu')
 <!--  Body Section   -->
     <div class="row">
-<<<<<<< HEAD
-        @if(!Request::is('gio-hang') & !Request::is('san-pham'))
-            <div class="span3">@include('leftmenu')</div>
-=======
+
         @if(!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang')))
             <div class="span3">
                 @include('leftmenu')
             </div>
->>>>>>> ab53859d4a2257f38f00a21224602e518f5a3e1e
         @endif
         <div class="{{ (!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang'))) ? "span9" : "span12" }}">
             @yield('content')
