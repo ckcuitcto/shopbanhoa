@@ -15,7 +15,8 @@
                     <li class=""><a href="{{route('news')}}">Tin tức</a></li>
 
                 </ul>
-                <form action="#" class="navbar-search pull-left">
+                <form action="{{route('search')}}" class="navbar-search pull-left" method="get">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}";>
                     <input type="text" id="productSearch" name="productSearch" autocomplete="off"  placeholder="Tìm kiếm..." class="search-query span2">
                 </form>
                 <ul class="nav pull-right">
@@ -59,13 +60,3 @@
         </div>
     </div>
 </div>
-<!-- <script type="text/javascript">
-    $('#productSearch').autoComplete({
-        source: '{{route('autoComplete')}}',
-        minlenght:1,
-        autoFocus:true,
-        select:function(e,ui){
-            alert(ui);
-        }
-    })
-</script> -->

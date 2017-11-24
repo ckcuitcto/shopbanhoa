@@ -1,16 +1,8 @@
 <?php
-
-
-
 Route::get('/',[
    'as'=>'index',
     'uses'=>'PageController@getIndex'
 ]);
-
-// Route::get('autoComplete',[
-//     'as'=>'autoComplete',
-//     'uses'=>'PageController@autoComplete'
-// ]);
 
 Route::get('loai-san-pham/{idType}',[
     'as'=>'productType',
@@ -92,17 +84,6 @@ Route::post('dang-nhap',[
     'uses'=>'PageController@postLogin'
 ]);
 
-// mail
-// Route::get('lien-he',[
-//     'as'=>'getGuimail',
-//     'uses'=>'WelcomeController@get_guiMail'
-// ]);
-
-// Route::post('lien-he',[
-//     'as'=>'postGuimail',
-//     'uses'=>'WelcomeController@post_guiMail'
-// ]);
-
 
 Route::group(['prefix' => 'admin'],function(){
     Route::group(['prefix' => 'productType'],function(){
@@ -160,4 +141,9 @@ Route::get('xac-nhan-don-hang',[
 Route::post('xac-nhan-don-hang',[
     'as' => 'postOrderConfirmation',
     'uses' => 'PageController@postOrderConfirmation'
+]);
+
+Route::get('tim-kiem',[
+    'as'=>'search',
+    'uses'=>'PageController@search'
 ]);

@@ -232,17 +232,9 @@ class PageController extends Controller
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
 
-
-
-    //search auto complete
-    // public function autoComplete(Request $request)
-    // {
-    //     $term = $request->term;//jquery
-    //     $data = Product::where('name','LIKE','%'.$term.'%')->take(10)->get();
-    //     $results = array();
-    //     foreach($data as $key => $value){
-    //         $results[]=['id'=>$value->id,'value'=>$value->name];
-    //     }
-    //     return response()->json($results);
-    // }
+    public function search(Request $request){
+        $search = $request->productSearch;
+        $resultSearch = Product::where('name','like',"%$search%")->paginate(8);
+        return view('pages.search',compact('search','resultSearch'));
+    }
 }

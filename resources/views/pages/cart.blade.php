@@ -10,19 +10,19 @@
             @if (Cart::count() > 0)
                 <div class="well well-small">
                     <h1>Check Out
-                        <small class="pull-right"> {{Cart::count()}} Items are in the cart</small>
+                        <small class="pull-right"> {{Cart::count()}} sản phẩm trong giỏ hàng</small>
                     </h1>
                     <hr class="soften"/>
 
                     <table class="table table-bordered table-condensed">
                         <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>Description</th>
+                            <th>Hình ảnh sản phẩm</th>
+                            <th>Mô tả sản phẩm</th>
                             <th>Avail.</th>
-                            <th>Unit price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -75,7 +75,7 @@
             @else
                 <div class="well well-small">
                     <h1>Check Out
-                        <small class="pull-right"> {{Cart::count()}} Items are in the cart</small>
+                        <small class="pull-right"> {{Cart::count()}} sản phẩm trong giỏ hàng</small>
                     </h1>
                     <hr class="soften"/>
                     <div class="alert alert-danger">
