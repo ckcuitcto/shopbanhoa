@@ -17,12 +17,12 @@ class CreateBillsTable extends Migration
             $table->increments('id')->unsigned();
             $table->date('date_order');
             $table->double('total');
-            $table->string('payment',200);
-            $table->text('note');
+            $table->string('payment',200)->default('0');
+            $table->text('note')->nullable();
             $table->string('recipient',200);
             $table->text('address');
             $table->string('phone_number',20);
-            $table->tinyInteger('confirm');
+            $table->tinyInteger('confirm')->default('0');
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

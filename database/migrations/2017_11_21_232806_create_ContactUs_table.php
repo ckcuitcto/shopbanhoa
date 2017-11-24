@@ -20,7 +20,7 @@ class CreateContactUsTable extends Migration
             $table->string('email',20);
             $table->string('title',200);
             $table->text('description');
-            $table->tinyInteger('confirm');
+            $table->tinyInteger('confirm')->default('0');
             $table->timestamps();
         });
     }
