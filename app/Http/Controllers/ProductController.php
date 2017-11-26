@@ -189,4 +189,10 @@ class ProductController extends Controller
         }
         return false;
     }
+
+    public static function getProductById($id)
+    {
+        $product = Product::find($id);
+        return $product;
+    }
 }

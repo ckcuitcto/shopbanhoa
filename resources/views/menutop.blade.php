@@ -13,7 +13,7 @@
                 <a href="#"><span class="icon-user"></span>Tài khoản</a>
                 <a href="{{route('register')}}"><span class="icon-edit"></span> Đăng ký</a>
                 <a href="{{route('cart')}}"><span class="icon-shopping-cart"></span> {{Cart::count()}} Sản phẩm(s) - <span
-                            class="badge badge-warning"> {{Cart::total()}}</span></a>
+                            class="badge badge-warning"> {{Cart::total(0)}}</span></a>
             </div>
         </div>
     </div>

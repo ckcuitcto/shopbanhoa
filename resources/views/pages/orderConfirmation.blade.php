@@ -8,7 +8,7 @@
 ?>
 @extends('master')
 @section('content')
-    @if (Cart::count()>0)
+    @if (Cart::count()>0 OR Session::has('flash_message'))
         <div class="row">
             <ul class="breadcrumb">
                 <li><a href="{{route('index')}}">Home</a> <span class="divider">/</span></li>
@@ -95,13 +95,11 @@
                     @endforeach
                     <tr>
                         <td colspan="4" style="text-align:right;">Tổng giá</td>
-                        <td style="text-align: center;">{{Cart::total()}} đ</td>
+                        <td style="text-align: center;">{{Cart::total(0)}} đ</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    @else
-        {{redirect()->back()}}
     @endif
 @endsection

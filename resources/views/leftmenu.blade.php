@@ -8,7 +8,7 @@
             @endforeach
             <li style="border:0"> &nbsp;</li>
             <li>
-                <a class="totalInCart" href="{{route('cart')}}"><strong>Total Amount <span class="badge badge-warning pull-right" style="line-height:18px;">{{Cart::total()}} </span></strong></a>
+                <a class="totalInCart" href="{{route('cart')}}"><strong>Total Amount <span class="badge badge-warning pull-right" style="line-height:18px;">{{Cart::total(0)}} </span></strong></a>
             </li>
         </ul>
     </div>

@@ -40,12 +40,11 @@
                                 <input  {{ $product->quantity > 0 ? "" : "disabled='disabled'" }} type="number" min="1" max="{{$product->quantity}}" name="qty" class="span6" value="1">
                             </div>
                         </div>
-
                         
                         <h4>{{$product->quantity}} items in stock</h4>
                         <p>{{$product->description}}
                         <p>
-                            <button type="submit" {{ $product->quantity > 0 ? "" : "disabled='disabled'" }}   class="shopBtn"><span class=" icon-shopping-cart"></span> Add to cart
+                            <button type="submit" {{ $product->quantity > 0 ? "" : "disabled='disabled'" }}   class="btn btn-success"> <span class=" icon-shopping-cart"></span> Add to cart
                             </button>
                     </form>
                 </div>

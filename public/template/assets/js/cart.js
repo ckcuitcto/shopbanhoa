@@ -21,11 +21,12 @@ $(document).ready(function () {
 
     $(".shopBtn").click(function () {
         var idProduct = $(this).attr("idProduct");
+        var qty = 1;
         $.ajax({
-            url:'mua-hang/'+idProduct+'/1',
+            url:'mua-hang/'+idProduct+'/'+qty,
             type:'GET',
             cache:false,
-            data:{"id":idProduct,"qty":1},
+            data:{"id":idProduct,"qty":qty},
             success:function (data) {
                 if(data == "success") {
                     window.location.reload();
@@ -52,7 +53,7 @@ $(document).ready(function () {
 
 
     var time = 10; // Thời gian đếm ngược
-    var page = "index.php?p=canhan"; // Trang bạn muốn chuyển đến
+    var page = "/"; // Trang bạn muốn chuyển đến
     function countDown() {
         time--;
         gett("timecount").innerHTML = time;
@@ -80,7 +81,7 @@ $(document).ready(function () {
 
 
 var time = 10; // Thời gian đếm ngược
-var page = "index.php?p=canhan"; // Trang bạn muốn chuyển đến
+var page = "/lien-he"; // Trang bạn muốn chuyển đến
 function countDown() {
     time--;
     gett("timecount").innerHTML = time;

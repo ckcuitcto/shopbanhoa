@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Bill;
 use App\BillDetail;
 use App\Contacts;
+use App\Mail\OrderShipped;
 use App\ProductImages;
 use Carbon\Carbon;
 use Cart,DB,Mail;
@@ -52,10 +53,10 @@ class PageController extends Controller
         return view('pages.cart', compact('content'));
     }
 
-    public function purchase(Request $request)
+    public function purchase($id,$qty)
     {
-        $productBuy = Product::where('id', $request->id)->first();
-        $qty = $request->qty;
+        $productBuy = Product::where('id', $id)->first();
+        $qty = $qty;
         Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
         return "success";
     }
@@ -64,6 +65,9 @@ class PageController extends Controller
     {
         $productBuy = Product::where('id', $request->id)->first();
 
+        $qty = $request->qty;
+        Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
+        return redirect()->back();
     }
 
     public function deleteProduct(Request $request)
@@ -115,6 +119,7 @@ class PageController extends Controller
         $bill->save();
 
         $cartItemList = Cart::content();
+        $arrBilDetail = array();
         foreach ($cartItemList as $item)
         {
             $billDetail = new BillDetail();
@@ -123,7 +128,9 @@ class PageController extends Controller
             $billDetail->id_bill = $bill->id;
             $billDetail->id_product = $item->id;
             $billDetail->save();
+            $arrBilDetail[] = $billDetail;
         }
+        Mail::to('huynhjduc248@gmail.com')->send(new OrderShipped($bill, $arrBilDetail));
         Cart::destroy();
         return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);
     }
@@ -156,12 +163,12 @@ class PageController extends Controller
             'password.max'=>'Password không được lớn hơn 32 ký tự'
         ]);
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
-            {
-                return redirect('index');
-            }
-            else{
-                return redirect('login')->with('thongbao','Đăng nhập không thành công');
-            }
+        {
+            return redirect('index');
+        }
+        else{
+            return redirect('login')->with('thongbao','Đăng nhập không thành công');
+        }
     }
 
     public function getContact() {
