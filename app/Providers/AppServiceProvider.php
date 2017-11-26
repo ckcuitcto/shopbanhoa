@@ -23,17 +23,17 @@ class AppServiceProvider extends ServiceProvider
             Schema::defaultStringLength(191);
         });
 
-        view()->composer('menu',function($view){
-            $productList = Product::all();
-            foreach ($productList as $product) {
+        view()->composer('menutop',function($view){
 
-                $jsonArray[] = array('id' => $product->id,'name' => $product->name);
-            }
-            $productListJson = json_encode($jsonArray);
+//            if(empty(Auth::user()->id))
+//            {
+//
+//                $view->with('productListJson',);
+//
+//                Schema::defaultStringLength(191);
+//            }
 
-            $view->with('productListJson',$productListJson);
 
-            Schema::defaultStringLength(191);
         });
     }
 

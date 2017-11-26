@@ -81,7 +81,7 @@ $(document).ready(function () {
 
 
 var time = 10; // Thời gian đếm ngược
-var page = "/lien-he"; // Trang bạn muốn chuyển đến
+var page = "/ca-nhan"; // Trang bạn muốn chuyển đến
 function countDown() {
     time--;
     gett("timecount").innerHTML = time;

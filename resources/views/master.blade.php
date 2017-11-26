@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>HoaSaiGon.tk</title>
+    <title> HoaSaiGon.tk </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <base href="{{asset('')}}">
+
     <!-- Bootstrap styles -->
     <link href="template/assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- Customize styles -->
@@ -24,9 +25,10 @@
     <script src="template/assets/js/jquery-3.2.1.min.js"></script>
     <script src="template/assets/js/jquery-ui.js"></script>
     <script language="JavaScript" type="text/javascript" src="template/assets/js/jquery.validate.js"></script>
-    <link rel="shortcut icon" href="template/assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="template/assets/ico/Rose-flower-icon.png">
     <script src="template/assets/js/cart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+
 </head>
 <body>
 <!--  Upper Header Section  -->
@@ -42,12 +44,12 @@
 <!--  Body Section   -->
     <div class="row">
 
-        @if(!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang')))
+        @if(!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang') OR Request::is('ca-nhan')))
             <div class="span3">
                 @include('leftmenu')
             </div>
         @endif
-        <div class="{{ (!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang'))) ? "span9" : "span12" }}">
+        <div class="{{ (!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang') OR Request::is('ca-nhan'))) ? "span9" : "span12" }}">
             @yield('content')
         </div>
 

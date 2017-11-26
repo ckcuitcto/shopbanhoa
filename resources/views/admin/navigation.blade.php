@@ -6,7 +6,7 @@
                 <div style="color: #FF3333"></div>
             </li>
             <li>
-                <a class="active-menu"  href="index.php"><i class="fa fa-dashboard fa-3x"></i>Trang quản lí</a>
+                <a class="active-menu"  href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard fa-3x"></i>Trang quản lí</a>
             </li>
             <li>
                 <a  href=""><i class="fa fa-table fa-3x"></i>Liên hệ khách hàng <span class="glyphicon glyphicon-envelope"></span> </a>

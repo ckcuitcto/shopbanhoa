@@ -135,6 +135,8 @@ Route::group(['prefix' => 'admin'],function(){
         Route::post('detailContact/{id}',['as' => 'admin.contact.postDetailContact','uses' => 'ContactController@postDetailContact']);
 
     });
+
+    Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
 });
 
 Route::get('xac-nhan-don-hang',[
@@ -151,3 +153,17 @@ Route::get('tim-kiem',[
     'as'=>'search',
     'uses'=>'PageController@search'
 ]);
+
+Route::get('ca-nhan',[
+    'as' => 'getPersonal',
+    'uses' => 'PageController@getPersonal'
+]);
+
+Route::post('ca-nhan',[
+    'as' => 'postPersonal',
+    'uses' => 'PageController@postPersonal'
+]);
+
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

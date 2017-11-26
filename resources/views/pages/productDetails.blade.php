@@ -4,8 +4,8 @@
 
     <div class="span9" style="margin: 0">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-            <li><a href="products.html">Items</a> <span class="divider">/</span></li>
+            <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
+            <li><a href="{{route('products')}}">Sản phẩm</a> <span class="divider">/</span></li>
             <li class="active">Preview</li>
         </ul>
         <div class="well well-small">
@@ -15,7 +15,7 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <a href="#"><img src="template/image/product/{{$product->image}}" alt=""
-                                                  style="width:100%"></a>
+                                                 style="width:100%"></a>
                             </div>
                             @foreach($productImages as $image)
                                 <div class="item">
@@ -28,23 +28,33 @@
                     </div>
                 </div>
                 <div class="span7">
-                    <h3> {{$product->name}}</h3>
+                    <ul class="inline">
+
+                        <li><h3> {{$product->name}}</h3></li>
+                        <li style="float: right;"><h5><span class="icon-eye-open help-inline"></span> {{$product->view}}
+                            </h5></li>
+                    </ul>
                     <hr class="soft"/>
-           
+
                     <form class="form-horizontal qtyFrm" action="{{route('post_purchase')}}" method="post">
                         <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
                         <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="control-group">
-                            <label class="control-label"><span>{{number_format($product->unit_price,0,",",".")}} đ</span></label>
+                            <label class="control-label"><span>{{number_format($product->unit_price,0,",",".")}}
+                                    đ</span></label>
                             <div class="controls">
-                                <input  {{ $product->quantity > 0 ? "" : "disabled='disabled'" }} type="number" min="1" max="{{$product->quantity}}" name="qty" class="span6" value="1">
+                                <input {{ $product->quantity > 0 ? "" : "disabled='disabled'" }} type="number" min="1"
+                                       max="{{$product->quantity}}" name="qty" class="span6" value="1">
                             </div>
                         </div>
-                        
-                        <h4>{{$product->quantity}} items in stock</h4>
+
+                        <h4>{{ ($product->quantity > 0) ? "Còn ".$product->quantity." sản phẩm trong kho" : "Sản phẩm này đã hết hàng"}} </h4>
+                        <h4>{{ ($productOrdered->total>0 ? $productOrdered->total." sản phẩm đã được đặt" : "")}} </h4>
                         <p>{{$product->description}}
                         <p>
-                            <button type="submit" {{ $product->quantity > 0 ? "" : "disabled='disabled'" }}   class="btn btn-success"> <span class=" icon-shopping-cart"></span> Add to cart
+                            <button type="submit"
+                                    {{ $product->quantity > 0 ? "" : "disabled='disabled'" }}   class="btn btn-success">
+                                <span class=" icon-shopping-cart"></span> Add to cart
                             </button>
                     </form>
                 </div>

@@ -6,9 +6,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">Quản trị</a>
+        <a class="navbar-brand" href="{{route('index')}}">Trang chủ</a>
     </div>
-    <form action="" method="post">
-        <div style="color: white;padding: 15px 30px 5px 50px;float: right;font-size: 16px;"> <!-- Last access : 30 May 2014 --> &nbsp;<button class="btn btn-danger square-btn-adjust" type="submit" name="dangxuatad"> Đăng xuất</button> </div>
-    </form>
+    <div style="color: white;padding: 15px 30px 5px 50px;float: right;font-size: 16px;">
+    <a href="{{ route('logout') }}"
+       onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+        <span class="icon-off"></span>
+        Logout
+    </a>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+          style="display: none;">
+        {{ csrf_field() }}
+    </form></div>
+
 </nav>
