@@ -23,7 +23,7 @@
                         <div class="control-group">
                             <label class="control-label" for="input01">Tên người nhận</label>
                             <div class="controls">
-                                <input type="text" name="txtRecipient" value="" class="input-xlarge"
+                                <input type="text" name="txtRecipient" value="{{$user->name}}" class="input-xlarge"
                                        id="input01">
 
                             </div>
@@ -31,7 +31,7 @@
                         <div class="control-group">
                             <label class="control-label" for="input11">Nơi nhận</label>
                             <div class="controls">
-                                <input type="text" name="txtAddress" value="" class="input-xlarge"
+                                <input type="text" name="txtAddress" value="{{$user->address}}" class="input-xlarge"
                                        id="input11">
 
                             </div>
@@ -39,7 +39,7 @@
                         <div class="control-group">
                             <label class="control-label" for="input11">SĐT</label>
                             <div class="controls">
-                                <input type="text" name="txtPhoneNumber" value="" class="input-xlarge"
+                                <input type="text" name="txtPhoneNumber" value="{{$user->phone_number}}" class="input-xlarge"
                                        id="input11">
                             </div>
                         </div>

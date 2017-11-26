@@ -17,9 +17,11 @@
                             <a class="defaultBtn" href="{{route('productDetail',$product->id)}}"
                                title="Click to view"><span
                                         class="icon-zoom-in"></span></a>
+                            @if($product->quantity > 0 )
                             <a class="shopBtn" idProduct="{{$product->id}}"
                                href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
                                title="add to cart"><span class="icon-plus"></span></a>
+                            @endif
                             <span class="pull-right">{{number_format($product->unit_price,0,",",".")}}đ</span>
                         </h4>
                     </div>
