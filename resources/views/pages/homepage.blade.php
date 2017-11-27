@@ -63,7 +63,6 @@
                                 <div class="caption">
                                     <h5> {{$product->name}}</h5>
                                     <h4>
-
                                         <a class="defaultBtn" href="{{route('productDetail',$product->id)}}"
                                            title="Click to view"><span
                                                     class="icon-zoom-in"></span></a>
@@ -72,6 +71,7 @@
                                            href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
                                            title="add to cart"><span class="icon-plus"></span></a>
                                         @endif
+                                        
                                         <span class="pull-right">{{number_format($product->unit_price,0,",",".")}} đ</span>
                                     </h4>
                                 </div>
@@ -87,12 +87,11 @@
             Các loại hoa bán chạy nhất</h3>
             <hr class="soften"/>
             <div class="row-fluid">
-                <!-- <ul class="thumbnails">
-                    @foreach($featuredProducts as $product)
+                <ul class="thumbnails">
+                    @foreach($mostBoughtProduct as $product)
                         <li class="span4">
                             <div class="thumbnail">
-                                {{--<a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span--}}
-                                {{--class="icon-search"></span> QUICK VIEW</a>--}}
+                                
                                 <a href="{{route('productDetail',$product->id)}}"><img
                                             src="template/image/product/{{$product->image}}" alt=""></a>
                                 <div class="caption">
@@ -110,7 +109,7 @@
                             </div>
                         </li>
                     @endforeach
-                </ul> -->
+                </ul>
             </div>
         </div>
     </div>

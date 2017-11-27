@@ -3,19 +3,20 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="span9" style="background-color: #f5f5f5">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <br>
+                <div class="panel-heading" align="center" style="font-size: 20px">Đăng nhập</div><br>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="control-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                            <div class="controls">
+                                <input id="email" type="email" class="form-control span5" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -25,11 +26,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="control-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                           <div class="controls">
+                                <input id="password" type="password" class="form-control span5" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -39,18 +40,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
+                        <div class="control-group">
+                            <div class="controls">
+                                <label class="checkbox">
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
+                                </label>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
+                            <div class="controls">
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
@@ -59,6 +55,10 @@
                                     Forgot Your Password?
                                 </a>
                             </div>
+                        </div>
+
+                        <div class="control-group">
+                            
                         </div>
                     </form>
                 </div>

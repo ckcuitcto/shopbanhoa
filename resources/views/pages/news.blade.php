@@ -21,7 +21,7 @@
 		</label><br> -->
 		<div class="btn-group">
 		  <!-- <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a> -->
-		  <a href="product_details.html" class="shopBtn">Xem thêm</a>
+		  <a href="{{route('newsDetails',$tintuc->id)}}" class="shopBtn">Xem thêm</a>
 		 </div>
 			</form>
 		</div>

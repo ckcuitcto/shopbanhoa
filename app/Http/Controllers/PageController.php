@@ -26,7 +26,19 @@ class PageController extends Controller
         $products = Product::where('new', 1)->get();
         $newProduct = Product::select('id', 'name', 'image')->orderBy('id', 'desc')->limit(16)->get()->toArray();
         $featuredProducts = Product::where('view', '>', 0)->orderBy('view', 'desc')->limit(3)->get();
-        return view('pages.homepage', compact('slide', 'products', 'featuredProducts', 'newProduct'));
+
+        $mostBoughtProduct = DB::table('bill_detail')
+            ->join('products','products.id','=','bill_detail.id_product')
+            ->join('bills','bills.id','=','bill_detail.id_bill')
+            ->select(DB::raw('SUM(bill_detail.quantity) as totalQty'),'products.*')
+            ->where('bills.confirm','1')
+            ->groupBy('products.id')
+            ->orderByRaw('SUM(bill_detail.quantity)','DESC')
+            ->limit(3)
+            ->get();
+
+        return view('pages.homepage', compact('slide', 'products', 'featuredProducts','newProduct','mostBoughtProduct'));
+
     }
 
     public function getProductType($idType)
@@ -209,64 +221,16 @@ class PageController extends Controller
         return view('pages.news', compact('news'));
     }
 
-    public function getAboutUs()
-    {
-        return view('pages.aboutUs');
+
+    public function getNewsDetails(Request $request){
+        $news = News::find($request->idNews);
+        return view('pages.newsDetails',compact('news'));
     }
 
-//    public function postRegister(Request $req){
-//        $this->validate($req,
-//            [
-//                'email'=>'required|email|unique:users,email',
-//                'password'=>'required|min:6|max:20',
-//                'fullname'=>'required',
-//                're_password'=>'required|same:password'
-//            ],
-//            [
-//                'email.required'=>'Vui lòng nhập email',
-//                'email.email'=>'Sai định dạng email. Vui lòng nhập lại !',
-//                'email.unique'=>'Email đã được sử dụng',
-//                'password.required'=>'Vui lòng nhập password',
-//                're_password.same'=>'Password không khớp',
-//                'password.min'=>'Mật khẩu có ít nhất 6 kí tự'
-//            ]);
-//        $user = new User();
-//        $user->full_name = $req->Fname;
-//        $user->email = $req->email;
-//        $user->password = Hash::make($req->password);
-//        $user->phone = $req->phone;
-//        $user->address = $req->address;
-//        $user->save();
-//        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
-//    }
+    public function getAboutUs() {
 
-//    public function register(){
-//        return view('pages.register');
-//    }
-//
-//    public function login(){
-//        return view('pages.login');
-//    }
-
-//    public function postLogin(Request $request){
-//        $this->validate($request,[
-//            'email'=>'required',
-//            'password'=>'request|min:3|max:32'
-//        ],
-//        [
-//            'email.required'=>'Bạn chưa nhập email',
-//            'password.required'=>'Bạn chưa nhập password',
-//            'password.min'=>'Password không được nhỏ hơn 3 ký tự',
-//            'password.max'=>'Password không được lớn hơn 32 ký tự'
-//        ]);
-//        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
-//        {
-//            return redirect('index');
-//        }
-//        else{
-//            return redirect('login')->with('thongbao','Đăng nhập không thành công');
-//        }
-//    }
+        return view('pages.aboutUs');
+    }
 
 
     public function search(Request $request)

@@ -74,6 +74,11 @@ Route::get('tin-tuc',[
     'uses'=>'PageController@getNews'
 ]);
 
+Route::get('chi-tiet-tin/{idNews}',[
+    'as'=>'newsDetails',
+    'uses'=>'PageController@getNewsDetails'
+]);
+
 Route::get('dang-nhap',[
     'as'=>'login',
     'uses'=>'PageController@login'
@@ -134,6 +139,14 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
         Route::get('detailContact/{id}',['as' => 'admin.contact.getDetailContact','uses' => 'ContactController@getDetailContact']);
         Route::post('detailContact/{id}',['as' => 'admin.contact.postDetailContact','uses' => 'ContactController@postDetailContact']);
 
+    });
+
+    Route::group(['prefix' => 'cart'],function (){
+        Route::get('cart/{confirm}',['as' => 'admin.cart.getCart','uses' => 'CartController@getCart']);
+        Route::post('cart/{confirm}',['as' => 'admin.cart.postCart','uses' => 'CartController@postCart']);
+
+        Route::get('billDetail/{id}',['as' => 'admin.cart.getBillDetail','uses' => 'CartController@getBillDetail']);
+        Route::post('billDetail/{id}',['as' => 'admin.cart.postBillDetail','uses' => 'CartController@postBillDetail']);
     });
 
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);

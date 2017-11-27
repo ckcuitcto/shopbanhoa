@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Thai Duc
- * Date: 11/21/2017
- * Time: 10:10 PM
- */
-?>
 @extends('master')
 @section('content')
     @if (Cart::count()>0 OR Session::has('flash_message'))

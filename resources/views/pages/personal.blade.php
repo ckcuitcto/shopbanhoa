@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Thai Duc
- * Date: 26-Nov-17
- * Time: 10:23 PM
- */
-?>
 @extends('master')
 
 @section('content')
