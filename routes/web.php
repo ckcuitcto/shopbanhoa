@@ -85,7 +85,7 @@ Route::post('dang-nhap',[
 ]);
 
 
-Route::group(['prefix' => 'admin'],function(){
+Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
     Route::group(['prefix' => 'productType'],function(){
         Route::get('list',['as' => 'admin.productType.list','uses'=>'ProductTypeController@getList']);
 
@@ -164,6 +164,10 @@ Route::post('ca-nhan',[
     'uses' => 'PageController@postPersonal'
 ]);
 
+Route::get('danh-sach-san-pham-cua-don/{id}',[
+   'as' => 'getProductListOfBill',
+    'uses' => 'PageController@getProductListOfBill'
+]);
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
