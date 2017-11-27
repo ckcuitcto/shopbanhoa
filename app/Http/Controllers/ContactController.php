@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contacts;
 use App\ContactUs;
+use App\Mail\ContactsMail;
 use Illuminate\Http\Request;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -101,60 +101,18 @@ class ContactController extends Controller
         ], [
             'txtBody.required' => 'Bạn chưa nhập nội dung email'
         ]);
-
         $contact = ContactUs::find($id);
-        $mTo = $contact->email;
-        $nTo = $contact->name;
-        $subject = "Hoa Sài Gòn phản hồi ".$contact->title;
+        $contact->confirm = 1;
+        $contact->save();
         $body = $request->txtBody;
-        echo $this->sendMail($mTo, $nTo, $subject, $body);
-//        return redirect()->back()->with(['flash_message' => 'Gửi thành công']);
-    }
-
-    private function sendMail($mTo, $nTo, $subject, $body, $arrFile = NULL)
-    {
-
-        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-        try {
-            $nFrom = "Hoa Sài Gòn";    //mail duoc gui tu dau, thuong de ten cong ty ban
-            $mFrom = 'huynhjduc2482@gmail.com';  //dia chi email cua ban
-            $mPass = 'frankenstein2482';       //mat khau email cua ban
-            //Server settings
-            $mail->SMTPDebug = 2;                                  // Enable verbose debug output
-            $mail->isSMTP();                                      // Set mailer to use SMTP
-            $mail->Host = 'smtp.gmail.com';                         // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = $mFrom;                 // SMTP username
-            $mail->Password = $mPass;                           // SMTP password
-            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-            $mail->Port = 587;                                    // TCP port to connect to
-
-            //Recipients
-            $mail->setFrom($mFrom, $nFrom);
-            $mail->addAddress($mTo, $nTo);     // Add a recipient// Name is optional
-            $mail->addReplyTo($mFrom, $nFrom);
-//            $mail->addCC('cc@example.com');
-//            $mail->addBCC('bcc@example.com');
-
-            //Attachments
-
-//            $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//            $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-            //Content
-            $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = $subject;
-            $mail->Body = $body;
-            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-            $mail->setLanguage('vi', '/optional/path/to/language/directory/');
-            $mail->send();
-//            echo 'Message has been sent';
-            return true;
-        } catch (Exception $e) {
-//            echo 'Message could not be sent.';
-//            echo 'Mailer Error: ' . $mail->ErrorInfo;
-            return false;
+        if($request->hasFile('mutilFile')){
+            $files = $request->file('mutilFile');
+            Mail::to($contact->email)->send(new ContactsMail($contact,$body,$files));
+        }else{
+            Mail::to($contact->email)->send(new ContactsMail($contact,$body));
         }
+
+        return redirect()->back()->with(['flash_message' => 'Gửi thành công']);
     }
+
 }

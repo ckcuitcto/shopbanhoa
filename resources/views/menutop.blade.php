@@ -4,16 +4,60 @@
             <div class="alignR">
                 <div class="pull-left socialNw">
 
-                    <a href="https://twitter.com/?lang=vi"><span class="icon-twitter"></span></a>
-                    <a href="https://www.facebook.com/ngoctrinhfashion89"><span class="icon-facebook"></span></a>
-                    <a href="https://www.youtube.com/user/PlaydotaPP"><span class="icon-youtube"></span></a>
-                    <a href="https://www.tumblr.com/explore/trending"><span class="icon-tumblr"></span></a>
+                    <a href="https://twitter.com/?lang=vi" target="_blank"><span class="icon-twitter"></span></a>
+                    <a href="https://www.facebook.com/ngoctrinhfashion89" target="_blank"><span class="icon-facebook"></span></a>
+                    <a href="https://www.youtube.com/user/PlaydotaPP" target="_blank"><span class="icon-youtube"></span></a>
+                    <a href="https://www.tumblr.com/explore/trending" target="_blank"><span class="icon-tumblr"></span></a>
 
                 </div>
-                <a href="#"><span class="icon-user"></span>Tài khoản</a>
-                <a href="{{route('register')}}"><span class="icon-edit"></span> Đăng ký</a>
-                <a href="{{route('cart')}}"><span class="icon-shopping-cart"></span> {{Cart::count()}} Sản phẩm(s) - <span
-                            class="badge badge-warning"> {{Cart::total()}}</span></a>
+
+                @guest
+                <a href="{{ route('login') }}"><span class="icon-user"></span> Đăng nhập </a>
+                <a href="{{route('register')}}"><span class="icon-edit"></span> Đăng ký </a>
+                @else
+                    @if(Auth::user()->level == 1)
+                        <a href="{{route('admin.dashboard')}}">
+                            <span class="icon-lock"></span> Trang Quản Lý
+                        </a>
+                    @endif
+                    <a href="{{route('postPersonal')}}">
+                        <span class="icon-user"></span> {{ Auth::user()->name }}
+                    </a>
+
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                        <span class="icon-off"></span>
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                    {{--<a href="{{route('postPersonal')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"--}}
+                    {{--aria-haspopup="true">--}}
+                    {{--{{ Auth::user()->name }} <span class="caret"></span>--}}
+                    {{--</a>--}}
+
+                    {{--<ul class="dropdown-menu">--}}
+                    {{--<li>--}}
+                    {{--<a href="{{ route('logout') }}"--}}
+                    {{--onclick="event.preventDefault();--}}
+                    {{--document.getElementById('logout-form').submit();">--}}
+                    {{--Logout--}}
+                    {{--</a>--}}
+
+                    {{--<form id="logout-form" action="{{ route('logout') }}" method="POST"--}}
+                    {{--style="display: none;">--}}
+                    {{--{{ csrf_field() }}--}}
+                    {{--</form>--}}
+                    {{--</li>--}}
+                    {{--</ul>--}}
+                    @endguest
+                    <a href="{{route('cart')}}"><span class="icon-shopping-cart"></span> {{Cart::count()}} Sản phẩm(s) -
+                        <span
+                                class="badge badge-warning"> {{Cart::total(0)}}</span></a>
             </div>
         </div>
     </div>

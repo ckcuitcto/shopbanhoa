@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Bill;
 use App\BillDetail;
 use App\Contacts;
+use App\Mail\OrderShipped;
 use App\ProductImages;
 use Carbon\Carbon;
 use Cart,DB,Mail;
@@ -40,10 +41,11 @@ class PageController extends Controller
         $product->view +=1;
         $product->save();
 
+        $productOrdered = BillDetail::select(DB::raw('SUM(quantity) as total'))->where('id_product',$request->idProduct)->first();
         $relatedProducts = Product::where('id_type', $product->id_type)->limit(3)->get();
         $productImages  = ProductImages::where('id_product',$request->idProduct)->get();
 
-        return view('pages.productDetails', compact('product', 'relatedProducts','productImages'));
+        return view('pages.productDetails', compact('product', 'relatedProducts','productImages','productOrdered'));
     }
 
     public function getCart()
@@ -52,10 +54,10 @@ class PageController extends Controller
         return view('pages.cart', compact('content'));
     }
 
-    public function purchase(Request $request)
+    public function purchase($id,$qty)
     {
-        $productBuy = Product::where('id', $request->id)->first();
-        $qty = $request->qty;
+        $productBuy = Product::where('id', $id)->first();
+        $qty = $qty;
         Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
         return "success";
     }
@@ -64,6 +66,9 @@ class PageController extends Controller
     {
         $productBuy = Product::where('id', $request->id)->first();
 
+        $qty = $request->qty;
+        Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
+        return redirect()->back();
     }
 
     public function deleteProduct(Request $request)
@@ -85,7 +90,15 @@ class PageController extends Controller
     public function getOrderConfirmation()
     {
         $listCart = Cart::content();
-        return view('pages.orderConfirmation',compact('listCart'));
+
+        $user = new User();
+        if(!empty(Auth::user()->id))
+        {
+            $id = Auth::user()->id;
+            $user = User::find($id);
+        }
+
+        return view('pages.orderConfirmation',compact('listCart','user'));
     }
 
     public function postOrderConfirmation(Request $request)
@@ -103,10 +116,21 @@ class PageController extends Controller
 //            'txtPhoneNumber.between' => 'Số điện thoại có tổi thiểu :min số và tối đa :max số '
         ]);
 
+        // nếu khách hàng đã đăng nhập. thì khi mua hàng sẽ lưu = id của khác và gửi thư đến mail khách đã đăng kí
+        // còn nếu khách k đăng nhập thì sẽ lưu vào user mặc định là 1 và email mặc định;
+        if(!empty(Auth::user()->id))
+        {
+            $userId = Auth::user()->id;
+            $userEmail = Auth::user()->email;
+        }else{
+            $userId = 1;
+            $userEmail = "hoasaigonn@gmail.com";
+        }
+
         $bill = new Bill();
         $bill->date_order = Carbon::now();
         $bill->note = $request->txtNote;
-        $bill->id_user = 1;
+        $bill->id_user = $userId;
         $bill->recipient = $request->txtRecipient;
         $bill->address = $request->txtAddress;
         $bill->phone_number = $request->txtPhoneNumber;
@@ -115,6 +139,7 @@ class PageController extends Controller
         $bill->save();
 
         $cartItemList = Cart::content();
+        $arrBilDetail = array();
         foreach ($cartItemList as $item)
         {
             $billDetail = new BillDetail();
@@ -123,7 +148,10 @@ class PageController extends Controller
             $billDetail->id_bill = $bill->id;
             $billDetail->id_product = $item->id;
             $billDetail->save();
+            $arrBilDetail[] = $billDetail;
         }
+
+        Mail::to($userEmail)->send(new OrderShipped($bill, $arrBilDetail));
         Cart::destroy();
         return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);
     }
@@ -134,34 +162,6 @@ class PageController extends Controller
 
         // $productsByIdType = Product::where('id_type', $idType)->paginate(6);
         return view('pages.products', compact('products'));
-    }
-
-    public function register(){
-        return view('pages.register');
-    }
-
-    public function login(){
-        return view('pages.login');
-    }
-
-    public function postLogin(Request $request){
-        $this->validate($request,[
-            'email'=>'required',
-            'password'=>'request|min:3|max:32'
-        ],
-        [
-            'email.required'=>'Bạn chưa nhập email',
-            'password.required'=>'Bạn chưa nhập password',
-            'password.min'=>'Password không được nhỏ hơn 3 ký tự',
-            'password.max'=>'Password không được lớn hơn 32 ký tự'
-        ]);
-        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
-            {
-                return redirect('index');
-            }
-            else{
-                return redirect('login')->with('thongbao','Đăng nhập không thành công');
-            }
     }
 
     public function getContact() {
@@ -206,35 +206,100 @@ class PageController extends Controller
         return view('pages.aboutUs');
     }
 
-    public function postRegister(Request $req){
-        $this->validate($req,
-            [
-                'email'=>'required|email|unique:users,email',
-                'password'=>'required|min:6|max:20',
-                'fullname'=>'required',
-                're_password'=>'required|same:password'
-            ],
-            [
-                'email.required'=>'Vui lòng nhập email',
-                'email.email'=>'Sai định dạng email. Vui lòng nhập lại !',
-                'email.unique'=>'Email đã được sử dụng',
-                'password.required'=>'Vui lòng nhập password',
-                're_password.same'=>'Password không khớp',
-                'password.min'=>'Mật khẩu có ít nhất 6 kí tự'
-            ]);
-        $user = new User();
-        $user->full_name = $req->Fname;
-        $user->email = $req->email;
-        $user->password = Hash::make($req->password);
-        $user->phone = $req->phone;
-        $user->address = $req->address;
-        $user->save();
-        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
-    }
+//    public function postRegister(Request $req){
+//        $this->validate($req,
+//            [
+//                'email'=>'required|email|unique:users,email',
+//                'password'=>'required|min:6|max:20',
+//                'fullname'=>'required',
+//                're_password'=>'required|same:password'
+//            ],
+//            [
+//                'email.required'=>'Vui lòng nhập email',
+//                'email.email'=>'Sai định dạng email. Vui lòng nhập lại !',
+//                'email.unique'=>'Email đã được sử dụng',
+//                'password.required'=>'Vui lòng nhập password',
+//                're_password.same'=>'Password không khớp',
+//                'password.min'=>'Mật khẩu có ít nhất 6 kí tự'
+//            ]);
+//        $user = new User();
+//        $user->full_name = $req->Fname;
+//        $user->email = $req->email;
+//        $user->password = Hash::make($req->password);
+//        $user->phone = $req->phone;
+//        $user->address = $req->address;
+//        $user->save();
+//        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
+//    }
+
+//    public function register(){
+//        return view('pages.register');
+//    }
+//
+//    public function login(){
+//        return view('pages.login');
+//    }
+
+//    public function postLogin(Request $request){
+//        $this->validate($request,[
+//            'email'=>'required',
+//            'password'=>'request|min:3|max:32'
+//        ],
+//        [
+//            'email.required'=>'Bạn chưa nhập email',
+//            'password.required'=>'Bạn chưa nhập password',
+//            'password.min'=>'Password không được nhỏ hơn 3 ký tự',
+//            'password.max'=>'Password không được lớn hơn 32 ký tự'
+//        ]);
+//        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+//        {
+//            return redirect('index');
+//        }
+//        else{
+//            return redirect('login')->with('thongbao','Đăng nhập không thành công');
+//        }
+//    }
+
 
     public function search(Request $request){
         $search = $request->productSearch;
         $resultSearch = Product::where('name','like',"%$search%")->paginate(8);
         return view('pages.search',compact('search','resultSearch'));
+    }
+
+
+    public function getPersonal() {
+        $id = Auth::user()->id;
+        $personal = User::find($id);
+        $bills = Bill::where('id_user',$id)->orderBy('created_at')->get()->toArray();
+        return view('pages.personal',compact('personal','bills'));
+    }
+
+    public function postPersonal(Request $request) {
+        if($request->has('save')) {
+            $this->validate($request, [
+                'txtName' => 'required',
+                'txtAddress' => 'required',
+                'txtPhoneNumber' => 'required|numeric'
+            ], [
+                'txtName.required' => 'Bạn chưa nhập tên',
+                'txtAddress.required' => 'Bạn chưa nhập địa chỉ',
+                'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
+                'txtPhoneNumber.numeric' => 'Số điện thoại không hợp lệ',
+            ]);
+
+            $id = Auth::user()->id;
+            $user = User::find($id);
+            $user->name = $request->txtName;
+            $user->gender = $request->txtGen;
+            $user->address = $request->txtAddress;
+            $user->phone_number = $request->txtPhoneNumber;
+            $user->birthday = $request->txtBirthday;
+            $user->save();
+            return redirect()->back()->with('flash_message', 'Sửa thông tin thành công! ');
+        }elseif($request->has('cancel'))
+        {
+            return redirect()->back();
+        }
     }
 }

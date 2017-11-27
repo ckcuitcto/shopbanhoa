@@ -8,7 +8,7 @@
 ?>
 @extends('master')
 @section('content')
-    @if (Cart::count()>0)
+    @if (Cart::count()>0 OR Session::has('flash_message'))
         <div class="row">
             <ul class="breadcrumb">
                 <li><a href="{{route('index')}}">Home</a> <span class="divider">/</span></li>
@@ -23,7 +23,7 @@
                         <div class="control-group">
                             <label class="control-label" for="input01">Tên người nhận</label>
                             <div class="controls">
-                                <input type="text" name="txtRecipient" value="" class="input-xlarge"
+                                <input type="text" name="txtRecipient" value="{{$user->name}}" class="input-xlarge"
                                        id="input01">
 
                             </div>
@@ -31,7 +31,7 @@
                         <div class="control-group">
                             <label class="control-label" for="input11">Nơi nhận</label>
                             <div class="controls">
-                                <input type="text" name="txtAddress" value="" class="input-xlarge"
+                                <input type="text" name="txtAddress" value="{{$user->address}}" class="input-xlarge"
                                        id="input11">
 
                             </div>
@@ -39,7 +39,7 @@
                         <div class="control-group">
                             <label class="control-label" for="input11">SĐT</label>
                             <div class="controls">
-                                <input type="text" name="txtPhoneNumber" value="" class="input-xlarge"
+                                <input type="text" name="txtPhoneNumber" value="{{$user->phone_number}}" class="input-xlarge"
                                        id="input11">
                             </div>
                         </div>
@@ -95,13 +95,11 @@
                     @endforeach
                     <tr>
                         <td colspan="4" style="text-align:right;">Tổng giá</td>
-                        <td style="text-align: center;">{{Cart::total()}} đ</td>
+                        <td style="text-align: center;">{{Cart::total(0)}} đ</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    @else
-        {{redirect()->back()}}
     @endif
 @endsection
