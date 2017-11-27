@@ -74,6 +74,11 @@ Route::get('tin-tuc',[
     'uses'=>'PageController@getNews'
 ]);
 
+Route::get('chi-tiet-tin/{idNews}',[
+    'as'=>'newsDetails',
+    'uses'=>'PageController@getNewsDetails'
+]);
+
 Route::get('dang-nhap',[
     'as'=>'login',
     'uses'=>'PageController@login'

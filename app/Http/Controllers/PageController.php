@@ -28,7 +28,7 @@ class PageController extends Controller
         $featuredProducts = Product::where('view', '>', 0)->orderBy('view', 'desc')->limit(3)->get();
 
 
-$sanpham_banchay = DB::table('bill_detail')
+        $sanpham_banchay = DB::table('bill_detail')
             ->join('products','products.id','=','bill_detail.id_product')
             ->join('bills','bills.id','=','bill_detail.id_bill')
             ->select(DB::raw('SUM(bill_detail.quantity) as totalQty'),'products.*')
@@ -214,6 +214,11 @@ $sanpham_banchay = DB::table('bill_detail')
     public function getNews(){
         $news = News::all();
         return view('pages.news',compact('news'));
+    }
+
+    public function getNewsDetails(Request $request){
+        $news = News::find($request->idNews);
+        return view('pages.newsDetails',compact('news'));
     }
 
     public function getAboutUs() {
