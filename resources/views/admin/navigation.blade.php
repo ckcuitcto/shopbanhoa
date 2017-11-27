@@ -23,7 +23,7 @@
                 <a  href="#"><i class="fa fa-table fa-3x"></i> Đơn hàng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{route('admin.cart.getCart',0)}}">Danh sách đơn hàng</a>
+                        <a href="{{route('admin.cart.getCart','0')}}">Danh sách đơn hàng</a>
                     </li>
                 </ul>
             </li>
@@ -68,6 +68,17 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href=""><i class="fa fa-sitemap fa-3x"></i>Slide<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Danh sách các slide</a>
+                    </li>
+                    
+                </ul>
+            </li>
+
+
         </ul>
     </div>
 </nav>
