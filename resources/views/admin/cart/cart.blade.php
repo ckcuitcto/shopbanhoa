@@ -42,15 +42,13 @@
                 <td style="text-align: center" class="sanphamdathang" ></td>
                 <td style="text-align: center"></a></td>
                 <td style="text-align: center"></td>
-
                 <td style="text-align: center"></td>
                  <td style="text-align: center">/td>
                 <td style="text-align: center"></td>
                 <td style="text-align: center"></td>
               </tr>
-
             </tbody>
-         
+
           </table>
 
           <div id="ketquaz"></div>
