@@ -23,12 +23,12 @@
                 <a  href="#"><i class="fa fa-table fa-3x"></i> Đơn hàng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{route('admin.cart.list')}}">Danh sách đơn hàng</a>
+                        <a href="{{route('admin.cart.getCart',0)}}">Danh sách đơn hàng</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href=""><i class="fa fa-sitemap fa-3x"></i>Người dùng<span class="fa arrow"></span></a>
+                <a href=""><i class="fa fa-sitema   p fa-3x"></i>Người dùng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="index.php?p=listUser">Danh sách người dùng</a>
