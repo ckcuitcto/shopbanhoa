@@ -136,6 +136,14 @@ Route::group(['prefix' => 'admin'],function(){
 
     });
 
+    Route::group(['prefix' => 'cart'],function (){
+        Route::get('cart/{confirm}',['as' => 'admin.cart.getCart','uses' => 'CartController@getCart']);
+        Route::post('cart/{confirm}',['as' => 'admin.cart.postCart','uses' => 'CartController@postCart']);
+
+        Route::get('billDetail/{id}',['as' => 'admin.cart.getBillDetail','uses' => 'CartController@getBillDetail']);
+        Route::post('billDetail/{id}',['as' => 'admin.cart.postBillDetail','uses' => 'CartController@postBillDetail']);
+    });
+
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
 });
 

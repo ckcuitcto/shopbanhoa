@@ -1,13 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Thai Duc
- * Date: 24-Nov-17
- * Time: 5:33 PM
- */
-?>
 @extends('admin.master')
-
 @section('content')
     <div class="row">
         <div class="col-md-12">
