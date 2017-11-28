@@ -9,7 +9,7 @@ use App\BillDetail;
 class CartController extends Controller
 {
     public function getCart($confirm){
-     	if ($confirm == 2) {
+    	if ($confirm == 2) {
             $carts = Bill::orderBy('id')->get();
         } else {
             $carts = Bill::where('confirm', $confirm)->orderBy('id')->get();
@@ -18,6 +18,7 @@ class CartController extends Controller
     }
 
     public function postCart(Request $request){
+
     	// $this->validate($request, [
      //        'txtAddress' => 'required',
      //        'txtEmail' => 'required|email',

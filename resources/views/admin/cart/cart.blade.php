@@ -39,6 +39,7 @@
               @foreach($carts as $value)
               <tr >
                 <td style="text-align: center"></td>
+
                 <td style="text-align: center" class="sanphamdathang" ><a href="{{route('admin.cart.getBillDetail',$value->id)}}">{{$value->id}}</a></td>
                 <td style="text-align: center">{{$value->recipient}}</td>
                 <td style="text-align: center">{{$value->address}}</td>
@@ -51,8 +52,9 @@
                 </td>
               </tr>
               @endforeach
+
             </tbody>
-         
+
           </table>
 
           <div id="ketquaz"></div>

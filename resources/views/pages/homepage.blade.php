@@ -88,7 +88,7 @@
             <hr class="soften"/>
             <div class="row-fluid">
                 <ul class="thumbnails">
-                    @foreach($sanpham_banchay as $product)
+                    @foreach($mostBoughtProduct as $product)
                         <li class="span4">
                             <div class="thumbnail">
                                 

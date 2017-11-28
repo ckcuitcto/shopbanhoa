@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <base href="{{asset('')}}">
 
+
     <!-- Bootstrap styles -->
     <link href="template/assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- Customize styles -->
@@ -28,6 +29,7 @@
     <link rel="shortcut icon" href="template/assets/ico/Rose-flower-icon.png">
     <script src="template/assets/js/cart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+
 
 </head>
 <body>
@@ -94,5 +96,7 @@
 <script src="template/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
 <script src="template/assets/js/shop.js"></script>
 <script src="template/assets/js/duc.js"></script>
+
+@yield('script')
 </body>
 </html>

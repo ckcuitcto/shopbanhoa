@@ -47,7 +47,13 @@
                         </div>
 
                         <h4>{{ ($product->quantity > 0) ? "Còn ".$product->quantity." sản phẩm trong kho" : "Sản phẩm này đã hết hàng"}} </h4>
-                        <h4>{{ ($productOrdered->total>0 ? $productOrdered->total." sản phẩm đã được đặt" : "")}} </h4>
+                        <h5>{{ ($productOrdered->total>0 ? $productOrdered->total." sản phẩm đã được đặt " : "")}}
+                             <button data-toggle="tooltip" id="tooltip" title="
+                            Khi còn sản phẩm trong kho và đã có người khác đặt hàng thì bạn vẫn có thể tiếp tục đặt hàng.
+                            Nếu người khách đặt trước bạn hủy đơn thì bạn có thể được nhận hàng.
+                            Nếu số lượng hàng trong kho không đủ thì đơn hàng của bạn sẽ bị hủy. ">?</button>
+                        </h5>
+
                         <p>{{$product->description}}
                         <p>
                             <button type="submit"
@@ -236,5 +242,12 @@
 
         </div>
     </div>
+<script>
+    $(document).ready(function(){
+        $('#tooltip').tooltip(function () {
+            placement: 'right'
+        });
+    });
 
+</script>
 @endsection
