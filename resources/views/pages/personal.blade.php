@@ -2,37 +2,40 @@
 
 @section('content')
 
-    <div class="row">
+   
         <ul class="breadcrumb">
             <li><a href="{{route('index')}}">Home</a> <span class="divider">/</span></li>
             <li class="active"> Trang cá nhân</li>
         </ul>
-        <hr class="soft"/>
+
+        <div class="well well-small">
         <ul class="nav nav-tabs">
-            <li><a href="#cart" data-toggle="tab">Thông tin cá nhân</a></li>
+            <li class="active"><a href="#cart" data-toggle="tab">Thông tin cá nhân</a></li>
             <li><a href="#profile" data-toggle="tab">Danh sách đơn đặt hàng</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="cart">
-                <div class="span10">
+                <div class="span12">
                     <form class="form-horizontal" method="post" action="{{route('postPersonal')}}">
                         {{ csrf_field() }}
-                        <h4 style="text-align: center;">Thông tin cá nhân</h4>
+                        <h2 style="text-align: center;">Thông tin cá nhân</h2>
                         <hr class="soft"/>
-
-                        <div class="control-group">
-                            <label class="control-label" for="input_email">Email <sup>*</sup></label>
+                        <div class="row">
+                            <div class="span1">&nbsp;</div>
+                        <div class="span10">
+                            <div class="control-group">
+                            <label class="control-label" for="input_email">Email <sup>(*)</sup></label>
                             <div class="controls">
-                                <input type="email" disabled="" value="{{$personal->email}}" name="txtEmail"
+                                <input class="span5" type="email" disabled="" value="{{$personal->email}}" name="txtEmail"
                                        id="txtEmail"
                                        placeholder="Email">
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="inputFname1">Tên <sup>*</sup></label>
+                            <label class="control-label" for="inputFname1">Tên <sup>(*)</sup></label>
                             <div class="controls">
-                                <input type="text" id="txtName" value="{{ $personal->name }}" name="txtName"
+                                <input class="span5" type="text" id="txtName" value="{{ $personal->name }}" name="txtName"
                                        placeholder="Tên">
                             </div>
                         </div>
@@ -50,28 +53,28 @@
                         <div class="control-group">
                             <label class="control-label">Ngày sinh </label>
                             <div class="controls">
-                                <input type="date" value="{{$personal->birthday}}" name="txtBirthday" min="1940-01-01"
+                                <input class="span5" type="date" value="{{$personal->birthday}}" name="txtBirthday" min="1940-01-01"
                                        id="txtBirthday"
                                        max="2017-07-07"/>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="mobile">Số điện thoại <sup>*</sup></label>
+                            <label class="control-label" for="mobile">Số điện thoại <sup>(*)</sup></label>
                             <div class="controls">
-                                <input type="text" value="{{$personal->phone_number}}" name="txtPhoneNumber"
+                                <input class="span5" type="text" value="{{$personal->phone_number}}" name="txtPhoneNumber"
                                        id="txtPhoneNumber"
                                        placeholder="09xxxxxxxx"/>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="inputLnam"> Địa chỉ <sup>*</sup></label>
+                            <label class="control-label" for="inputLnam"> Địa chỉ <sup>(*)</sup></label>
                             <div class="controls">
-                                <input type="text" name="txtAddress" value="{{$personal->address}}" id="txtAddress"
+                                <input class="span5" type="text" name="txtAddress" value="{{$personal->address}}" id="txtAddress"
                                        placeholder="Địa chỉ">
                             </div>
                         </div>
 
-                        <p><sup>*</sup> không được để trống </p>
+                        <p><sup>(*)</sup> không được để trống </p>
 
                         <div class="control-group">
                             <div class="controls">
@@ -80,6 +83,8 @@
                                 <button type="submit" name="save" id="save" class="btn btn-primary">Lưu</button>
                                 <button type="cancel" name="cancel" id="cancel" class="btn btn-danger">Hủy</button>
                             </div>
+                        </div>
+                        </div>
                         </div>
                     </form>
 
@@ -92,7 +97,7 @@
                 </div>
             </div>
             <div class="tab-pane" id="profile">
-                <div class="span6">
+                <div class="span11">
                     <h4 style="text-align: center;">Thông tin đơn hàng</h4>
                     <hr class="soft"/>
                     <table class="table table-striped table-hover" id="cartList">

@@ -54,8 +54,7 @@
                             Nếu số lượng hàng trong kho không đủ thì đơn hàng của bạn sẽ bị hủy. ">?</button>
                         </h5>
 
-                        <p>{{$product->description}}
-                        <p>
+                        <p>{{$product->description}}</p>
                             <button type="submit"
                                     {{ $product->quantity > 0 ? "" : "disabled='disabled'" }}   class="btn btn-success">
                                 <span class=" icon-shopping-cart"></span> Add to cart
@@ -79,32 +78,32 @@
             </ul>
             <div id="myTabContent" class="tab-content tabWrapper">
                 <div class="tab-pane fade active in" id="home">
-                    <h4>Product Information</h4>
+                    <h4>Thông tin chi tiết sản phẩm</h4>
                     <table class="table table-striped">
                         <tbody>
                         <tr class="techSpecRow">
-                            <td class="techSpecTD1">Color:</td>
-                            <td class="techSpecTD2">Black</td>
+                            <td class="techSpecTD1">Màu sắc chủ đạo:</td>
+                            <td class="techSpecTD2">Màu vàng</td>
                         </tr>
                         <tr class="techSpecRow">
-                            <td class="techSpecTD1">Style:</td>
-                            <td class="techSpecTD2">Apparel,Sports</td>
+                            <td class="techSpecTD1">Số lượng hoa:</td>
+                            <td class="techSpecTD2">20 cây hoa hồng</td>
                         </tr>
                         <tr class="techSpecRow">
-                            <td class="techSpecTD1">Season:</td>
-                            <td class="techSpecTD2">spring/summer</td>
+                            <td class="techSpecTD1">Loại hoa:</td>
+                            <td class="techSpecTD2">Hoa hồng vàng</td>
                         </tr>
                         <tr class="techSpecRow">
-                            <td class="techSpecTD1">Usage:</td>
-                            <td class="techSpecTD2">fitness</td>
+                            <td class="techSpecTD1">Kiểu:</td>
+                            <td class="techSpecTD2">Dành cho các cặp đôi</td>
                         </tr>
                         <tr class="techSpecRow">
-                            <td class="techSpecTD1">Sport:</td>
+                            <td class="techSpecTD1">Giá tiền:</td>
                             <td class="techSpecTD2">122855031</td>
                         </tr>
                         <tr class="techSpecRow">
-                            <td class="techSpecTD1">Brand:</td>
-                            <td class="techSpecTD2">Shock Absorber</td>
+                            <td class="techSpecTD1">Giấy gói:</td>
+                            <td class="techSpecTD2">Giấy báo kiểu</td>
                         </tr>
                         </tbody>
                     </table>
@@ -130,11 +129,12 @@
                             <div class="span4 alignR">
                                 <form class="form-horizontal qtyFrm">
                                     <h3> {{$product->unit_price}}</h3>
-                                    <label class="checkbox">
+                               <!--      <label class="checkbox">
                                         <input type="checkbox"> Adds product to compair
-                                    </label><br>
+                                    </label> -->
+                                    <br>
                                     <div class="btn-group">
-                                        <a href="product_details.html" class="defaultBtn"><span
+                                        <a href='#' class="defaultBtn"><span
                                                     class=" icon-shopping-cart"></span> Add to cart</a>
                                         <a href="{{route('productDetail',$product->id)}}" class="shopBtn">VIEW</a>
                                     </div>

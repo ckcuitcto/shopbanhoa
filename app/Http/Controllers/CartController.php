@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Bill;
 use App\BillDetail;
+use DB;
 
 class CartController extends Controller
 {
@@ -49,7 +50,15 @@ class CartController extends Controller
     }
 
     public function getBillDetail($id){
-    	$cart = Bill::find($id);
+    	// $cart = BillDetail::find($id);
+        $cart = DB::table('bill_detail')
+
+            ->join('products','products.id','=','bill_detail.id_product')
+            ->join('bills','bills.id','=','bill_detail.id_bill')
+            ->where('bill_detail.id',$id)
+            // ->select('bill_detail.*', 'products.name', 'products.image','bills.recipient','bills.address','bills.phone_number')
+
+            ->get();
     	return view('admin.cart.billDetail', compact('cart'));
     }
     public function postDetailContact(Request $request, $id)

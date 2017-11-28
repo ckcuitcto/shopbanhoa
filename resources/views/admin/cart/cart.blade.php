@@ -24,7 +24,6 @@
          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
               <tr>
-                <th style="text-align: center">STT</th>
                 <th style="text-align: center">ID Đơn Hàng</th>
                 <th style="text-align: center">Tên người nhận</th>
                 <th style="text-align: center">Nơi nhận</th>
@@ -38,8 +37,6 @@
             <tbody >
               @foreach($carts as $value)
               <tr >
-                <td style="text-align: center"></td>
-
                 <td style="text-align: center" class="sanphamdathang" ><a href="{{route('admin.cart.getBillDetail',$value->id)}}">{{$value->id}}</a></td>
                 <td style="text-align: center">{{$value->recipient}}</td>
                 <td style="text-align: center">{{$value->address}}</td>
