@@ -14,7 +14,7 @@ class CartController extends Controller
         } else {
             $carts = Bill::where('confirm', $confirm)->orderBy('id')->get();
         }
-    	return view('admin.cart.cart',compact('$carts'));
+    	return view('admin.cart.cart',compact('carts'));
     }
 
     public function postCart(Request $request){

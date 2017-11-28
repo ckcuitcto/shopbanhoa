@@ -224,6 +224,7 @@ class PageController extends Controller
 
     public function getNewsDetails(Request $request){
         $news = News::find($request->idNews);
+        
         return view('pages.newsDetails',compact('news'));
     }
 

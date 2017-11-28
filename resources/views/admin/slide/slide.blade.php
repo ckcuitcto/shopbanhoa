@@ -8,13 +8,13 @@
 </div>
 <div class="row">
     <div class="col-md-4 donhang" xacnhan="2">
-     <h3><a href="{{route('admin.cart.getCart','2')}}">Tất cả đơn hàng</a></h3>     
+     <h3><a href="#">Tất cả đơn hàng</a></h3>     
     </div>
     <div class="col-md-4 donhang" xacnhan="1">
-     <h3><a href="{{route('admin.cart.getCart','1')}}">Đơn hàng đã xác nhận</a> </h3>     
+     <h3><a href="#">Đơn hàng đã xác nhận</a> </h3>     
     </div>
     <div class="col-md-4 donhang" xacnhan="0">
-     <h3><a href="{{route('admin.cart.getCart','0')}}">Đơn hàng chưa nhận </a></h3>     
+     <h3><a href="#">Đơn hàng chưa nhận </a></h3>     
     </div>
 </div>
 
@@ -36,31 +36,27 @@
             </thead>
 
             <tbody >
-              @foreach($carts as $value)
+           
               <tr >
                 <td style="text-align: center"></td>
+                <td style="text-align: center"></td>
+                <td style="text-align: center"></td>
+                <td style="text-align: center"></td>
 
-                <td style="text-align: center" class="sanphamdathang" ><a href="{{route('admin.cart.getBillDetail',$value->id)}}">{{$value->id}}</a></td>
-                <td style="text-align: center">{{$value->recipient}}</td>
-                <td style="text-align: center">{{$value->address}}</td>
-
-                <td style="text-align: center">{{$value->phone_number}}</td>
-                 <td style="text-align: center">{{$value->note}}</td>
-                <td style="text-align: center">{{$value->total}}</td>
+                <td style="text-align: center"></td>
+                 <td style="text-align: center"></td>
+                <td style="text-align: center"></td>
                 <td style="text-align: center">
-                  <span class='glyphicon {{ ($value->confirm == 1) ? 'glyphicon-ok-sign' : 'glyphicon-remove-sign' }}'></span>
+                 
                 </td>
               </tr>
-              @endforeach
-
+            
             </tbody>
-
+         
           </table>
 
           <div id="ketquaz"></div>
     </div>
     </div>
 </div>
-
-
 @endsection
