@@ -1,7 +1,3 @@
-
-
-
-
 @extends('admin.master')
 @section('content')
 <div class="row">
@@ -25,19 +21,20 @@
                 <div class="table-responsive">
 
                     <!-- DO DL vao day  -->
-                    <form method="Post" action="">
-                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                             <tr>
                                 <td>ID</td>
-                                <td>Tên</td>
-                                <td>Họ</td>
+                                <td>Họ và Tên</td>
                                 <td>Email</td>
-                                <td>Ngày sinh</td>
-                                <td>Số điện thoại</td>
-                                <td>Địa chỉ</td>
-                                <td>Giới tính</td>
+                                <td>Mật khẩu</td>
                                 <td>Cấp</td>
+                                <td>Giới tính</td>
+                                <td>Địa chỉ</td>
+                                <td>Số điện thoại</td>
+                                <td>Ngày sinh</td>
+                                <td>Ghi chú</td>
+                                <td>Quên mật khẩu</td>
                                 <td>Ngày tạo</td>
                                 <td>Ngày sửa</td>
                                 <td>Xóa</td>
@@ -46,43 +43,29 @@
                             </thead>
 
                             <tbody>
-                            <?php
-                            $users = $trangadmin->danhsachuser();
-                            //while($user = mysql_fetch_array($users))
-                            foreach ($users as $user) {
-                                ob_start();
-                                ?>
-                                <tr>
-                                    <td><?= $user["idUser"] ?></td>
-                                    <td><?= $user["ten"] ?></td>
-                                    <td><?= $user["ho"] ?></td>
-                                    <td><?= $user["email"] ?></td>
-                                    <td><?= $user["ngaysinh"] ?></td>
-                                    <td><?= $user["sdt"] ?></td>
-                                    <td><?= $user["diachi"] ?></td>
-                                    <td><?php if ($user["gioitinh"] == 1) echo "Nam"; else echo "Nữ"; ?></td>
-                                    <td>
-                                        <select class="form-control leveluser" id="capdo" name="capdo"
-                                                idUsers="<?= $user['idUser'] ?>">
-                                            <option value="1" <?php if ($user['cap'] == 1) echo "selected=''"; ?> >
-                                                Admin
-                                            </option>
-                                            <option value="0" <?php if ($user['cap'] == 0) echo "selected=''"; ?> >
-                                                User
-                                            </option>
-                                        </select>
+                                @foreach($users as $user)
+                                <tr class="odd gradeX">
+                                    <td><a href="{{route('admin.user.getEdit',$user->id)}}"> {{$user->id}} </a>
                                     </td>
-                                    <td><?= $user["ngaytao"] ?></td>
-                                    <td><?= $user["ngaysua"] ?></td>
-                                    <td><a onclick="return confirm('Bạn có chắc muốn xoá không')"
-                                           href="pages/user/xoaUser.php?idUser=<?= $user["idUser"] ?>">Xóa</a></td>
+                                    <td><a href="{{route('admin.user.getEdit',$user->id)}}"> {{$user->name}}</a></td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->password}}</td>
+                                    <td>{{$user->level == 1 ? "admin" : "user"}}</td>
+                                    <td>{{$user->gender}}</td>
+                                    <td>{{$user->address}}</td>
+                                    <td>{{$user->phone_number}}</td>
+                                    <td>{{$user->birthday}}</td>
+                                    <td>{{$user->note}}</td>
+                                    <td>{{$user->remember_token}}</td>
+                                    <td>{{$user->created_at}}</td>
+                                    <td>{{$user->updated_at}}</td>
+                                    <td><a onclick="return confirm('Bạn có chắc muốn xóa không')"
+                                           href="{{route('admin.user.getDelete',$user->id)}}">Xoá</a></td>
                                 </tr>
-                            <?php } ?>
+                                @endforeach                         
                             </tbody>
 
                         </table>
-                        <!-- <button type="submit" class="btn btn-success" name="suauser">Sửa User</button> -->
-                    </form>
                     <!-- /. het thuc do DL  -->
 
                 </div>

@@ -150,6 +150,33 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
     });
 
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
+
+    Route::group(['prefix' => 'slide'],function(){
+        Route::get('list',['as' => 'admin.slide.slide','uses'=>'HomeController@getSlide']);
+        Route::get('edit/{id}',['as' => 'admin.slide.getEdit','uses'=>'HomeController@getEdit']);
+        Route::post('edit/{id}',['as' => 'admin.slide.postEdit','uses'=>'HomeController@postEdit']);
+    });
+
+    Route::group(['prefix' => 'aboutUs'],function(){
+        Route::get('list',['as' => 'admin.aboutUs.list','uses'=>'AdminController@getList']);
+        Route::get('add',['as' => 'admin.aboutUs.getAdd','uses'=>'AdminController@getAdd']);
+        Route::post('add',['as' => 'admin.aboutUs.postAdd','uses'=>'AdminController@postAdd']);
+
+        Route::get('delete/{id}',['as' => 'admin.aboutUs.getDelete','uses'=>'AdminController@getDelete']);
+
+        Route::get('edit/{id}',['as' => 'admin.aboutUs.getEdit','uses'=>'AdminController@getEdit']);
+        Route::post('edit/{id}',['as' => 'admin.aboutUs.postEdit','uses'=>'AdminController@postEdit']);
+    });
+
+    Route::group(['prefix' => 'user'],function(){
+        Route::get('list',['as' => 'admin.user.list','uses'=>'UsersController@getList']);
+
+        Route::get('delete/{id}',['as' => 'admin.user.getDelete','uses'=>'UsersController@getDelete']);
+
+        Route::get('edit/{id}',['as' => 'admin.user.getEdit','uses'=>'UsersController@getEdit']);
+        Route::post('edit/{id}',['as' => 'admin.user.postEdit','uses'=>'UsersController@postEdit']);
+    });
+
 });
 
 Route::get('xac-nhan-don-hang',[

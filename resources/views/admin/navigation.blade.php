@@ -31,7 +31,7 @@
                 <a href=""><i class="fa fa-sitemap fa-3x"></i>Người dùng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="index.php?p=listUser">Danh sách người dùng</a>
+                        <a href="{{route('admin.user.list')}}">Danh sách người dùng</a>
                     </li>
                 </ul>
             </li>
@@ -72,7 +72,7 @@
                 <a href=""><i class="fa fa-sitemap fa-3x"></i>Slide<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Danh sách các slide</a>
+                        <a href="{{route('admin.slide.slide')}}">Danh sách các slide</a>
                     </li>
                 </ul>
             </li>
@@ -80,7 +80,10 @@
                 <a href=""><i class="fa fa-sitemap fa-3x"></i>Giới thiệu<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Thông tin trang web</a>
+                        <a href="{{route('admin.aboutUs.list')}}">Giới thiệu về chúng tôi</a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.aboutUs.getAdd')}}">Thêm thông tin trang web</a>
                     </li>
                 </ul>
             </li>

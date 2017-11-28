@@ -50,7 +50,7 @@
         </div>
         <!--  Featured Products   -->
         <div class="well well-small">
-            <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span
+            <h3><a class="btn btn-mini pull-right" href="{{route('products')}}" title="View more">VIew More<span
                             class="icon-plus"></span></a>Các loại hoa nổi bật</h3>
             <hr class="soften"/>
             <div class="row-fluid">
@@ -83,7 +83,7 @@
         </div>
 
         <div class="well well-small">
-            <h3><a class="btn btn-mini pull-right" href="#">View more <span class="icon-plus"></span></a>
+            <h3><a class="btn btn-mini pull-right" href="{{route('products')}}">View more <span class="icon-plus"></span></a>
             Các loại hoa bán chạy nhất</h3>
             <hr class="soften"/>
             <div class="row-fluid">
