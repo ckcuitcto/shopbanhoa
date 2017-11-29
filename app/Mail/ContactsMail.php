@@ -37,8 +37,10 @@ class ContactsMail extends Mailable
     public function build()
     {
         $email = $this->markdown('emails.contacts')->subject('Cửa hàng Hoa Sài Gòn');
-        foreach ($this->files as $file) {
-            $email->attach($file);
+        if(!empty($this->files)) {
+            foreach ($this->files as $file) {
+                $email->attach($file);
+            }
         }
         return $email;
     }
