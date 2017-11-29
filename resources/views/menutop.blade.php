@@ -15,7 +15,7 @@
                 <a href="{{ route('login') }}"><span class="icon-user"></span> Đăng nhập </a>
                 <a href="{{route('register')}}"><span class="icon-edit"></span> Đăng ký </a>
                 @else
-                    @if(Auth::user()->level == 1)
+                    @if(Auth::user()->level >= 1)
                         <a href="{{route('admin.dashboard')}}">
                             <span class="icon-lock"></span> Trang Quản Lý
                         </a>
