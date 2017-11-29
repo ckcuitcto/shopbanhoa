@@ -106,8 +106,23 @@ class ContactController extends Controller
         $contact->save();
         $body = $request->txtBody;
         if($request->hasFile('mutilFile')){
+            $arrFile = array();
             $files = $request->file('mutilFile');
-            Mail::to($contact->email)->send(new ContactsMail($contact,$body,$files));
+            foreach ($files as $file) {
+                $fileName = str_random(8) . "_" . $file->getClientOriginalName();
+                while (file_exists("template/image/productImages/" . $fileName)) {
+                    $fileName = str_random(8) . "_" . $file->getClientOriginalName();
+                }
+                $file->move('files/', $fileName);
+                $arrFile[] = 'files/'.$fileName;
+            }
+            Mail::to($contact->email)->send(new ContactsMail($contact,$body,$arrFile));
+
+            foreach ($arrFile as $file)
+            {
+                unlink($file);
+            }
+
         }else{
             Mail::to($contact->email)->send(new ContactsMail($contact,$body));
         }

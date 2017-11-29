@@ -49,9 +49,18 @@
 
                             <div class="form-group">
                                 <label>Trả lời tin liên hệ khách hàng :</label>
-                                <textarea class="form-control" rows="3" name="txtBody"></textarea>
+                                <textarea rows="8" cols="500" id="my-editor" name="txtBody" class="form-control">{!! old('txtBody', "") !!}</textarea>
+                                <script src="js/ckeditor.js"></script>
                                 <script>
-                                    CKEDITOR.replace('txtBody');
+                                    var options = {
+                                        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                                        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                                        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                                        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+                                    };
+                                </script>
+                                <script>
+                                    CKEDITOR.replace('txtBody', options);
                                 </script>
                             </div>
                             <div class="form-group">
