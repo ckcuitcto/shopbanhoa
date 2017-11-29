@@ -90,8 +90,7 @@ class NewsController extends Controller
     public function getEdit($id)
     {
         $news = News::find($id);
-        $newsImage = NewsImages::select('id','image','id_news')->where('id_news',$news->id)->get();
-        return view('admin.news.edit', compact('news','newsImage'));
+        return view('admin.news.edit', compact('news'));
     }
 
     public function postEdit(Request $request, $id)

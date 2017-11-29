@@ -20,7 +20,7 @@
         </div>
         <!-- New Products-->
         <div class="well well-small">
-            <h3>Các loại hoa mới nhập về</h3>
+            <h3>Các loại hoa mới nhập về </h3>
             <hr class="soften"/>
             <div class="row-fluid">
                 <div id="newProductCar" class="carousel slide">
@@ -93,7 +93,8 @@
                             <div class="thumbnail">
                                 
                                 <a href="{{route('productDetail',$product->id)}}"><img
-                                            src="template/image/product/{{$product->image}}" alt=""></a>
+                                            src="template/image/product/{{$product->image}}" alt="">
+                                </a>
                                 <div class="caption">
                                     <h5> {{$product->name}}</h5>
                                     <h4>

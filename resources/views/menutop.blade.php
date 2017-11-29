@@ -39,7 +39,7 @@
                     @endguest
                     <a href="{{route('cart')}}"><span class="icon-shopping-cart"></span> {{Cart::count()}} Sản phẩm(s) -
                         <span
-                                class="badge badge-warning"> {{Cart::total(0)}}</span></a>
+                                class="badge badge-warning"> {{Cart::subtotal(0)}} đ</span></a>
             </div>
         </div>
     </div>

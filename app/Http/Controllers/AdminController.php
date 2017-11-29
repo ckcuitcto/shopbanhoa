@@ -11,6 +11,10 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
+    public function getIntroduce() {
+
+        return view('admin.introduce.introduce');
+    }
 
 // aboutUs
     public function getList(){
@@ -21,21 +25,6 @@ class AdminController extends Controller
     	return view('admin.aboutUs.add');
     }
 
-    public function postAdd(){
-    	
-    }
-
-    public function getDelete(){
-    	
-    }
-
-    public function getEdit(){
-    	return view('admin.aboutUs.edit');
-    }
-
-    public function postEdit(){
-    	
-    }
 
     // endAboutUS
 }

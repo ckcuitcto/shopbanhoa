@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         view()->composer('leftmenu',function($view){
             $category = ProductType::all();
             $view->with('category',$category);
@@ -23,18 +24,6 @@ class AppServiceProvider extends ServiceProvider
             Schema::defaultStringLength(191);
         });
 
-        view()->composer('menutop',function($view){
-
-//            if(empty(Auth::user()->id))
-//            {
-//
-//                $view->with('productListJson',);
-//
-//                Schema::defaultStringLength(191);
-//            }
-
-
-        });
     }
 
     /**

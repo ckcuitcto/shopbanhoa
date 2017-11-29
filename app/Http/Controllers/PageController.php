@@ -41,6 +41,11 @@ class PageController extends Controller
 
     }
 
+    public function getIntroduce() {
+
+        return view('pages.introduce');
+    }
+
     public function getProductType($idType)
     {
         $productsByIdType = Product::where('id_type', $idType)->paginate(9);
@@ -212,7 +217,8 @@ class PageController extends Controller
         $contactUs->description = $request->description;
         $contactUs->phone_number = $request->phone;
         $contactUs->save();
-        return redirect()->back()->with('flash_message', 'Gửi liên hệ thành công! Chúng tôi sẽ sớm liên hệ với bạn! ');
+        return redirect()->back()->with('flash_message',
+            'Gửi liên hệ thành công! Chúng tôi sẽ sớm liên hệ với bạn! ');
     }
 
     public function getNews()
@@ -226,11 +232,6 @@ class PageController extends Controller
         $news = News::find($request->idNews);
         
         return view('pages.newsDetails',compact('news'));
-    }
-
-    public function getAboutUs() {
-
-        return view('pages.aboutUs');
     }
 
 

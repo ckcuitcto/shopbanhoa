@@ -87,7 +87,7 @@
                     @endforeach
                     <tr>
                         <td colspan="4" style="text-align:right;">Tổng giá</td>
-                        <td style="text-align: center;">{{Cart::total(0)}} đ</td>
+                        <td style="text-align: center;">{{Cart::subtotal(0)}} đ</td>
                     </tr>
                     </tbody>
                 </table>

@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="tab-pane" id="profile">
-                <div class="span11">
+                <div class="span6">
                     <h4 style="text-align: center;">Thông tin đơn hàng</h4>
                     <hr class="soft"/>
                     <table class="table table-striped table-hover" id="cartList">
@@ -128,7 +128,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="result" class="span6"></div>
+                <div id="result" class="span5"></div>
             </div>
         </div>
     </div>
