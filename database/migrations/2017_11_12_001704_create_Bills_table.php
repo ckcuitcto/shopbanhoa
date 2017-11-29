@@ -17,7 +17,7 @@ class CreateBillsTable extends Migration
             $table->increments('id')->unsigned();
             $table->date('date_order');
             $table->double('total');
-            $table->string('payment',200)->default('0');
+            $table->string('payment',200)->default('0')->nullable();
             $table->text('note')->nullable();
             $table->string('recipient',200);
             $table->text('address');

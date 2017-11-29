@@ -18,3 +18,20 @@ function confirmDelete(msg) {
     return false;
 }
 
+$(document).ready(function () {
+    $(".slideImage").click(function () {
+        var slideId = $(this).attr("slideId");
+        $.ajax({
+            url: '/admin/slide/deleteSlide/' + slideId,
+            type: 'GET',
+            cache: false,
+            data: {"id": slideId},
+            success: function (data) {
+                if (data = "success") {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+});

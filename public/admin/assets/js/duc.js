@@ -77,5 +77,35 @@ $( document ).ready(function() {
 
 
     $('div.alert-success').delay(2000).slideUp();
+
+    $(".slideImage").click(function () {
+        var slideId = $(this).attr("slideId");
+        $.ajax({
+            url: '/admin/slide/deleteSlide/' + slideId,
+            type: 'GET',
+            cache: false,
+            data: {"id": slideId},
+            success: function (data) {
+                if (data = "success") {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    $(".ProductImage").click(function () {
+        var productImageId = $(this).attr("productImageId");
+        $.ajax({
+            url: '/admin/product/deleteImage/' + productImageId,
+            type: 'GET',
+            cache: false,
+            data: {"id": productImageId},
+            success: function (data) {
+                if (data = "success") {
+                    window.location.reload();
+                }
+            }
+        });
+    });
 });     
 

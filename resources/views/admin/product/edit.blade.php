@@ -117,13 +117,11 @@
                                         </div>
                                     @endforeach
                                     </div>
-
                                 </div>
                                 <div class="form-group">
                                     <label>Thêm hình chi tiết</label>
                                     <input type="file" name="mutilFile[]" multiple>
                                 </div>
-
                             </div>
                         </div>
                     </div>

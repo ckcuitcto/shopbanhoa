@@ -157,9 +157,10 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
     Route::post('introduce',['as' => 'admin.postIntroduce' , 'uses' => 'AdminController@postIntroduce']);
 
     Route::group(['prefix' => 'slide'],function(){
-        Route::get('list',['as' => 'admin.slide.slide','uses'=>'HomeController@getSlide']);
-        Route::get('edit/{id}',['as' => 'admin.slide.getEdit','uses'=>'HomeController@getEdit']);
-        Route::post('edit/{id}',['as' => 'admin.slide.postEdit','uses'=>'HomeController@postEdit']);
+        Route::get('list',['as' => 'admin.slide.getList','uses'=>'SlideController@getList']);
+        Route::post('list',['as' => 'admin.slide.postList','uses'=>'SlideController@postList']);
+
+        Route::get('deleteSlide/{id}',['as'=>'admin.slide.getDeleteSlideImage', 'uses' => 'SlideController@getDeleteSlideImage']);
     });
 
     Route::group(['prefix' => 'aboutUs'],function(){

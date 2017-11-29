@@ -27,9 +27,23 @@
     <script src="{{ url('admin/assets/js/jquery.js')}}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ url('admin/assets/js/duc.js')}}"></script>
     <script src="{{ url('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-
     <script>
-        $(document).ready(function () {
+        $( document ).ready(function() {
+            $(".slideImage").click(function () {
+                var slideId = $(this).attr("slideId");
+                $.ajax({
+                    url: '/admin/slide/deleteSlide/' + slideId,
+                    type: 'GET',
+                    cache: false,
+                    data: {"id": slideId},
+                    success: function (data) {
+                        if (data = "success") {
+                            window.location.reload();
+                        }
+                    }
+                });
+            });
+
             $(".ProductImage").click(function () {
                 var productImageId = $(this).attr("productImageId");
                 $.ajax({
@@ -44,9 +58,7 @@
                     }
                 });
             });
-
         });
-
     </script>
 </head>
 <body>

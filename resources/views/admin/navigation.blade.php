@@ -72,7 +72,7 @@
                 <a href=""><i class="fa fa-sitemap fa-3x"></i>Slide<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{route('admin.slide.slide')}}">Danh sách các slide</a>
+                        <a href="{{route('admin.slide.getList')}}">Danh sách các slide</a>
                     </li>
                 </ul>
             </li>
