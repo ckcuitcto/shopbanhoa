@@ -3,15 +3,13 @@
 <div class="well well-small">
 	@foreach($news as $tintuc)
 
-	<div class="row-fluid">	  
+	<div class="row-fluid">
 		<div class="span2">
 			<img src="template/image/news/{{$tintuc->image}}" alt="">
 		</div>
 		<div class="span6">
-			<h5>{{$tintuc->title}}</h5>
-			<p>
-			{{$tintuc->content}}
-			</p>
+			<h5><a href="{{route('newsDetails',$tintuc->id)}}" >{{$tintuc->title}} </a></h5>
+
 		</div>
 		<div class="span4 alignR">
 		<form class="form-horizontal qtyFrm">
@@ -28,4 +26,5 @@
 	</div>
 	<hr class="soften">
 	@endforeach()
+</div>
 @endsection

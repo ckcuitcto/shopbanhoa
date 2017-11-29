@@ -60,7 +60,7 @@
                         </form>
                         <tr>
                             <td colspan="5" class="alignR">Total products:</td>
-                            <td> {{Cart::total()}}</td>
+                            <td> {{Cart::subtotal()}}</td>
                         </tr>
                         </tbody>
                     </table>

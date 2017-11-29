@@ -1,4 +1,5 @@
 <?php
+
 Route::get('/',[
    'as'=>'index',
     'uses'=>'PageController@getIndex'
@@ -55,8 +56,8 @@ Route::post('lien-he',[
 ]);
 
 Route::get('gioi_thieu',[
-    'as'=>'aboutUs',
-    'uses'=>'PageController@getAboutUs'
+    'as'=>'introduce',
+    'uses'=>'PageController@getIntroduce'
 ]);
 
 Route::get('dang-ki',[
@@ -91,6 +92,7 @@ Route::post('dang-nhap',[
 
 
 Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
+
     Route::group(['prefix' => 'productType'],function(){
         Route::get('list',['as' => 'admin.productType.list','uses'=>'ProductTypeController@getList']);
 
@@ -151,6 +153,9 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
 
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
 
+    Route::get('introduce',['as' => 'admin.getIntroduce' , 'uses' => 'AdminController@getIntroduce']);
+    Route::post('introduce',['as' => 'admin.postIntroduce' , 'uses' => 'AdminController@postIntroduce']);
+
     Route::group(['prefix' => 'slide'],function(){
         Route::get('list',['as' => 'admin.slide.slide','uses'=>'HomeController@getSlide']);
         Route::get('edit/{id}',['as' => 'admin.slide.getEdit','uses'=>'HomeController@getEdit']);
@@ -176,6 +181,9 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
         Route::get('edit/{id}',['as' => 'admin.user.getEdit','uses'=>'UsersController@getEdit']);
         Route::post('edit/{id}',['as' => 'admin.user.postEdit','uses'=>'UsersController@postEdit']);
     });
+
+
+
 
 });
 
@@ -211,3 +219,5 @@ Route::get('danh-sach-san-pham-cua-don/{id}',[
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+?>

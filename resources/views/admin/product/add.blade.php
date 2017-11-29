@@ -72,10 +72,19 @@
 
                         <div class="form-group">
                             <label>Tóm tắt</label>
-                            <textarea class="form-control" rows="3" name="txtDescription"
-                                      placeholder="Tóm tắt ngắn gọn về sản phẩm"></textarea>
+
+                            <textarea rows="8" cols="500" id="my-editor" name="txtDescription" class="form-control">{!! old('txtDescription',  "" !!}</textarea>
+                            <script src="js/ckeditor.js"></script>
                             <script>
-                                CKEDITOR.replace('txtDescription');
+                                var options = {
+                                    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                                    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                                    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                                    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+                                };
+                            </script>
+                            <script>
+                                CKEDITOR.replace('txtDescription', options);
                             </script>
                         </div>
 
