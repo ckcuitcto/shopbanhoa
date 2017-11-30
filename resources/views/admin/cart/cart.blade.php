@@ -8,13 +8,13 @@
 </div>
 <div class="row">
     <div class="col-md-4 donhang" xacnhan="2">
-     <h3><a href="{{route('admin.cart.getCart','2')}}">Tất cả đơn hàng</a></h3>     
+     <h3><a href="{{route('admin.cart.getBill','2')}}">Tất cả đơn hàng</a></h3>
     </div>
     <div class="col-md-4 donhang" xacnhan="1">
-     <h3><a href="{{route('admin.cart.getCart','1')}}">Đơn hàng đã xác nhận</a> </h3>     
+     <h3><a href="{{route('admin.cart.getBill','1')}}">Đơn hàng đã xác nhận</a> </h3>
     </div>
     <div class="col-md-4 donhang" xacnhan="0">
-     <h3><a href="{{route('admin.cart.getCart','0')}}">Đơn hàng chưa nhận </a></h3>     
+     <h3><a href="{{route('admin.cart.getBill','0')}}">Đơn hàng chưa nhận </a></h3>
     </div>
 </div>
 

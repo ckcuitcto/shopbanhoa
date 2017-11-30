@@ -4,6 +4,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>HoaSaiGon.tk trang Admin</title>
+
+    <link rel="shortcut icon" href="{{ url('template/assets/ico/Red-Flower-icon.png')}}">
     <!-- Bootstrap style -->
     <link id="callCss" rel="stylesheet" href="{{ url('admin/assets/css/bootstrap.min.css')}}" media="screen"/>
     <link href="{{ url('admin/assets/css/base.css')}}" rel="stylesheet" media="screen"/>

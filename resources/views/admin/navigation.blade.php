@@ -23,7 +23,7 @@
                 <a  href="#"><i class="fa fa-table fa-3x"></i> Đơn hàng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{route('admin.cart.getCart','0')}}">Danh sách đơn hàng</a>
+                        <a href="{{route('admin.cart.getBill','0')}}">Danh sách đơn hàng</a>
                     </li>
                 </ul>
             </li>

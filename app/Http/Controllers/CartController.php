@@ -9,16 +9,17 @@ use DB;
 
 class CartController extends Controller
 {
-    public function getCart($confirm){
-    	if ($confirm == 2) {
+    public function getBill($confirm){
+    	if ( !($confirm == 1 OR $confirm == 0)) {
             $carts = Bill::orderBy('id')->get();
-        } else {
+        } elseif($confirm == 1 OR $confirm == 0 ) {
             $carts = Bill::where('confirm', $confirm)->orderBy('id')->get();
         }
+
     	return view('admin.cart.cart',compact('carts'));
     }
 
-    public function postCart(Request $request){
+    public function postBill(Request $request){
 
     	// $this->validate($request, [
      //        'txtAddress' => 'required',
