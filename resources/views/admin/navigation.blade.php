@@ -9,7 +9,7 @@
                 <a class="active-menu"  href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard fa-3x"></i>Trang quản lí</a>
             </li>
             <li>
-                <a  href=""><i class="fa fa-table fa-3x"></i>Liên hệ khách hàng <span class="glyphicon glyphicon-envelope"></span> </a>
+                <a  href=""><i class="fa fa-envelope fa-3x"></i>Liên hệ khách hàng <span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{route('admin.contact.getContact')}}">Quản lí liên hệ</a>
@@ -20,7 +20,7 @@
                 </ul>
             </li>
             <li  >
-                <a  href="#"><i class="fa fa-table fa-3x"></i> Đơn hàng<span class="fa arrow"></span></a>
+                <a  href="#"><i class="fa fa-shopping-cart fa-3x"></i> Đơn hàng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{route('admin.cart.getBill','0')}}">Danh sách đơn hàng</a>
@@ -28,7 +28,7 @@
                 </ul>
             </li>
             <li>
-                <a href=""><i class="fa fa-sitemap fa-3x"></i>Người dùng<span class="fa arrow"></span></a>
+                <a href=""><i class="fa fa-user fa-3x"></i>Người dùng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{route('admin.user.list')}}">Danh sách người dùng</a>
@@ -58,7 +58,7 @@
                 </ul>
             </li>
             <li>
-                <a href=""><i class="fa fa-sitemap fa-3x"></i>Tin tức<span class="fa arrow"></span></a>
+                <a href=""><i class="fa fa-newspaper-o fa-3x"></i> Tin tức<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{route('admin.news.list')}}">Danh sách tin tức</a>

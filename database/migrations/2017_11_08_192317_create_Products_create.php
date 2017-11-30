@@ -19,12 +19,20 @@ class CreateProductsCreate extends Migration
             $table->integer('promotion_price')->default('0');
             $table->string('image',200);
             $table->integer('unit')->unsigned()->nullable();
-            $table->foreign('unit')->references('id')->on('units')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('unit')
+                ->references('id')->on('units')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
             $table->tinyInteger('new')->default('1');
             $table->integer('quantity')->default('0');
             $table->integer('view')->default('0');
             $table->integer('id_type')->unsigned();
-            $table->foreign('id_type')->references('id')->on('type_products')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_type')
+                ->references('id')->on('type_products')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
             $table->timestamps();
         });
 
