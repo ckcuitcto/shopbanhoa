@@ -18,7 +18,7 @@
                     <i class="fa fa-envelope-o"></i>
                 </span>
                 <div class="text-box">
-                    <p class="main-text"><a href="index.php?p=lienhe&xacnhan=0"> thư </a></p>
+                    <p class="main-text"><a href="{{route('admin.contact.getContactUs','0')}}">{{$qtyContact}} thư </a></p>
                     <p class="text-muted">chưa duyệt</p>
                 </div>
             </div>
@@ -26,11 +26,11 @@
         <div class="col-md-3 col-sm-6 col-xs-6">
             <div class="panel panel-back noti-box">
                 <span class="icon-box bg-color-green set-icon">
-                    <i class="fa fa-bars"></i>
+                    <i class="fa fa-gift"></i>
                 </span>
                 <div class="text-box">
-                    <p class="main-text">30 Tasks</p>
-                    <p class="text-muted">Remaining</p>
+                    <p class="main-text">{!! $qtyBirthday['0']->qty !!} người</p>
+                    <p class="text-muted">sinh nhật vào hôm nay</p>
                 </div>
             </div>
         </div>
@@ -48,10 +48,10 @@
         <div class="col-md-3 col-sm-6 col-xs-6">
             <div class="panel panel-back noti-box">
                 <span class="icon-box bg-color-brown set-icon">
-                    <i class="fa fa-rocket"></i>
+                    <i class="fa fa-shopping-cart"></i>
                 </span>
                 <div class="text-box">
-                    <p class="main-text"><a href="index.php?p=dathang&xacnhan=0">đơn hàng</a></p>
+                    <p class="main-text"><a href="{{route('admin.cart.getBill','0')}}"> {{$qtyBill}} đơn hàng</a></p>
                     <p class="text-muted">đang chờ xử lí</p>
                 </div>
             </div>
