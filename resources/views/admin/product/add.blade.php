@@ -95,7 +95,7 @@
 
                         <div class="form-group">
                             <label>Các hình chi tiết</label>
-                            <input type="file" name="mutilFile[]" multiple>
+                            <input type="file" name="mutilFile[]" multiple />
                         </div>
 
                     </div>

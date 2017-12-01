@@ -83,7 +83,7 @@
                         <a href="{{route('admin.getIntroduce')}}">Giới thiệu về chúng tôi</a>
                     </li>
                     <li>
-                        <a href="{{route('admin.aboutUs.getAdd')}}">Thêm thông tin trang web</a>
+                        <a href="#">Thêm thông tin trang web</a>
                     </li>
                 </ul>
             </li>
