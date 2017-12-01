@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <label>Tóm tắt</label>
 
-                            <textarea rows="8" cols="500" id="my-editor" name="txtDescription" class="form-control">{!! old('txtDescription',  "" !!}</textarea>
+                            <textarea rows="8" cols="500" id="my-editor" name="txtDescription" class="form-control">{!! old('txtDescription' ,"") !!}</textarea>
                             <script src="js/ckeditor.js"></script>
                             <script>
                                 var options = {

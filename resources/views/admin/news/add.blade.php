@@ -29,7 +29,7 @@
                                 {{--CKEDITOR.replace( 'txtNewsContent' );--}}
                             {{--</script>--}}
 
-                            <textarea rows="8" cols="500" id="my-editor" name="txtNewsContent" class="form-control">{!! old('content' ,"") !!}</textarea>
+                            <textarea rows="8" cols="500" id="my-editor" name="txtNewsContent" class="form-control">{!! old('txtNewsContent' ,"") !!}</textarea>
                             <script src="js/ckeditor.js"></script>
                             <script>
                                 var options = {
