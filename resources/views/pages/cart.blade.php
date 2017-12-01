@@ -19,7 +19,6 @@
                         <tr>
                             <th>Hình ảnh sản phẩm</th>
                             <th>Mô tả sản phẩm</th>
-                            <th>Avail.</th>
                             <th>Giá</th>
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
@@ -34,7 +33,6 @@
                                     <td><img width="100" src="template/image/product/{{$item->options->img}}" alt="">
                                     </td>
                                     <td>{{$item->name}}<br>Carate:24 <br>Model:HBK24</td>
-                                    <td><span class="shopBtn"><span class="icon-ok"></span></span></td>
                                     <td>{{number_format($item->price,0,",",".")}} VNĐ</td>
                                     <td>
                                         <input class="span1 quantity1" idProduct="{{$item->rowId}}"
@@ -59,7 +57,7 @@
                             @endforeach
                         </form>
                         <tr>
-                            <td colspan="5" class="alignR">Total products:</td>
+                            <td colspan="4" class="alignR">Total products:</td>
                             <td> {{Cart::subtotal()}}</td>
                         </tr>
                         </tbody>

@@ -9,16 +9,17 @@ use DB;
 
 class CartController extends Controller
 {
-    public function getCart($confirm){
-    	if ($confirm == 2) {
+    public function getBill($confirm){
+    	if ( !($confirm == 1 OR $confirm == 0)) {
             $carts = Bill::orderBy('id')->get();
-        } else {
+        } elseif($confirm == 1 OR $confirm == 0 ) {
             $carts = Bill::where('confirm', $confirm)->orderBy('id')->get();
         }
+
     	return view('admin.cart.cart',compact('carts'));
     }
 
-    public function postCart(Request $request){
+    public function postBill(Request $request){
 
     	// $this->validate($request, [
      //        'txtAddress' => 'required',
@@ -51,34 +52,48 @@ class CartController extends Controller
 
     public function getBillDetail($id){
     	// $cart = BillDetail::find($id);
-        $cart = DB::table('bill_detail')
 
-            ->join('products','products.id','=','bill_detail.id_product')
-            ->join('bills','bills.id','=','bill_detail.id_bill')
-            ->where('bill_detail',$id)
+        // $cart = DB::table('bill_detail')
+
+        //     ->join('products','products.id','=','bill_detail.id_product')
+        //     ->join('bills','bills.id','=','bill_detail.id_bill')
+        //     ->where('bill_detail',$id)
+
+//        $cart = DB::table('bill_detail')
+//            ->join('products','products.id','=','bill_detail.id_product')
+//            ->join('bills','bills.id','=','bill_detail.id_bill')
+//            ->where('bill_detail.id',$id)
+
             // ->select('bill_detail.*', 'products.name', 'products.image','bills.recipient','bills.address','bills.phone_number')
+//            ->get();
 
-            ->get();
-    	return view('admin.cart.billDetail', compact('cart'));
+        $productListOfBIll = DB::select("		
+            SELECT * FROM bill_detail bd
+                LEFT JOIN products p ON  bd.id_product = p.id
+                LEFT JOIN bills b ON bd.id_bill = b.id
+                WHERE b.id = ? ",[$id]);
+//        var_dump($productListOfBIll['1']->image);
+//        var_dump($productListOfBIll);
+    	return view('admin.cart.billDetail', compact('productListOfBIll'));
     }
     public function postDetailContact(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'txtBody' => 'required'
-        // ], [
-        //     'txtBody.required' => 'Bạn chưa nhập nội dung email'
-        // ]);
-        // $contact = ContactUs::find($id);
-        // $contact->confirm = 1;
-        // $contact->save();
-        // $body = $request->txtBody;
-        // if($request->hasFile('mutilFile')){
-        //     $files = $request->file('mutilFile');
-        //     Mail::to($contact->email)->send(new ContactsMail($contact,$body,$files));
-        // }else{
-        //     Mail::to($contact->email)->send(new ContactsMail($contact,$body));
-        // }
+        $this->validate($request, [
+            'txtBody' => 'required'
+        ], [
+            'txtBody.required' => 'Bạn chưa nhập nội dung email'
+        ]);
+        $contact = ContactUs::find($id);
+        $contact->confirm = 1;
+        $contact->save();
+        $body = $request->txtBody;
+        if($request->hasFile('mutilFile')){
+            $files = $request->file('mutilFile');
+            Mail::to($contact->email)->send(new ContactsMail($contact,$body,$files));
+        }else{
+            Mail::to($contact->email)->send(new ContactsMail($contact,$body));
+        }
 
-        // return redirect()->back()->with(['flash_message' => 'Gửi thành công']);
+        return redirect()->back()->with(['flash_message' => 'Gửi thành công']);
     }
 }

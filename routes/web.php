@@ -144,8 +144,8 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
     });
 
     Route::group(['prefix' => 'cart'],function (){
-        Route::get('cart/{confirm}',['as' => 'admin.cart.getCart','uses' => 'CartController@getCart']);
-        Route::post('cart/{confirm}',['as' => 'admin.cart.postCart','uses' => 'CartController@postCart']);
+        Route::get('bill/{confirm}',['as' => 'admin.cart.getBill','uses' => 'CartController@getBill']);
+        Route::post('bill/{confirm}',['as' => 'admin.cart.postBill','uses' => 'CartController@postBill']);
 
         Route::get('billDetail/{id}',['as' => 'admin.cart.getBillDetail','uses' => 'CartController@getBillDetail']);
         Route::post('billDetail/{id}',['as' => 'admin.cart.postBillDetail','uses' => 'CartController@postBillDetail']);
@@ -163,17 +163,6 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
         Route::get('deleteSlide/{id}',['as'=>'admin.slide.getDeleteSlideImage', 'uses' => 'SlideController@getDeleteSlideImage']);
     });
 
-    Route::group(['prefix' => 'aboutUs'],function(){
-        Route::get('list',['as' => 'admin.aboutUs.list','uses'=>'AdminController@getList']);
-        Route::get('add',['as' => 'admin.aboutUs.getAdd','uses'=>'AdminController@getAdd']);
-        Route::post('add',['as' => 'admin.aboutUs.postAdd','uses'=>'AdminController@postAdd']);
-
-        Route::get('delete/{id}',['as' => 'admin.aboutUs.getDelete','uses'=>'AdminController@getDelete']);
-
-        Route::get('edit/{id}',['as' => 'admin.aboutUs.getEdit','uses'=>'AdminController@getEdit']);
-        Route::post('edit/{id}',['as' => 'admin.aboutUs.postEdit','uses'=>'AdminController@postEdit']);
-    });
-
     Route::group(['prefix' => 'user'],function(){
         Route::get('list',['as' => 'admin.user.list','uses'=>'UsersController@getList']);
 
@@ -182,9 +171,6 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
         Route::get('edit/{id}',['as' => 'admin.user.getEdit','uses'=>'UsersController@getEdit']);
         Route::post('edit/{id}',['as' => 'admin.user.postEdit','uses'=>'UsersController@postEdit']);
     });
-
-
-
 
 });
 
