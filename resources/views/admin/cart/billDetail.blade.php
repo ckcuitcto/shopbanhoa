@@ -3,19 +3,21 @@
 
     <div class="row">
         <div class="col-md-8">
-            <h2>Chi tiết đơn hàng</h2>
+            <h2>Chi tiết đơn hàng của khách hàng : {{$productListOfBIll['0']->recipient}} </h2>
+            <h3> ID đơn hàng : {{$productListOfBIll['0']->id_bill}}</h3>
         </div>
     </div>
     <hr/>
 
-    <form action="{{route('admin.cart.getBillDetail',$cart->id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.cart.getBillDetail',$productListOfBIll['0']->id_bill)}}" method="POST"
+          enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <div class="row">
             <div class="col-md-11 col-sm-12 col-xs-12">
             @include('admin.blocks.error')
             <!-- Advanced Tables -->
                 <div class="panel-body">
-                    <form action="{{route('admin.cart.getBillDetail',$cart->id)}}" method="POST"
+                    <form action="{{route('admin.cart.getBillDetail',$productListOfBIll['0']->id_bill)}}" method="POST"
                           enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                         <div class="table-responsive">
@@ -30,23 +32,25 @@
                                     <th style="text-align: center">Địa chỉ</th>
                                     <th style="text-align: center">Số điện thoại</th>
                                     <th style="text-align: center">Số lượng</th>
-                                    <th style="text-align: center" >Đơn giá</th>
+                                    <th style="text-align: center">Đơn giá</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>{{$cart->id_bill}}</td>
-                                    <td>{{$cart->id_product}}</td>
-                                    <td>{{$cart->name}}</td>
-                                    <td>{{$cart->image}}</td>
-                                    <td>{{$cart->recipient}}</td>
-                                    <td>{{$cart->address}}</td>
-                                    <td>{{$cart->phone_number}}</td>
-                                    <td>{{$cart->quantity}} </td>
-                                    <td>{{$cart->unit_price}} </td>                                                  
-                                </tr>
+                                @foreach($productListOfBIll as $product)
+                                    <tr>
+                                        <td>{{$product->id_bill}}</td>
+                                        <td>{{$product->id_product}}</td>
+                                        <td>{{$product->name}}</td>
+                                        <td>{{$product->image}}</td>
+                                        <td>{{$product->recipient}}</td>
+                                        <td>{{$product->address}}</td>
+                                        <td>{{$product->phone_number}}</td>
+                                        <td>{{$product->quantity}} </td>
+                                        <td>{{$product->unit_price}} </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
-                            </table>                          
+                            </table>
                     </form>
                 </div>
                 <!--End Advanced Tables -->

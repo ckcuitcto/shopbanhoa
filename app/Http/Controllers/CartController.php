@@ -52,15 +52,21 @@ class CartController extends Controller
 
     public function getBillDetail($id){
     	// $cart = BillDetail::find($id);
-        $cart = DB::table('bill_detail')
-
-            ->join('products','products.id','=','bill_detail.id_product')
-            ->join('bills','bills.id','=','bill_detail.id_bill')
-            ->where('bill_detail.id',$id)
+//        $cart = DB::table('bill_detail')
+//            ->join('products','products.id','=','bill_detail.id_product')
+//            ->join('bills','bills.id','=','bill_detail.id_bill')
+//            ->where('bill_detail.id',$id)
             // ->select('bill_detail.*', 'products.name', 'products.image','bills.recipient','bills.address','bills.phone_number')
+//            ->get();
 
-            ->get();
-    	return view('admin.cart.billDetail', compact('cart'));
+        $productListOfBIll = DB::select("		
+            SELECT * FROM bill_detail bd
+                LEFT JOIN products p ON  bd.id_product = p.id
+                LEFT JOIN bills b ON bd.id_bill = b.id
+                WHERE b.id = ? ",[$id]);
+//        var_dump($productListOfBIll['1']->image);
+//        var_dump($productListOfBIll);
+    	return view('admin.cart.billDetail', compact('productListOfBIll'));
     }
     public function postDetailContact(Request $request, $id)
     {
