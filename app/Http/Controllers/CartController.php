@@ -55,7 +55,7 @@ class CartController extends Controller
 
             ->join('products','products.id','=','bill_detail.id_product')
             ->join('bills','bills.id','=','bill_detail.id_bill')
-            ->where('bill_detail.id',$id)
+            ->where('bill_detail',$id)
             // ->select('bill_detail.*', 'products.name', 'products.image','bills.recipient','bills.address','bills.phone_number')
 
             ->get();
