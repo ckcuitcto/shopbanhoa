@@ -14,6 +14,7 @@ use App\Slide;
 use App\News;
 use App\NewProduct;
 use App\ContactUs;
+use App\Introduce;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -42,8 +43,9 @@ class PageController extends Controller
     }
 
     public function getIntroduce() {
+        $introduce = Introduce::all();
 
-        return view('pages.introduce');
+        return view('pages.introduce',compact('introduce'));
     }
 
     public function getProductType($idType)
@@ -230,7 +232,7 @@ class PageController extends Controller
 
     public function getNewsDetails(Request $request){
         $news = News::find($request->idNews);
-        
+
         return view('pages.newsDetails',compact('news'));
     }
 
