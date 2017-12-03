@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            <h2>Thêm sản phẩm</h2>
+            <h2>Chỉnh sửa liên hệ</h2>
         </div>
     </div>
     <hr/>

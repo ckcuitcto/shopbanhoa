@@ -107,5 +107,20 @@ $( document ).ready(function() {
             }
         });
     });
+
+    $(".ProductImage").click(function () {
+        var productImageId = $(this).attr("productImageId");
+        $.ajax({
+            url: '/admin/product/deleteImage/' + productImageId,
+            type: 'GET',
+            cache: false,
+            data: {"id": productImageId},
+            success: function (data) {
+                if (data = "success") {
+                    window.location.reload();
+                }
+            }
+        });
+    });
 });     
 

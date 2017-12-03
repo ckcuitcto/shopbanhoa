@@ -51,6 +51,7 @@ class ProductController extends Controller
         $product->new = $request->rdoNew;
         $product->description = $request->txtDescription;
 
+// luu hinh dai dien
         if ($request->hasFile('fImages')) {
             $file = $request->file('fImages');
 
@@ -68,6 +69,7 @@ class ProductController extends Controller
         }
         $product->save();
 
+// luu cac hinh chi tiet
         $productId = $product->id;
         if ($request->hasFile('mutilFile')) {
             $arrFile = $request->file('mutilFile');

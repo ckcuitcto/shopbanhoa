@@ -156,8 +156,15 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
 
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
 
-    Route::get('introduce',['as' => 'admin.getIntroduce' , 'uses' => 'AdminController@getIntroduce']);
-    Route::post('introduce',['as' => 'admin.postIntroduce' , 'uses' => 'AdminController@postIntroduce']);
+    Route::group(['prefix' => 'introduce'],function (){
+        Route::get('introduce',['as' => 'admin.introduce.getIntroduce' , 'uses' => 'AdminController@getIntroduce']);
+        Route::post('introduce',['as' => 'admin.introduce.postIntroduce' , 'uses' => 'AdminController@postIntroduce']);
+
+        Route::get('footer',['as' => 'admin.introduce.getFooter' , 'uses' => 'AdminController@getFooter']);
+        Route::post('footer',['as' => 'admin.introduce.postFooter' , 'uses' => 'AdminController@postFooter']);
+
+        Route::get('delete/{id}',['as'=>'admin.slide.getDeleteSlideImage', 'uses' => 'SlideController@getDeleteSlideImage']);
+    });
 
     Route::group(['prefix' => 'slide'],function(){
         Route::get('list',['as' => 'admin.slide.getList','uses'=>'SlideController@getList']);
