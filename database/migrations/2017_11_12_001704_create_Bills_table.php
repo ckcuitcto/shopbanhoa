@@ -20,7 +20,6 @@ class CreateBillsTable extends Migration
             $table->string('payment',200)->default('0')->nullable();
             $table->text('note')->nullable();
             $table->string('recipient',200);
-            $table->string('email')->unique();
             $table->text('address');
             $table->string('phone_number',20);
             $table->tinyInteger('confirm')->default('0');
