@@ -9,4 +9,5 @@ class Footer extends Model
     protected $table = "footer";
 
     protected $fillable = ['account','inform','source','description','titleHeader'];
+
 }
