@@ -9,4 +9,5 @@ class Introduce extends Model
     protected $table = "introduce";
 
     protected $fillable = ['title','content'];
+
 }
