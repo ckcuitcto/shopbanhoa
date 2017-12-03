@@ -19,8 +19,6 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-
-                        <!-- DO DL vao day  -->
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                             <tr>
@@ -36,10 +34,8 @@
                                 <td>Ngày tạo</td>
                                 <td>Ngày sửa</td>
                                 <td>Xóa</td>
-
                             </tr>
                             </thead>
-
                             <tbody>
                             @foreach($users as $user)
                                 <tr class="odd gradeX">

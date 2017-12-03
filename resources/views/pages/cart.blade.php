@@ -42,7 +42,7 @@
                                             <button class="btn btn-default btn-number" data-type="minus"
                                                     data-field="{{$item->rowId}}" type="button"><i
                                                         class="icon-minus"></i></button>
-                                            <button class="btn btn-default btn-number" data-type="plus"
+                                            <button  {{ (\App\Http\Controllers\PageController::checkQuantity($item->id)) ? "" : "disabled" }} class="btn btn-default btn-number" data-type="plus"
                                                     data-field="{{$item->rowId}}" type="button"><i
                                                         class="icon-plus"></i></button>
                                             <button class="btn btn-default btn-danger removeProduct" type="button"
