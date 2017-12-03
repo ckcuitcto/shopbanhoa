@@ -2,9 +2,13 @@
  * Created by CKC on 07-Nov-17.
  */
 $(document).ready(function () {
+
+
     $(".quantity1").change(function () {
+
         var quantity = $(this).val();
         var idProduct = $(this).attr("idProduct");
+
         var token = $("input[name='_token']").val();
         $.ajax({
             url:'cap-nhat-gio-hang/'+idProduct+'/'+quantity,

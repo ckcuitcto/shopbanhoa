@@ -149,29 +149,28 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
 
         Route::get('billDetail/{id}',['as' => 'admin.cart.getBillDetail','uses' => 'CartController@getBillDetail']);
         Route::post('billDetail/{id}',['as' => 'admin.cart.postBillDetail','uses' => 'CartController@postBillDetail']);
+
+        Route::get('deleteBill/{id}',['as'=>'admin.cart.deleteBill', 'uses' => 'CartController@deleteBill']);
+        Route::get('deleteBillDetail/{id}',['as'=>'admin.cart.deleteBillDetail', 'uses' => 'CartController@deleteBillDetail']);
     });
 
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
 
-    Route::get('introduce',['as' => 'admin.getIntroduce' , 'uses' => 'AdminController@getIntroduce']);
-    Route::post('introduce',['as' => 'admin.postIntroduce' , 'uses' => 'AdminController@postIntroduce']);
+    Route::group(['prefix' => 'introduce'],function (){
+        Route::get('introduce',['as' => 'admin.introduce.getIntroduce' , 'uses' => 'AdminController@getIntroduce']);
+        Route::post('introduce',['as' => 'admin.introduce.postIntroduce' , 'uses' => 'AdminController@postIntroduce']);
+
+        Route::get('footer',['as' => 'admin.introduce.getFooter' , 'uses' => 'AdminController@getFooter']);
+        Route::post('footer',['as' => 'admin.introduce.postFooter' , 'uses' => 'AdminController@postFooter']);
+
+        Route::get('delete/{id}',['as'=>'admin.slide.getDeleteSlideImage', 'uses' => 'SlideController@getDeleteSlideImage']);
+    });
 
     Route::group(['prefix' => 'slide'],function(){
         Route::get('list',['as' => 'admin.slide.getList','uses'=>'SlideController@getList']);
         Route::post('list',['as' => 'admin.slide.postList','uses'=>'SlideController@postList']);
 
         Route::get('deleteSlide/{id}',['as'=>'admin.slide.getDeleteSlideImage', 'uses' => 'SlideController@getDeleteSlideImage']);
-    });
-
-    Route::group(['prefix' => 'aboutUs'],function(){
-        Route::get('list',['as' => 'admin.aboutUs.list','uses'=>'AdminController@getList']);
-        Route::get('add',['as' => 'admin.aboutUs.getAdd','uses'=>'AdminController@getAdd']);
-        Route::post('add',['as' => 'admin.aboutUs.postAdd','uses'=>'AdminController@postAdd']);
-
-        Route::get('delete/{id}',['as' => 'admin.aboutUs.getDelete','uses'=>'AdminController@getDelete']);
-
-        Route::get('edit/{id}',['as' => 'admin.aboutUs.getEdit','uses'=>'AdminController@getEdit']);
-        Route::post('edit/{id}',['as' => 'admin.aboutUs.postEdit','uses'=>'AdminController@postEdit']);
     });
 
     Route::group(['prefix' => 'user'],function(){
@@ -182,9 +181,6 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
         Route::get('edit/{id}',['as' => 'admin.user.getEdit','uses'=>'UsersController@getEdit']);
         Route::post('edit/{id}',['as' => 'admin.user.postEdit','uses'=>'UsersController@postEdit']);
     });
-
-
-
 
 });
 

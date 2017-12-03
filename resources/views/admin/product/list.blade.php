@@ -38,7 +38,7 @@
                                     <td><a href="{{route('admin.product.getEdit',$product->id)}}"> {{$product->id}} </a>
                                     </td>
                                     <td><a href="{{route('admin.product.getEdit',$product->id)}}"> {{$product->name}}
-                                            <p><img width="200px" src="/template/image/product/{{$product->image}}"></p>
+                                                <p><img width="200px" src="/template/image/product/{{$product->image}}"></p>
                                         </a></td>
                                     <td>{{strip_tags($product->description)}}</td>
                                     <td>{{number_format($product->unit_price,0,",",".")}}</td>

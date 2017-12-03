@@ -24,6 +24,7 @@
     <link href="{{ url('admin/assets/css/mycss.css')}}" rel="stylesheet"/>
     <!-- GOOGLE FONTS-->
     <link href="{{ url('admin/assets/css/fontsgoogleapis.css')}}" rel='stylesheet' type='text/css'/>
+
     <!-- TABLE STYLES-->
     <link href="{{ url('admin/assets/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet"/>
     <script src="{{ url('admin/assets/js/jquery.js')}}" type="text/javascript"></script>
@@ -62,6 +63,8 @@
             });
         });
     </script>
+
+
 </head>
 <body>
 <div id="wrapper">
@@ -93,7 +96,7 @@
 </div>
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-
+@yield('script')
 <!-- JQUERY SCRIPTS -->
 <script src="{{ url('admin/assets/js/jquery-1.10.2.js')}}"></script>
 <!-- BOOTSTRAP SCRIPTS -->

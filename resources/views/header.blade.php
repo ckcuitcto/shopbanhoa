@@ -11,13 +11,11 @@
         <div class="span6">
             <div class="offerNoteWrapper">
                 <h1 class="dotmark" align="center">
-                    <i class="icon-cut"></i>
-                     Tôi yêu hoa đâu cần hoa đẹp, mà chỉ cần hoa tỏa ngát hương thơm. Tôi yêu người đâu cần người đẹp, mà chỉ cần người thật sự yêu tôi.
-                </h1>
+                    <i class="icon-cut"></i>Chưa hiển thị được.huuhu</h1>
             </div>
         </div>
         <div class="span3 alignR">
-            <p><br> <strong> Hỗ trợ (24/7) : 123-456-789 </strong><br><br></p>
+            <p><br> <strong> Hỗ trợ (24/7) : {{$phoneNumber}} </strong><br><br></p>
             <span class="btn btn-mini">[ {{Cart::count()}} ] <span class="icon-shopping-cart"></span></span>
             <span class="btn btn-warning btn-mini">vnd</span>
         </div>

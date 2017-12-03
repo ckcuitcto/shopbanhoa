@@ -22,14 +22,9 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung</label>
-                            {{--<input style="height: auto" class="form-control hightInput" type="text"--}}
-                                   {{--name="txtNewsContent" placeholder="Content"/>--}}
-                            {{--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>--}}
-                            {{--<script>--}}
-                                {{--CKEDITOR.replace( 'txtNewsContent' );--}}
-                            {{--</script>--}}
+                           
 
-                            <textarea rows="8" cols="500" id="my-editor" name="txtNewsContent" class="form-control">{!! old('content' ,"") !!}</textarea>
+                            <textarea rows="8" cols="500" id="my-editor" name="txtNewsContent" class="form-control">{!! old('txtNewsContent' ,"") !!}</textarea>
                             <script src="js/ckeditor.js"></script>
                             <script>
                                 var options = {
