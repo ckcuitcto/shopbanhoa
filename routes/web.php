@@ -149,6 +149,9 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
 
         Route::get('billDetail/{id}',['as' => 'admin.cart.getBillDetail','uses' => 'CartController@getBillDetail']);
         Route::post('billDetail/{id}',['as' => 'admin.cart.postBillDetail','uses' => 'CartController@postBillDetail']);
+
+        Route::get('deleteBill/{id}',['as'=>'admin.cart.deleteBill', 'uses' => 'CartController@deleteBill']);
+        Route::get('deleteBillDetail/{id}',['as'=>'admin.cart.deleteBillDetail', 'uses' => 'CartController@deleteBillDetail']);
     });
 
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);

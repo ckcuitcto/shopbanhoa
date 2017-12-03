@@ -28,6 +28,16 @@
 
                             </div>
                         </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="input11">Email</label>
+                            <div class="controls">
+                                <input type="email" name="txtEmail" value="{{$user->email}}" class="input-xlarge"
+                                       id="input11">
+
+                            </div>
+                        </div>
+
                         <div class="control-group">
                             <label class="control-label" for="input11">SĐT</label>
                             <div class="controls">

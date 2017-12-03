@@ -31,13 +31,12 @@ class UsersController extends Controller
             'txtName' => 'required',
             'rdoGender' => 'required',
             'txtAddress' => 'required',
-            'txtPhone' => 'required|unique:users,phone_number',
+            'txtPhone' => 'required',
         ], [
         	'txtName.required' => 'Bạn chưa nhập tên',
         	'rdoGender.required' => 'Bạn chưa nhập giới tính',
             'txtAddress.required' => 'Bạn chưa nhập địa chỉ',
             'txtPhone.required' => 'Bạn chưa nhập số điện thoại',
-            'txtPhone.unique' => 'Số điện thoại đã được sử dụng',
         ]);
 
         $user = User::find($id);
@@ -49,7 +48,6 @@ class UsersController extends Controller
         $user->birthday = $request->txtBirthday;
         $user->save();
 
-       
         return redirect()->route('admin.user.list')->with(['flash_message' => 'Sửa thành công']);
     }
 }

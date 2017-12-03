@@ -27,11 +27,11 @@
                         </div>
                         @if($userLogin->level ==2  AND $user->level !=2)
                          <div class="form-group">
-                                <label for="txtUnit">Cấp</label>
+                                <label for="slLevel">Cấp</label>
                                 <select class="form-control" name="slLevel" id="slLevel">
-                                    <option {{($user->level ==0 )? "selected" : "" }} value="0">User</option>
-                                    <option {{($user->level ==1 )? "selected" : "" }} value="1">Admin</option>
-                                    <option {{($user->level ==2 )? "selected" : "" }} value="2">Super Admin</option>
+                                    <option {{($user->level == 0 )? "selected" : "" }} value="0" >User</option>
+                                    <option {{($user->level == 1 )? "selected" : "" }} value="1" >Admin</option>
+                                    <option {{($user->level == 2 )? "selected" : "" }} value="2" >Super Admin</option>
                                 </select>
                             </div>
                         @endif

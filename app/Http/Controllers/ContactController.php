@@ -18,33 +18,38 @@ class ContactController extends Controller
 
     public function postContact(Request $request)
     {
-        $this->validate($request, [
-            'txtAddress' => 'required',
-            'txtEmail' => 'required|email',
-            'txtPhoneNumber' => 'required|numeric',
-            'txtWebsite' => 'required|url',
-            'txtMap' => 'required'
-        ], [
-            'txtAddress.required' => 'Bạn chưa nhập địa chỉ',
-            'txtEmail.required' => 'Bạn chưa nhập email',
-            'txtEmail.email' => 'Bạn phải nhập đúng định dạng email',
-            'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
-            'txtPhoneNumber.numeric' => 'Số điện thoại chỉ được phép nhập số',
-            'txtWebsite.required' => 'Bạn chưa nhập website',
-            'txtWebsite.url' => 'Bạn phải nhập vào url của website',
-            'txtMap.required' => 'Bạn chưa nhập bản đồ',
-        ]);
+        if($request->has('save')) {
+            $this->validate($request, [
+                'txtAddress' => 'required',
+                'txtEmail' => 'required|email',
+                'txtPhoneNumber' => 'required|numeric',
+                'txtWebsite' => 'required|url',
+                'txtMap' => 'required'
+            ], [
+                'txtAddress.required' => 'Bạn chưa nhập địa chỉ',
+                'txtEmail.required' => 'Bạn chưa nhập email',
+                'txtEmail.email' => 'Bạn phải nhập đúng định dạng email',
+                'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
+                'txtPhoneNumber.numeric' => 'Số điện thoại chỉ được phép nhập số',
+                'txtWebsite.required' => 'Bạn chưa nhập website',
+                'txtWebsite.url' => 'Bạn phải nhập vào url của website',
+                'txtMap.required' => 'Bạn chưa nhập bản đồ',
+            ]);
 
-        $contact = Contacts::first();
-        $contact->address = $request->txtAddress;
-        $contact->email = $request->txtEmail;
-        $contact->phone_number = $request->txtPhoneNumber;
-        $contact->website = $request->txtWebsite;
-        $contact->map = $request->txtMap;
+            $contact = Contacts::first();
+            $contact->address = $request->txtAddress;
+            $contact->email = $request->txtEmail;
+            $contact->phone_number = $request->txtPhoneNumber;
+            $contact->website = $request->txtWebsite;
+            $contact->map = $request->txtMap;
 
-        $contact->save();
+            $contact->save();
 
-        return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
+            return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
+        }elseif($request->has('cancel'))
+        {
+            return redirect()->back();
+        }
     }
 
     public function getContactUs($confirm)

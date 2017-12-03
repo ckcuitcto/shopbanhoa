@@ -24,14 +24,21 @@ class PageController extends Controller
     {
         $slide = Slide::all();
         $products = Product::where('new', 1)->get();
-        $newProduct = Product::select('id', 'name', 'image')->orderBy('id', 'desc')->limit(16)->get()->toArray();
-        $featuredProducts = Product::where('view', '>', 0)->orderBy('view', 'desc')->limit(3)->get();
+        $newProduct = Product::select('id', 'name', 'image')->where('new', 1)->orderBy('id', 'desc')->limit(16)->get()->toArray();
+        $featuredProducts = Product::where([
+            ['view', '>', 0],
+            ['new','1']
+        ])
+            ->orderBy('view', 'desc')->limit(3)->get();
 
         $mostBoughtProduct = DB::table('bill_detail')
             ->join('products','products.id','=','bill_detail.id_product')
             ->join('bills','bills.id','=','bill_detail.id_bill')
             ->select(DB::raw('SUM(bill_detail.quantity) as totalQty'),'products.*')
-            ->where('bills.confirm','1')
+            ->where([
+                ['bills.confirm','1'],
+                ['new','1']
+            ])
             ->groupBy('products.id')
             ->orderByRaw('SUM(bill_detail.quantity)','DESC')
             ->limit(3)
@@ -58,7 +65,14 @@ class PageController extends Controller
         $product->view += 1;
         $product->save();
 
-        $productOrdered = BillDetail::select(DB::raw('SUM(quantity) as total'))->where('id_product', $request->idProduct)->first();
+        $productOrdered = BillDetail::select(DB::raw('SUM(quantity) as total'))
+            ->leftJoin('bills','bill_detail.id_bill','=','bills.id')
+            ->where([
+                ['id_product', $request->idProduct],
+                ['bills.confirm','0'],
+            ])
+            ->first();
+//        var_dump($productOrdered);die;
         $relatedProducts = Product::where('id_type', $product->id_type)->limit(3)->get();
         $productImages = ProductImages::where('id_product', $request->idProduct)->get();
 
@@ -113,7 +127,6 @@ class PageController extends Controller
             $id = Auth::user()->id;
             $user = User::find($id);
         }
-
         return view('pages.orderConfirmation', compact('listCart', 'user'));
     }
 
@@ -122,14 +135,14 @@ class PageController extends Controller
         $this->validate($request, [
             'txtRecipient' => 'required',
             'txtAddress' => 'required',
-            'txtPhoneNumber' => 'required|numeric'
-//            'txtPhoneNumber' => 'required|numeric|between:1,15'
+            'txtPhoneNumber' => 'required|numeric',
+            'txtEmail' => 'required|email',
         ], [
             'txtRecipient.required' => 'Bạn chưa nhập tên người nhận',
             'txtAddress.required' => 'Bạn nhập nơi nhận',
             'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
             'txtPhoneNumber.numeric' => 'Số điện thoại chỉ là số',
-//            'txtPhoneNumber.between' => 'Số điện thoại có tổi thiểu :min số và tối đa :max số '
+            'txtEmail.email' => 'Email nhập chưa đúng định dạng',
         ]);
 
         // nếu khách hàng đã đăng nhập. thì khi mua hàng sẽ lưu = id của khác và gửi thư đến mail khách đã đăng kí
@@ -138,16 +151,16 @@ class PageController extends Controller
             $userId = Auth::user()->id;
             $userEmail = Auth::user()->email;
         } else {
-            $userId = 1;
-            $userEmail = "hoasaigonn@gmail.com";
+            $userId = 7; // 7 là user mặc định của khách nặc danh
+            $userEmail = $request->txtEmail;
         }
         $cartItemList = Cart::content();
 
         $total = 0;
+
         foreach ($cartItemList as $item) {
             $total += $item->price * $item->qty;
         }
-
         $bill = new Bill();
         $bill->date_order = Carbon::now();
         $bill->note = $request->txtNote;
@@ -155,7 +168,7 @@ class PageController extends Controller
         $bill->recipient = $request->txtRecipient;
         $bill->address = $request->txtAddress;
         $bill->phone_number = $request->txtPhoneNumber;
-        $bill->confirm = 0;
+        $bill->email = $request->txtEmail;
         $bill->total = $total;
         $bill->save();
 
@@ -238,7 +251,10 @@ class PageController extends Controller
     public function search(Request $request)
     {
         $search = $request->productSearch;
-        $resultSearch = Product::where('name', 'like', "%$search%")->paginate(8);
+        $resultSearch = Product::where([
+            ['name', 'like', "%$search%"],
+            ['new','1'],
+        ])->paginate(8);
         return view('pages.search', compact('search', 'resultSearch'));
     }
 
@@ -328,5 +344,27 @@ class PageController extends Controller
                 </table>";
 
         return $data;
+    }
+
+    public static function checkQuantity($id)
+    {
+        // hàm kiểm tra số lượng của đơn hàng
+        // nếu số lượng sản phẩm đang đặt lớn hơn hoặc bằng số lượng sản phẩm trong kho thì sẽ k cho đặt thêm nữa.
+        // nnếu số lượng sản phẩm trong kho <= 0 thì sẽ k cho mua
+        $product = Product::find($id);
+        if($product->quantity > 0)
+        {
+            if ( Cart::count() > 0) {
+                $cart = Cart::content();
+                foreach ($cart as $item) {
+                    if ($item->id == $product->id AND $item->qty >= $product->quantity) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }else{
+            return false;
+        }
     }
 }

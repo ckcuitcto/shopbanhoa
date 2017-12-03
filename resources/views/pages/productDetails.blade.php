@@ -47,18 +47,20 @@
                         </div>
 
                         <h4>{{ ($product->quantity > 0) ? "Còn ".$product->quantity." sản phẩm trong kho" : "Sản phẩm này đã hết hàng"}} </h4>
-                        <h5>{{ ($productOrdered->total>0 ? $productOrdered->total." sản phẩm đã được đặt " : "")}}
-                             <button data-toggle="tooltip" id="tooltip" title="
+                        @if ($productOrdered->total>0)
+
+                        <h5>{{ $productOrdered->total." sản phẩm đã được đặt "}}
+                            <a data-toggle="tooltip" id="tooltip" title="
                             Khi còn sản phẩm trong kho và đã có người khác đặt hàng thì bạn vẫn có thể tiếp tục đặt hàng.
                             Nếu người khách đặt trước bạn hủy đơn thì bạn có thể được nhận hàng.
-                            Nếu số lượng hàng trong kho không đủ thì đơn hàng của bạn sẽ bị hủy. ">?</button>
+                            Nếu số lượng hàng trong kho không đủ thì đơn hàng của bạn sẽ bị hủy. ">?</a>
                         </h5>
-
+                        @endif
                         <p>{{$product->description}}</p>
-                            <button type="submit"
-                                    {{ $product->quantity > 0 ? "" : "disabled='disabled'" }}   class="btn btn-success">
-                                <span class=" icon-shopping-cart"></span> Add to cart
-                            </button>
+                        <button type="submit"
+                                {{ (\App\Http\Controllers\PageController::checkQuantity($product->id)) ? "" : "disabled" }}   class="btn btn-success">
+                            <span class=" icon-shopping-cart"></span> Add to cart
+                        </button>
                     </form>
                 </div>
             </div>
@@ -129,9 +131,9 @@
                             <div class="span4 alignR">
                                 <form class="form-horizontal qtyFrm">
                                     <h3> {{$product->unit_price}}</h3>
-                               <!--      <label class="checkbox">
-                                        <input type="checkbox"> Adds product to compair
-                                    </label> -->
+                                    <!--      <label class="checkbox">
+                                             <input type="checkbox"> Adds product to compair
+                                         </label> -->
                                     <br>
                                     <div class="btn-group">
                                         <a href='#' class="defaultBtn"><span
@@ -242,12 +244,12 @@
 
         </div>
     </div>
-<script>
-    $(document).ready(function(){
-        $('#tooltip').tooltip(function () {
-            placement: 'right'
+    <script>
+        $(document).ready(function () {
+            $('#tooltip').tooltip(function () {
+                placement: 'right'
+            });
         });
-    });
 
-</script>
+    </script>
 @endsection
