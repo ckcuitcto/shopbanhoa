@@ -80,10 +80,10 @@
                 <a href=""><i class="fa fa-sitemap fa-3x"></i>Giới thiệu<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{route('admin.getIntroduce')}}">Giới thiệu về chúng tôi</a>
+                        <a href="{{route('admin.introduce.getIntroduce')}}">Giới thiệu về chúng tôi</a>
                     </li>
                     <li>
-                        <a href="#">Thêm thông tin trang web</a>
+                        <a href="{{route('admin.introduce.getFooter')}}">Thêm thông tin trang web</a>
                     </li>
                 </ul>
             </li>
