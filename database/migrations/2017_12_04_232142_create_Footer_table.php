@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Footer extends Migration
+class CreateFooterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class Footer extends Migration
     public function up()
     {
         Schema::create('footer', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->text('account')->nullable();
             $table->text('inform')->nullable();
             $table->text('source')->nullable();

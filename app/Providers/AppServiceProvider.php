@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $phoneNumber = Contacts::first(); 
+        $phoneNumber = Contacts::first();
         $phoneNumber = $phoneNumber->phone_number;
         View::share('phoneNumber', $phoneNumber);
 
