@@ -87,7 +87,7 @@ class PageController extends Controller
         return view('pages.cart', compact('content'));
     }
 
-    public function purchase($id, $qty)
+    public function purchaseOneClick($id, $qty)
     {
         $productBuy = Product::where('id', $id)->first();
         $qty = $qty;
@@ -95,7 +95,7 @@ class PageController extends Controller
         return "success";
     }
 
-    public function post_purchase(Request $request)
+    public function purchaseProductDetail(Request $request)
     {
         $productBuy = Product::where('id', $request->id)->first();
 
@@ -113,11 +113,15 @@ class PageController extends Controller
     public function updateCart(Request $request)
     {
         if ($request->isMethod('GET')) {
+            // idP là id của sản phẩm
+            // id là id của sản phẩm trong card
+
             $id = $request->get('id');
             $qty = $request->get('qty');
             Cart::update($id, $qty);
             return "success";
         }
+
     }
 
     public function getOrderConfirmation()
@@ -354,9 +358,8 @@ class PageController extends Controller
         // nếu số lượng sản phẩm đang đặt lớn hơn hoặc bằng số lượng sản phẩm trong kho thì sẽ k cho đặt thêm nữa.
         // nnếu số lượng sản phẩm trong kho <= 0 thì sẽ k cho mua
         $product = Product::find($id);
-        if($product->quantity > 0)
-        {
-            if ( Cart::count() > 0) {
+        if ($product->quantity > 0) {
+            if (Cart::count() > 0) {
                 $cart = Cart::content();
                 foreach ($cart as $item) {
                     if ($item->id == $product->id AND $item->qty >= $product->quantity) {
@@ -365,8 +368,11 @@ class PageController extends Controller
                 }
             }
             return true;
-        }else{
+        } else {
             return false;
         }
+
+        // return true: có thể mua ,
+        // return false: k thể mua
     }
 }
