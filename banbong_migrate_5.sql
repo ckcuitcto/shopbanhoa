@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 05/12/2017 00:09:11
+ Date: 05/12/2017 02:20:46
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `bill_detail`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `bill_detail_id_product_foreign`(`id_product`) USING BTREE,
   INDEX `bill_detail_id_bill_foreign`(`id_bill`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 79 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 115 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of bill_detail
@@ -56,6 +56,7 @@ INSERT INTO `bill_detail` VALUES (16, 120000, 1, 7, 45, '2017-11-25 14:04:54', '
 INSERT INTO `bill_detail` VALUES (17, 150000, 2, 8, 96, '2017-11-25 14:10:58', '2017-11-25 14:10:58');
 INSERT INTO `bill_detail` VALUES (18, 120000, 3, 8, 49, '2017-11-25 14:10:58', '2017-11-25 14:10:58');
 INSERT INTO `bill_detail` VALUES (19, 777000, 1, 8, 109, '2017-11-25 14:10:58', '2017-11-25 14:10:58');
+INSERT INTO `bill_detail` VALUES (79, 120000, 2, 38, 43, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
 INSERT INTO `bill_detail` VALUES (21, 120000, 3, 9, 49, '2017-11-25 14:11:28', '2017-11-25 14:11:28');
 INSERT INTO `bill_detail` VALUES (22, 777000, 1, 9, 109, '2017-11-25 14:11:28', '2017-11-25 14:11:28');
 INSERT INTO `bill_detail` VALUES (23, 150000, 5, 10, 96, '2017-11-25 14:11:37', '2017-11-25 14:11:37');
@@ -114,6 +115,41 @@ INSERT INTO `bill_detail` VALUES (75, 320000, 2, 35, 114, '2017-11-28 01:35:41',
 INSERT INTO `bill_detail` VALUES (76, 340000, 2, 36, 112, '2017-11-28 01:37:51', '2017-11-28 01:37:51');
 INSERT INTO `bill_detail` VALUES (77, 250000, 1, 36, 11, '2017-11-28 01:37:51', '2017-11-28 01:37:51');
 INSERT INTO `bill_detail` VALUES (78, 250000, 1, 36, 17, '2017-11-28 01:37:51', '2017-11-28 01:37:51');
+INSERT INTO `bill_detail` VALUES (80, 280000, 1, 38, 33, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bill_detail` VALUES (81, 150000, 2, 38, 95, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bill_detail` VALUES (82, 160000, 10, 38, 7, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bill_detail` VALUES (83, 150000, 3, 38, 19, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bill_detail` VALUES (84, 350000, 5, 38, 15, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bill_detail` VALUES (85, 200000, 1, 38, 58, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bill_detail` VALUES (86, 150000, 1, 38, 16, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bill_detail` VALUES (87, 120000, 50, 38, 46, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bill_detail` VALUES (88, 120000, 2, 39, 43, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (89, 280000, 1, 39, 33, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (90, 150000, 2, 39, 95, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (91, 160000, 10, 39, 7, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (92, 150000, 3, 39, 19, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (93, 350000, 5, 39, 15, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (94, 200000, 1, 39, 58, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (95, 150000, 1, 39, 16, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (96, 120000, 50, 39, 46, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bill_detail` VALUES (97, 120000, 2, 40, 43, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (98, 280000, 1, 40, 33, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (99, 150000, 2, 40, 95, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (100, 160000, 10, 40, 7, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (101, 150000, 3, 40, 19, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (102, 350000, 5, 40, 15, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (103, 200000, 1, 40, 58, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (104, 150000, 1, 40, 16, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (105, 120000, 50, 40, 46, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bill_detail` VALUES (106, 120000, 2, 41, 43, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
+INSERT INTO `bill_detail` VALUES (107, 280000, 1, 41, 33, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
+INSERT INTO `bill_detail` VALUES (108, 150000, 2, 41, 95, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
+INSERT INTO `bill_detail` VALUES (109, 160000, 10, 41, 7, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
+INSERT INTO `bill_detail` VALUES (110, 150000, 3, 41, 19, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
+INSERT INTO `bill_detail` VALUES (111, 350000, 5, 41, 15, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
+INSERT INTO `bill_detail` VALUES (112, 200000, 1, 41, 58, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
+INSERT INTO `bill_detail` VALUES (113, 150000, 1, 41, 16, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
+INSERT INTO `bill_detail` VALUES (114, 120000, 50, 41, 46, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
 
 -- ----------------------------
 -- Table structure for bills
@@ -135,7 +171,7 @@ CREATE TABLE `bills`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `bills_id_user_foreign`(`id_user`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 42 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bills
@@ -177,6 +213,10 @@ INSERT INTO `bills` VALUES (33, '2017-11-27', 7, NULL, NULL, 'Hân', '', 'Phư�
 INSERT INTO `bills` VALUES (34, '2017-11-28', 2, NULL, 'cvxcv v xcvxcv xcvxcv', 'Thai Huynh Duccc', '', '997 Nguyễn Kiệmm', '09785339511', 0, 4, '2017-11-28 01:34:38', '2017-11-28 01:34:38');
 INSERT INTO `bills` VALUES (35, '2017-11-28', 13242343, NULL, 'dsf dsfdsf df dsf sdfd', 'Thai Huynh Duccc', '', '997 Nguyễn Kiệmm', '09785339511', 0, 4, '2017-11-28 01:35:41', '2017-11-28 01:35:41');
 INSERT INTO `bills` VALUES (36, '2017-11-28', 1180000, NULL, 'han mua hoa', 'A B C D E F', '', 'Phường 2', '01692039011', 0, 2, '2017-11-28 01:37:51', '2017-11-28 01:37:51');
+INSERT INTO `bills` VALUES (38, '2017-12-05', 10970000, '0', NULL, 'thái đức', 'huenhandg@gmail.com', 'o dau cung dc', '982676864', 0, 7, '2017-12-05 02:11:06', '2017-12-05 02:11:06');
+INSERT INTO `bills` VALUES (39, '2017-12-05', 10970000, '0', NULL, 'thái đức', 'huenhandg@gmail.com', 'o dau cung dc', '982676864', 0, 7, '2017-12-05 02:13:17', '2017-12-05 02:13:17');
+INSERT INTO `bills` VALUES (40, '2017-12-05', 10970000, '0', NULL, 'thái đức', 'huenhandg@gmail.com', 'o dau cung dc', '982676864', 0, 7, '2017-12-05 02:13:30', '2017-12-05 02:13:30');
+INSERT INTO `bills` VALUES (41, '2017-12-05', 10970000, '0', NULL, 'Hân', 'huynhjduc248@gmail.com', 'o dau cung dc', '978533952', 0, 7, '2017-12-05 02:15:34', '2017-12-05 02:15:34');
 
 -- ----------------------------
 -- Table structure for contacts
@@ -207,14 +247,14 @@ CREATE TABLE `contactus`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `phone_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `confirm` tinyint(4) NOT NULL DEFAULT 0,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 119 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 120 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of contactus
@@ -337,6 +377,7 @@ INSERT INTO `contactus` VALUES (115, 'Trần Ngọc Gia Hân', '1692039011', 'ib
 INSERT INTO `contactus` VALUES (116, 'Trần Ngọc Gia Hân', '1692039011', 'ibghanvip@gmail.com', 'Có một trăm khách gửi tin nhắn', 'Sẽ hiển thị ntn', 0, '2017-11-24 19:38:44', '2017-11-24 19:38:44');
 INSERT INTO `contactus` VALUES (117, 'Trần Ngọc Gia Hân', '1692039011', 'ibghanvip@gmail.com', 'jQueryUI 1.8.14 Autocomplete', 'fdfa sdfsd fsd as ads', 0, '2017-11-24 19:26:14', '2017-11-24 19:26:14');
 INSERT INTO `contactus` VALUES (118, 'Trần Ngọc Gia Hân', '1692039011', 'ibghanvip@gmail.com', 'Có một trăm khách gửi tin nhắn', 'Sẽ hiển thị ntn', 0, '2017-11-24 19:38:44', '2017-11-24 19:38:44');
+INSERT INTO `contactus` VALUES (119, 'thai duc', '978533952', 'huynhjduc248@gmail.com', 'test 05 12 2017', 'test', 1, '2017-12-05 02:18:39', '2017-12-05 02:19:16');
 
 -- ----------------------------
 -- Table structure for footer
@@ -491,8 +532,8 @@ CREATE TABLE `products`  (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (95, 'Hoa cưới 1', 'Bánh crepe sầu riêng nhà làm', 150000, 120000, 'hc0.jpg', 1, 1, 4, 113, 4, '2016-10-25 20:00:16', '2017-11-30 01:18:31');
-INSERT INTO `products` VALUES (2, 'Hoa cưới 2', NULL, 180000, 20, 'hc8.jpg', 2, 1, 0, 13, 9, '2016-10-25 20:00:16', '2017-11-29 22:18:44');
+INSERT INTO `products` VALUES (95, 'Hoa cưới 1', 'Bánh crepe sầu riêng nhà làm', 150000, 120000, 'hc0.jpg', 1, 1, 4, 116, 4, '2016-10-25 20:00:16', '2017-12-05 02:05:29');
+INSERT INTO `products` VALUES (2, 'Hoa cưới 2', NULL, 180000, 20, 'hc8.jpg', 2, 1, 0, 14, 9, '2016-10-25 20:00:16', '2017-12-05 02:10:01');
 INSERT INTO `products` VALUES (96, 'Hoa cưới 3', '', 150000, 120000, 'hc1.jpg', 1, 0, 0, 67395, 4, '2016-10-25 20:00:16', '2017-11-28 01:31:08');
 INSERT INTO `products` VALUES (4, 'Hoa cưới 4', '<p>123</p>', 160000, 0, 'hc2.jpg', 2, 0, 0, 6, 9, '2016-10-25 20:00:16', '2017-11-29 22:22:33');
 INSERT INTO `products` VALUES (5, 'Hoa cưới 5', '<p>234 yujyjfyjghfjghf</p>\r\n\r\n<p>j ghf</p>\r\n\r\n<p>jf ghj fh<img alt=\"\" src=\"http://shopbanhoa/photos/4/aaaaaaaaaaaaaaaaaaaaa.PNG\" style=\"height:398px; width:648px\" /></p>', 160000, 0, 'hc3.jpg', 3, 0, 43, 73, 9, '2016-10-25 20:00:16', '2017-11-29 22:21:47');
@@ -535,7 +576,7 @@ INSERT INTO `products` VALUES (42, 'Hoa cưới 10', 'Những bông hoa tuyệt 
 INSERT INTO `products` VALUES (43, 'Hoa cưới 11', 'Rực rỡ nhất, xinh đẹp nhất trong ngày cưới', 120000, 0, 'hc10.jpg', 2, 1, 36, 653, 4, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (44, 'Hoa cưới 12', 'Gà hun khói,nấm, sốt cà chua, pho mai mozzarella.', 120000, 0, 'hc11.jpg', 2, 0, 53, 0, 4, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (45, 'Hoa tình yêu 1', 'Xúc xích klobasa, Nấm, Ngô, sốtcà chua, pho mai Mozzarella.', 120000, 0, '0.jpg', 2, 0, 6, 13, 5, '2016-10-12 19:20:00', '2017-11-28 01:44:11');
-INSERT INTO `products` VALUES (46, 'Hoa hồng 2', 'Tôm , mực, xào cay,ớt xanh, hành tây, cà chua, phomai mozzarella.', 120000, 0, '1.jpg', 2, 0, 654, 3596, 5, '2016-10-12 19:20:00', '2017-11-24 01:42:50');
+INSERT INTO `products` VALUES (46, 'Hoa hồng 2', 'Tôm , mực, xào cay,ớt xanh, hành tây, cà chua, phomai mozzarella.', 120000, 0, '1.jpg', 2, 0, 654, 3598, 5, '2016-10-12 19:20:00', '2017-12-05 02:10:27');
 INSERT INTO `products` VALUES (47, 'Hoa hồng 1', 'Ham, bacon, chorizo, pho mai mozzarella.', 140000, 0, '2.jpg', 2, 0, 546, 4, 5, '2016-10-12 19:20:00', '2017-11-29 10:55:23');
 INSERT INTO `products` VALUES (48, 'Hoa tình yêu 4', 'Cá Ngừ, sốt Mayonnaise,sốt càchua, hành tây, pho mai Mozzarella', 140000, 0, '3.jpg', 2, 0, 6, 34, 5, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (49, 'Hoa tình yêu 7', '', 120000, 100000, '6.jpg', 2, 0, 3, 54380, 5, '2016-10-12 19:20:00', '2017-12-05 00:07:21');
@@ -546,7 +587,7 @@ INSERT INTO `products` VALUES (53, 'Hoa hồng 11', '', 150000, 0, '10.jpg', 2, 
 INSERT INTO `products` VALUES (54, 'Hoa hồng 12', '', 150000, 0, '11.jpg', 1, 1, 3, 0, 5, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (55, 'Hoa hồng 13', '', 150000, 0, '12.jpg', 2, 0, 0, 25, 5, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
 INSERT INTO `products` VALUES (56, 'Hoa hồng 14', '', 150000, 0, '13.jpg', 2, 0, 345, 0, 5, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
-INSERT INTO `products` VALUES (57, 'Hoa hồng 15', '', 150000, 0, '14.jpg', 2, 1, 5, 3, 5, '2016-10-12 19:20:00', '2016-10-18 20:20:00');
+INSERT INTO `products` VALUES (57, 'Hoa hồng 15', '', 150000, 0, '14.jpg', 2, 1, 5, 9, 5, '2016-10-12 19:20:00', '2017-12-05 01:45:44');
 INSERT INTO `products` VALUES (58, 'Hoa sinh nhật 2', 'Hạnh phúc và may mắn đón một tuổi mới', 200000, 180000, 'sn0.jpg', 2, 0, 5, 5, 2, '2016-10-26 10:00:00', '2016-10-11 10:00:00');
 INSERT INTO `products` VALUES (59, 'Hoa sinh nhât 3', 'Mong một tuổi mới lại thêm một may mắn, một niềm vui, một hạnh phúc mới đến', 200000, 0, 'sn1.jpg', 2, 0, 5, 7, 2, '2016-10-26 10:00:00', '2016-10-11 10:00:00');
 INSERT INTO `products` VALUES (60, 'Hoa sinh nhật 4', 'Chúc mừng sinh nhật', 200000, 0, 'sn2.jpg', 2, 0, 3, 6, 2, '2016-10-26 10:00:00', '2016-10-11 10:00:00');
@@ -698,7 +739,7 @@ CREATE TABLE `users`  (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (2, 'A', 'ibghanvip@gmail.com', '$2y$10$X6jc.IQ9vMgn.xFMpySnJe3HX6ETjlRMoLVNqv3Aea0oFAmwGwaha', 0, 1, NULL, NULL, NULL, NULL, 'iOmC93mKxApLfvH5NgL6XS6tUfVmeGITf6jQP83AZwOrcImTzBBPCZaSvbnP', '2017-11-26 06:50:33', '2017-11-26 06:50:33');
-INSERT INTO `users` VALUES (4, 'Thai Huynh Duc', 'huynhjduc2481@gmail.com', '$2y$10$w9aizmWI/4EnkP5YZTjfeujSfrR5m1iilZV/GCZYJC1Gm8D22VAT.', 1, 1, '997 Nguyễn Kiệmm', '09785339522', '1996-08-24', NULL, '8Quy68L3jPy9q1vJ0zCeiflS1c6NSMagmJ52tQhqtjctJjuRMcEP0wy8jSFD', '2017-11-26 13:38:32', '2017-11-26 16:54:20');
+INSERT INTO `users` VALUES (4, 'Thai Huynh Duc', 'huynhjduc2481@gmail.com', '$2y$10$w9aizmWI/4EnkP5YZTjfeujSfrR5m1iilZV/GCZYJC1Gm8D22VAT.', 1, 1, '997 Nguyễn Kiệmm', '09785339522', '1996-08-24', NULL, 'PNwAGFrYMGJs5ATy0iamfOOFME0RfAg7nVt24JQjT2C9rYlE1LLI6H1Igeu3', '2017-11-26 13:38:32', '2017-11-26 16:54:20');
 INSERT INTO `users` VALUES (1, 'Nhan Nhan', 'huenhandg@gmail.com', '$2y$10$5kuJ3kEaTAzoYEM64c.FN.HnmMqns6mn..eYSqEisYXblwIeGxstG', 0, 1, 'o dau cung dc', '0982676864', '1996-05-26', NULL, 'FioZnE4HbQETIYAnsmCDHAR2GcSu6SkNpOrweGgVXuAKvQLKkhInf934roJE', '2017-11-26 17:55:27', '2017-11-28 07:23:01');
 INSERT INTO `users` VALUES (5, 'Gia Han', 'tnghanit@gmail.com', '$2y$10$hEf29dHDOeQ1ioEji/KfOOHVSU5XgnKdsQI.AiuADkTN77.q5BDkS', 1, 1, NULL, NULL, NULL, NULL, NULL, '2017-11-28 02:16:45', '2017-11-28 02:16:45');
 INSERT INTO `users` VALUES (6, 'ThaiDuc', 'thducit@gmail.com', '1', 1, 1, '1', '1123232132132', NULL, '1', '', NULL, '2017-11-30 02:24:16');
