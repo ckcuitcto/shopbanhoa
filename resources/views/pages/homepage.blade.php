@@ -68,7 +68,6 @@
                                                     class="icon-zoom-in"></span></a>
                                         @if ( \App\Http\Controllers\PageController::checkQuantity($product->id) )
                                         <a class="shopBtn" idProduct="{{$product->id}}"
-                                           href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
                                            title="add to cart"><span class="icon-plus"></span></a>
                                         @endif
                                         
@@ -103,7 +102,6 @@
                                                     class="icon-zoom-in"></span></a>
                                         @if ( \App\Http\Controllers\PageController::checkQuantity($product->id) )
                                         <a class="shopBtn" idProduct="{{$product->id}}"
-                                           href="{{route('purchase',['id'=> $product->id,'qty'=>1])}}"
                                            title="add to cart"><span class="icon-plus"></span></a>
                                         @endif
                                             <span class="pull-right">{{number_format($product->unit_price,0,",",".")}} đ</span>

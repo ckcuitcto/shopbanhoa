@@ -34,7 +34,7 @@
                     </ul>
                     <hr class="soft"/>
 
-                    <form class="form-horizontal qtyFrm" action="{{route('post_purchase')}}" method="post">
+                    <form class="form-horizontal qtyFrm" action="{{route('purchaseProductDetail')}}" method="post">
                         <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
                         <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="control-group">
