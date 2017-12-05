@@ -91,7 +91,7 @@
                         <li class="span4">
                             <div class="thumbnail">
                                 
-                                <a href="{{route('productDetail',$product->id)}}"><img
+                                <a href="{{route('productDetail',$product->id)}}"><img style="height: 250px;"
                                             src="template/image/product/{{$product->image}}" alt="">
                                 </a>
                                 <div class="caption">

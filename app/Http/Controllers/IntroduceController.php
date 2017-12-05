@@ -21,11 +21,10 @@ class IntroduceController extends Controller
     public function postIntroduce(Request $request)
     {
         $this->validate($request, [
-            'txtNewsTitle' => 'required|unique:introduce,title',
+            'txtNewsTitle' => 'required|',
             'txtNewsContent' => 'required',
         ], [
             'txtNewsTitle.required' => 'Bạn chưa nhập tiêu đề',
-            'txtNewsContent.unique'=>'Tên tiêu đề đã tồn tại',
             'txtNewsContent.required' => 'Bạn chưa nhập nội dung',
         ]);
 

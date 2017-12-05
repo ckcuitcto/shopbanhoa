@@ -24,3 +24,10 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(".nav a").on("click", function(){
+       $(".nav").find(".active").removeClass("active");
+       $(this).parent().addClass("active");
+    });
+</script>

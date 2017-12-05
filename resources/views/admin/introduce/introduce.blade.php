@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label>Nội dung giới thiệu</label>
 
-                            <textarea rows="8" cols="500" id="txtNewsContent" name="txtNewsContent" class="form-control" disabled>
+                            <textarea rows="8" cols="500" id="txtNewsContent" name="txtNewsContent" class="form-control">
                                 <!-- {!! old('txtNewsContent' ,"") !!} -->
                                 {{$introduce->content}}
                             </textarea>

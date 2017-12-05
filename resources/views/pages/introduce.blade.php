@@ -11,6 +11,7 @@
         <p>{!! $intro->content !!}</p>
     </div>
     <div class="span3" style="float: right">
+    	<br><br>
         HoaSaiGon.tk<br/>
         Thân mến<br/>
     </div>
