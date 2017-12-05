@@ -18,7 +18,7 @@
                         <thead>
                         <tr>
                             <th>Hình ảnh sản phẩm</th>
-                            <th>Mô tả sản phẩm</th>
+                            <th>Tên sản phẩm</th>
                             <th>Giá</th>
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
@@ -32,8 +32,8 @@
                                 <tr>
                                     <td><img width="100" src="template/image/product/{{$item->options->img}}" alt="">
                                     </td>
-                                    <td>{{$item->name}}<br>Carate:24 <br>Model:HBK24</td>
-                                    <td>{{number_format($item->price,0,",",".")}} VNĐ</td>
+                                    <td>{{$item->name}} </td>
+                                    <td>{{number_format($item->price,0,",",".")}} đ</td>
                                     <td>
                                         <input class="span1 quantity1" idProduct="{{$item->rowId}}"
                                                value="{{$item->qty}}" min="1"
@@ -42,7 +42,8 @@
                                             <button class="btn btn-default btn-number" data-type="minus"
                                                     data-field="{{$item->rowId}}" type="button"><i
                                                         class="icon-minus"></i></button>
-                                            <button class="btn btn-default btn-number" data-type="plus"
+                                            <button {{ (\App\Http\Controllers\PageController::checkQuantity($item->id)) ? "" : "disabled" }} class="btn btn-default btn-number"
+                                                    data-type="plus"
                                                     data-field="{{$item->rowId}}" type="button"><i
                                                         class="icon-plus"></i></button>
                                             <button class="btn btn-default btn-danger removeProduct" type="button"
@@ -52,13 +53,13 @@
                                             </button>
                                         </div>
                                     </td>
-                                    <td>{{number_format($item->price*$item->qty,0,",",".")}} VNĐ</td>
+                                    <td>{{number_format($item->price*$item->qty,0,",",".")}} đ</td>
                                 </tr>
                             @endforeach
                         </form>
                         <tr>
-                            <td colspan="4" class="alignR">Total products:</td>
-                            <td> {{Cart::subtotal()}}</td>
+                            <td colspan="4" class="alignR">Tổng tiền tất cả sản phẩm:</td>
+                            <td> {{Cart::subtotal(0)}} đ</td>
                         </tr>
                         </tbody>
                     </table>
@@ -80,7 +81,8 @@
                         Giỏ hàng rỗng!!!
                     </div>
                     <a href="{{route('index')}}" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Quay
-                        lại mua <hàng></hàng>
+                        lại mua
+                        <hàng></hàng>
                     </a>
                 </div>
             @endif

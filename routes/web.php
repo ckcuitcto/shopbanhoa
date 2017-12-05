@@ -16,13 +16,13 @@ Route::get('chi-tiet/{idProduct}',[
 ]);
 
 Route::get('mua-hang/{id}/{qty}',[
-    'as' => 'purchase',
-    'uses' => 'PageController@purchase'
+    'as' => 'purchaseOneClick',
+    'uses' => 'PageController@purchaseOneClick'
 ]);
 
 Route::post('mua-hang',[
-   'as' => 'post_purchase',
-   'uses' => 'PageController@post_purchase'
+   'as' => 'purchaseProductDetail',
+   'uses' => 'PageController@purchaseProductDetail'
 ]);
 
 Route::get('gio-hang',[
@@ -149,6 +149,9 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
 
         Route::get('billDetail/{id}',['as' => 'admin.cart.getBillDetail','uses' => 'CartController@getBillDetail']);
         Route::post('billDetail/{id}',['as' => 'admin.cart.postBillDetail','uses' => 'CartController@postBillDetail']);
+
+        Route::get('deleteBill/{id}',['as'=>'admin.cart.deleteBill', 'uses' => 'CartController@deleteBill']);
+        Route::get('deleteBillDetail/{id}',['as'=>'admin.cart.deleteBillDetail', 'uses' => 'CartController@deleteBillDetail']);
     });
 
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
