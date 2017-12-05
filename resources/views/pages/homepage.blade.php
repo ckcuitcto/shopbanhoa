@@ -34,7 +34,7 @@
                                         <a class="zoomTool" href="{{route('productDetail',$newProduct[$j]['id'])}}" title="add to cart"><span
                                                     class="icon-search"></span> {{$newProduct[$j]['name']}}</a>
                                         <a href="#" class="tag"></a>
-                                        <a href="{{route('productDetail',$newProduct[$j]['id'])}}"><img style="height: 190px;" src="template/image/product/{{$newProduct[$j]['image']}}"
+                                        <a href="{{route('productDetail',$newProduct[$j]['id'])}}"><img style="height: 170px;" src="template/image/product/{{$newProduct[$j]['image']}}"
                                                                             alt="bootstrap-ring"></a>
                                     </div>
                                 </li>

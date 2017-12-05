@@ -11,7 +11,10 @@
         <div class="span6">
             <div class="offerNoteWrapper">
                 <h1 class="dotmark" align="center">
-                    <i class="icon-cut"></i>Chưa hiển thị được.huuhu</h1>
+                    <i class="icon-cut"></i>
+                    Tôi yêu hoa đâu cần hoa đẹp, mà chỉ cần hoa tỏa ngát hương thơm.
+                    Tôi yêu người đâu cần người đẹp, mà chỉ cần người thật sự yêu tôi.
+                </h1>
             </div>
         </div>
         <div class="span3 alignR">
