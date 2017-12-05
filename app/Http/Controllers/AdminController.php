@@ -26,30 +26,6 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('qtyContact', 'qtyBill', 'date', 'qtyBirthday'));
     }
 
-    public function getIntroduce()
-    {
-        $introduce = Introduce::select('id','title','content')->get();
-        return view('admin.introduce.introduce',compact('introduce'));
-    }
-
-    public function postIntroduce(Request $request)
-    {
-        $this->validate($request, [
-            'txtNewsTitle' => 'required|unique:introduce,title',
-            'txtNewsContent' => 'required',
-        ], [
-            'txtNewsTitle.required' => 'Bạn chưa nhập tiêu đề',
-            'txtNewsContent.unique'=>'Tên tiêu đề đã tồn tại',
-            'txtNewsContent.required' => 'Bạn chưa nhập nội dung',
-        ]);
-
-        $introduce = new Introduce();
-        $introduce->title = $request->txtNewsTitle;
-        $introduce->content = $request->txtNewsContent;
-        $introduce->save();
-        return redirect()->back()->with(['flash_message' => 'Thêm thành công']);
-    }
-
     public function getFooter()
     {
         // $textarea = "-Thai Duc -Gia Han - Hieu mat lz ";

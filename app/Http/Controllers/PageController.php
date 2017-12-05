@@ -115,7 +115,6 @@ class PageController extends Controller
         if ($request->isMethod('GET')) {
             // idP là id của sản phẩm
             // id là id của sản phẩm trong card
-
             $id = $request->get('id');
             $qty = $request->get('qty');
             Cart::update($id, $qty);
@@ -197,7 +196,6 @@ class PageController extends Controller
 
     public function getProducts()
     {
-
         $products = Product::paginate(16);
 
         // $productsByIdType = Product::where('id_type', $idType)->paginate(6);

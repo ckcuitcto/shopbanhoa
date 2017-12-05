@@ -18,13 +18,13 @@
                         <div class="form-group">
                             <label>Tiêu đề</label>
                             <input style="height: auto" class="form-control hightInput" type="text" name="txtNewsTitle"
-                                   placeholder="Title"/>
+                               value="{{$introduce->title}}"    placeholder="Title"/>
                         </div>
                         <div class="form-group">
                             <label>Nội dung giới thiệu</label>
 
                             <textarea rows="8" cols="500" id="my-editor" name="txtNewsContent" class="form-control">
-                                {!! old('txtNewsContent' ,"") !!}
+                                {!! old('txtNewsContent' , $introduce->content) !!}
                             </textarea>
                             <script src="js/ckeditor.js"></script>
                             <script>
@@ -41,7 +41,7 @@
                         </div>
 
                     </div>
-                    <button type="submit" name="themTT" class="btn btn-default"> Thêm</button>
+                    <button type="submit" name="edit" class="btn btn-default"> Sửa</button>
                     <button type="reset" class="btn btn-default">Làm mới</button>
                 </div>
                 <!--End Advanced Tables -->

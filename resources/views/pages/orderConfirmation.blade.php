@@ -65,9 +65,9 @@
             @if(Session::has('flash_message'))
                 <div class="alert alert-success">
                     {!! Session::get('flash_message') !!}
-                    Bạn sẽ nhận được hàng trong ít nhất 5 ngày kể từ thời điểm này !!
+                    Chúng tôi sẽ sớm liên hệ với bạn !
                 </div>
-                <h4>Trang sẽ tự chuyển đến trang cá nhân sau <span id="timecount"></span> giây!</h4>
+                <h4>Trang sẽ tự chuyển đến trang chủ sau <span id="timecount"></span> giây!</h4>
             @endif
                 @include('admin.blocks.error')
             </div>

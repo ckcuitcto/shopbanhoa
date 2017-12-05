@@ -11,7 +11,8 @@
         <div class="span6">
             <div class="offerNoteWrapper">
                 <h1 class="dotmark" align="center">
-                    <i class="icon-cut"></i>Chưa hiển thị được.huuhu</h1>
+                    <i class="icon-cut"></i>There is nothing more difficult for a truly creative painter than to paint a rose,
+                    because before he can do so he has first to forget all the roses that were ever painted. Henri Matisse.</h1>
             </div>
         </div>
         <div class="span3 alignR">

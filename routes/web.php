@@ -157,8 +157,8 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
 
     Route::group(['prefix' => 'introduce'],function (){
-        Route::get('introduce',['as' => 'admin.introduce.getIntroduce' , 'uses' => 'AdminController@getIntroduce']);
-        Route::post('introduce',['as' => 'admin.introduce.postIntroduce' , 'uses' => 'AdminController@postIntroduce']);
+        Route::get('introduce',['as' => 'admin.introduce.getIntroduce' , 'uses' => 'IntroduceController@getIntroduce']);
+        Route::post('introduce',['as' => 'admin.introduce.postIntroduce' , 'uses' => 'IntroduceController@postIntroduce']);
 
         Route::get('footer',['as' => 'admin.introduce.getFooter' , 'uses' => 'AdminController@getFooter']);
         Route::post('footer',['as' => 'admin.introduce.postFooter' , 'uses' => 'AdminController@postFooter']);

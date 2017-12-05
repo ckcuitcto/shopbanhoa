@@ -17,7 +17,7 @@ class NewsController extends Controller
 
     public function getAdd()
     {
-        $newsTitle = News::select('id','title','content')->get();
+        $newsTitle = News::select('id', 'title', 'content')->get();
         return view('admin.news.add', compact('newsTitle'));
     }
 
@@ -81,9 +81,10 @@ class NewsController extends Controller
     public function getDelete($id)
     {
         $news = News::find($id);
-        NewsImages::where('id_news',$news->id)->delete();
+        if (file_exists("template/image/news/" . $news->image)) {
+            unlink("template/image/newsImage/" . $news->image);
+        }
         $news->delete();
-
         return redirect()->route('admin.news.list')->with(['flash_message' => 'Xóa thành công']);
     }
 
@@ -95,64 +96,65 @@ class NewsController extends Controller
 
     public function postEdit(Request $request, $id)
     {
-        $this->validate($request, [
-            'txtNewsTitle' => 'required',
-            'txtNewsContent' => 'required',
-        ], [
-            'txtNewsTitle.required' => 'Bạn nhập title tin tức',
-            'txtNewsContent.required' => 'Bạn chưa nhập content'
-        ]);
+        if ($request->has('submit')) {
+            $this->validate($request, [
+                'txtNewsTitle' => 'required',
+                'txtNewsContent' => 'required',
+            ], [
+                'txtNewsTitle.required' => 'Bạn nhập title tin tức',
+                'txtNewsContent.required' => 'Bạn chưa nhập content',
+                'fImages.size' => "File quá lớn"
 
-        $news = News::find($id);
-        $news->title = $request->txtNewsTitle;
-        $news->content = $request->txtNewsContent;
+            ]);
 
-        if ($request->hasFile('fImages')) {
-            $file = $request->file('fImages');
+            $news = News::find($id);
+            $news->title = $request->txtNewsTitle;
+            $news->content = $request->txtNewsContent;
 
-            $fileExtensions = $file->getClientOriginalExtension();
-            if (!$this->checkExtension($fileExtensions)) {
-                return redirect()->reload('admin.news.getEdit')->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
-            }
+            if ($request->hasFile('fImages')) {
+                $file = $request->file('fImages');
 
-            $fileName = str_random(8) . "_" . $file->getClientOriginalName();
-            while (file_exists("template/image/news/" . $fileName)) {
-                $fileName = str_random(8) . "_" . $file->getClientOriginalName();
-            }
-            $file->move('template/image/news/', $fileName);
-            unlink("template/image/news/" . $news->image);
-            $news->image = $fileName;
-        }
-        $news->save();
-
-        $newsId = $news->id;
-        if ($request->hasFile('mutilFile')) {
-            $arrFile = $request->file('mutilFile');
-            foreach ($arrFile as $file) {
-                if (!$this->checkExtension($file->getClientOriginalExtension())) {
-                    return redirect()->route('admin.news.getAdd')->with('flash_message_fail', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
+                $fileExtensions = $file->getClientOriginalExtension();
+                if (!$this->checkExtension($fileExtensions)) {
+                    return redirect()->reload('admin.news.getEdit')->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
                 }
-            }
-            foreach ($arrFile as $file) {
+
                 $fileName = str_random(8) . "_" . $file->getClientOriginalName();
-                while (file_exists("template/image/newsImages/" . $fileName)) {
+                while (file_exists("template/image/news/" . $fileName)) {
                     $fileName = str_random(8) . "_" . $file->getClientOriginalName();
                 }
-                $file->move('template/image/newsImagesnewsImages/', $fileName);
-                $newsImages = new NewsImages();
-                $newsImages->image = $fileName;
-                $newsImages->id_news = $newsId;
-                $newsImages->save();
+                $file->move('template/image/news/', $fileName); // lưu ảnh mới
+                if (file_exists("template/image/news/" . $news->image)) {
+                    unlink("template/image/news/" . $news->image); // xóa ảnh cũ
+                }
+                $news->image = $fileName;
             }
-        }
-        return redirect()->route('admin.news.list')->with(['flash_message' => 'Sửa thành công']);
-    }
+            $news->save();
 
-    public function getDeleteNewsImage($id){
-        $newsImage = NewsImages::find($id);
-        unlink("template/image/newsImage/" . $newsImage->image);
-        $newsImage->delete();
-        echo "success";
+            $newsId = $news->id;
+            if ($request->hasFile('mutilFile')) {
+                $arrFile = $request->file('mutilFile');
+                foreach ($arrFile as $file) {
+                    if (!$this->checkExtension($file->getClientOriginalExtension())) {
+                        return redirect()->route('admin.news.getAdd')->with('flash_message_fail', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
+                    }
+                }
+                foreach ($arrFile as $file) {
+                    $fileName = str_random(8) . "_" . $file->getClientOriginalName();
+                    while (file_exists("template/image/newsImages/" . $fileName)) {
+                        $fileName = str_random(8) . "_" . $file->getClientOriginalName();
+                    }
+                    $file->move('template/image/newsImagesnewsImages/', $fileName);
+                    $newsImages = new NewsImages();
+                    $newsImages->image = $fileName;
+                    $newsImages->id_news = $newsId;
+                    $newsImages->save();
+                }
+            }
+            return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
+        } elseif ($request->has('cancel')) {
+            return redirect()->back();
+        }
     }
 
     private function checkExtension($fileExtensions)
@@ -164,5 +166,4 @@ class NewsController extends Controller
         return false;
     }
 
-   
 }
