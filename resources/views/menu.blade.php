@@ -9,7 +9,7 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="{{route('index')}}">Trang chủ</a></li>
-                    <li class=""><a href="{{route('products')}}">Sản phẩm</a></li>
+                    <li class=""><a href="{{route('getProducts')}}">Sản phẩm</a></li>
                     <li class=""><a href="{{route('contact')}}">Liên hệ</a></li>
                     <li class=""><a href="{{route('introduce')}}">Giới thiệu</a></li>
                     <li class=""><a href="{{route('news')}}">Tin tức</a></li>

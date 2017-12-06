@@ -18,7 +18,11 @@
         <div class="span3 alignR">
             <p><br> <strong> Hỗ trợ (24/7) : {{$phoneNumber}} </strong><br><br></p>
             <span class="btn btn-mini">[ {{Cart::count()}} ] <span class="icon-shopping-cart"></span></span>
+
+            @unless(Cart::count() <= 0)
             <span class="btn btn-warning btn-mini">vnd</span>
+            @endunless
+
         </div>
     </div>
 </header>
