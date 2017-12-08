@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BillDetail;
 use App\Product;
 use App\ProductImages;
 use App\ProductType;
@@ -96,8 +97,12 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         ProductImages::where('id_product', $product->id)->delete();
-        $product->delete();
 
+        $getAllBillDetail = BillDetail::where('id_product',$product->id)->count();
+        if($getAllBillDetail > 0){
+            return redirect()->route('admin.product.list')->with(['flash_message_fail' => 'Đã có người mua sản phẩm này! Không thể xóa! Có thể ẩn đi thay vì xóa !!']);
+        }
+        $product->delete();
         return redirect()->route('admin.product.list')->with(['flash_message' => 'Xóa thành công']);
     }
 

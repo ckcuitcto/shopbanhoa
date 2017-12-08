@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductTypeRequest;
+use App\Product;
 use App\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
@@ -50,8 +51,13 @@ class ProductTypeController extends Controller
     public function getDelete($id)
     {
         $productType = ProductType::find($id);
-        $productType->delete();
 
+        $getAllProduct = Product::where('id_type',$productType->id)->count();
+        if($getAllProduct > 0){
+            return redirect()->route('admin.productType.list')->with(['flash_message_fail' => 'Đã có sản phẩm trong loại sản phẩm này! Không thể xóa']);
+        }
+
+        $productType->delete();
         return redirect()->route('admin.productType.list')->with(['flash_message' => 'Xóa thành công']);
     }
 

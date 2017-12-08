@@ -92,6 +92,15 @@ class CartController extends Controller
     public function deleteBill($id)
     {
         $bill = Bill::find($id);
+
+        $getAllBillDetail = BillDetail::where('id_bill',$bill->id)->get();
+
+        foreach ($getAllBillDetail as $value)
+        {
+            $billDetail = BillDetail::find($value->id);
+            $billDetail->delete();
+        }
+
         $bill->delete();
 
         return redirect()->back()->with(['flash_message' => 'Xóa thành công']);
