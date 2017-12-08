@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\ProductImages;
 use App\ProductType;
@@ -13,7 +12,7 @@ class ProductController extends Controller
 {
     public function getList()
     {
-        $productList = Product::orderBy('products.id', 'DESC')->get();
+        $productList = Product::orderBy('id', 'DESC')->get();
         return view('admin.product.list', compact('productList'));
     }
 
@@ -148,7 +147,11 @@ class ProductController extends Controller
                 $fileName = str_random(8) . "_" . $file->getClientOriginalName();
             }
             $file->move('template/image/product/', $fileName);
-            unlink("template/image/product/" . $product->image);
+
+            if(file_exists("template/image/product/" . $product->image)){
+                unlink("template/image/product/" . $product->image);
+            }
+
             $product->image = $fileName;
         }
         $product->save();

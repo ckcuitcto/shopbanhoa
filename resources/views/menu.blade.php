@@ -16,11 +16,24 @@
 
                 </ul>
                 <form action="{{route('search')}}" class="navbar-search pull-right" method="get">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}";>
-                    <input type="text" id="productSearch" name="productSearch" autocomplete="off"  placeholder="Tìm kiếm..." class="search-query span2">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}" ;>
+                    <input type="text" id="productSearch" name="productSearch" autocomplete="off"
+                           placeholder="Tìm kiếm..." class="search-query span2">
                 </form>
-                
+
             </div>
         </div>
     </div>
 </div>
+
+
+@section('script')
+    <script type="text/javascript">
+
+//            $(".nav a").on("click", function () {
+//                $(".nav").find(".active").removeClass("active");
+//                $(this).parent().addClass("active");
+//            });
+    </script>
+
+@endsection

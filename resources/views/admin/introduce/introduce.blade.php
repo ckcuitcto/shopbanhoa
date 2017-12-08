@@ -41,8 +41,8 @@
                         </div>
 
                     </div>
-                    <button type="submit" name="edit" class="btn btn-default"> Sửa</button>
-                    <button type="reset" class="btn btn-default">Làm mới</button>
+                    <button type="submit" name="submit" class="btn btn-success"> Sửa</button>
+                    <button type="cancel" name="cancel" class="btn btn-danger">Hủy</button>
                 </div>
                 <!--End Advanced Tables -->
             </div>

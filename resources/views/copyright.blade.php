@@ -7,6 +7,6 @@
             <a href="#"><img src="template/assets/img/visa.png" alt="payment"></a>
             <a href="#"><img src="template/assets/img/disc.png" alt="payment"></a>
         </p>
-        <span>Copyright &copy; 2013<br> bootstrap ecommerce shopping template</span>
+        <span>Copyright &copy; 2017<br> bootstrap ecommerce shopping template</span>
     </div>
 </div>

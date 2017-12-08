@@ -17,23 +17,24 @@
     <div class="well well-small"><a href="#"><img src="template/assets/img/paypal.jpg" alt="payment method paypal"></a>
     </div>
 
-    <a class="shopBtn btn-block" href="#">Sản phẩm mới cập nhật<br>
-        <small>Click to view</small>
+    <a class="shopBtn btn-block" href="#">Sản phẩm ngẫu nhiên<br>
+
     </a>
     <br>
     <br>
     <ul class="nav nav-list promowrapper">
         <li>
+            @foreach($randomProduct as $product)
             <div class="thumbnail">
-                <a class="zoomTool" href="product_details.html" title="add to cart"><span
-                            class="icon-search"></span> QUICK VIEW</a>
-                <img src="template/image/product/x4.jpg" alt="bootstrap ecommerce templates">
+                <a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart">
+                    <span>{{number_format($product->unit_price,0,",",".")}} đ</span></a>
+                <a href="{{route('productDetail',$product->id)}}"><img style="height: 250px;" src="template/image/product/{{$product->image}}" alt="">
+                </a>
                 <div class="caption">
-                    <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span
-                                class="pull-right">$22.00</span>
-                    </h4>
+                    <h5>{{$product->name}}</h5>
                 </div>
             </div>
+            @endforeach
         </li>
         <li style="border:0"> &nbsp;</li>
     </ul>

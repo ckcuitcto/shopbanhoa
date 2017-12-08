@@ -87,14 +87,14 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href=""><i class="fa fa-sitemap fa-3x"></i>Quản lý header<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#">Dòng chữ trên header</a>
-                    </li>
-                </ul>
-            </li>
+            {{--<li>--}}
+                {{--<a href=""><i class="fa fa-sitemap fa-3x"></i>Quản lý header<span class="fa arrow"></span></a>--}}
+                {{--<ul class="nav nav-second-level">--}}
+                    {{--<li>--}}
+                        {{--<a href="#">Dòng chữ trên header</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
         </ul>
     </div>
 </nav>

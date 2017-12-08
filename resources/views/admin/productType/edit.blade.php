@@ -18,8 +18,7 @@
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <div class="form-group">
                     <label>Tên loại sản phẩm</label>
-                    <input style="height: auto" type="text" class="form-control" value="{!! old('txtName',isset($productType)? $productType->name : "") !!}" name="txtName"
-                           placeholder="Tên loại sản phẩm"/>
+                    <input style="height: auto" type="text" class="form-control" value="{!! old('txtName',isset($productType)? $productType->name : "") !!}" name="txtName" placeholder="Tên loại sản phẩm"/>
                 </div>
                 <div class="form-group">
                     <label>Tóm tắt</label>

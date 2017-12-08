@@ -1,0 +1,4 @@
+$ php artisan make:mail Contacts --markdown==emails.contacts
+
+
+php artisan make:mail OrderShipped --markdown=emails.ordersShipped

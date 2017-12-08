@@ -77,7 +77,7 @@ class ProductTypeController extends Controller
 
             $fileExtensions = $file->getClientOriginalExtension();
             if (!$this->checkExtension($fileExtensions)) {
-                return redirect()->reload('admin.productType.getAdd')->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
+                return redirect()->back()->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
             }
 
             $fileName = str_random(8) . "_" . $file->getClientOriginalName();
@@ -85,16 +85,21 @@ class ProductTypeController extends Controller
                 $fileName = str_random(8) . "_" . $file->getClientOriginalName();
             }
             $file->move('template/image/productType/', $fileName);
+
+            if(file_exists("template/image/productType/" . $type->image)){
+                unlink("template/image/productType/" . $type->image);
+            }
+
             $type->image = $fileName;
         }
 
         $type->save();
-        return redirect()->route('admin.productType.list')->with(['flash_message' => 'Sửa thành công']);
+        return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
     }
 
     private function checkExtension($fileExtensions)
     {
-        $arr = array('jpg', 'png', 'jpeg');
+        $arr = array('jpg', 'png', 'jpeg', 'JPG', 'PNG', 'JPEG');
         if (in_array($fileExtensions, $arr)) {
             return true;
         }

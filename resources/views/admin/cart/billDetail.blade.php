@@ -18,7 +18,7 @@
             </div>
         </div>
         <hr/>
-        <form action="" method="POST">
+        <form action="{{route('admin.cart.getBillDetail',$productListOfBIll['0']->billID)}}" method="POST">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <input type="hidden" name="billID" value="{{$productListOfBIll['0']->billID}}">
             <div class="row">
@@ -67,12 +67,23 @@
                     </div>
                 </div>
             </div>
-            @if(!$productListOfBIll['0']->confirm)
+            @if(!$productListOfBIll['0']->confirm AND !$productListOfBIll['0']->deleted)
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="checkbox">
-                            <label><input {{ ($productListOfBIll['0']->confirm) ? "disabled" : "" }} type="checkbox"
-                                          id="chkConfirm" name="chkConfirm"> Xác nhận đơn hàng </label>
+                            <label><input type="radio" value="confirm" name="rdoConfirmOrDelete"> Xác nhận đơn hàng </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="checkbox">
+                            <label><input type="radio" value="deleted" name="rdoConfirmOrDelete"> Hủy đơn hàng </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="checkbox">
+                            <label><input checked type="radio" value="doNothing" name="rdoConfirmOrDelete"> Chỉ sửa số lượng sản phẩm </label>
                         </div>
                     </div>
                 </div>
@@ -80,9 +91,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="submit" name="edit" class="btn btn-success">Sửa</button>
-                        <button type="cancel" name="cancel" id="cancel" class="btn btn-danger">Hủy</button>
+                        <button type="cancel" name="cancel" id="cancel" class="btn btn-danger">Reset</button>
                     </div>
                 </diV>
+            @elseif ($productListOfBIll['0']->deleted == 1)
+                <div class="col-md-8">
+                    <h2> Đơn hàng đã bị hủy</h2>
+                    <h3><a href="{{route('admin.cart.getBill','0')}}"> <<< Trở lại danh sách đơn hàng </a></h3>
+                </div>
+
             @endif
         </form>
     @else

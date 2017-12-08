@@ -13,19 +13,19 @@
                         <small class="pull-right"> {{Cart::count()}} sản phẩm trong giỏ hàng</small>
                     </h1>
                     <hr class="soften"/>
+                    <form action="{{route('getOrderConfirmation')}}" method="get">
+                        <table class="table table-bordered table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Hình ảnh sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                    <table class="table table-bordered table-condensed">
-                        <thead>
-                        <tr>
-                            <th>Hình ảnh sản phẩm</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th>Thành tiền</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <form action="" method="post">
                             <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
 
                             @foreach($content as $item)
@@ -37,7 +37,8 @@
                                     <td>
                                         <input class="span1 quantity1" idProduct="{{$item->rowId}}"
                                                value="{{$item->qty}}" min="1"
-                                               max="100" name="{{$item->rowId}}" style="max-width:34px" type="number">
+                                               max="{{(\App\Http\Controllers\PageController::getProductQuantityByProductId($item->id)) }}"
+                                               name="{{$item->rowId}}" style="max-width:34px" type="number">
                                         <div class="input-append">
                                             <button class="btn btn-default btn-number" data-type="minus"
                                                     data-field="{{$item->rowId}}" type="button"><i
@@ -56,20 +57,23 @@
                                     <td>{{number_format($item->price*$item->qty,0,",",".")}} đ</td>
                                 </tr>
                             @endforeach
-                        </form>
-                        <tr>
-                            <td colspan="4" class="alignR">Tổng tiền tất cả sản phẩm:</td>
-                            <td> {{Cart::subtotal(0)}} đ</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <br/>
 
-                    <a href="{{route('index')}}" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Quay
-                        lại mua hàng
-                    </a>
-                    <a href="{{route('getOrderConfirmation')}}" class="shopBtn btn-large pull-right">Next <span
-                                class="icon-arrow-right"></span></a>
+                            <tr>
+                                <td colspan="4" class="alignR">Tổng tiền tất cả sản phẩm:</td>
+                                <td> {{Cart::subtotal(0)}} đ</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <a href="{{route('index')}}" class="shopBtn btn-large"><span class="icon-arrow-left"></span>
+                            Quay
+                            lại mua hàng
+                        </a>
+                        <button type="submit" name="submit" class="shopBtn btn-large pull-right">
+                            <span class=" icon-shopping-cart"></span> Tiếp tục
+                        </button>
+                    </form>
                 </div>
             @else
                 <div class="well well-small">

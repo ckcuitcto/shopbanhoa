@@ -27,6 +27,6 @@
                 </li>
             @endforeach
         </ul>
-        <div class="pagination row-fluid" align="center">{{$resultSearch->links()}}</div>
+        <div class="pagination row-fluid" align="center">{{$resultSearch->appends(Request::all())->links()}}</div>
     </div>
 @endsection

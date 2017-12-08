@@ -29,7 +29,10 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('leftmenu',function($view){
             $category = ProductType::all();
-            $view->with('category',$category);
+
+            $randomProduct = Product::inRandomOrder()->where('new','1')->limit(2)->get();
+
+            $view->with(['category' => $category, 'randomProduct' => $randomProduct]);
 
             Schema::defaultStringLength(191);
         });
