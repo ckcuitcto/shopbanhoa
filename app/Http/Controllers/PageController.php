@@ -43,7 +43,7 @@ class PageController extends Controller
                 ['new', '1']
             ])
             ->groupBy('products.id')
-            ->orderByRaw('SUM(bill_detail.quantity)', 'DESC')
+            ->orderByRaw('SUM(bill_detail.quantity) DESC')
             ->limit(3)
             ->get();
 
@@ -137,14 +137,19 @@ class PageController extends Controller
 
     public function getOrderConfirmation()
     {
-        $listCart = Cart::content();
+        if(Cart::count() > 0) {
 
-        $user = new User();
-        if (!empty(Auth::user()->id)) {
-            $id = Auth::user()->id;
-            $user = User::find($id);
+            $listCart = Cart::content();
+
+            $user = new User();
+            if (!empty(Auth::user()->id)) {
+                $id = Auth::user()->id;
+                $user = User::find($id);
+            }
+            return view('pages.orderConfirmation', compact('listCart', 'user'));
+        }else{
+            return redirect()->back();
         }
-        return view('pages.orderConfirmation', compact('listCart', 'user'));
     }
 
     public function postOrderConfirmation(Request $request)
@@ -334,16 +339,19 @@ class PageController extends Controller
 
     public function getPersonal()
     {
-        $id = Auth::user()->id;
-        $personal = User::find($id);
-        $bills = Bill::where('id_user', $id)->orderBy('created_at')->get()->toArray();
+        if (Auth::Check()) {
+            $id = Auth::user()->id;
+            $personal = User::find($id);
+            $bills = Bill::where('id_user', $id)->orderBy('created_at')->get()->toArray();
 
-        $totalBill = 0;
-        foreach ($bills as $value) {
-            $totalBill += $value['total'];
+            $totalBill = 0;
+            foreach ($bills as $value) {
+                $totalBill += $value['total'];
+            }
+            return view('pages.personal', compact('personal', 'bills', 'totalBill'));
+        }else{
+            return redirect()->back();
         }
-
-        return view('pages.personal', compact('personal', 'bills', 'totalBill'));
     }
 
     public function postPersonal(Request $request)
