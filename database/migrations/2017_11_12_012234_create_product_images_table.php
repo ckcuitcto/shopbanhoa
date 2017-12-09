@@ -21,9 +21,9 @@ class CreateProductImagesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('product_images', function (Blueprint $table) {
-            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
-        });
+        // Schema::table('product_images', function (Blueprint $table) {
+        //     $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
+        // });
     }
 
     /**
