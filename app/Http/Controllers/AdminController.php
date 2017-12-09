@@ -25,5 +25,4 @@ class AdminController extends Controller
         $qtyBirthday = DB::select("SELECT count(*) as qty FROM users where SUBSTRING(birthday,6,5) like :date",['date' => $date]);
         return view('admin.dashboard', compact('qtyContact', 'qtyBill', 'date', 'qtyBirthday'));
     }
-
 }

@@ -17,20 +17,22 @@ class CreateBillDetailTable extends Migration
             $table->increments('id')->unsigned();
             $table->double('unit_price');
             $table->integer('quantity');
+
             $table->integer('id_bill')->unsigned();
-//            $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade');
+            $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade')->onUpdate('cascade');
+
             $table->integer('id_product')->unsigned();
-//            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
 
-        Schema::table('bill_detail', function (Blueprint $table) {
-            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
-        });
-
-        Schema::table('bill_detail', function (Blueprint $table) {
-            $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade')->onUpdate('cascade');
-        });
+//        Schema::table('bill_detail', function (Blueprint $table) {
+//            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
+//        });
+//
+//        Schema::table('bill_detail', function (Blueprint $table) {
+//            $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade')->onUpdate('cascade');
+//        });
 
     }
 

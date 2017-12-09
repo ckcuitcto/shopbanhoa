@@ -28,31 +28,32 @@ class PageController extends Controller
         $newProduct = Product::select('id', 'name', 'image')->where('new', 1)->orderBy('id', 'desc')->limit(16)->get()->toArray();
         $featuredProducts = Product::where([
             ['view', '>', 0],
-            ['new','1']
+            ['new', '1']
         ])
             ->orderBy('view', 'desc')->limit(3)->get();
 
         $mostBoughtProduct = DB::table('bill_detail')
-            ->join('products','products.id','=','bill_detail.id_product')
-            ->join('bills','bills.id','=','bill_detail.id_bill')
-            ->select(DB::raw('SUM(bill_detail.quantity) as totalQty'),'products.*')
+            ->join('products', 'products.id', '=', 'bill_detail.id_product')
+            ->join('bills', 'bills.id', '=', 'bill_detail.id_bill')
+            ->select(DB::raw('SUM(bill_detail.quantity) as totalQty'), 'products.*')
             ->where([
-                ['bills.confirm','1'],
-                ['new','1']
+                ['bills.confirm', '1'],
+                ['new', '1']
             ])
             ->groupBy('products.id')
-            ->orderByRaw('SUM(bill_detail.quantity)','DESC')
+            ->orderByRaw('SUM(bill_detail.quantity)', 'DESC')
             ->limit(3)
             ->get();
 
-        return view('pages.homepage', compact('slide', 'products', 'featuredProducts','newProduct','mostBoughtProduct'));
+        return view('pages.homepage', compact('slide', 'products', 'featuredProducts', 'newProduct', 'mostBoughtProduct'));
 
     }
 
-    public function getIntroduce() {
+    public function getIntroduce()
+    {
         $introduce = Introduce::all();
 
-        return view('pages.introduce',compact('introduce'));
+        return view('pages.introduce', compact('introduce'));
     }
 
     public function getProductType($idType)
@@ -68,10 +69,10 @@ class PageController extends Controller
         $product->save();
 
         $productOrdered = BillDetail::select(DB::raw('SUM(quantity) as total'))
-            ->leftJoin('bills','bill_detail.id_bill','=','bills.id')
+            ->leftJoin('bills', 'bill_detail.id_bill', '=', 'bills.id')
             ->where([
                 ['id_product', $request->idProduct],
-                ['bills.confirm','0'],
+                ['bills.confirm', '0'],
             ])
             ->first();
 //        var_dump($productOrdered);die;
@@ -115,7 +116,6 @@ class PageController extends Controller
         if ($request->isMethod('GET')) {
             // idP là id của sản phẩm
             // id là id của sản phẩm trong card
-
             $id = $request->get('id');
             $qty = $request->get('qty');
             Cart::update($id, $qty);
@@ -195,12 +195,66 @@ class PageController extends Controller
         return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);
     }
 
-    public function getProducts()
+    public function getProducts(Request $request)
     {
+        $sql = "select p.* ,bd.id as idBillDetail , bd.quantity as qtyBill, SUM(bd.quantity) as qty
+                from products p
+                JOIN bill_detail bd ON p.id = bd.id_product ";
 
-        $products = Product::paginate(16);
+        $flag = 0;
+        $param = array();
 
-        // $productsByIdType = Product::where('id_type', $idType)->paginate(6);
+        if ($request->has('submit')) {
+
+            if ($request->slPrice > 0) {
+                if ($request->slPrice == 1) {
+                    $sql .= 'WHERE p.unit_price < 200000 ';
+                    $flag = 1;
+                }elseif($request->slPrice == 2){
+                    $sql .= 'WHERE p.unit_price between 200000 AND 400000 ';
+                    $flag = 1;
+                }
+                elseif($request->slPrice == 3){
+                    $sql .= 'WHERE p.unit_price between 400000 AND 800000 ';
+                    $flag = 1;
+                }
+                elseif($request->slPrice == 4){
+                    $sql .= 'WHERE p.unit_price > 800000 ';
+                    $flag = 1;
+                }
+            }
+
+            if(!empty($request->txtName)){
+                if($flag == 0){
+                    $sql .= "WHERE p.name like '%?%'  ";
+                    $flag = 1;
+                }else{
+                    $sql .= "AND p.name like '%?%' ";
+                }
+                $param[] = $request->txtName;
+            }
+
+            $sql .= "GROUP BY p.id ";
+
+            if ($request->slOrderBy > 0) {
+                if ($request->slOrderBy == 1) {
+                    $sql .= 'ORDER BY SUM(bd.quantity) DESC';
+                }elseif($request->slOrderBy == 2){
+                    $sql .= 'ORDER BY p.view DESC';
+                }
+                elseif($request->slOrderBy == 3){
+                    $sql .= 'ORDER BY p.unit_price DESC';
+                }
+                elseif($request->slOrderBy == 4){
+                    $sql .= 'ORDER BY p.unit_price';
+                }
+            }
+
+            $products = DB::select($sql,$param);
+        } else {
+            $products = Product::paginate(16);
+        }
+
         return view('pages.products', compact('products'));
     }
 
@@ -218,17 +272,15 @@ class PageController extends Controller
             'title' => 'required',
             'description' => 'required',
             'phone' => 'required|numeric'
-        ],
-            [
-                'name.required' => 'Bạn chưa nhập name',
-                'email.required' => 'Bạn chưa nhập email',
-                'email.email' => "Email không hợp lệ",
-                'title.required' => 'Bạn chưa nhập title',
-                'description.required' => 'Bạn chưa nhập nội dung',
-                'phone.required' => 'Bạn chưa nhập số điện thoại',
-                'phone.numeric' => 'Số điện thoại không hợp lệ',
-            ]);
-
+        ], [
+            'name.required' => 'Bạn chưa nhập name',
+            'email.required' => 'Bạn chưa nhập email',
+            'email.email' => "Email không hợp lệ",
+            'title.required' => 'Bạn chưa nhập title',
+            'description.required' => 'Bạn chưa nhập nội dung',
+            'phone.required' => 'Bạn chưa nhập số điện thoại',
+            'phone.numeric' => 'Số điện thoại không hợp lệ',
+        ]);
         $contactUs = new ContactUs();
         $contactUs->name = $request->name;
         $contactUs->email = $request->email;
@@ -247,10 +299,11 @@ class PageController extends Controller
     }
 
 
-    public function getNewsDetails(Request $request){
+    public function getNewsDetails(Request $request)
+    {
         $news = News::find($request->idNews);
 
-        return view('pages.newsDetails',compact('news'));
+        return view('pages.newsDetails', compact('news'));
     }
 
 
@@ -259,7 +312,7 @@ class PageController extends Controller
         $search = $request->productSearch;
         $resultSearch = Product::where([
             ['name', 'like', "%$search%"],
-            ['new','1'],
+            ['new', '1'],
         ])->paginate(8);
         return view('pages.search', compact('search', 'resultSearch'));
     }
@@ -272,12 +325,11 @@ class PageController extends Controller
         $bills = Bill::where('id_user', $id)->orderBy('created_at')->get()->toArray();
 
         $totalBill = 0;
-        foreach ($bills as $value)
-        {
+        foreach ($bills as $value) {
             $totalBill += $value['total'];
         }
 
-        return view('pages.personal', compact('personal', 'bills','totalBill'));
+        return view('pages.personal', compact('personal', 'bills', 'totalBill'));
     }
 
     public function postPersonal(Request $request)
@@ -308,49 +360,6 @@ class PageController extends Controller
         }
     }
 
-    public static function getProductListOfBill($id)
-    {
-        $list = DB::table('products')
-            ->leftJoin('bill_detail', 'products.id', '=', 'bill_detail.id_product')
-            ->leftJoin('bills', 'bill_detail.id_bill', '=', 'bills.id')
-            ->select('products.*', 'bill_detail.quantity as qty')
-            ->where('bills.id', $id)
-            ->get();
-
-        $totalAll = 0;
-        $data = "  <h4 style='text-align: center;'>Các sản phẩm của đơn hàng ID: $id </h4>
-                        <hr class=\"soft\"/>
-                    <table class=\"table table-striped\">
-                        <thead>
-                        <tr>
-                            <th>Tên Sản Phẩm</th>
-                            <th style=\"text-align: center\">Số lượng</th>
-                            <th style=\"text-align: center\">Đơn Giá</th>
-                            <th style=\"text-align: center\">Tổng giá</th>
-                        </tr>
-                        </thead>
-                       <tbody>";
-
-        foreach ($list as $value) {
-            $total = $value->qty * $value->unit_price;
-            $data .=
-                "<tr>
-                    <td>$value->name</td>
-                    <td style=\"text-align: center\"> $value->qty </td>
-                    <td style=\"text-align: center\">  $value->unit_price </td>
-                    <td style=\"text-align: center\"> $total </td>
-                 </tr> ";
-            $totalAll += $total;
-        }
-        $data .= "  <tr>
-                        <td colspan=\"3\" style=\"text-align:right;\">Tổng tiền</td>
-                        <td style=\"text-align: center;\"> $totalAll VNĐ</td>
-                    </tr>
-                    </tbody>
-                </table>";
-
-        return $data;
-    }
 
     public static function checkQuantity($id)
     {

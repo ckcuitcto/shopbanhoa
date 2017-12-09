@@ -49,8 +49,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" name="suaTT" class="btn btn-default"> Sửa</button>
-                    <button type="cancel" class="btn btn-default">Hủy</button>
+                    <button type="submit" name="submit" class="btn btn-success"> Sửa</button>
+                    <button type="cancel" name="cancel" class="btn btn-danger">Hủy</button>
                 </div>
 
                 <!--End Advanced Tables -->

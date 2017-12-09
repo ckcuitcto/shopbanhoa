@@ -25,11 +25,12 @@ class CartController extends Controller
     {
         $productListOfBIll = DB::select(
             "		
-            SELECT *,b.id as billID ,bd.id as billDetailId, bd.quantity as billDetailQuantity, p.quantity as productQuantity
-             FROM bill_detail bd
-                LEFT JOIN products p ON  bd.id_product = p.id
-                LEFT JOIN bills b ON bd.id_bill = b.id
-                WHERE b.id = ? ", [$id]);
+            SELECT *,b.id as billID ,bd.id as billDetailId,
+              bd.quantity as billDetailQuantity, p.quantity as productQuantity
+            FROM bill_detail bd
+            LEFT JOIN products p ON  bd.id_product = p.id
+            LEFT JOIN bills b ON bd.id_bill = b.id
+            WHERE b.id = ? ", [$id]);
 
         return view('admin.cart.billDetail', compact('productListOfBIll'));
     }

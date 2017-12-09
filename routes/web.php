@@ -40,20 +40,10 @@ Route::get('cap-nhat-gio-hang/{id}/{qty}',[
     'uses' => 'PageController@updateCart'
 ]);
 
-Route::get('san-pham',[
-    'as'=>'products',
-    'uses'=>'PageController@getProducts'
-]);
+Route::get('san-pham',['as'=>'getProducts', 'uses'=>'PageController@getProducts']);
 
-Route::get('lien-he',[
-    'as'=>'contact',
-    'uses'=>'PageController@getContact'
-]);
-
-Route::post('lien-he',[
-    'as'=>'contact',
-    'uses'=>'PageController@postContact'
-]);
+Route::get('lien-he',['as'=>'contact', 'uses'=>'PageController@getContact']);
+Route::post('lien-he',['as'=>'contact', 'uses'=>'PageController@postContact']);
 
 Route::get('gioi_thieu',[
     'as'=>'introduce',
@@ -92,7 +82,6 @@ Route::post('dang-nhap',[
 
 
 Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
-
     Route::group(['prefix' => 'productType'],function(){
         Route::get('list',['as' => 'admin.productType.list','uses'=>'ProductTypeController@getList']);
 
@@ -104,7 +93,6 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
         Route::get('edit/{id}',['as' => 'admin.productType.getEdit','uses'=>'ProductTypeController@getEdit']);
         Route::post('edit/{id}',['as' => 'admin.productType.postEdit','uses'=>'ProductTypeController@postEdit']);
     });
-
     Route::group(['prefix' => 'product'],function(){
         Route::get('list',['as' => 'admin.product.list','uses'=>'ProductController@getList']);
         Route::get('add',['as' => 'admin.product.getAdd','uses'=>'ProductController@getAdd']);
@@ -117,7 +105,6 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
 
         Route::get('deleteImage/{id}',['as'=>'admin.product.getDeleteProductImage', 'uses' => 'ProductController@getDeleteProductImage']);
     });
-
     Route::group(['prefix' => 'news'],function(){
         Route::get('list',['as' => 'admin.news.list','uses'=>'NewsController@getList']);
         Route::get('add',['as' => 'admin.news.getAdd','uses'=>'NewsController@getAdd']);
@@ -130,7 +117,6 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
 
         Route::get('deleteImage/{id}',['as'=>'admin.news.getDeleteNewsImage', 'uses' => 'NewsController@getDeleteNewsImage']);
     });
-
     Route::group(['prefix' => 'contact'],function (){
         Route::get('contact',['as' => 'admin.contact.getContact','uses' => 'ContactController@getContact']);
         Route::post('contact',['as' => 'admin.contact.postContact','uses' => 'ContactController@postContact']);
@@ -153,9 +139,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
         Route::get('deleteBill/{id}',['as'=>'admin.cart.deleteBill', 'uses' => 'CartController@deleteBill']);
         Route::get('deleteBillDetail/{id}',['as'=>'admin.cart.deleteBillDetail', 'uses' => 'CartController@deleteBillDetail']);
     });
-
     Route::get('/dashboard',['as' => 'admin.dashboard' , 'uses' => 'AdminController@dashboard']);
-
     Route::group(['prefix' => 'introduce'],function (){
         Route::get('introduce',['as' => 'admin.introduce.getIntroduce' , 'uses' => 'IntroduceController@getIntroduce']);
         Route::post('introduce',['as' => 'admin.introduce.postIntroduce' , 'uses' => 'IntroduceController@postIntroduce']);
@@ -213,7 +197,7 @@ Route::post('ca-nhan',[
 
 Route::get('danh-sach-san-pham-cua-don/{id}',[
    'as' => 'getProductListOfBill',
-    'uses' => 'PageController@getProductListOfBill'
+    'uses' => 'AjaxController@getProductListOfBill'
 ]);
 
 Auth::routes();

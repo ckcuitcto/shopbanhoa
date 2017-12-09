@@ -5,7 +5,7 @@
     <div class="span9" style="margin: 0">
         <ul class="breadcrumb">
             <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
-            <li><a href="{{route('products')}}">Sản phẩm</a> <span class="divider">/</span></li>
+            <li><a href="{{route('getProducts')}}">Sản phẩm</a> <span class="divider">/</span></li>
             <li class="active">Preview</li>
         </ul>
         <div class="well well-small">

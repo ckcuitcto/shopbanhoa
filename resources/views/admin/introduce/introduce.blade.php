@@ -22,10 +22,10 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung giới thiệu</label>
-
                             <textarea rows="8" cols="500" id="txtNewsContent" name="txtNewsContent" class="form-control">
                                 <!-- {!! old('txtNewsContent' ,"") !!} -->
                                 {{$introduce->content}}
+
                             </textarea>
                             <script src="js/ckeditor.js"></script>
                             <script>
@@ -46,6 +46,7 @@
                     <button type="button"  name="edit" id="edit" class="btn btn-warning"> Sửa</button>
                     <button type="submit" style="display: none" name="save" id="save" class="btn btn-success">Lưu</button>
                     <button type="cancel" style="display: none" name="cancel" id="cancel" class="btn btn-danger">Hủy</button>
+
                 </div>
                 <!--End Advanced Tables -->
             </div>

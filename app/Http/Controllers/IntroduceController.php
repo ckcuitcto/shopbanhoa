@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\User;
 use App\ProductImages;
 use App\Footer;
@@ -21,7 +22,7 @@ class IntroduceController extends Controller
     public function postIntroduce(Request $request)
     {
         $this->validate($request, [
-            'txtNewsTitle' => 'required|',
+            'txtNewsTitle' => 'required',
             'txtNewsContent' => 'required',
         ], [
             'txtNewsTitle.required' => 'Bạn chưa nhập tiêu đề',
@@ -34,6 +35,7 @@ class IntroduceController extends Controller
         $introduce->save();
         return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
     }
+
 
     public function getFooter()
     {
