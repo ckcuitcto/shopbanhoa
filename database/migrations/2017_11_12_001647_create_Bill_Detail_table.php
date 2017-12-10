@@ -19,10 +19,10 @@ class CreateBillDetailTable extends Migration
             $table->integer('quantity');
 
             $table->integer('id_bill')->unsigned();
-            $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade')->onUpdate('cascade');
 
             $table->integer('id_product')->unsigned();
-            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
 
