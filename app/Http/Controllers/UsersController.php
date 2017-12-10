@@ -51,7 +51,7 @@ class UsersController extends Controller
         $user->gender = $request->rdoGender;
         $user->address = $request->txtAddress;
         $user->phone_number = $request->txtPhone;
-        $user->birthday = $request->txtBirthday;
+        $user->birthday = $request->dateBirthday;
         $user->save();
 
         return redirect()->route('admin.user.list')->with(['flash_message' => 'Sửa thành công']);
