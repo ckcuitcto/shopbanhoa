@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-group">
                             <label>Ngày sinh</label>
-                            <input style="height: auto" class="form-control" type="date" name="dateBirthday"
+                            <input style="height: auto" class="form-control" type="date" name="dateBirthday" min="1940-01-02" max="2005-01-01"
                                    value="{{old('dateBirthday',$user->birthday)}}" placeholder="Ngày sinh"/>
                         </div>
                         <div class="form-group">

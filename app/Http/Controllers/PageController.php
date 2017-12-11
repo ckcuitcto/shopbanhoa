@@ -60,7 +60,7 @@ class PageController extends Controller
 
     public function getProductType($idType)
     {
-        $productsByIdType = Product::where('id_type', $idType)->paginate(9);
+        $productsByIdType = Product::where('id_type', $idType)->where('new', 1)->paginate(9);
         return view('pages.productType', compact('productsByIdType'));
     }
 
@@ -258,6 +258,9 @@ class PageController extends Controller
             if ($request->chksoldOut == 'on') {
                 $list->where('p.quantity', '>', '0');
             }
+
+            $list->where('p.new','1');
+
             $list->groupBy('p.id');
             if ($request->slOrderBy > 0) {
                 if ($request->slOrderBy == 1) {
@@ -272,7 +275,7 @@ class PageController extends Controller
             }
             $products = $list->paginate(16);
         } else {
-            $products = Product::paginate(16);
+            $products = Product::where('new','1')->paginate(16);
         }
         return view('pages.products', compact('products','oldValue'));
     }

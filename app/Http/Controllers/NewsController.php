@@ -82,7 +82,7 @@ class NewsController extends Controller
     {
         $news = News::find($id);
         if (file_exists("template/image/news/" . $news->image)) {
-            unlink("template/image/newsImage/" . $news->image);
+            unlink("template/image/news/" . $news->image);
         }
         $news->delete();
         return redirect()->route('admin.news.list')->with(['flash_message' => 'Xóa thành công']);

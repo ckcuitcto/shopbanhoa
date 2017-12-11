@@ -21,7 +21,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th>Content</th>
                                 <th>Image</th>
                                 <th>Created_at</th>
                                 <th>Updated_at</th>
@@ -35,7 +34,7 @@
                                     <td><a href="{{route('admin.news.getEdit',$news->id)}}"> {{$news->title}}
                                             <p><img width="200px" src="/template/image/news/{{$news->image}}"></p>
                                         </a></td>
-                                    <td>{{strip_tags($news->content)}}</td>
+                       
                                     <td>{{$news->created_at}}</td>
                                     <td>{{$news->updated_at}}</td>
                                     <td><a onclick="return confirm('Bạn có chắc muốn xoá không')"
