@@ -5,10 +5,8 @@ $(document).ready(function () {
 
 
     $(".quantity1").change(function () {
-
         var quantity = $(this).val();
         var idProduct = $(this).attr("idProduct");
-
         var token = $("input[name='_token']").val();
         $.ajax({
             url:'cap-nhat-gio-hang/'+idProduct+'/'+quantity,
@@ -70,7 +68,7 @@ $(document).ready(function () {
 
 
 var time = 5; // Thời gian đếm ngược
-var page = "/"; // Trang bạn muốn chuyển đến
+var page = "/ca-nhan"; // Trang bạn muốn chuyển đến
 function countDown() {
     time--;
     gett("timecount").innerHTML = time;

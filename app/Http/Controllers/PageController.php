@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Bill;
@@ -18,6 +19,7 @@ use App\Introduce;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
 {
@@ -41,7 +43,7 @@ class PageController extends Controller
                 ['new', '1']
             ])
             ->groupBy('products.id')
-            ->orderByRaw('SUM(bill_detail.quantity)', 'DESC')
+            ->orderByRaw('SUM(bill_detail.quantity) DESC')
             ->limit(3)
             ->get();
 
@@ -99,7 +101,6 @@ class PageController extends Controller
     public function purchaseProductDetail(Request $request)
     {
         $productBuy = Product::where('id', $request->id)->first();
-
         $qty = $request->qty;
         Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
         return redirect()->back();
@@ -114,10 +115,20 @@ class PageController extends Controller
     public function updateCart(Request $request)
     {
         if ($request->isMethod('GET')) {
-            // idP là id của sản phẩm
+
+            // idP là id trong db của sản phẩm
             // id là id của sản phẩm trong card
+//            $idSP = $request->get('idSP');
             $id = $request->get('id');
             $qty = $request->get('qty');
+
+//            $product = Product::find($idSP);
+
+//            if($product->quantity > $qty)
+//            {
+//                $qty = $product->quantity;
+//            }
+
             Cart::update($id, $qty);
             return "success";
         }
@@ -126,14 +137,19 @@ class PageController extends Controller
 
     public function getOrderConfirmation()
     {
-        $listCart = Cart::content();
+        if(Cart::count() > 0) {
 
-        $user = new User();
-        if (!empty(Auth::user()->id)) {
-            $id = Auth::user()->id;
-            $user = User::find($id);
+            $listCart = Cart::content();
+
+            $user = new User();
+            if (!empty(Auth::user()->id)) {
+                $id = Auth::user()->id;
+                $user = User::find($id);
+            }
+            return view('pages.orderConfirmation', compact('listCart', 'user'));
+        }else{
+            return redirect()->back();
         }
-        return view('pages.orderConfirmation', compact('listCart', 'user'));
     }
 
     public function postOrderConfirmation(Request $request)
@@ -197,65 +213,68 @@ class PageController extends Controller
 
     public function getProducts(Request $request)
     {
-        $sql = "select p.* ,bd.id as idBillDetail , bd.quantity as qtyBill, SUM(bd.quantity) as qty
-                from products p
-                JOIN bill_detail bd ON p.id = bd.id_product ";
+        $oldValue = array(
+            'slPrice' => "",
+            'txtName' => "",
+            'slOrderBy' => "",
+            'chksoldOut' => "",
+        );
 
-        $flag = 0;
-        $param = array();
+        $list = DB::table('products as p')
+            ->leftJoin('bill_detail as bd', 'p.id', '=', 'bd.id_product')
+            ->leftJoin('bills as b','bd.id_bill','=','b.id')
+            ->select(DB::raw('SUM(bd.quantity) as totalQty'), 'p.*', 'bd.id as idBillDetail', 'bd.quantity as qtyBill', 'p.id as id');
 
         if ($request->has('submit')) {
 
+            $checked = ($request->chksoldOut) ? "on" : "";
+            $oldValue['slPrice'] = $request->slPrice;
+            $oldValue['txtName'] = $request->txtName;
+            $oldValue['slOrderBy'] = $request->slOrderBy;
+            $oldValue['chksoldOut'] = $checked;
+
+            $oldValue = array(
+                'slPrice' => $request->slPrice,
+                'txtName' => $request->txtName,
+                'slOrderBy' => $request->slOrderBy,
+                'chksoldOut' => $checked,
+                'submit' => ''
+            );
+
             if ($request->slPrice > 0) {
                 if ($request->slPrice == 1) {
-                    $sql .= 'WHERE p.unit_price < 200000 ';
-                    $flag = 1;
-                }elseif($request->slPrice == 2){
-                    $sql .= 'WHERE p.unit_price between 200000 AND 400000 ';
-                    $flag = 1;
-                }
-                elseif($request->slPrice == 3){
-                    $sql .= 'WHERE p.unit_price between 400000 AND 800000 ';
-                    $flag = 1;
-                }
-                elseif($request->slPrice == 4){
-                    $sql .= 'WHERE p.unit_price > 800000 ';
-                    $flag = 1;
+                    $list->where('p.unit_price', '<', 200000);
+                } elseif ($request->slPrice == 2) {
+                    $list->whereBetween('p.unit_price', [200000, 400000]);
+                } elseif ($request->slPrice == 3) {
+                    $list->whereBetween('p.unit_price', [400000, 800000]);
+                } elseif ($request->slPrice == 4) {
+                    $list->where('p.unit_price', '>', 800000);
                 }
             }
-
-            if(!empty($request->txtName)){
-                if($flag == 0){
-                    $sql .= "WHERE p.name like '%?%'  ";
-                    $flag = 1;
-                }else{
-                    $sql .= "AND p.name like '%?%' ";
-                }
-                $param[] = $request->txtName;
+            if (!empty($request->txtName)) {
+                $list->where('p.name', 'like', "%$request->txtName%");
             }
-
-            $sql .= "GROUP BY p.id ";
-
+            if ($request->chksoldOut == 'on') {
+                $list->where('p.quantity', '>', '0');
+            }
+            $list->groupBy('p.id');
             if ($request->slOrderBy > 0) {
                 if ($request->slOrderBy == 1) {
-                    $sql .= 'ORDER BY SUM(bd.quantity) DESC';
-                }elseif($request->slOrderBy == 2){
-                    $sql .= 'ORDER BY p.view DESC';
-                }
-                elseif($request->slOrderBy == 3){
-                    $sql .= 'ORDER BY p.unit_price DESC';
-                }
-                elseif($request->slOrderBy == 4){
-                    $sql .= 'ORDER BY p.unit_price';
+                    $list->orderByRaw('SUM(bd.quantity) desc');
+                } elseif ($request->slOrderBy == 2) {
+                    $list->orderBy('p.view', 'desc');
+                } elseif ($request->slOrderBy == 3) {
+                    $list->orderBy('p.unit_price', 'desc');
+                } elseif ($request->slOrderBy == 4) {
+                    $list->orderBy('p.unit_price');
                 }
             }
-
-            $products = DB::select($sql,$param);
+            $products = $list->paginate(16);
         } else {
             $products = Product::paginate(16);
         }
-
-        return view('pages.products', compact('products'));
+        return view('pages.products', compact('products','oldValue'));
     }
 
     public function getContact()
@@ -320,30 +339,29 @@ class PageController extends Controller
 
     public function getPersonal()
     {
-        $id = Auth::user()->id;
-        $personal = User::find($id);
-        $bills = Bill::where('id_user', $id)->orderBy('created_at')->get()->toArray();
+        if (Auth::Check()) {
+            $id = Auth::user()->id;
+            $personal = User::find($id);
+            $bills = Bill::where('id_user', $id)->orderBy('created_at')->get()->toArray();
 
-        $totalBill = 0;
-        foreach ($bills as $value) {
-            $totalBill += $value['total'];
+            $totalBill = 0;
+            foreach ($bills as $value) {
+                $totalBill += $value['total'];
+            }
+            return view('pages.personal', compact('personal', 'bills', 'totalBill'));
+        }else{
+            return redirect()->back();
         }
-
-        return view('pages.personal', compact('personal', 'bills', 'totalBill'));
     }
 
     public function postPersonal(Request $request)
     {
         if ($request->has('save')) {
             $this->validate($request, [
-                'txtName' => 'required',
-                'txtAddress' => 'required',
-                'txtPhoneNumber' => 'required|numeric'
+                'txtPhoneNumber' => 'numeric|digits_between:10,11'
             ], [
-                'txtName.required' => 'Bạn chưa nhập tên',
-                'txtAddress.required' => 'Bạn chưa nhập địa chỉ',
-                'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
                 'txtPhoneNumber.numeric' => 'Số điện thoại không hợp lệ',
+                'txtPhoneNumber.digits_between' => 'Số điện thoại  có từ 10-11 số',
             ]);
 
             $id = Auth::user()->id;
@@ -380,8 +398,46 @@ class PageController extends Controller
         } else {
             return false;
         }
-
         // return true: có thể mua ,
         // return false: k thể mua
+    }
+
+    public static function getProductQuantityByProductId($id)
+    {
+        $product = Product::find($id);
+        return $product->quantity;
+    }
+
+    public function changePassword(Request $request)
+    {
+        $this->validate($request, [
+            'current-password' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password',
+        ], [
+            'current-password.required' => 'Nhập mật khẩu hiện tại',
+            'password.required' => 'Nhập mật khẩu mới',
+            'password_confirmation.required' => 'Nhập lại mật khẩu mới',
+            'password_confirmation.same' => 'Mật khảu không khớp',
+        ]);
+
+        if (Auth::Check()) {
+            $request_data = $request->All();
+
+            $current_password = Auth::User()->password;
+            if (Hash::check($request_data['current-password'], $current_password)) {
+                $user_id = Auth::User()->id;
+                $obj_user = User::find($user_id);
+                $obj_user->password = Hash::make($request_data['password']);;
+                $obj_user->save();
+
+                return redirect()->back()->with('flash_message', 'Đổi mật khẩu thành công');
+            } else {
+//                $error = array('current-password' => 'Vui lòng nhập đúng mật khẩu hiện tại');
+                return redirect()->back()->with('flash_message_fail', 'Vui lòng nhập đúng mật khẩu hiện tại');
+            }
+        } else {
+            return redirect()->to('/');
+        }
     }
 }

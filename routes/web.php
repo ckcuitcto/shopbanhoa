@@ -131,7 +131,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
 
     Route::group(['prefix' => 'cart'],function (){
         Route::get('bill/{confirm}',['as' => 'admin.cart.getBill','uses' => 'CartController@getBill']);
-        Route::post('bill/{confirm}',['as' => 'admin.cart.postBill','uses' => 'CartController@postBill']);
+//        Route::post('bill/{confirm}',['as' => 'admin.cart.postBill','uses' => 'CartController@postBill']);
 
         Route::get('billDetail/{id}',['as' => 'admin.cart.getBillDetail','uses' => 'CartController@getBillDetail']);
         Route::post('billDetail/{id}',['as' => 'admin.cart.postBillDetail','uses' => 'CartController@postBillDetail']);
@@ -201,6 +201,9 @@ Route::get('danh-sach-san-pham-cua-don/{id}',[
 ]);
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('doi-mat-khau',[
+    'as' => 'changePassword',
+    'uses' => 'PageController@changePassword'
+]);
 ?>

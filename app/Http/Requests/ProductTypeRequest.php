@@ -26,7 +26,7 @@ class ProductTypeRequest extends FormRequest
 //        'fImages' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         return [
             'txtName' => 'required|unique:type_products,name',
-            'fImages' => 'required',
+            'fImages' => 'required|mimes:jpeg,png,jpg',
         ];
     }
 
@@ -35,7 +35,8 @@ class ProductTypeRequest extends FormRequest
         return [
             'txtName.required' => 'Vui lòng nhập tên thể loại',
             'txtName.unique' => 'Tên đã tồn lại',
-            'fImages.required' => 'Chọn hình ảnh'
+            'fImages.required' => 'Chọn hình ảnh',
+            'fImages.mimes' => 'Chỉ chấp nhận các file jpeg,png,jpg',
         ];
     }
 }

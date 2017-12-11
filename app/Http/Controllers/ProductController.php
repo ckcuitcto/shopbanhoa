@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
+use App\BillDetail;
 use App\Product;
 use App\ProductImages;
 use App\ProductType;
@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function getList()
     {
-        $productList = Product::orderBy('products.id', 'DESC')->get();
+        $productList = Product::orderBy('id', 'DESC')->get();
         return view('admin.product.list', compact('productList'));
     }
 
@@ -97,8 +97,12 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         ProductImages::where('id_product', $product->id)->delete();
-        $product->delete();
 
+        $getAllBillDetail = BillDetail::where('id_product',$product->id)->count();
+        if($getAllBillDetail > 0){
+            return redirect()->route('admin.product.list')->with(['flash_message_fail' => 'Đã có người mua sản phẩm này! Không thể xóa! Có thể ẩn đi thay vì xóa !!']);
+        }
+        $product->delete();
         return redirect()->route('admin.product.list')->with(['flash_message' => 'Xóa thành công']);
     }
 
@@ -148,7 +152,11 @@ class ProductController extends Controller
                 $fileName = str_random(8) . "_" . $file->getClientOriginalName();
             }
             $file->move('template/image/product/', $fileName);
-            unlink("template/image/product/" . $product->image);
+
+            if(file_exists("template/image/product/" . $product->image)){
+                unlink("template/image/product/" . $product->image);
+            }
+
             $product->image = $fileName;
         }
         $product->save();

@@ -67,7 +67,7 @@
                     {!! Session::get('flash_message') !!}
                     Chúng tôi sẽ sớm liên hệ với bạn !
                 </div>
-                <h4>Trang sẽ tự chuyển đến trang chủ sau <span id="timecount"></span> giây!</h4>
+
             @endif
                 @include('admin.blocks.error')
             </div>

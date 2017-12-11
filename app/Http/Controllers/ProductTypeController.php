@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductTypeRequest;
+use App\Product;
 use App\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
@@ -50,8 +51,13 @@ class ProductTypeController extends Controller
     public function getDelete($id)
     {
         $productType = ProductType::find($id);
-        $productType->delete();
 
+        $getAllProduct = Product::where('id_type',$productType->id)->count();
+        if($getAllProduct > 0){
+            return redirect()->route('admin.productType.list')->with(['flash_message_fail' => 'Đã có sản phẩm trong loại sản phẩm này! Không thể xóa']);
+        }
+
+        $productType->delete();
         return redirect()->route('admin.productType.list')->with(['flash_message' => 'Xóa thành công']);
     }
 
@@ -77,7 +83,7 @@ class ProductTypeController extends Controller
 
             $fileExtensions = $file->getClientOriginalExtension();
             if (!$this->checkExtension($fileExtensions)) {
-                return redirect()->reload('admin.productType.getAdd')->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
+                return redirect()->back()->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
             }
 
             $fileName = str_random(8) . "_" . $file->getClientOriginalName();
@@ -85,16 +91,21 @@ class ProductTypeController extends Controller
                 $fileName = str_random(8) . "_" . $file->getClientOriginalName();
             }
             $file->move('template/image/productType/', $fileName);
+
+            if(file_exists("template/image/productType/" . $type->image)){
+                unlink("template/image/productType/" . $type->image);
+            }
+
             $type->image = $fileName;
         }
 
         $type->save();
-        return redirect()->route('admin.productType.list')->with(['flash_message' => 'Sửa thành công']);
+        return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
     }
 
     private function checkExtension($fileExtensions)
     {
-        $arr = array('jpg', 'png', 'jpeg');
+        $arr = array('jpg', 'png', 'jpeg', 'JPG', 'PNG', 'JPEG');
         if (in_array($fileExtensions, $arr)) {
             return true;
         }

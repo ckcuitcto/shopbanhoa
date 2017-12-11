@@ -24,6 +24,7 @@ class CreateBillsTable extends Migration
             $table->text('address');
             $table->string('phone_number',20);
             $table->tinyInteger('confirm')->default('0');
+            $table->tinyInteger('deleted')->default('0')->nullable();;
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

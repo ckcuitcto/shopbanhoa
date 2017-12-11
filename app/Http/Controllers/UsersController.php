@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,11 @@ class UsersController extends Controller
 
     public function getDelete($id){
     	$user = User::find($id);
+
+        $getAllBilll = Bill::where('id_user',$user->id)->count();
+        if($getAllBilll > 0){
+            return redirect()->route('admin.user.list')->with(['flash_message_fail' => 'User này đã mua hàng. Không thể xóa']);
+        }
         $user->delete();
         return redirect()->route('admin.user.list')->with(['flash_message' => 'Xóa thành công']);
     }
