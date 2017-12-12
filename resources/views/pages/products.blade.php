@@ -84,7 +84,7 @@
     <hr>
     <div class="span12" style="background-color: #f5f5f5;margin:0">
 
-        <h3 style="padding-left: 20px;">Các sản phẩm</h3>
+        <h3 style="padding-left: 20px;">Các loại hoa tìm được</h3>
 
         @if($products->count() > 0)
 

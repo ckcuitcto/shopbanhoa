@@ -3,7 +3,7 @@
     <div class="row" style="background-color: #f5f5f5;margin-left: 5px">
         @if(count($productsByIdType)>0)
         <div class="well well-small" style="border:none;margin-left: 25px">
-            <h3>&nbsp;Các loại hoa hiện có</h3>
+            <h3>&nbsp;Có tất cả {{count($productsByIdType)}} loại hoa {{$productType->name}}</h3>
             <div class="row">
                 <ul class="thumbnails">
                     @foreach($productsByIdType as $product)

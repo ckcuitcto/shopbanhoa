@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Http\Requests\ProductTypeRequest;
 use App\Product;
 use App\ProductType;
@@ -14,7 +15,8 @@ class ProductTypeController extends Controller
     public function getList()
     {
         $productTypeList = ProductType::select('id', 'name', 'image', 'description')->orderBy('id', 'DESC')->get();
-        return view('admin.productType.list', compact('productTypeList'));
+        $productQuantity = DB::select("select tp.* , count(p.id) as soluong from type_products tp join products p on tp.id = p.id_type where p.new = 1 group by tp.id");
+        return view('admin.productType.list', compact('productTypeList','productQuantity'));
     }
 
     public function getAdd()

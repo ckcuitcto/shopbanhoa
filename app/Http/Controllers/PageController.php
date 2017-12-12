@@ -61,7 +61,8 @@ class PageController extends Controller
     public function getProductType($idType)
     {
         $productsByIdType = Product::where('id_type', $idType)->where('new', 1)->paginate(9);
-        return view('pages.productType', compact('productsByIdType'));
+        $productType = ProductType::find($idType);
+        return view('pages.productType', compact('productsByIdType','productType'));
     }
 
     public function getProductDetail(Request $request)

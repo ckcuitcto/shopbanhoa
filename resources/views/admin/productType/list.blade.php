@@ -27,16 +27,20 @@
                                 <td>Mã Loại</td>
                                 <td>Tên Loại Sản Phẩm</td>
                                 <td>Miêu tả</td>
+                                <td>Số lượng sản phẩm hiện có</td>
                                 <td>Ảnh</td>
                                 <td>Xóa</td>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($productTypeList as $productType)
+                            @foreach($productQuantity as $productType)
                                 <tr>
                                     <td><a href="{{route('admin.productType.getEdit',$productType->id)}}" >{{$productType->id}}</a></td>
                                     <td><a href="{{route('admin.productType.getEdit',$productType->id)}}" >{{$productType->name}}</a></td>
                                     <td>{{$productType->description}}</td>
+                   
+                                    <td>{{$productType->soluong}}</td>
+                               
                                     <td> <img width="300px" src="/template/image/productType/{{$productType->image}}" alt=""></td>
                                     <td><a onclick="return confirmDelete('Bạn có chắc muốn xóa không?');" href="{{route('admin.productType.getDelete',$productType->id)}}">Xóa</a></td>
                                 </tr>
