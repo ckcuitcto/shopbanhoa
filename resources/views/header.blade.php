@@ -11,8 +11,12 @@
         <div class="span6">
             <div class="offerNoteWrapper">
                 <h1 class="dotmark" align="center">
-                    <i class="icon-cut"></i>There is nothing more difficult for a truly creative painter than to paint a rose,
-                    because before he can do so he has first to forget all the roses that were ever painted. Henri Matisse.</h1>
+
+                    <i class="icon-cut"></i>
+                    Tôi yêu hoa đâu cần hoa đẹp, mà chỉ cần hoa tỏa ngát hương thơm.
+                    Tôi yêu người đâu cần người đẹp, mà chỉ cần người thật sự yêu tôi.
+                </h1>
+
             </div>
         </div>
         <div class="span3 alignR">

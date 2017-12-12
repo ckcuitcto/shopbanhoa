@@ -58,7 +58,7 @@
                 </ul>
             </li>
             <li>
-                <a href=""><i class="fa fa-newspaper-o fa-3x"></i> Tin tức<span class="fa arrow"></span></a>
+                <a href=""><i class="fa fa-sitemap fa-3x"></i> Tin tức<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{route('admin.news.list')}}">Danh sách tin tức</a>
@@ -87,14 +87,7 @@
                     </li>
                 </ul>
             </li>
-            {{--<li>--}}
-                {{--<a href=""><i class="fa fa-sitemap fa-3x"></i>Quản lý header<span class="fa arrow"></span></a>--}}
-                {{--<ul class="nav nav-second-level">--}}
-                    {{--<li>--}}
-                        {{--<a href="#">Dòng chữ trên header</a>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-            {{--</li>--}}
+
         </ul>
     </div>
 </nav>

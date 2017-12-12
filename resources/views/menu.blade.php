@@ -26,14 +26,14 @@
     </div>
 </div>
 
-
 @section('script')
     <script type="text/javascript">
 
-//            $(".nav a").on("click", function () {
-//                $(".nav").find(".active").removeClass("active");
-//                $(this).parent().addClass("active");
-//            });
+           $(".nav a").on("click", function () {
+               $(".nav").find(".active").removeClass("active");
+               $(this).parent().addClass("active");
+           });
     </script>
 
 @endsection
+

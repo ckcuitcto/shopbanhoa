@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
     <div class="span12" id="searchBox" style="background-color: #f5f5f5;margin:0; ">
-        <h3>Tìm kiếm <i class=" icon-chevron-down"></i></h3>
+        <h3 style="padding-left: 20px">Tìm kiếm <i class=" icon-chevron-down"></i></h3>
         <hr>
     </div>
     <div class="span12" style="background-color: #f5f5f5;margin:0; ">
@@ -83,8 +83,11 @@
     <hr>
     <hr>
     <div class="span12" style="background-color: #f5f5f5;margin:0">
+
+        <h3 style="padding-left: 20px;">Các loại hoa tìm được</h3>
+
         @if($products->count() > 0)
-        <h3>Các sản phẩm</h3>
+
         <ul class="thumbnails">
             @foreach($products as $product)
                 <li class="span3" style="width: 210px;margin-left: 27px">

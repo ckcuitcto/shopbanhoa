@@ -14,9 +14,8 @@
             <!-- Advanced Tables -->
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <div class="row">
-                            <div class="col-md-9">
                                 @if(count($slide) > 0)
+
                                 <div class="form-group">
                                     <label>Các slide đang hiển thị</label>
                                     <div class="row">
@@ -43,9 +42,6 @@
                                     <label>Thêm slide mới</label>
                                     <input type="file" name="mutilFile[]" multiple>
                                 </div>
-                            </div>
-                        </div>
-
                         <br>
                         <div class="row">
                             <div class="col-md-9">
