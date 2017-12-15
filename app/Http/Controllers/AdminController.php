@@ -17,7 +17,6 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-
         $qtyContact = ContactUs::where('confirm', '0')->count();
         $qtyBill = Bill::where('confirm', '0')->count();
         $date = date('Y-m-d');

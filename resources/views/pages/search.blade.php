@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="span9" style="background-color: #f5f5f5;margin:0">
-        <h3><b> Có {{count($resultSearch)}} kết quả tìm kiếm cho: {{$search}}</b></h3>
+        <!-- <h3><b> Có {{count($resultSearch)}} kết quả tìm kiếm cho: {{$search}}</b></h3> -->
         <ul class="thumbnails">
             @foreach($resultSearch as $product)
                 <li class="span3" style="width: 210px;margin-left: 27px">

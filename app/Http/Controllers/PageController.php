@@ -48,13 +48,11 @@ class PageController extends Controller
             ->get();
 
         return view('pages.homepage', compact('slide', 'products', 'featuredProducts', 'newProduct', 'mostBoughtProduct'));
-
     }
 
     public function getIntroduce()
     {
         $introduce = Introduce::all();
-
         return view('pages.introduce', compact('introduce'));
     }
 
@@ -116,20 +114,8 @@ class PageController extends Controller
     public function updateCart(Request $request)
     {
         if ($request->isMethod('GET')) {
-
-            // idP là id trong db của sản phẩm
-            // id là id của sản phẩm trong card
-//            $idSP = $request->get('idSP');
             $id = $request->get('id');
             $qty = $request->get('qty');
-
-//            $product = Product::find($idSP);
-
-//            if($product->quantity > $qty)
-//            {
-//                $qty = $product->quantity;
-//            }
-
             Cart::update($id, $qty);
             return "success";
         }
@@ -149,7 +135,7 @@ class PageController extends Controller
             }
             return view('pages.orderConfirmation', compact('listCart', 'user'));
         }else{
-            return redirect()->back();
+            return redirect()->route('index');
         }
     }
 

@@ -68,7 +68,7 @@ $(document).ready(function () {
 
 
 var time = 5; // Thời gian đếm ngược
-var page = "/ca-nhan"; // Trang bạn muốn chuyển đến
+var page = "/"; // Trang bạn muốn chuyển đến
 function countDown() {
     time--;
     gett("timecount").innerHTML = time;

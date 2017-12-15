@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <div class="span12" id="searchBox" style="background-color: #f5f5f5;margin:0; ">
+    <!-- <div class="span12" id="searchBox" style="background-color: #f5f5f5;margin:0; ">
         <h3 style="padding-left: 20px">Tìm kiếm <i class=" icon-chevron-down"></i></h3>
         <hr>
     </div>
@@ -81,13 +81,12 @@
         </div>
     </div>
     <hr>
-    <hr>
+    <hr> -->
     <div class="span12" style="background-color: #f5f5f5;margin:0">
-
-        <h3 style="padding-left: 20px;">Các loại hoa tìm được</h3>
 
         @if($products->count() > 0)
 
+      <!--    <h3 style="padding-left: 20px;">Có tất cả {{count($products)}} sản phẩm </h3> -->
         <ul class="thumbnails">
             @foreach($products as $product)
                 <li class="span3" style="width: 210px;margin-left: 27px">
@@ -115,13 +114,7 @@
             @endforeach
         </ul>
         <div class="pagination row-fluid" align="center">{{ $products->appends(Request::all())->links() }}
-        {{--<div class="pagination row-fluid" align="center">{{ $products->appends([--}}
-                {{--'slPrice' => $oldValue['slPrice'],--}}
-                {{--'txtName' => $oldValue['txtName'],--}}
-                {{--'slOrderBy' => $oldValue['slOrderBy'],--}}
-                {{--'chksoldOut' => $oldValue['chksoldOut'],--}}
-                {{--'submit' => 'ok',--}}
-                {{--])->links() }}--}}
+
         </div>
         @else
             <h3>Không tìm thấy kết quả </h3>
