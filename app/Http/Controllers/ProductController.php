@@ -142,18 +142,18 @@ class ProductController extends Controller
         if ($request->hasFile('fImages')) {
             $file = $request->file('fImages');
 
-            $fileExtensions = $file->getClientOriginalExtension();
-            if (!$this->checkExtension($fileExtensions)) {
+            $fileExtensions = $file->getClientOriginalExtension(); // lấy đuôi file
+            if (!$this->checkExtension($fileExtensions)) { // kiểm tra đuôi file
                 return redirect()->reload('admin.product.getEdit')->with('failed', 'Chỉ được chọn file có đuôi jpg,png,jpeg');
             }
 
-            $fileName = str_random(8) . "_" . $file->getClientOriginalName();
-            while (file_exists("template/image/product/" . $fileName)) {
+            $fileName = str_random(8) . "_" . $file->getClientOriginalName(); // lấy tên file
+            while (file_exists("template/image/product/" . $fileName)) {  // tạo tên file mới nếu trùng
                 $fileName = str_random(8) . "_" . $file->getClientOriginalName();
             }
-            $file->move('template/image/product/', $fileName);
+            $file->move('template/image/product/', $fileName);  // lưu file vào thư mục
 
-            if(file_exists("template/image/product/" . $product->image)){
+            if(file_exists("template/image/product/" . $product->image)){ // nếu  sản phẩm đã có ảnh thì sẽ xóa ảnh trong thư mục
                 unlink("template/image/product/" . $product->image);
             }
 

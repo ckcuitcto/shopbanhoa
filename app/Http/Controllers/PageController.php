@@ -149,7 +149,7 @@ class PageController extends Controller
             }
             return view('pages.orderConfirmation', compact('listCart', 'user'));
         }else{
-            return redirect()->back();
+            return redirect()->route('index');
         }
     }
 

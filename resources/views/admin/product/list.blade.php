@@ -26,7 +26,7 @@
                                 <th>KM (%)</th>
                                 <th>ĐVT</th>
                                 <th>Ẩn hiện</th>
-                                <th>Loại sản phẩm</th>
+                                {{--<th>Loại sản phẩm</th>--}}
                                 <th>Tồn kho</th>
                                 <th>Ngày tạo</th>
                                 <td></td>
@@ -45,7 +45,7 @@
                                     <td>{{$product->promotion_price}}</td>
                                     <td>{{$product->unit_dvt->name}}</td>
                                     <td>{{$product->new == 1 ? "Hiện" : "Ẩn"}}</td>
-                                    <td>{{$product->product_type->name}}</td>
+                                    {{--<td>{{$product->product_type->name}}</td>--}}
                                     <td>{{$product->quantity}}</td>
                                     <td>{{$product->created_at}}</td>
                                     <td><a onclick="return confirm('Bạn có chắc muốn xoá không')"
