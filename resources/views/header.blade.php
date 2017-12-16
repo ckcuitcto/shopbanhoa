@@ -13,8 +13,7 @@
                 <h1 class="dotmark" align="center">
 
                     <i class="icon-cut"></i>
-                    Tôi yêu hoa đâu cần hoa đẹp, mà chỉ cần hoa tỏa ngát hương thơm.
-                    Tôi yêu người đâu cần người đẹp, mà chỉ cần người thật sự yêu tôi.
+                   {{$titleHeader}}
                 </h1>
 
             </div>

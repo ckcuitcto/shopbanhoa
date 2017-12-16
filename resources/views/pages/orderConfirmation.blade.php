@@ -55,8 +55,7 @@
 
                         <div class="control-group">
                             <div class="controls">
-                                <button type="submit" name="pay" class="btn btn-primary">Mua</button>
-                                <button type="cancel" class="btn">Từ từ</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Mua</button>
                             </div>
                         </div>
                     </fieldset>
@@ -66,6 +65,7 @@
                 <div class="alert alert-success">
                     {!! Session::get('flash_message') !!}
                     Chúng tôi sẽ sớm liên hệ với bạn !
+                    <?php Cart::destroy(); ?>
                 </div>
 
             @endif

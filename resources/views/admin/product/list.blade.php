@@ -21,12 +21,12 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Tên</th>
-                                <th>Miêu tả</th>
+                                {{--<th>Miêu tả</th>--}}
                                 <th>Giá (VNĐ)</th>
                                 <th>KM (%)</th>
                                 <th>ĐVT</th>
                                 <th>Ẩn hiện</th>
-                                {{--<th>Loại sản phẩm</th>--}}
+                                <th>Loại sản phẩm</th>
                                 <th>Tồn kho</th>
                                 <th>Ngày tạo</th>
                                 <td></td>
@@ -40,12 +40,12 @@
                                     <td><a href="{{route('admin.product.getEdit',$product->id)}}"> {{$product->name}}
                                                 <p><img width="200px" src="/template/image/product/{{$product->image}}"></p>
                                         </a></td>
-                                    <td>{{strip_tags($product->description)}}</td>
+                                    {{--<td>{{strip_tags($product->description)}}</td>--}}
                                     <td>{{number_format($product->unit_price,0,",",".")}}</td>
                                     <td>{{$product->promotion_price}}</td>
                                     <td>{{$product->unit_dvt->name}}</td>
                                     <td>{{$product->new == 1 ? "Hiện" : "Ẩn"}}</td>
-                                    {{--<td>{{$product->product_type->name}}</td>--}}
+                                    <td>{{$product->product_type->name}}</td>
                                     <td>{{$product->quantity}}</td>
                                     <td>{{$product->created_at}}</td>
                                     <td><a onclick="return confirm('Bạn có chắc muốn xoá không')"

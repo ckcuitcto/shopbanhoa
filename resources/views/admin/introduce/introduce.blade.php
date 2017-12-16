@@ -17,7 +17,7 @@
                     <div class="table-responsive">
                         <div class="form-group">
                             <label>Tiêu đề</label>
-                            <input style="height: auto" class="form-control hightInput" type="text" name="txtNewsTitle" id="txtNewsTitle" 
+                            <input style="height: auto" class="form-control hightInput" type="text" name="txtNewsTitle" id="txtNewsTitle"
                                    placeholder="Title" value="{{$introduce->title}}" disabled />
                         </div>
                         <div class="form-group">
@@ -44,7 +44,7 @@
                     </div>
 
                     <button type="button"  name="edit" id="edit" class="btn btn-warning"> Sửa</button>
-                    <button type="submit" style="display: none" name="save" id="save" class="btn btn-success">Lưu</button>
+                    <button type="submit" style="display: none" name="submit" id="submit" class="btn btn-success">Lưu</button>
                     <button type="cancel" style="display: none" name="cancel" id="cancel" class="btn btn-danger">Hủy</button>
 
                 </div>
@@ -57,7 +57,7 @@
         $(document).ready(function(){
 
             $('#edit').click(function(){
-                $('#save').show();
+                $('#submit').show();
                 $('#cancel').show();
                 $('#edit').hide();
 

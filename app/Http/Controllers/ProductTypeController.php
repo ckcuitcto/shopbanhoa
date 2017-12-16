@@ -113,4 +113,10 @@ class ProductTypeController extends Controller
         }
         return false;
     }
+
+    public static function getNameByTypeId($id)
+    {
+        $type = ProductType::find($id);
+        return $type->name;
+    }
 }

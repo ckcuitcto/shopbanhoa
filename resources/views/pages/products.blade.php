@@ -9,27 +9,6 @@
             <form class="form-horizontal" action="{{route('getProducts')}}" method="GET">
 
                 <div class="control-group">
-                    <label class="control-label" for="slPrice">Giá</label>
-                    <div class="controls">
-                        <select class="span4" name="slPrice">
-                            @if (!empty($oldValue['slPrice']))
-                                <option value="0" {{ ($oldValue['slPrice']==0)  ? "selected" : "" }} > Tất cả</option>
-                                <option value="1" {{ ($oldValue['slPrice']==1) ? "selected" : ""}} > Dưới 200.000đ</option>
-                                <option value="2" {{ ($oldValue['slPrice']==2 ) ? "selected" : "" }}> Từ 200.000đ ->400.000đ</option>
-                                <option value="3" {{ ($oldValue['slPrice']==3 ) ? "selected" : "" }}> Từ 400.000đ ->800.000đ</option>
-                                <option value="4" {{ ($oldValue['slPrice']==4 ) ? "selected" : "" }}> Trên 800.000đ
-                                </option>
-                            @else
-                                <option value="0"> Tất cả</option>
-                                <option value="1"> Dưới 200.000đ</option>
-                                <option value="2"> Từ 200.000đ -> 400.000đ</option>
-                                <option value="3"> Từ 400.000đ -> 800.000đ</option>
-                                <option value="4"> Trên 800.000đ</option>
-                            @endif
-                        </select>
-                    </div>
-                </div>
-                <div class="control-group">
                     <label class="control-label" for="txtName">Tên sản phẩm</label>
                     <div class="controls">
 
@@ -40,6 +19,40 @@
                         @endif
                     </div>
                 </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="slProductType">Loại sản phẩm</label>
+                    <div class="controls">
+                        <select class="span4" name="slProductType">
+                                    <option value="0" {{ ($oldValue['slProductType']==0)  ? "selected" : "" }}> --Tất cả--</option>
+                               @foreach($category as $value)
+                                <option value="{{$value->id}}" {{ ($oldValue['slProductType']==$value->id)  ? "selected" : "" }}>{{$value->name}} </option>
+                                @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="slPrice">Giá</label>
+                    <div class="controls">
+                        <select class="span4" name="slPrice">
+                            @if (!empty($oldValue['slPrice']))
+                                <option value="0" {{ ($oldValue['slPrice']==0)  ? "selected" : "" }} > Tất cả</option>
+                                <option value="1" {{ ($oldValue['slPrice']==1) ? "selected" : ""}} > Dưới 200.000đ</option>
+                                <option value="2" {{ ($oldValue['slPrice']==2 ) ? "selected" : "" }}> Từ 200.000đ ->400.000đ</option>
+                                <option value="3" {{ ($oldValue['slPrice']==3 ) ? "selected" : "" }}> Từ 400.000đ ->800.000đ</option>
+                                <option value="4" {{ ($oldValue['slPrice']==4 ) ? "selected" : "" }}> Trên 800.000đ</option>
+                            @else
+                                <option value="0"> Tất cả</option>
+                                <option value="1"> Dưới 200.000đ</option>
+                                <option value="2"> Từ 200.000đ -> 400.000đ</option>
+                                <option value="3"> Từ 400.000đ -> 800.000đ</option>
+                                <option value="4"> Trên 800.000đ</option>
+                            @endif
+                        </select>
+                    </div>
+                </div>
+
 
                 <div class="control-group">
                     <label class="control-label" for="slOrderBy">Sắp xếp theo</label>
@@ -84,10 +97,40 @@
     <hr>
     <div class="span12" style="background-color: #f5f5f5;margin:0">
 
-        <h3 style="padding-left: 20px;">Các loại hoa tìm được</h3>
-
         @if($products->count() > 0)
 
+            <h3 style="padding-left: 20px;">Tìm thấy {{ $products->total() }} sản phẩm :</h3>
+            <div class="span9">
+                <h4>
+                    <ul>
+                        @if(!empty($oldValue['txtName']))
+                            <li>
+                                {{ " tên :".$oldValue['txtName'] }}
+                            </li>
+                        @endif
+
+                        @if(!empty($oldValue['slProductType']))
+                            <li>
+                                {{ " loại sản phẩm :". \App\Http\Controllers\ProductTypeController::getNameByTypeId($oldValue['slProductType']) }}
+                            </li>
+                        @endif
+
+                        @if(!empty($oldValue['slPrice']))
+                            <li>
+                            {{ " mức giá :"}}
+                            @if($oldValue['slPrice']==1)
+                                {{ "Dưới 200.000đ" }}
+                            @elseif($oldValue['slPrice']==2)
+                                {{ "Từ 200.000đ ->400.000đ" }}
+                            @elseif($oldValue['slPrice']==3)
+                                {{ "Từ 400.000đ ->800.000đ" }}
+                            @elseif($oldValue['slPrice']==4)
+                                {{ "Trên 800.000đ" }}
+                            @endif
+                        @endif
+                    </ul>
+                </h4>
+            </div>
         <ul class="thumbnails">
             @foreach($products as $product)
                 <li class="span3" style="width: 210px;margin-left: 27px">
@@ -115,13 +158,6 @@
             @endforeach
         </ul>
         <div class="pagination row-fluid" align="center">{{ $products->appends(Request::all())->links() }}
-        {{--<div class="pagination row-fluid" align="center">{{ $products->appends([--}}
-                {{--'slPrice' => $oldValue['slPrice'],--}}
-                {{--'txtName' => $oldValue['txtName'],--}}
-                {{--'slOrderBy' => $oldValue['slOrderBy'],--}}
-                {{--'chksoldOut' => $oldValue['chksoldOut'],--}}
-                {{--'submit' => 'ok',--}}
-                {{--])->links() }}--}}
         </div>
         @else
             <h3>Không tìm thấy kết quả </h3>

@@ -180,11 +180,6 @@ Route::post('xac-nhan-don-hang',[
     'uses' => 'PageController@postOrderConfirmation'
 ]);
 
-Route::get('tim-kiem',[
-    'as'=>'search',
-    'uses'=>'PageController@search'
-]);
-
 Route::get('ca-nhan',[
     'as' => 'getPersonal',
     'uses' => 'PageController@getPersonal'

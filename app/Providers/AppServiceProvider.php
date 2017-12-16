@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $titleHeader = $titleHeader->titleHeader;
         View::share('titleHeader',$titleHeader);
 
-        view()->composer('leftmenu',function($view){
+        view()->composer(['leftmenu','pages.products'],function($view){
             $category = ProductType::all();
 
             $randomProduct = Product::inRandomOrder()->where('new','1')->limit(2)->get();

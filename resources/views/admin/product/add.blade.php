@@ -45,7 +45,7 @@
 
                         <div class="form-group">
                             <label>Số lượng sản phẩm</label>
-                            <input style="height: auto" class="form-control hightInput" type="number" value="0" min="0" max="100" name="txtQuantity"
+                            <input style="height: auto" class="form-control hightInput" type="number" value="0" min="0"  name="txtQuantity"
                                    placeholder="Số lượng sản phẩm ban đầu"/>
                         </div>
 

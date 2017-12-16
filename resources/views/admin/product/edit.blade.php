@@ -16,12 +16,11 @@
                     <div class="table-responsive">
 
                         <div class="form-group">
-                            <label for="txtProductType">Loại hoa</label>
-                            <select class="form-control" name="txtProductType" id="txtProductType">
+                            <label for="slProductType">Loại hoa</label>
+                            <select class="form-control" name="slProductType" id="slProductType">
                                 @foreach($productType as $type)
-                                    <option {{ ($type->id == $product->type_id) ? "selected" : ""}} value="{{$type->id}}"> {{$type->name}}</option>
+                                    <option {{ ($type->id == $product->id_type) ? "selected" : ""}} value="{{$type->id}}"> {{$type->name}}</option>
                                 @endforeach
-
                             </select>
                         </div>
 
@@ -47,7 +46,7 @@
 
                         <div class="form-group">
                             <label>Số lượng sản phẩm</label>
-                            <input style="height: auto" class="form-control" type="number" min="0" max="100"
+                            <input style="height: auto" class="form-control" type="number" min="0"
                                    name="txtQuantity"
                                    value="{{old('txtQuantity',$product->quantity)}}"
                                    placeholder="Số lượng sản phẩm ban đầu"/>

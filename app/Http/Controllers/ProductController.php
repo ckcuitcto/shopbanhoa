@@ -118,12 +118,12 @@ class ProductController extends Controller
     public function postEdit(Request $request, $id)
     {
         $this->validate($request, [
-            'txtProductType' => 'required',
+            'slProductType' => 'required',
             'txtProductName' => 'required',
             'txtPrice' => 'required',
             'txtUnit' => 'required',
         ], [
-            'txtProductType.required' => 'Bạn chưa chọn loại sản phẩm',
+            'slProductType.required' => 'Bạn chưa chọn loại sản phẩm',
             'txtProductName.required' => 'Bạn nhập tên sản phẩm',
             'txtPrice.required' => 'Bạn chưa nhập giá',
             'txtUnit.required' => 'Bạn chưa chọn đơn vị tính',
@@ -131,14 +131,13 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         $product->name = $request->txtProductName;
-        $product->id_type = $request->txtProductType;
+        $product->id_type = $request->slProductType;
         $product->unit_price = $request->txtPrice;
         $product->promotion_price = $request->txtSale;
         $product->quantity = $request->txtQuantity;
         $product->unit = $request->txtUnit;
         $product->new = $request->rdoNew;
         $product->description = $request->txtDescription;
-
         if ($request->hasFile('fImages')) {
             $file = $request->file('fImages');
 
@@ -159,6 +158,7 @@ class ProductController extends Controller
 
             $product->image = $fileName;
         }
+
         $product->save();
 
         $productId = $product->id;
@@ -183,7 +183,7 @@ class ProductController extends Controller
                 $productImage->save();
             }
         }
-        return redirect()->route('admin.product.list')->with(['flash_message' => 'Sửa thành công']);
+        return redirect()->back()->with(['flash_message' => 'Sửa thành công']);
     }
 
     public function getDeleteProductImage($id)

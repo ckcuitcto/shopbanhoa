@@ -79,7 +79,7 @@ class PageController extends Controller
             ])
             ->first();
 //        var_dump($productOrdered);die;
-        $relatedProducts = Product::where('id_type', $product->id_type)->limit(3)->get();
+        $relatedProducts = Product::where('id_type', $product->id_type)->whereNotIn('id', [$product->id])->where('new','1')->limit(3)->get();
         $productImages = ProductImages::where('id_product', $request->idProduct)->get();
 
         return view('pages.productDetails', compact('product', 'relatedProducts', 'productImages', 'productOrdered'));
@@ -117,19 +117,8 @@ class PageController extends Controller
     {
         if ($request->isMethod('GET')) {
 
-            // idP là id trong db của sản phẩm
-            // id là id của sản phẩm trong card
-//            $idSP = $request->get('idSP');
             $id = $request->get('id');
             $qty = $request->get('qty');
-
-//            $product = Product::find($idSP);
-
-//            if($product->quantity > $qty)
-//            {
-//                $qty = $product->quantity;
-//            }
-
             Cart::update($id, $qty);
             return "success";
         }
@@ -155,61 +144,64 @@ class PageController extends Controller
 
     public function postOrderConfirmation(Request $request)
     {
-        $this->validate($request, [
-            'txtRecipient' => 'required',
-            'txtAddress' => 'required',
-            'txtPhoneNumber' => 'required|numeric',
-            'txtEmail' => 'required|email',
-        ], [
-            'txtRecipient.required' => 'Bạn chưa nhập tên người nhận',
-            'txtAddress.required' => 'Bạn nhập nơi nhận',
-            'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
-            'txtPhoneNumber.numeric' => 'Số điện thoại chỉ là số',
-            'txtEmail.email' => 'Email nhập chưa đúng định dạng',
-        ]);
+        if($request->has('submit')) {
+            $this->validate($request, [
+                'txtRecipient' => 'required',
+                'txtAddress' => 'required',
+                'txtPhoneNumber' => 'required|numeric',
+                'txtEmail' => 'required|email',
+            ], [
+                'txtRecipient.required' => 'Bạn chưa nhập tên người nhận',
+                'txtAddress.required' => 'Bạn nhập nơi nhận',
+                'txtPhoneNumber.required' => 'Bạn chưa nhập số điện thoại',
+                'txtPhoneNumber.numeric' => 'Số điện thoại chỉ là số',
+                'txtEmail.email' => 'Email nhập chưa đúng định dạng',
+            ]);
 
-        // nếu khách hàng đã đăng nhập. thì khi mua hàng sẽ lưu = id của khác và gửi thư đến mail khách đã đăng kí
-        // còn nếu khách k đăng nhập thì sẽ lưu vào user mặc định là 1 và email mặc định;
-        if (!empty(Auth::user()->id)) {
-            $userId = Auth::user()->id;
-            $userEmail = Auth::user()->email;
-        } else {
-            $userId = 7; // 7 là user mặc định của khách nặc danh
-            $userEmail = $request->txtEmail;
+            // nếu khách hàng đã đăng nhập. thì khi mua hàng sẽ lưu = id của khác và gửi thư đến mail khách đã đăng kí
+            // còn nếu khách k đăng nhập thì sẽ lưu vào user mặc định là 1 và email mặc định;
+            if (!empty(Auth::user()->id)) {
+                $userId = Auth::user()->id;
+                $userEmail = Auth::user()->email;
+            } else {
+                $userId = 7; // 7 là user mặc định của khách nặc danh
+                $userEmail = $request->txtEmail;
+            }
+            $cartItemList = Cart::content();
+
+            $total = 0;
+
+            foreach ($cartItemList as $item) {
+                $total += $item->price * $item->qty;
+            }
+            $bill = new Bill();
+            $bill->date_order = Carbon::now();
+            $bill->note = $request->txtNote;
+            $bill->id_user = $userId;
+            $bill->recipient = $request->txtRecipient;
+            $bill->address = $request->txtAddress;
+            $bill->phone_number = $request->txtPhoneNumber;
+            $bill->email = $request->txtEmail;
+            $bill->total = $total;
+            $bill->save();
+
+
+            $arrBilDetail = array();
+            foreach ($cartItemList as $item) {
+                $billDetail = new BillDetail();
+                $billDetail->unit_price = $item->price;
+                $billDetail->quantity = $item->qty;
+                $billDetail->id_bill = $bill->id;
+                $billDetail->id_product = $item->id;
+                $billDetail->save();
+                $arrBilDetail[] = $billDetail;
+            }
+
+            Mail::to($userEmail)->send(new OrderShipped($bill, $arrBilDetail));
+            return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);
+        }else{
+            return redirect()->back();
         }
-        $cartItemList = Cart::content();
-
-        $total = 0;
-
-        foreach ($cartItemList as $item) {
-            $total += $item->price * $item->qty;
-        }
-        $bill = new Bill();
-        $bill->date_order = Carbon::now();
-        $bill->note = $request->txtNote;
-        $bill->id_user = $userId;
-        $bill->recipient = $request->txtRecipient;
-        $bill->address = $request->txtAddress;
-        $bill->phone_number = $request->txtPhoneNumber;
-        $bill->email = $request->txtEmail;
-        $bill->total = $total;
-        $bill->save();
-
-
-        $arrBilDetail = array();
-        foreach ($cartItemList as $item) {
-            $billDetail = new BillDetail();
-            $billDetail->unit_price = $item->price;
-            $billDetail->quantity = $item->qty;
-            $billDetail->id_bill = $bill->id;
-            $billDetail->id_product = $item->id;
-            $billDetail->save();
-            $arrBilDetail[] = $billDetail;
-        }
-
-        Mail::to($userEmail)->send(new OrderShipped($bill, $arrBilDetail));
-        Cart::destroy();
-        return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);
     }
 
     public function getProducts(Request $request)
@@ -219,6 +211,7 @@ class PageController extends Controller
             'txtName' => "",
             'slOrderBy' => "",
             'chksoldOut' => "",
+            'slProductType' => "",
         );
 
         $list = DB::table('products as p')
@@ -229,17 +222,13 @@ class PageController extends Controller
         if ($request->has('submit')) {
 
             $checked = ($request->chksoldOut) ? "on" : "";
-            $oldValue['slPrice'] = $request->slPrice;
-            $oldValue['txtName'] = $request->txtName;
-            $oldValue['slOrderBy'] = $request->slOrderBy;
-            $oldValue['chksoldOut'] = $checked;
-
             $oldValue = array(
                 'slPrice' => $request->slPrice,
                 'txtName' => $request->txtName,
                 'slOrderBy' => $request->slOrderBy,
                 'chksoldOut' => $checked,
-                'submit' => ''
+                'submit' => '',
+                'slProductType' => $request->slProductType,
             );
 
             if ($request->slPrice > 0) {
@@ -253,16 +242,23 @@ class PageController extends Controller
                     $list->where('p.unit_price', '>', 800000);
                 }
             }
+
             if (!empty($request->txtName)) {
                 $list->where('p.name', 'like', "%$request->txtName%");
             }
+
             if ($request->chksoldOut == 'on') {
                 $list->where('p.quantity', '>', '0');
+            }
+
+            if ($request->slProductType != 0) {
+                $list->where('p.id_type', $request->slProductType);
             }
 
             $list->where('p.new','1');
 
             $list->groupBy('p.id');
+
             if ($request->slOrderBy > 0) {
                 if ($request->slOrderBy == 1) {
                     $list->orderByRaw('SUM(bd.quantity) desc');
@@ -275,10 +271,12 @@ class PageController extends Controller
                 }
             }
             $products = $list->paginate(16);
+
         } else {
             $products = Product::where('new','1')->paginate(16);
         }
-        return view('pages.products', compact('products','oldValue'));
+
+        return view('pages.products', compact('products','oldValue','countProducts'));
     }
 
     public function getContact()

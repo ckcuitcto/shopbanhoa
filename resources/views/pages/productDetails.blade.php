@@ -14,8 +14,7 @@
                     <div id="myCarousel" class="carousel slide cntr">
                         <div class="carousel-inner">
                             <div class="item active">
-                                <a href="#"><img src="template/image/product/{{$product->image}}" alt=""
-                                                 style="width:100%"></a>
+                                <img src="template/image/product/{{$product->image}}" alt="" style="width:100%">
                             </div>
                             @foreach($productImages as $image)
                                 <div class="item">

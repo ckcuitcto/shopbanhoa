@@ -113,7 +113,15 @@
                                 <td style="text-align: center"> {{$value['address']}}</td>
                                 <td style="text-align: center"> {{$value['phone_number']}}</td>
                                 <td style="text-align: center"> {{$value['total']}}</td>
-                                <td style="text-align: center"> {{($value['confirm']==1) ? "Đã nhận" : "Chưa nhận" }}</td>
+                                <td style="text-align: center">
+                                    @if($value['confirm'] ==1 AND $value['deleted'] != 1)
+                                        {{ "Đã nhận"  }}
+                                    @elseif ($value['confirm'] == 0 AND $value['deleted'] != 1)
+                                        {{ "Chưa nhận" }}
+                                    @elseif($value['deleted'] == 1)
+                                        {{ " Đã hủy " }}
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         <tr>
@@ -136,7 +144,7 @@
             <div class="tab-pane" id="changepassword">
                 <form id="form-change-password" role="form" method="POST" action="{{ route('changePassword') }}" novalidate class="form-horizontal">
                     <div class="col-md-9">
-                        <label for="current-password" class="col-sm-4 control-label">Current Password</label>
+                        <label for="current-password" class="col-sm-4 control-label"> Mật khẩu hiện tại</label>
                         <div class="col-sm-8">
                             <div class="controls">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -144,14 +152,14 @@
                             </div>
                         </div>
                         <br>
-                        <label for="password" class="col-sm-4 control-label">New Password</label>
+                        <label for="password" class="col-sm-4 control-label">Mật khẩu mới</label>
                         <div class="col-sm-8">
                             <div class="controls">
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                             </div>
                         </div>
                         <br>
-                        <label for="password_confirmation" class="col-sm-4 control-label">Re-enter Password</label>
+                        <label for="password_confirmation" class="col-sm-4 control-label">Nhập lại mật khẩu mới</label>
 
                         <div class="col-sm-8">
                             <div class="controls">
@@ -162,7 +170,7 @@
                     <br>
                     <div class="control-group">
                         <div class="controls">
-                            <button type="submit" class="btn btn-danger">Submit</button>
+                            <button type="submit" class="btn btn-danger">Đổi</button>
                         </div>
                     </div>
                 </form>

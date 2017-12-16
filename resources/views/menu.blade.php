@@ -15,10 +15,11 @@
                     <li class=""><a href="{{route('news')}}">Tin tức</a></li>
 
                 </ul>
-                <form action="{{route('search')}}" class="navbar-search pull-right" method="get">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}" ;>
-                    <input type="text" id="productSearch" name="productSearch" autocomplete="off"
+                <form action="{{route('getProducts')}}" class="navbar-search pull-right" method="get">
+                    {{--<input type="hidden" name="_token" value="{{csrf_token()}}" ;>--}}
+                    <input type="text" id="txtName" name="txtName" autocomplete="off"
                            placeholder="Tìm kiếm..." class="search-query span2">
+                    <input type="submit" value="ok" name="submit" style="display: none" />
                 </form>
 
             </div>
@@ -27,13 +28,13 @@
 </div>
 
 @section('script')
-    <script type="text/javascript">
+    {{--<script type="text/javascript">--}}
 
-           $(".nav a").on("click", function () {
-               $(".nav").find(".active").removeClass("active");
-               $(this).parent().addClass("active");
-           });
-    </script>
+        {{--$(".nav a").on("click", function () {--}}
+            {{--$(".nav").find(".active").removeClass("active");--}}
+            {{--$(this).parent().addClass("active");--}}
+        {{--});--}}
+    {{--</script>--}}
 
 @endsection
 
