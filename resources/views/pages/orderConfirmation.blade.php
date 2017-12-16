@@ -65,7 +65,7 @@
                 <div class="alert alert-success">
                     {!! Session::get('flash_message') !!}
                     Chúng tôi sẽ sớm liên hệ với bạn !
-                    <?php Cart::destroy(); ?>
+                    <h4>Trang sẽ tự chuyển đến trang chủ sau <span id="timecount"></span> giây!</h4>
                 </div>
 
             @endif
@@ -102,6 +102,10 @@
                     </tbody>
                 </table>
             </div>
+            @if(Session::has('flash_message'))
+                <?php Cart::destroy(); ?>
+            @endif
         </div>
+
     @endif
 @endsection
