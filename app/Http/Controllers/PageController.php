@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class PageController extends Controller
 {
@@ -79,14 +80,13 @@ class PageController extends Controller
             ])
             ->first();
 //        var_dump($productOrdered);die;
-        $relatedProducts = Product::where('id_type', $product->id_type)->whereNotIn('id', [$product->id])->where('new','1')->limit(3)->get();
+        $relatedProducts = Product::where('id_type', $product->id_type)->whereNotIn('id', [$product->id])->where('new','1')->orderBy('id','DESC')->limit(3)->get();
         $productImages = ProductImages::where('id_product', $request->idProduct)->get();
 
         return view('pages.productDetails', compact('product', 'relatedProducts', 'productImages', 'productOrdered'));
     }
 
-    public function getCart()
-    {
+    public function getCart(){
         $content = Cart::content();
         return view('pages.cart', compact('content'));
     }
@@ -94,8 +94,13 @@ class PageController extends Controller
     public function purchaseOneClick($id, $qty)
     {
         $productBuy = Product::where('id', $id)->first();
-        $qty = $qty;
-        Cart::add(['id' => $productBuy->id, 'name' => $productBuy->name, 'qty' => $qty, 'price' => $productBuy->unit_price, 'options' => ['img' => $productBuy->image]]);
+        Cart::add([
+            'id' => $productBuy->id,
+            'name' => $productBuy->name,
+            'qty' => $qty,
+            'price' => $productBuy->unit_price,
+            'options' => ['img' => $productBuy->image]
+        ]);
         return "success";
     }
 
@@ -113,16 +118,13 @@ class PageController extends Controller
         return "success";
     }
 
-    public function updateCart(Request $request)
-    {
+    public function updateCart(Request $request){
         if ($request->isMethod('GET')) {
-
             $id = $request->get('id');
             $qty = $request->get('qty');
             Cart::update($id, $qty);
             return "success";
         }
-
     }
 
     public function getOrderConfirmation()
@@ -198,7 +200,12 @@ class PageController extends Controller
             }
 
             Mail::to($userEmail)->send(new OrderShipped($bill, $arrBilDetail));
-            return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);
+
+            $request->session()->put('success_message','Đặt hàng thành công');
+
+//            return redirect()->route('getOrderConfirmation')->with(['flash_message' => 'Đặt hàng thành công']);3
+            return redirect()->route('getOrderConfirmation');
+
         }else{
             return redirect()->back();
         }
@@ -239,9 +246,14 @@ class PageController extends Controller
                 } elseif ($request->slPrice == 3) {
                     $list->whereBetween('p.unit_price', [400000, 800000]);
                 } elseif ($request->slPrice == 4) {
-                    $list->where('p.unit_price', '>', 800000);
-                }
+                    $list->whereBetween('p.unit_price', [800000, 1000000]);
+
+            } elseif ($request->slPrice == 5) {
+                    $list->whereBetween('p.unit_price', [1000000, 5000000]);
             }
+                elseif ($request->slPrice == 6) {
+                    $list->where('p.unit_price', '>', 5000000);
+                }}
 
             if (!empty($request->txtName)) {
                 $list->where('p.name', 'like', "%$request->txtName%");

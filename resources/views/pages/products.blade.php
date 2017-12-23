@@ -41,13 +41,17 @@
                                 <option value="1" {{ ($oldValue['slPrice']==1) ? "selected" : ""}} > Dưới 200.000đ</option>
                                 <option value="2" {{ ($oldValue['slPrice']==2 ) ? "selected" : "" }}> Từ 200.000đ ->400.000đ</option>
                                 <option value="3" {{ ($oldValue['slPrice']==3 ) ? "selected" : "" }}> Từ 400.000đ ->800.000đ</option>
-                                <option value="4" {{ ($oldValue['slPrice']==4 ) ? "selected" : "" }}> Trên 800.000đ</option>
+                                <option value="4" {{ ($oldValue['slPrice']==4 ) ? "selected" : "" }}> Từ 800.000đ ->1.000.000đ</option>
+                                <option value="5" {{ ($oldValue['slPrice']==5 ) ? "selected" : "" }}> Từ 1.000.000đ ->5.000.000đ</option>
+                                <option value="6" {{ ($oldValue['slPrice']==6 ) ? "selected" : "" }}> Trên 5.000.000đ</option>
                             @else
                                 <option value="0"> Tất cả</option>
                                 <option value="1"> Dưới 200.000đ</option>
                                 <option value="2"> Từ 200.000đ -> 400.000đ</option>
                                 <option value="3"> Từ 400.000đ -> 800.000đ</option>
-                                <option value="4"> Trên 800.000đ</option>
+                                <option value="4"> Từ 800.000đ -> 1.000.000đ</option>
+                                <option value="5"> Từ 1.000.000đ -> 5.000.000đ</option>
+                                <option value="6"> Trên 5.000.000đ</option>
                             @endif
                         </select>
                     </div>
@@ -125,7 +129,11 @@
                             @elseif($oldValue['slPrice']==3)
                                 {{ "Từ 400.000đ ->800.000đ" }}
                             @elseif($oldValue['slPrice']==4)
-                                {{ "Trên 800.000đ" }}
+                                    {{ "Từ 800.000đ ->1.000.000đ" }}
+                                @elseif($oldValue['slPrice']==5)
+                                    {{ "Từ 1.000.000đ ->5.000.000đ" }}
+                                @elseif($oldValue['slPrice']==6)
+                                    {{ "Trên 5.000.000đ" }}
                             @endif
                         @endif
                     </ul>
@@ -151,7 +159,7 @@
                                 <a class="shopBtn" idProduct="{{$product->id}}" title="add to cart"><span
                                             class="icon-plus"></span></a>
                             @endif
-                            <span class="pull-right">{{number_format($product->unit_price,0,",",".")}} đ</span>
+                            <span class="pull-right" style="color: red;">{{number_format($product->unit_price,0,",",".")}} đ</span>
                         </h4>
                     </div>
                 </li>

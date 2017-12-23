@@ -52,9 +52,11 @@
                         <div class="form-group">
                             <label for="txtUnit">Đơn vị tính</label>
                             <select class="form-control" name="txtUnit" id="txtUnit">
-                                @foreach($units as $unit)
+                                @forelse($units as $unit)
                                     <option value="{{$unit->id}}">{{$unit->name}}</option>
-                                @endforeach
+                                @empty
+                                    <option> Không tồn tại đơn vị tính</option>
+                                @endforelse
                             </select>
                         </div>
 

@@ -3,12 +3,16 @@
         <ul class="nav nav-list" style="padding: 10px">
             @foreach($category as $cate)
                 <li>
-                    <a href="{{route('productType',$cate->id)}}"><span class="icon-chevron-right"></span>{{$cate->name}}</a>
+                    <a href="{{route('productType',$cate->id)}}"><span class="icon-chevron-right"></span>{{$cate->name}} {{$cate->total}}
+                    </a>
                 </li>
             @endforeach
             <li style="border:0"> &nbsp;</li>
             <li>
-                <a class="totalInCart" href="{{route('cart')}}"><strong>Tổng tiền<span class="badge badge-warning pull-right" style="line-height:18px;">{{Cart::subtotal(0)}} đ </span></strong></a>
+                <a class="totalInCart" href="{{route('cart')}}"><strong>Tổng tiền<span
+                                class="badge badge-warning pull-right" style="line-height:18px;">
+                            {{Cart::subtotal(0)}} đ
+                        </span></strong></a>
             </li>
         </ul>
     </div>

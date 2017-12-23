@@ -61,14 +61,14 @@
                     </fieldset>
                 </form>
 
-            @if(Session::has('flash_message'))
-                <div class="alert alert-success">
-                    {!! Session::get('flash_message') !!}
-                    Chúng tôi sẽ sớm liên hệ với bạn !
-                    <h4>Trang sẽ tự chuyển đến trang chủ sau <span id="timecount"></span> giây!</h4>
-                </div>
+                @if(Session::has('success_message'))
+                    <div class="alert alert-success">
+                        {!! Session::get('success_message') !!}
+                        Chúng tôi sẽ sớm liên hệ với bạn !
+                        <h4>Trang sẽ tự chuyển đến trang chủ sau <span id="timecount"></span> giây!</h4>
+                    </div>
+                @endif
 
-            @endif
                 @include('admin.blocks.error')
             </div>
             <div class="span6">
@@ -102,9 +102,14 @@
                     </tbody>
                 </table>
             </div>
-            @if(Session::has('flash_message'))
-                <?php Cart::destroy(); ?>
-            @endif
+
+@if(Session::has('success_message'))
+    @php
+        Cart::destroy();
+        Session::forget('success_message');
+    @endphp
+@endif
+
         </div>
 
     @endif

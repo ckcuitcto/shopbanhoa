@@ -24,19 +24,20 @@
                             <label>Nội dung</label>
                            
 
-                            <textarea rows="8" cols="500" id="my-editor" name="txtNewsContent" class="form-control">{!! old('txtNewsContent' ,"") !!}</textarea>
-                            <script src="js/ckeditor.js"></script>
-                            <script>
-                                var options = {
-                                    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-                                    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-                                    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-                                    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-                                };
-                            </script>
-                            <script>
-                                CKEDITOR.replace('txtNewsContent', options);
-                            </script>
+<textarea rows="8" cols="500" id="my-editor" name="txtNewsContent"
+          class="form-control">{!! old('txtNewsContent' ,"") !!}</textarea>
+<script src="js/ckeditor.js"></script>
+<script>
+    var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+    };
+</script>
+<script>
+    CKEDITOR.replace('txtNewsContent', options);
+</script>
                         </div>
                         <div class="form-group">
                             <label>Hình đại diện</label>
