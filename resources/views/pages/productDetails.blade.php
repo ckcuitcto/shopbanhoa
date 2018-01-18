@@ -6,25 +6,25 @@
         <ul class="breadcrumb">
             <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
             <li><a href="{{route('getProducts')}}">Sản phẩm</a> <span class="divider">/</span></li>
-            <li class="active">Preview</li>
+            <li class="active">{{$product->name}}</li>
         </ul>
         <div class="well well-small">
-            <div class="row-fluid">
-                <div class="span5">
-                    <div id="myCarousel" class="carousel slide cntr">
+            <div class="row">
+                <div class="col-md-5 col-sm-5">
+                    <div id="myCarousel" class="carousel slide cntr" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="template/image/product/{{$product->image}}" alt="" style="width:100%">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="template/image/product/{{$product->image}}" alt="" style="width:100%">
                             </div>
                             @foreach($productImages as $image)
-                                <div class="item">
-                                    <img src="template/image/productImages/{{$image->image}}">
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="template/image/productImages/{{$image->image}}">
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="span7">
+                <div class="col-ms-7 col-sm-7">
                     <ul class="inline">
 
                         <li><h3> {{$product->name}}</h3></li>
@@ -65,29 +65,33 @@
             <hr class="softn clr"/>
 
 
-            <ul id="productDetail" class="nav nav-tabs">
-                <li class="active"><a href="#home" data-toggle="tab">Thông tin chi tiết</a></li>
-                <li class=""><a href="#profile" data-toggle="tab"> Sản phẩm liên quan </a></li>
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a href="#detail" class="nav-link active" data-toggle="tab">Thông tin chi tiết</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#related" class="nav-link" data-toggle="tab"> Sản phẩm liên quan </a>
+                </li>
             </ul>
             <div id="myTabContent" class="tab-content tabWrapper">
-                <div class="tab-pane fade active in" id="home">
+                <div class="container tab-pane active" id="detail">
                     <h4>Thông tin chi tiết sản phẩm</h4>
 
                     <p>{!!  $product->description !!}</p>
 
                 </div>
-                <div class="tab-pane fade" id="profile">
+                <div class="container tab-pane fade" id="related">
                     @foreach($relatedProducts as $product)
-                        <div class="row-fluid">
-                            <div class="span2">
-                                <a href="{{route('productDetail',$product->id)}}"> <img
-                                            src="template/image/product/{{$product->image}}" alt=""></a>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2">
+                                <a href="{{route('productDetail',$product->id)}}">
+                                    <img src="template/image/product/{{$product->image}}" style="width: 100%;" alt=""></a>
                             </div>
-                            <div class="span6">
+                            <div class="col-ms-6 col-sm-6">
                                 <h5><a href="{{route('productDetail',$product->id)}}">{{$product->name}} </a></h5>
 
                             </div>
-                            <div class="span4 alignR">
+                            <div class="col-ms-4 col-sm-4 alignR">
                                 <form class="form-horizontal qtyFrm">
                                     <h3> {{number_format($product->unit_price,0,",",".")}} đ</h3>
                                     <a href="{{route('productDetail',$product->id)}}" class="defaultBtn">Xem</a>
@@ -97,37 +101,7 @@
                         <hr class="soften"/>
                     @endforeach
                 </div>
-                <div class="tab-pane fade" id="cat2">
-                    @foreach($relatedProducts as $product)
-                        <div class="row-fluid">
-                            <div class="span2">
-                                <img src="template/image/product/{{$product->image}}" alt="">
-                            </div>
-                            <div class="span6">
-                                <h5>{{$product->name}} </h5>
-
-                            </div>
-                            <div class="span4 alignR">
-                                <form class="form-horizontal qtyFrm">
-                                    <h3> {{$product->unit_price}}</h3>
-                                    <label class="checkbox">
-                                        <input type="checkbox"> Adds product to compair
-                                    </label><br>
-                                    <div class="btn-group">
-                                        @if ( \App\Http\Controllers\PageController::checkQuantity($product->id) )
-                                            <a class="shopBtn" idProduct="{{$product->id}}"
-                                               title="add to cart"><span class="icon-shopping-cart"></span> Thêm vào giỏ</a>
-                                        @endif
-                                        <a href="{{route('productDetail',$product->id)}}" class="shopBtn">VIEW</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <hr class="soften"/>
-                    @endforeach
-                </div>
             </div>
-
         </div>
     </div>
 

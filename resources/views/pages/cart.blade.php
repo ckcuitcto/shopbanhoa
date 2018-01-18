@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="row">
-        <div class="span12">
+        <div class="col-md-12 col-sm-12">
             <ul class="breadcrumb">
-                <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-                <li class="active">Check Out</li>
+                <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
+                <li class="active">Giỏ hàng</li>
             </ul>
             @if (Cart::count() > 0)
                 <div class="well well-small">
-                    <h1>Check Out
+                    <h1>Giỏ hàng
                         <small class="pull-right"> {{Cart::count()}} sản phẩm trong giỏ hàng</small>
                     </h1>
                     <hr class="soften"/>
                     <form action="{{route('getOrderConfirmation')}}" method="get">
-                        <table class="table table-bordered table-condensed">
+                        <table class="table table-bordered table-condensed table-hover table-striped">
                             <thead>
                             <tr>
                                 <th>Hình ảnh sản phẩm</th>
@@ -26,19 +26,19 @@
                             </thead>
                             <tbody>
 
-                            <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
+                            {{--<input name="_token" type="hidden" value="{!! csrf_token() !!} ">--}}
 
                             @foreach($content as $item)
                                 <tr>
                                     <td><img width="100" src="template/image/product/{{$item->options->img}}" alt="">
                                     </td>
-                                    <td>{{$item->name}} </td>
+                                    <td><a href="{{route('productDetail',$item->id)}}">{{$item->name}}</a> </td>
                                     <td>{{number_format($item->price,0,",",".")}} đ</td>
                                     <td>
                                         <input class="span1 quantity1" idProduct="{{$item->rowId}}"
                                                value="{{$item->qty}}" min="1"
                                                max="{{(\App\Http\Controllers\PageController::getProductQuantityByProductId($item->id)) }}"
-                                               name="{{$item->rowId}}" style="max-width:34px" type="number">
+                                               name="{{$item->rowId}}" style="max-width:50px" type="number">
                                         <div class="input-append">
                                             <button class="btn btn-default btn-number" data-type="minus"
                                                     data-field="{{$item->rowId}}" type="button"><i

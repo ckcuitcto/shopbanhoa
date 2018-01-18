@@ -2,64 +2,56 @@
 @section('content')
     @if (Cart::count()>0 OR Session::has('flash_message'))
         <div class="row">
-            <ul class="breadcrumb">
-                <li><a href="{{route('index')}}">Home</a> <span class="divider">/</span></li>
-                <li class="active"> Mua hàng</li>
-            </ul>
-            <h3> Xác nhận đơn hàng </h3>
+            <div class="col-md-12 col-sm-12">
+                <ul class="breadcrumb">
+                    <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
+                    <li class="active"> Mua hàng</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+
             <hr class="soft"/>
-            <div class="span6">
-                <form class="form-horizontal" method="post" action="{{route('getOrderConfirmation')}}">
-                    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                    <fieldset>
-                        <div class="control-group">
-                            <label class="control-label" for="input01">Tên người nhận</label>
-                            <div class="controls">
-                                <input type="text" name="txtRecipient" value="{{$user->name}}" class="input-xlarge"
-                                       id="input01">
+            <div class="col-md-6 col-sm-6">
+                <h3> Xác nhận đơn hàng </h3>
+                <form method="post" action="{{route('getOrderConfirmation')}}">
 
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="input11">Nơi nhận</label>
-                            <div class="controls">
-                                <input type="text" name="txtAddress" value="{{$user->address}}" class="input-xlarge"
-                                       id="input11">
+                    <div class="form-group">
+                        <label for="txtRecipient">Tên người nhận</label>
+                        <input type="text" class="form-control" name="txtRecipient" value="{{$user->name}}"
+                               id="txtRecipient">
+                    </div>
 
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="txtAddress">Nơi nhận</label>
+                        <input type="text" class="form-control" value="{{$user->address}}" name="txtAddress"
+                               id="txtAddress" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtEmail">Email</label>
+                        <input type="text" class="form-control" id="txtEmail" value="{{$user->email}}"
+                               placeholder="abcd@mail.com">
+                    </div>
+                    {{--<div class="form-row">--}}
+                    <div class="form-group">
+                        <label for="txtPhoneNumber">Số điện thoại</label>
+                        <input type="text" class="form-control" name="txtPhoneNumber" value="{{$user->phone_number}}"
+                               id="txtPhoneNumber">
+                    </div>
+                    {{--</div>--}}
 
-                        <div class="control-group">
-                            <label class="control-label" for="input11">Email</label>
-                            <div class="controls">
-                                <input type="email" name="txtEmail" value="{{$user->email}}" class="input-xlarge"
-                                       id="input11">
 
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="txtNote">Ghi chú</label>
+                        <textarea class="form-control" name="txtNote" id="textarea" rows="5"
+                                  style="height:65px"></textarea>
+                    </div>
 
-                        <div class="control-group">
-                            <label class="control-label" for="input11">SĐT</label>
-                            <div class="controls">
-                                <input type="text" name="txtPhoneNumber" value="{{$user->phone_number}}" class="input-xlarge"
-                                       id="input11">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="textarea">Ghi chú</label>
-                            <div class="controls">
-                            <textarea class="input-xlarge" name="txtNote" id="textarea" rows="3"
-                                      style="height:65px"></textarea>
-                            </div>
-                        </div>
 
-                        <div class="control-group">
-                            <div class="controls">
-                                <button type="submit" name="submit" class="btn btn-primary">Mua</button>
-                            </div>
-                        </div>
-                    </fieldset>
+                    <button type="submit" name="submit" class="btn btn-primary">Mua</button>
                 </form>
+
 
                 @if(Session::has('success_message'))
                     <div class="alert alert-success">
@@ -71,7 +63,7 @@
 
                 @include('admin.blocks.error')
             </div>
-            <div class="span6">
+            <div class="col-md-6 col-sm-6">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -103,12 +95,12 @@
                 </table>
             </div>
 
-@if(Session::has('success_message'))
-    @php
-        Cart::destroy();
-        Session::forget('success_message');
-    @endphp
-@endif
+            @if(Session::has('success_message'))
+                @php
+                    Cart::destroy();
+                    Session::forget('success_message');
+                @endphp
+            @endif
 
         </div>
 
