@@ -39,15 +39,16 @@
 
 <!--  Navigation Bar Section  -->
 @include('menu')
+    <br>
 <!--  Body Section   -->
     <div class="row">
 
         @if(!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang') OR Request::is('ca-nhan')))
-            <div class="span3">
+            <div class="col-md-3 col-sm-3">
                 @include('leftmenu')
             </div>
         @endif
-        <div class="{{ (!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang') OR Request::is('ca-nhan'))) ? "span9" : "span12" }}">
+        <div class="{{ (!(Request::is('gio-hang') OR Request::is('san-pham') OR Request::is('xac-nhan-don-hang') OR Request::is('ca-nhan'))) ? "col-md-9 col-sm-9" : "col-md-12 col-sm-12" }}">
             @yield('content')
         </div>
 
