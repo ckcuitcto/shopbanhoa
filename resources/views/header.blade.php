@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-md-3">
             <h3>
-                <a class="logo" href="{{route('index')}}">HOA YEU THUONG
-                    <!-- <img src="template/assets/img/banner.jpg" alt="bootstrap sexy shop"> -->
+                <a class="logo" href="{{route('index')}}">
+                    <img src="template/assets/img/banner.jpg" alt="bootstrap sexy shop" style="width: 100%">
                 </a>
             </h3>
         </div>
