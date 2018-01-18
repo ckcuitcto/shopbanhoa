@@ -10,8 +10,11 @@
 
 
     <!-- Bootstrap styles -->
-    <link href="{{ url('template/assets/css/bootstrap.css')}}" rel="stylesheet"/>
-    <link href="{{ url('template/assets/css/jquery-ui.min.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+
+    {{--<link href="{{ url('template/assets/css/bootstrap.css')}}" rel="stylesheet"/>--}} 1
+    {{--<link href="{{ url('template/assets/css/jquery-ui.min.css')}}" rel="stylesheet"/>--}}2
     <!-- Customize styles -->
     <link href="{{ url('template/style.css')}}" rel="stylesheet"/>
     <!-- font awesome styles -->
@@ -65,8 +68,13 @@
 @include('copyright')
 <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="template/assets/js/jquery.js"></script>
-<script src="template/assets/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+{{--<script src="template/assets/js/jquery.js"></script>--}}
+{{--<script src="template/assets/js/bootstrap.min.js"></script>--}}
 <script src="template/assets/js/jquery.easing-1.3.min.js"></script>
 <script src="template/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
 <script src="template/assets/js/shop.js"></script>
