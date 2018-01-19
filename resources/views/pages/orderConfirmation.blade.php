@@ -15,7 +15,7 @@
             <hr class="soft"/>
             <div class="col-md-6 col-sm-6">
                 <h3> Xác nhận đơn hàng </h3>
-                <form method="post" action="{{route('getOrderConfirmation')}}">
+                <form method="get" action="{{route('getOrderConfirmation')}}">
 
                     <div class="form-group">
                         <label for="txtRecipient">Tên người nhận</label>

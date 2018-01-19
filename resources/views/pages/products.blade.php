@@ -182,9 +182,9 @@
                         <div class="card-body thumbnail" style="padding-left: -15px;margin-bottom: 10px">
                             <a class="zoomTool" href="{{route('productDetail',$product->id)}}" title="add to cart"><span
                                         class="icon-search"></span> QUICK VIEW</a>
-                            <a href="{{route('productDetail',$product->id)}}"><img style="height: 213px;"
-                                                                                   src="template/image/product/{{$product->image}}"
-                                                                                   alt=""></a>
+                            <a href="{{route('productDetail',$product->id)}}">
+                                <img style="height: 213px;" src="template/image/product/{{$product->image}}" alt="">
+                            </a>
                             <div class="caption cntr">
                                 <p>{{$product->name}}</p>
                             </div>

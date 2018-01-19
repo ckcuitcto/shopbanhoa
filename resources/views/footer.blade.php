@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3">
             <ul style="list-style-type: none"><h5>Tài khoản</h5>
 
             @foreach($account as $acc)
@@ -9,7 +9,7 @@
             @endforeach</ul>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-2 col-sm-2">
             <ul style="list-style-type: none"><h5>Thông Tin</h5>
 
             @foreach($info as $acc)
@@ -17,7 +17,7 @@
             @endforeach</ul>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-2 col-sm-2">
             <ul style="list-style-type: none"><h5>Nguồn</h5>
 
             @foreach($source as $acc)
@@ -25,7 +25,7 @@
             @endforeach</ul>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-5 col-sm-5">
 
             <h5>Một vài thông tin về trang web</h5>
             <p>{!!$description!!}</p>
