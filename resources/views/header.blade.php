@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-6">
             <div class="offerNoteWrapper">
-                <h1 class="dotmark" align="center">
+                <h1 class="dotmark" align="center" style="font-size: 18px">
                     <i class="icon-cut"></i>
                    {{$titleHeader}}
                 </h1>

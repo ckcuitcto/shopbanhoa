@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <div class="well well-small">
+    <div class="well well-small" style="background-color: #f5f5f5">
         @foreach($news as $tintuc)
 
             <div class="row">

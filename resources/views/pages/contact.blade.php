@@ -20,7 +20,82 @@
                 </div>
             @endif
 
-            <h4>Email cho chúng tôi</h4>
+
+
+            <div class="card">
+              <div class="card-body">
+                <h4 align="center" style="padding-bottom: 20px">Email cho chúng tôi</h4>
+
+
+                <form action="{{route('contact')}}" method="post">
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                  <div class="form-group row">
+                    <label for="name" class="col-3">Tên</label>
+                    <input type="text" class="form-control col-5" name="name"  placeholder="Tên">
+                  </div>
+                  <div class="form-group row">
+                    <label for="email" class="col-3">Email</label>
+                    <input type="email" class="form-control col-5" name="email" placeholder="Email">
+                  </div>
+                  <div class="form-group row">
+                    <label for="phone" class="col-3">Phone</label>
+                    <input type="text" class="form-control col-5" name="phone" placeholder="Phone">
+                  </div>
+                  <div class="form-group row">
+                    <label for="title" class="col-3">Tiêu đề</label>
+                    <input type="text" class="form-control col-5" name="title" placeholder="Tiêu đề">
+                  </div>
+                  <div class="form-group row">
+                    <label for="description" class="col-3">Nội dung</label>
+                    <textarea class="form-control col-8" name="description" rows="3" ></textarea>
+                    {{-- <input type="text" class="form-control col-5" name="description" placeholder="Nội dung"> --}}
+                  </div>
+                  
+                  <div align="center"><button type="submit" class="shopBtn btn btn-primary" name="submit">Gửi email</button></div>
+                </form>
+
+
+                {{-- <form action="{{route('contact')}}" method="post">
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                <fieldset>
+                    <div class="control-group">
+                        <label for="name" class="span2">Tên</label>
+                        <div class="controls">
+                            <input type="text" class="span5" name="name" placeholder="Tên" class="input-xlarge"/>
+                        </div>
+                    </div> --}}
+                 {{--  <div class="control-group">
+                    <label for="email" class="span2">Email</label>
+                    <div class="controls">
+                      <input type="email" class="span5" name="email" placeholder="Email" class="input-xlarge"/>
+                    </div>
+                  </div> --}}
+                  {{-- <div class="control-group">
+                    <label for="phone" class="span2">Phone</label>
+                    <div class="controls">
+                      <input type="text" class="span5" name="phone" placeholder="Phone" class="input-xlarge control-input"/>
+                    </div>
+                  </div> --}}
+                  {{-- <div class="control-group">
+                    <label for="title" class="span2">Tiêu đề</label>
+                    <div class="controls">
+                      <input type="text" class="span5" name="title" placeholder="Tiêu đề" class="input-xlarge control-input"/>
+                    </div>
+                  </div> --}}
+                  
+               {{--  <div class="control-group">
+                    <label for="description" class="span2">Nội dung</label>
+                    <div class="controls">
+                      <textarea rows="3" class="span5" name="description" placeholder="Nội dung" id="textarea" class="input-xlarge"></textarea>
+                    </div>
+                </div> --}}
+                    {{-- <button class="shopBtn" type="submit" name="submit">Gửi email</button> --}}
+             {{--    </fieldset>
+            </form> --}}
+              </div>
+            </div>
+
+            {{-- <h4>Email cho chúng tôi</h4>
             <form action="{{route('contact')}}" method="post">
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <fieldset>
@@ -57,7 +132,9 @@
                 </div>
                     <button class="shopBtn" type="submit" name="submit">Gửi email</button>
                 </fieldset>
-            </form>
+            </form> --}}
+
+
         </div>
         <div class="span12">
             @if(Session::has('flash_message'))
