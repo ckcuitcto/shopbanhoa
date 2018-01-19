@@ -2,7 +2,7 @@
 @section('content')
     <div class="well well-small" style="background-color: #f5f5f5">
         @foreach($news as $tintuc)
-
+        <br>
             <div class="row">
                 <div class="col-md-2 col-sm-2">
                     <img src="template/image/news/{{$tintuc->image}}" style="width: 100%" alt="">

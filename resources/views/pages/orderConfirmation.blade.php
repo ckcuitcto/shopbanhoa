@@ -10,17 +10,11 @@
                         <li class="breadcrumb-item active">  Mua hàng </li>
                     </ol>
                 </nav>
-
-              {{--   <ul class="breadcrumb">
-                    <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
-                    <li class="active"> Mua hàng</li>
-                </ul> --}}
             </div>
         </div>
 
         <div class="row" style="background-color: #f5f5f5;margin:0">
 
-       {{--      <hr class="soft"/> --}}
             <div class="col-6">
                 <h3> Xác nhận đơn hàng </h3>
                 <form method="post" action="{{route('postOrderConfirmation')}}">
