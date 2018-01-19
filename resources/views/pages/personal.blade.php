@@ -2,46 +2,86 @@
 
 @section('content')
 
-   
-        <ul class="breadcrumb">
+   <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #f5f5f5">
+            <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
+            <li class="breadcrumb-item active"> Trang cá nhân </li>
+        </ol>
+    </nav>
+     {{--    <ul class="breadcrumb">
             <li><a href="{{route('index')}}">Home</a> <span class="divider">/</span></li>
             <li class="active"> Trang cá nhân</li>
+        </ul> --}}
+
+        <div class="well well-small" style="background-color: #f5f5f5">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#cart" data-toggle="tab">Thông tin cá nhân</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#profile" data-toggle="tab">Danh sách đơn đặt hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#changepassword" data-toggle="tab">Đổi mật khẩu</a>
+          </li>
         </ul>
 
-        <div class="well well-small">
-        <ul class="nav nav-tabs">
+        {{-- <ul class="nav nav-tabs">
             <li class="active"><a href="#cart" data-toggle="tab">Thông tin cá nhân</a></li>
             <li><a href="#profile" data-toggle="tab">Danh sách đơn đặt hàng</a></li>
             <li><a href="#changepassword" data-toggle="tab">Đổi mật khẩu</a></li>
-        </ul>
+        </ul> --}}
         <div class="tab-content">
             <div class="tab-pane active" id="cart">
-                <div class="span11">
+                <div class="col">
                     <form class="form-horizontal" method="post" action="{{route('postPersonal')}}">
                         {{ csrf_field() }}
-                        <h2 style="text-align: center;">Thông tin cá nhân</h2>
-                        <hr class="soft"/>
-                        <div class="row">
-                            <div class="span1">&nbsp;</div>
-                        <div class="span10">
-                            <div class="control-group">
+                        <h2 style="text-align: center;padding-top: 30px;padding-bottom: 10px">Thông tin cá nhân</h2>
+    
+
+                        <div class="form-group row">
+                            <label for="input_email" class="col-3">Email address</label>
+                            <input type="email" class="form-control col-8" disabled="" value="{{$personal->email}}" name="txtEmail" id="txtEmail" placeholder="Email">
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputFname1" class="col-3"> Tên </label>
+                            <input type="text" class="form-control col-8" disabled="" value="{{ $personal->name }}" name="txtName" id="txtName" placeholder="Tên">
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="input_email" class="col-3"> Giới tính </label>
+                            <select class="form-control" disabled name="txtGen" id="txtGen" style=" width: inherit;">
+                                <option value="1" {{ ( $personal->gender == 1) ? "selected=''" : ""}}> Nam</option>
+                                <option value="0" {{ ( $personal->gender == 0) ? "selected=''" : ""}}> Nữ</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-3">Ngày sinh </label>
+                            <input class="form-control col-5" type="date" value="{{$personal->birthday}}" name="txtBirthday" min="1940-01-01"
+                                       id="txtBirthday" disabled max="2010-01-01"/>
+                        </div>
+
+             
+                            {{-- <div class="control-group">
                             <label class="control-label" for="input_email">Email</label>
                             <div class="controls">
                                 <input class="span5" type="email" disabled="" value="{{$personal->email}}" name="txtEmail"
                                        id="txtEmail"
                                        placeholder="Email">
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="control-group">
+                      {{--   <div class="control-group">
                             <label class="control-label" for="inputFname1">Tên </label>
                             <div class="controls">
                                 <input disabled class="span5" type="text" id="txtName" value="{{ $personal->name }}" name="txtName"
                                        placeholder="Tên">
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="control-group">
+                       {{--  <div class="control-group">
                             <label class="control-label">Giới tính </label>
                             <div class="controls">
                                 <select disabled class="span1" name="txtGen" id="txtGen" style=" width: inherit;">
@@ -49,44 +89,59 @@
                                     <option value="0" {{ ( $personal->gender == 0) ? "selected=''" : ""}}> Nữ</option>
                                 </select>
                             </div>
+                        </div> --}}
+
+          
+
+                        <div class="form-group row">
+                            <label for="mobile" class="col-3"> Số điện thoại  </label>
+                            <input type="text" class="form-control col-5"  value="{{$personal->phone_number}}" name="txtPhoneNumber"
+                                       id="txtPhoneNumber" disabled placeholder="09xxxxxxxx"/>
                         </div>
 
-                        <div class="control-group">
+                   {{--      <div class="control-group">
                             <label class="control-label">Ngày sinh </label>
                             <div class="controls">
                                 <input class="span5" type="date" value="{{$personal->birthday}}" name="txtBirthday" min="1940-01-01"
                                        id="txtBirthday" disabled
                                        max="2010-01-01"/>
                             </div>
-                        </div>
-                        <div class="control-group">
+                        </div> --}}
+                 {{--        <div class="control-group">
                             <label class="control-label" for="mobile">Số điện thoại </label>
                             <div class="controls">
                                 <input class="span5" type="text" value="{{$personal->phone_number}}" name="txtPhoneNumber"
                                        id="txtPhoneNumber" disabled
                                        placeholder="09xxxxxxxx"/>
                             </div>
+                        </div> --}}
+
+
+                        <div class="form-group row">
+                            <label for="inputLnam" class="col-3"> Địa chỉ  </label>
+                            <input type="text" class="form-control col-8"  name="txtAddress" value="{{$personal->address}}" id="txtAddress" disabled placeholder="Địa chỉ">
                         </div>
-                        <div class="control-group">
+
+             {{--            <div class="control-group">
                             <label class="control-label" for="inputLnam"> Địa chỉ </label>
                             <div class="controls">
                                 <input class="span5" type="text" name="txtAddress" value="{{$personal->address}}" id="txtAddress" disabled
                                        placeholder="Địa chỉ">
                             </div>
-                        </div>
+                        </div> --}}
 
 
 
                         <div class="control-group">
-                            <div class="controls">
+                            <div class="controls" align="center">
 
                                 <button type="button" name="edit" id="edit" class="btn btn-success"> Sửa</button>
                                 <button style="display: none" type="submit" name="save" id="save" class="btn btn-primary">Lưu</button>
                                 <button style="display: none" type="cancel" name="cancel" id="cancel" class="btn btn-danger">Hủy</button>
                             </div>
                         </div>
-                        </div>
-                        </div>
+             
+                 
                     </form>
 
                 </div>
@@ -143,36 +198,59 @@
 
             <div class="tab-pane" id="changepassword">
                 <form id="form-change-password" role="form" method="POST" action="{{ route('changePassword') }}" novalidate class="form-horizontal">
-                    <div class="col-md-9">
-                        <label for="current-password" class="col-sm-4 control-label"> Mật khẩu hiện tại</label>
+                    <div class="row">&nbsp;</div>
+                    <div class="form-group row">
+                        <div class="col-1">&nbsp;</div>
+                        <label for="current-password" class="col-3">  Mật khẩu hiện tại</label>
+                        <input type="hidden" class="form-control"  name="_token" value="{{ csrf_token() }}">
+                        <input type="password" class="form-control col-5" id="current-password" name="current-password" placeholder="Password">
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-1">&nbsp;</div>
+                        <label for="password" class="col-3">  Mật khẩu mới</label>
+                        <input type="password" class="form-control col-5" id="password" name="password" placeholder="Password">
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-1">&nbsp;</div>
+                        <label for="password_confirmation" class="col-3">  Nhập lại mật khẩu mới</label>
+                        <input type="password" class="form-control col-5" id="password_confirmation" name="password_confirmation" placeholder="Re-enter Password">
+                    </div>
+
+                  {{--   <div class="col-md-9"> --}}
+                 {{--        <label for="current-password" class="col-sm-4 control-label"> Mật khẩu hiện tại</label>
                         <div class="col-sm-8">
                             <div class="controls">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="password" class="form-control" id="current-password" name="current-password" placeholder="Password">
                             </div>
-                        </div>
+                        </div> --}}
                         <br>
-                        <label for="password" class="col-sm-4 control-label">Mật khẩu mới</label>
+                        {{-- <label for="password" class="col-sm-4 control-label">Mật khẩu mới</label>
                         <div class="col-sm-8">
                             <div class="controls">
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                             </div>
                         </div>
-                        <br>
-                        <label for="password_confirmation" class="col-sm-4 control-label">Nhập lại mật khẩu mới</label>
+                        <br> --}}
+                      {{--   <label for="password_confirmation" class="col-sm-4 control-label">Nhập lại mật khẩu mới</label>
 
                         <div class="col-sm-8">
                             <div class="controls">
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Re-enter Password">
                             </div>
-                        </div>
+                        </div> --}}
+                {{--     </div> --}}
+                    <div class="form-group row">
+                        <div class="col-1">&nbsp;</div>
+                        <div class="col-10" align="center"><button type="submit" class="btn btn-danger">Đổi</button></div>
                     </div>
-                    <br>
-                    <div class="control-group">
+                  {{--   <div class="control-group">
                         <div class="controls">
                             <button type="submit" class="btn btn-danger">Đổi</button>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>

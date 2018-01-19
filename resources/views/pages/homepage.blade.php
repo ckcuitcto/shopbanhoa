@@ -31,7 +31,7 @@
         </div>
         <br>
         <!-- New Products-->
-        <div class="well well-small">
+        <div class="well well-small" style="background-color: #f5f5f5">
             <h3>Các loại hoa mới nhập về </h3>
             <hr class="soften"/>
             {{--<div class="row">--}}
@@ -66,7 +66,7 @@
         </div>
         <br>
         <!--  Featured Products   -->
-        <div class="well well-small">
+        <div class="well well-small" style="background-color: #f5f5f5">
             <h3><a class="btn btn-mini pull-right" href="{{route('getProducts')}}" title="View more"><span
                             class="icon-plus"></span></a>Các loại hoa nổi bật</h3>
             <hr class="soften"/>
@@ -99,7 +99,7 @@
             </div>
         </div>
         <br>
-        <div class="well well-small">
+        <div class="well well-small" style="background-color: #f5f5f5">
             <h3><a class="btn btn-mini pull-right" href="{{route('getProducts')}}"><span class="icon-plus"></span></a>
                 Các loại hoa bán chạy nhất</h3>
             <hr class="soften"/>

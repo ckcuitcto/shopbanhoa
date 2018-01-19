@@ -3,17 +3,25 @@
     @if (Cart::count()>0 OR Session::has('flash_message'))
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <ul class="breadcrumb">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb" style="background-color: #f5f5f5">
+                        <li class="breadcrumb-item"><a href="{{route('index')}}">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">  Mua hàng </li>
+                    </ol>
+                </nav>
+
+              {{--   <ul class="breadcrumb">
                     <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
                     <li class="active"> Mua hàng</li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="background-color: #f5f5f5;margin:0">
 
-            <hr class="soft"/>
-            <div class="col-md-6 col-sm-6">
+       {{--      <hr class="soft"/> --}}
+            <div class="col-6">
                 <h3> Xác nhận đơn hàng </h3>
                 <form method="post" action="{{route('postOrderConfirmation')}}">
                     {!! csrf_field() !!}
@@ -60,7 +68,7 @@
 
                 @include('admin.blocks.error')
             </div>
-            <div class="col-md-6 col-sm-6">
+            <div class="col-6">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
