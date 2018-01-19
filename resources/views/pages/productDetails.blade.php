@@ -3,12 +3,21 @@
 @section('content')
 
     <div class="span9" style="margin: 0">
-        <ul class="breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb" style="background-color: #f5f5f5">
+            <li class="breadcrumb-item"><a href="{{route('index')}}">Trang chủ</a> </li>
+            <li class="breadcrumb-item"><a href="{{route('getProducts')}}">Sản phẩm</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
+          </ol>
+        </nav>
+
+
+       {{--  <ul class="breadcrumb">
             <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
             <li><a href="{{route('getProducts')}}">Sản phẩm</a> <span class="divider">/</span></li>
             <li class="active">{{$product->name}}</li>
-        </ul>
-        <div class="well well-small">
+        </ul> --}}
+        <div class="well well-small" style="background-color: #f5f5f5">
             <div class="row">
                 <div class="col-md-5 col-sm-5">
                     <div id="myCarousel" class="carousel slide cntr" data-ride="carousel">
@@ -25,23 +34,27 @@
                     </div>
                 </div>
                 <div class="col-ms-7 col-sm-7">
-                    <ul class="inline">
+                    <div class="inline row" style="padding-top: 30px">
 
-                        <li><h3> {{$product->name}}</h3></li>
-                        <li style="float: right;"><h5><span class="icon-eye-open help-inline"></span> {{$product->view}}
-                            </h5></li>
-                    </ul>
+                        <div class="col-6">
+                            <h2> {{$product->name}}</h2>
+                        </div>
+                        <div class="col-6" align="right" style="padding-right: 50px">
+                            <h5><span class="icon-eye-open help-inline"></span> {{$product->view}}
+                            </h5>
+                        </div>
+                    </div>
                     <hr class="soft"/>
 
                     <form class="form-horizontal qtyFrm" action="{{route('purchaseProductDetail')}}" method="post">
                         <input name="_token" type="hidden" value="{!! csrf_token() !!} ">
                         <input type="hidden" name="id" value="{{$product->id}}">
-                        <div class="control-group">
-                            <label class="control-label"><span>{{number_format($product->unit_price,0,",",".")}}
+                        <div class="control-group row">
+                            <label class="control-label col-6"><span>{{number_format($product->unit_price,0,",",".")}}
                                     đ</span></label>
                             <div class="controls">
                                 <input {{ $product->quantity > 0 ? "" : "disabled='disabled'" }} type="number" min="1"
-                                       max="{{$product->quantity}}" name="qty" class="span6" value="1">
+                                       max="{{$product->quantity}}" name="qty" class="col-6" value="1">
                             </div>
                         </div>
 
