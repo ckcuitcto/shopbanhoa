@@ -18,7 +18,7 @@
     </ul>
     <form action="{{route('getProducts')}}" class="navbar-search pull-right" method="get">
         <input type="hidden" name="_token" value="{{csrf_token()}}" ;>
-        <input type="text" id="txtName" name="txtName" autocomplete="off"
+        <input class="form-control" type="text" id="txtName" name="txtName" autocomplete="off"
                placeholder="Tìm kiếm..." class="search-query span2">
         <input type="submit" value="ok" name="submit" style="display: none" />
     </form>
