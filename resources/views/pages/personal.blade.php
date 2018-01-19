@@ -2,44 +2,77 @@
 
 @section('content')
 
-   
-        <ul class="breadcrumb">
+   <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #f5f5f5">
+            <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
+            <li class="breadcrumb-item active"> Trang cá nhân </li>
+        </ol>
+    </nav>
+     {{--    <ul class="breadcrumb">
             <li><a href="{{route('index')}}">Home</a> <span class="divider">/</span></li>
             <li class="active"> Trang cá nhân</li>
+        </ul> --}}
+
+        <div class="well well-small" style="background-color: #f5f5f5">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#cart" data-toggle="tab">Thông tin cá nhân</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#profile" data-toggle="tab">Danh sách đơn đặt hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#changepassword" data-toggle="tab">Đổi mật khẩu</a>
+          </li>
         </ul>
 
-        <div class="well well-small">
-        <ul class="nav nav-tabs">
+        {{-- <ul class="nav nav-tabs">
             <li class="active"><a href="#cart" data-toggle="tab">Thông tin cá nhân</a></li>
             <li><a href="#profile" data-toggle="tab">Danh sách đơn đặt hàng</a></li>
             <li><a href="#changepassword" data-toggle="tab">Đổi mật khẩu</a></li>
-        </ul>
+        </ul> --}}
         <div class="tab-content">
             <div class="tab-pane active" id="cart">
-                <div class="span11">
+                <div class="col">
                     <form class="form-horizontal" method="post" action="{{route('postPersonal')}}">
                         {{ csrf_field() }}
                         <h2 style="text-align: center;">Thông tin cá nhân</h2>
                         <hr class="soft"/>
+
+                        <div class="form-group row">
+                            <label for="input_email" class="col-3">Email address</label>
+                            <input type="email" class="form-control col-8" disabled="" value="{{$personal->email}}" name="txtEmail" id="txtEmail" placeholder="Email">
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputFname1" class="col-3"> Tên </label>
+                            <input type="text" class="form-control col-8" disabled="" value="{{ $personal->name }}" name="txtName" id="txtName" placeholder="Tên">
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="input_email" class="col-3">Email address</label>
+                            <input type="email" class="form-control col-8" disabled="" value="{{$personal->email}}" name="txtEmail" id="txtEmail" placeholder="Email">
+                        </div>
+
                         <div class="row">
                             <div class="span1">&nbsp;</div>
                         <div class="span10">
-                            <div class="control-group">
+                            {{-- <div class="control-group">
                             <label class="control-label" for="input_email">Email</label>
                             <div class="controls">
                                 <input class="span5" type="email" disabled="" value="{{$personal->email}}" name="txtEmail"
                                        id="txtEmail"
                                        placeholder="Email">
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="control-group">
+                      {{--   <div class="control-group">
                             <label class="control-label" for="inputFname1">Tên </label>
                             <div class="controls">
                                 <input disabled class="span5" type="text" id="txtName" value="{{ $personal->name }}" name="txtName"
                                        placeholder="Tên">
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="control-group">
                             <label class="control-label">Giới tính </label>
