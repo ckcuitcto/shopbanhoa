@@ -9,10 +9,6 @@
               </ol>
             </nav>
 
-            {{-- <ul class="breadcrumb">
-                <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
-                <li class="{{route('news')}}">Tin tức</li>
-            </ul> --}}
             <div class="well well-small" style="background-color: #f5f5f5">
                 <div class="row" align="center"><h3> {{$news->title}}</h3></div>
                 <img src="template/image/news/{{$news->image}}" width="100%">

@@ -4,7 +4,7 @@
         @if(count($productsByIdType)>0)
      
             <div class="well well-small" style="border:none;margin-left: 10px;margin-right: 10px">
-                <h3>&nbsp;Có tất cả {{$productsByIdType->total()}} sản phẩm thuộc loại {{$productType->name}}</h3>
+                <h3>&nbsp;Có tất cả {{$productsByIdType->total()}} sản phẩm thuộc loại: {{$productType->name}}</h3>
    
                 <div class="row">
                     @foreach($productsByIdType as $product)
@@ -30,27 +30,8 @@
                     @endforeach
                 </div>
 
-{{-- 
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                    </li>
-                    <li class="page-item" align="center"><a class="page-link" href="#">{{$productsByIdType->links()}}</a></li>
-                    
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav> --}}
+                <div class="pagination row justify-content-center">{{ $productsByIdType->links("pagination::bootstrap-4") }}</div>
 
-                <div class="pagination row-fluid" align="center">{{$productsByIdType->links()}}</div>
             </div>
         @else
             <div class="well well-small" style="border:none;margin-left: 25px">

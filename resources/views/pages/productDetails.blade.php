@@ -54,7 +54,7 @@
                                     đ</span></label>
                             <div class="controls">
                                 <input {{ $product->quantity > 0 ? "" : "disabled='disabled'" }} type="number" min="1"
-                                       max="{{$product->quantity}}" name="qty" class="col-6" value="1">
+                                       max="{{$product->quantity}}" name="qty" class="col-md-8" value="1">
                             </div>
                         </div>
 
@@ -62,7 +62,7 @@
                         @if ($productOrdered->total>0)
 
                             <h5>{{ $productOrdered->total." sản phẩm đã được đặt "}}
-                                <a data-toggle="tooltip" id="tooltip" title="
+                                <a data-toggle="tooltip" id="tooltip"  title="
                             Khi còn sản phẩm trong kho và đã có người khác đặt hàng thì bạn vẫn có thể tiếp tục đặt hàng.
                             Nếu người khách đặt trước bạn hủy đơn thì bạn có thể được nhận hàng.
                             Nếu số lượng hàng trong kho không đủ thì đơn hàng của bạn sẽ bị hủy. ">?</a>

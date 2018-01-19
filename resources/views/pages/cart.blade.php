@@ -32,7 +32,6 @@
                             <tbody>
 
                             {{--<input name="_token" type="hidden" value="{!! csrf_token() !!} ">--}}
-
                             @foreach($content as $item)
                                 <tr>
                                     <td><img width="100" src="template/image/product/{{$item->options->img}}" alt="">
@@ -91,10 +90,7 @@
                     <div class="alert alert-danger">
                         Giỏ hàng rỗng!!!
                     </div>
-                    <a href="{{route('index')}}" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Quay
-                        lại mua
-                        <hàng></hàng>
-                    </a>
+                    <a href="{{route('index')}}" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Quay lại mua hàng </a>
                 </div>
             @endif
 
