@@ -1,5 +1,6 @@
 @extends('master')
 @section('content')
+
 <div class="col-md-12 col-sm-12" id="searchBox" style="background-color: #f5f5f5;margin:0; ">
     <p align="center" style="padding-top: 10px;padding-bottom: -20px">
         <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -15,6 +16,7 @@
             <div class="card card-body">
             
                 <form action="{{route('getProducts')}}" method="POST">
+
 
                 <div class="form-group row">
                     <label for="txtName" class="col-md-2 col-sm-2 col-form-label">Tên sản phẩm</label>
@@ -203,7 +205,7 @@
                 @endforeach
             </div>
 
-            <!-- <div class="pagination row-fluid" align="center">{{$productsByIdType->links()}}</div> -->
+
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
