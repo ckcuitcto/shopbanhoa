@@ -15,43 +15,40 @@
             <hr class="soft"/>
             <div class="col-md-6 col-sm-6">
                 <h3> Xác nhận đơn hàng </h3>
-                <form method="get" action="{{route('getOrderConfirmation')}}">
-
+                <form method="post" action="{{route('postOrderConfirmation')}}">
+                    {!! csrf_field() !!}
                     <div class="form-group">
                         <label for="txtRecipient">Tên người nhận</label>
-                        <input type="text" class="form-control" name="txtRecipient" value="{{$user->name}}"
+                        <input type="text" class="form-control col-md-8" name="txtRecipient" value="{{$user->name}}"
                                id="txtRecipient">
                     </div>
 
                     <div class="form-group">
                         <label for="txtAddress">Nơi nhận</label>
-                        <input type="text" class="form-control" value="{{$user->address}}" name="txtAddress"
+                        <input type="text" class="form-control col-md-8" value="{{$user->address}}" name="txtAddress"
                                id="txtAddress" placeholder="1234 Main St">
                     </div>
                     <div class="form-group">
                         <label for="txtEmail">Email</label>
-                        <input type="text" class="form-control" id="txtEmail" value="{{$user->email}}"
-                               placeholder="abcd@mail.com">
+                        <input type="text" class="form-control col-md-8" id="txtEmail" name="txtEmail" value="{{$user->email}}"
+                               placeholder="gmail,hotmail,...">
                     </div>
                     {{--<div class="form-row">--}}
                     <div class="form-group">
                         <label for="txtPhoneNumber">Số điện thoại</label>
-                        <input type="text" class="form-control" name="txtPhoneNumber" value="{{$user->phone_number}}"
+                        <input type="text" class="form-control col-md-8" name="txtPhoneNumber" value="{{$user->phone_number}}"
                                id="txtPhoneNumber">
                     </div>
                     {{--</div>--}}
 
-
                     <div class="form-group">
                         <label for="txtNote">Ghi chú</label>
-                        <textarea class="form-control" name="txtNote" id="textarea" rows="5"
+                        <textarea class="form-control col-md-8" name="txtNote" id="textarea" rows="5"
                                   style="height:65px"></textarea>
                     </div>
 
-
                     <button type="submit" name="submit" class="btn btn-primary">Mua</button>
                 </form>
-
 
                 @if(Session::has('success_message'))
                     <div class="alert alert-success">
