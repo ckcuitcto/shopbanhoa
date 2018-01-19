@@ -140,10 +140,9 @@
 
         @if($products->count() > 0)
 
-            <h3 style="padding-top: 10px">Tìm thấy {{ $products->total() }} sản phẩm :</h3>
+            <h4 style="padding-top: 10px">Tìm thấy {{ $products->total() }} sản phẩm :</h4>
             <div class="col-md-9 col-sm-9">
-                <h4>
-                    <ul>
+                <ul>
                         @if(!empty($oldValue['txtName']))
                             <li>
                                 {{ " tên :".$oldValue['txtName'] }}
@@ -173,8 +172,7 @@
                                 {{ "Trên 5.000.000đ" }}
                             @endif
                         @endif
-                    </ul>
-                </h4>
+                    </ul>           
             </div>
             <div class="row">
                 @foreach($products as $product)

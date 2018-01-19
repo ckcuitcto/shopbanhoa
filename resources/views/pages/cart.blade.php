@@ -3,17 +3,27 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 col-sm-12">
-            <ul class="breadcrumb">
+
+
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb" style="background-color: #f5f5f5">
+                <li class="breadcrumb-item"><a href="{{route('index')}}">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Giỏ hàng</li>
+              </ol>
+            </nav>
+
+
+         {{--    <ul class="breadcrumb">
                 <li><a href="{{route('index')}}">Trang chủ</a> <span class="divider">/</span></li>
                 <li class="active">Giỏ hàng</li>
-            </ul>
+            </ul> --}}
             @if (Cart::count() > 0)
                 <div class="well well-small">
                     <h1>Giỏ hàng
                         <small class="pull-right"> {{Cart::count()}} sản phẩm trong giỏ hàng</small>
                     </h1>
                     <hr class="soften"/>
-                    <form action="{{route('getOrderConfirmation')}}" method="get">
+                    <form action="{{route('getOrderConfirmation')}}" method="get" style="background-color: #f5f5f5" >
                         <table class="table table-bordered table-condensed table-hover table-striped">
                             <thead>
                             <tr>
