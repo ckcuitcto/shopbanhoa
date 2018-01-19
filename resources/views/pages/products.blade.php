@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-12 col-sm-12" style="background-color: #f5f5f5;margin:0; ">
         <div class="row" id="search">
-            <form action="{{route('getProducts')}}" method="POST">
+            <form action="{{route('getProducts')}}" method="GET">
 
                 <div class="form-group row">
                     <label for="txtName" class="col-sm-5 col-form-label">Tên sản phẩm</label>
