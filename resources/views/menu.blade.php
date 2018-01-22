@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-between">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" style="font-weight: bold;">
         <li class="nav-item active">
             <a class="nav-link" href="{{route('index')}}">Trang chủ</a>
         </li>

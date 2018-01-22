@@ -1,14 +1,14 @@
 @extends('master')
 @section('content')
     <div style="margin: 0">
-        <div class="well well-small">
-            <h1>Địa chỉ liên hệ</h1>
+        <div class="well well-small" style="background-color: #f5f5f5">
+            <h2 align="center">Địa chỉ liên hệ</h2>
             <hr class="soften"/>
             <div class="row">
-                <div class="col-md-12 col-sm-12">
+                <div class="col" align="center">
                     {!! $contact->map !!}
                 </div>
-                <div class="col-md-12 col-sm-12">
+                <div class="col">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>

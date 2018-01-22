@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="col-md-12 col-sm-12" id="searchBtn" style="background-color: #f5f5f5;margin:0; ">
-        <p align="center" style="padding-top: 10px;padding-bottom: -20px">
+        <p align="center" style="padding-top: 20px">
             <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample"
                     aria-expanded="false" aria-controls="collapseExample">
                 <h3>Tìm kiếm theo yêu cầu <i class=" icon-chevron-down"></i></h3>

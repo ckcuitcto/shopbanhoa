@@ -1,7 +1,30 @@
 @extends('master')
 @section('content')
     <div class="well well-small" style="background-color: #f5f5f5">
-        @foreach($news as $tintuc)
+        <h2 align="center">Tin tức</h2>
+        <ul class="list-group">
+            @foreach($news as $tintuc)
+          <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2 col-sm-2">
+                    <img src="template/image/news/{{$tintuc->image}}" style="width: 100%" alt="">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <h5><a href="{{route('newsDetails',$tintuc->id)}}">{{$tintuc->title}} </a></h5>
+
+                </div>
+                <div class="col-md-4 col-sm-4 alignR">
+                        <div class="btn-group">
+                            <a href="{{route('newsDetails',$tintuc->id)}}" class="shopBtn">Xem thêm</a>
+                        </div>
+                </div>
+            </div>
+          </li>
+           @endforeach
+        </ul>
+
+
+        {{-- @foreach($news as $tintuc)
         <br>
             <div class="row">
                 <div class="col-md-2 col-sm-2">
@@ -18,6 +41,6 @@
                 </div>
             </div>
             <hr class="soften">
-        @endforeach
+        @endforeach --}}
     </div>
 @endsection

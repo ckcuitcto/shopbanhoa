@@ -2,13 +2,30 @@
 @section('content')
     <div style="margin: 0">
         <div class="well np">
+
+
+            {{-- <div id="myCarousel" class="carousel slide homCar" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="..." alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="..." alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="..." alt="Third slide">
+                </div>
+              </div>
+            </div> --}}
+
+            
             <div id="myCarousel" class="carousel slide homCar" data-ride="carousel">
                 <!-- Indicators -->
-                <ul class="carousel-indicators">
+                {{-- <ul class="carousel-indicators">
                     @for ($i = 0; $i < count($slide); $i++)
                         <li data-target="#myCarousel" data-slide-to="{{$i}}" class="{{ ($i==0) ? 'active' : '' }}"></li>
                     @endfor
-                </ul>
+                </ul> --}}
                 <!-- The slideshow -->
                 <div class="carousel-inner">
                     @php $active = false; @endphp
