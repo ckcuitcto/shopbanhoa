@@ -121,7 +121,7 @@
 				</p>
 			</div>
 			<div class="col-md-4">
-				<img src="https://goo.gl/auednF" width="100%" style="border-radius: 50%">
+				<img src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/20046278_1883912798526917_8366875584502312045_n.jpg?oh=8fee7d0f5aefa7d0913e6f2ccd2a35f5&oe=5B4CCE21" width="100%" style="border-radius: 50%">
 			</div>
 		</div>
 
@@ -137,7 +137,6 @@
 					<span>- Thực hiện chức năng thanh toán sản phẩm</span>
 					<span>- Xây dựng trang liên hệ</span>
 					<span>- Gửi mail đặt hàng, xác nhận đơn hàng, hủy đơn hàng</span>
-					<span>- Đăng ký, đăng nhập, đăng xuất</span>
 					<span>- Quên mật khẩu, tìm lại mật khẩu, đổi mật khẩu</span>
 					<span>- Đổi thông tin cá nhân</span>
 					<span>- Quản lý liên hệ khách hàng</span>
@@ -153,7 +152,7 @@
 			<div class="col-md-8">
 				<button type="button" class="btn btn-outline-dark" style="border-radius: 40%;border: 3px solid black;color: #FF8633;font-size: 30px;background-color: white">3</button> <h2 style="display: inline;"> &nbsp;Nguyễn Duy Hào</h2>
 				<p class="content-text">
-					<span>- CSS border-radius Property. The CSS border-radius property defines the radius of an element's corners. Tip: This property allows you to add rounded borders to elements! Here are three examples: 1. Rounded corners for an element with a specified background color: Rounded corners! 2. Rounded corners for an element ...</span>
+					<span>- Đăng ký, đăng nhập, đăng xuất</span>
 				</p>
 			</div>
 			<div class="col-md-4">
