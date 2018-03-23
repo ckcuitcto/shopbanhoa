@@ -107,7 +107,8 @@
 		<h2>Bảng phân công công việc</h2>
 		<div class="row" style="padding-top: 5%;background-color: #D73E6E">
 			<div class="col-md-8">
-				<button type="button" class="btn btn-outline-dark" style="border-radius: 40%;border: 3px solid black;color: #E40B81;font-size: 30px;background-color: white">1</button> <h2 style="display: inline;"> &nbsp;Trần Ngọc Gia Hân</h2>
+				<button type="button" class="btn btn-outline-dark" style="border-radius: 40%;border: 3px solid black;color: #E40B81;font-size: 30px;background-color: white">1</button> <h2 style="display: inline;"> &nbsp;
+Trần Ngọc Gia Hân</h2>
 				<p class="content-text">
 					<span>- Xây dựng template website</span>
 					<span>- Quản lý hiển thị sản phẩm ở trang chủ</span>
@@ -130,7 +131,8 @@
 				<img src="https://goo.gl/z5G5Dx" width="80%" style="border-radius: 50%">
 			</div>
 			<div class="col-md-7">
-				<button type="button" class="btn btn-outline-dark" style="border-radius: 40%;border: 3px solid black;color: #B9E24C;font-size: 30px;background-color: white">2</button> <h2 style="display: inline;"> &nbsp;Thái Huỳnh Đức</h2>
+				<button type="button" class="btn btn-outline-dark" style="border-radius: 40%;border: 3px solid black;color: #B9E24C;font-size: 30px;background-color: white">2</button> <h2 style="display: inline;"> &nbsp;
+Thái Huỳnh Đức</h2>
 				<p class="content-text">
 					<span>- Xây dựng database</span>
 					<span>- Xây dựng trang giỏ hàng</span>
@@ -151,7 +153,8 @@
 
 		<div class="row" style="padding-top: 5%; background-color: #80397B">
 			<div class="col-md-8">
-				<button type="button" class="btn btn-outline-dark" style="border-radius: 40%;border: 3px solid black;color: #FF8633;font-size: 30px;background-color: white">3</button> <h2 style="display: inline;"> &nbsp;Nguyễn Duy Hào</h2>
+				<button type="button" class="btn btn-outline-dark" style="border-radius: 40%;border: 3px solid black;color: #FF8633;font-size: 30px;background-color: white">3</button> <h2 style="display: inline;"> &nbsp;
+Nguyễn Duy Hào</h2>
 				<p class="content-text">
 					<span>- CSS border-radius Property. The CSS border-radius property defines the radius of an element's corners. Tip: This property allows you to add rounded borders to elements! Here are three examples: 1. Rounded corners for an element with a specified background color: Rounded corners! 2. Rounded corners for an element ...</span>
 				</p>

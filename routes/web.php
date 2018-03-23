@@ -45,7 +45,7 @@ Route::get('san-pham',['as'=>'getProducts', 'uses'=>'PageController@getProducts'
 Route::get('lien-he',['as'=>'contact', 'uses'=>'PageController@getContact']);
 Route::post('lien-he',['as'=>'contact', 'uses'=>'PageController@postContact']);
 
-Route::get('gioi_thieu',[
+Route::get('gioi-thieu',[
     'as'=>'introduce',
     'uses'=>'PageController@getIntroduce'
 ]);

@@ -2,11 +2,11 @@
 @section('content')
     <div class="well well-small" style="background-color: #f5f5f5">
         <h1 align="center" style="font-family: cursive;">Tin tức</h1>
-  
+
         <ul class="list-group">
             @foreach($news as $tintuc)
               <li class="list-group-item">
-                <div class="row">                  
+                <div class="row">
 
                     <div class="col-md-2 col-sm-2">
                         <img src="template/image/news/{{$tintuc->image}}" style="width: 100%;display: inline;" alt="">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                </li>                       
+                </li>
            @endforeach
         </ul>
 
